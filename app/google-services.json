@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "845048393081",
+    "project_id": "qwink-8816a",
+    "storage_bucket": "qwink-8816a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845048393081:android:da543fa21fb2d35a2313a8",
+        "android_client_info": {
+          "package_name": "com.nick_sib.beauty_radar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "845048393081-m3f6q8a7ajnv68aqo2f76ipm351g8cqi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjZrYkCpL16eQ432uo5wRD30TSqdMTl1Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "845048393081-m3f6q8a7ajnv68aqo2f76ipm351g8cqi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
