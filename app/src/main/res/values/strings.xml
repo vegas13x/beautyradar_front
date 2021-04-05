@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Beauty-radar</string>
+    <string name="error_entry_text_login">Not all fields are filled</string>
 </resources>
