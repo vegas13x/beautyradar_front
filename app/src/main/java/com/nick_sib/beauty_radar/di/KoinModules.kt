@@ -2,10 +2,11 @@ package com.nick_sib.beauty_radar.di
 
 
 import com.google.firebase.auth.FirebaseAuth
-import com.nick_sib.beauty_radar.provider.AuthProviderImpl
-import com.nick_sib.beauty_radar.provider.IAuthProvider
-import com.nick_sib.beauty_radar.ui.CheckInViewModel
+import com.nick_sib.beauty_radar.provider.auth_.AuthProviderImpl
+import com.nick_sib.beauty_radar.provider.auth_.IAuthProvider
+import com.nick_sib.beauty_radar.ui.register.CheckInViewModel
 import com.nick_sib.beauty_radar.ui.login.LoginViewModel
+import com.nick_sib.beauty_radar.ui.logout.LogoutViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -17,5 +18,8 @@ val authModule = module {
     viewModel { LoginViewModel(get()) }
 }
 val checkInModule = module {
-    viewModel { CheckInViewModel() }
+    viewModel { CheckInViewModel(get()) }
+}
+val logoutModule = module {
+    viewModel { LogoutViewModel() }
 }
