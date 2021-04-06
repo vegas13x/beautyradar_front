@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.LogingFragmentBinding
+import com.nick_sib.beauty_radar.ui.CheckInFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment(R.layout.loging_fragment) {
@@ -25,10 +26,9 @@ class LoginFragment : Fragment(R.layout.loging_fragment) {
         viewModel.subscribeLiveData().observe(viewLifecycleOwner, { renderData(it) })
 
         binding?.loginFragmentBtnRegister?.setOnClickListener {
-            viewModel.createNewUser(
-                binding?.loginFragmentTietLogin?.text.toString(),
-                binding?.loginFragmentTietPassword?.text.toString()
-            )
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.main_activity_container, CheckInFragment.newInstance())
+                ?.addToBackStack("CheckIn")?.commit()
         }
     }
 
@@ -39,11 +39,6 @@ class LoginFragment : Fragment(R.layout.loging_fragment) {
                     1 -> {
                     }
                     2 -> {
-                        Toast.makeText(
-                            activity,
-                            "Регистрация успешна - открыть слудующий экран",
-                            Toast.LENGTH_SHORT
-                        ).show()
                     }
                 }
             }

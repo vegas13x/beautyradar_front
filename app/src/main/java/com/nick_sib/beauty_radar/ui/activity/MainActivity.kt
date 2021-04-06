@@ -1,7 +1,8 @@
-package com.nick_sib.beauty_radar
+package com.nick_sib.beauty_radar.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.ui.login.LoginFragment
 
 class MainActivity : AppCompatActivity() {
