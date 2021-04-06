@@ -17,4 +17,8 @@
     <style name="Theme.Beautyradar.Second" parent="Theme.Beautyradar">
         <item name="colorPrimary"> #FD8A8D </item>
     </style>
+
+    <style name="Theme.Beautyradar.Third" parent="Theme.Beautyradar">
+        <item name="colorPrimary"> @color/violet </item>
+    </style>
 </resources>
