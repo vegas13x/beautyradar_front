@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.nick_sib.beauty_radar.data.state.AppState
-import com.nick_sib.beauty_radar.provider.IAuthProvider
+import com.nick_sib.beauty_radar.provider.auth_.IAuthProvider
 import com.nick_sib.beauty_radar.ui.utils.AUTH_SECCES_OPEN_NEXT_SCREEN
 import com.nick_sib.beauty_radar.ui.utils.ERROR_ENTRY_TEXT
 
