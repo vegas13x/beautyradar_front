@@ -10,7 +10,6 @@ class InitialProfileSetupViewModel(private val authProvider: IAuthProvider) :
     BaseViewModel<AppState>() {
     fun sucscribeLiveData(lifecycleOwner: LifecycleOwner): LiveData<AppState> {
         authProvider.getLiveDataAuthProvider().observe(lifecycleOwner, {
-
             liveDataViewmodel.value = it
         })
         return liveDataViewmodel
@@ -19,8 +18,10 @@ class InitialProfileSetupViewModel(private val authProvider: IAuthProvider) :
     fun addEmailAndPasswordInProfile(email: String, password: String) {
         if (email.isNullOrEmpty() || password.isNullOrEmpty()) {
             liveDataViewmodel.value = AppState.Error("Email or Password null")
-        } else
+        } else {
             authProvider.addEmailAndPasswordInCurrentUser(email, password)
+
+        }
     }
 
     override fun errorReturned(t: Throwable) {

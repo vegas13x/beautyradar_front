@@ -10,7 +10,11 @@ import com.nick_sib.beauty_radar.ui.login.LoginViewModel
 import com.nick_sib.beauty_radar.ui.logout.LogoutViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-
+/**
+ * @author Alex Volkov(Volkos)
+ *
+ * Класс модулей для Koin
+ */
 val appModule = module {
     single { FirebaseAuth.getInstance() }
     single<IAuthProvider> { AuthProviderImpl(get()) }
@@ -22,7 +26,7 @@ val checkInModule = module {
     viewModel { CheckInViewModel(get()) }
 }
 val logoutModule = module {
-    viewModel { LogoutViewModel() }
+    viewModel { LogoutViewModel(get()) }
 }
 val initialProfileModule = module {
     viewModel { InitialProfileSetupViewModel(get()) }

@@ -9,11 +9,17 @@ import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.CheckInFragmentBinding
 import com.nick_sib.beauty_radar.ui.initial_profile_setup.InitialProfileSetupFragment
+import com.nick_sib.beauty_radar.ui.logout.LogoutFragment
 import com.nick_sib.beauty_radar.ui.utils.AUTH_SECCES_OPEN_NEXT_SCREEN
 import com.nick_sib.beauty_radar.ui.utils.CODE_ERROR_GONE_CODE_LAYOUT
 import com.nick_sib.beauty_radar.ui.utils.CODE_RECEIVED_VISIBLE_CODE_LAYOUT
+import com.nick_sib.beauty_radar.ui.utils.EMAIL_AND_PASSWORD_SUCCESS_GO_TO_LOGOUT
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
+/**
+ * @author Alex Volkov(Volkos)
+ *
+ *Фрагмент регистрации через телефон
+ */
 class CheckInFragment : Fragment(R.layout.check_in_fragment) {
 
     companion object {
@@ -73,7 +79,7 @@ class CheckInFragment : Fragment(R.layout.check_in_fragment) {
                                 R.id.main_activity_container,
                                 InitialProfileSetupFragment.newInstance()
                             )
-                            ?.commit()
+                            ?.addToBackStack("Register")?.commit()
                     }
                     CODE_RECEIVED_VISIBLE_CODE_LAYOUT -> visibleCodeContainer()
                     CODE_ERROR_GONE_CODE_LAYOUT -> visiblePhoneContainer()
