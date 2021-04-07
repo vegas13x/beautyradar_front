@@ -5,10 +5,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.FirebaseException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.PhoneAuthOptions
-import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.auth.*
 import com.nick_sib.beauty_radar.data.entites.UserMaster
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.ui.utils.AUTH_SECCES_OPEN_NEXT_SCREEN
@@ -57,18 +54,6 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
         return livedataAuthProvider
     }
 
-    override fun getCurrentUser(): LiveData<UserMaster> =
-        MutableLiveData<UserMaster>().apply {
-            value = currentUser?.let {
-                UserMaster(
-                    it.displayName ?: "",
-                    it.email ?: "",
-                    it.phoneNumber ?: ""
-                )
-
-            }
-        }
-
     override fun singUpEmailAndPasswordUser(email: String, password: String) {
         authUser.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener {
@@ -103,8 +88,22 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
     }
 
     override fun verifyPhoneNumber(code: String) {
-        val credential: PhoneAuthCredential = PhoneAuthProvider.getCredential(localVerificationId, code)
+        val credential: PhoneAuthCredential =
+            PhoneAuthProvider.getCredential(localVerificationId, code)
         singnInWithPhoneAuthCredential(credential)
+    }
+
+    override fun addEmailAndPasswordInCurrentUser(email: String, password: String) {
+        val credential = EmailAuthProvider.getCredential(email, password)
+
+        authUser.currentUser.linkWithCredential(credential)
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    livedataAuthProvider.value = AppState.Success("Данные пользователя обновлены")
+                } else {
+                    livedataAuthProvider.value = AppState.Error("Данные пользователя не обновлены!")
+                }
+            }
     }
 
     private fun singnInWithPhoneAuthCredential(credential: PhoneAuthCredential) {

@@ -4,6 +4,7 @@ package com.nick_sib.beauty_radar.di
 import com.google.firebase.auth.FirebaseAuth
 import com.nick_sib.beauty_radar.provider.auth_.AuthProviderImpl
 import com.nick_sib.beauty_radar.provider.auth_.IAuthProvider
+import com.nick_sib.beauty_radar.ui.initial_profile_setup.InitialProfileSetupViewModel
 import com.nick_sib.beauty_radar.ui.register.CheckInViewModel
 import com.nick_sib.beauty_radar.ui.login.LoginViewModel
 import com.nick_sib.beauty_radar.ui.logout.LogoutViewModel
@@ -22,4 +23,7 @@ val checkInModule = module {
 }
 val logoutModule = module {
     viewModel { LogoutViewModel() }
+}
+val initialProfileModule = module {
+    viewModel { InitialProfileSetupViewModel(get()) }
 }
