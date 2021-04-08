@@ -17,10 +17,11 @@ class BeautyRadarApplication : Application() {
             modules(
                 listOf(
                     appModule,
-                    authModule,
-                    checkInModule,
+                    authFragmentModule,
+                    authFragmentModule,
                     logoutModule,
-                    initialProfileModule
+                    initialProfileModule,
+                    enterCodeFragmentModule
                 )
             )
         }

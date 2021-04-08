@@ -1,7 +1,6 @@
 package com.nick_sib.beauty_radar.provider.auth_
 
 import android.app.Activity
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.FirebaseException
@@ -25,9 +24,6 @@ import java.util.concurrent.TimeUnit
  */
 class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
 
-    private val TAG_SUCCESS_VERIFICATION: String = "AuthPI SUCCESS"
-    private val TAG_CODE_SEND: String = "AuthPI CODE SEND"
-
     private val livedataAuthProvider: MutableLiveData<AppState> = MutableLiveData()
     private lateinit var localVerificationId: String
     private var resendingToken: PhoneAuthProvider.ForceResendingToken? = null
@@ -35,12 +31,10 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
     private val callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks =
         object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
-                singnInWithPhoneAuthCredential(phoneAuthCredential)
-                Log.d(TAG_SUCCESS_VERIFICATION, "onVerificationCompleted: succes")
+                signInWithPhoneAuthCredential(phoneAuthCredential)
             }
 
             override fun onVerificationFailed(firebaseException: FirebaseException) {
-                livedataAuthProvider.value = AppState.Loading(CODE_ERROR_GONE_CODE_LAYOUT)
                 livedataAuthProvider.value = AppState.Error(firebaseException.message.toString())
             }
 
@@ -49,11 +43,10 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
                 forceResendingToken: PhoneAuthProvider.ForceResendingToken
             ) {
                 super.onCodeSent(verifyID, forceResendingToken)
-                Log.d(TAG_CODE_SEND, "onCodeSent: ${verifyID}")
                 localVerificationId = verifyID
                 resendingToken = forceResendingToken
-                livedataAuthProvider.value = AppState.Loading(CODE_RECEIVED_VISIBLE_CODE_LAYOUT)
-                livedataAuthProvider.value = AppState.Success(localVerificationId)
+                livedataAuthProvider.value =
+                    AppState.Loading(CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT)
             }
         }
 
@@ -69,13 +62,6 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
      */
     override fun singUpEmailAndPasswordUser(email: String, password: String) {
         authUser.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener {
-                if (it.isSuccessful) {
-                    Log.w("ADD-FIREBASE", "Success add user in firebase")
-                } else {
-                    Log.w("ADD-FIREBASE", "ERROR add user in firebase")
-                }
-            }
     }
 
     /**
@@ -114,7 +100,7 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
     override fun verifyPhoneNumber(code: String) {
         val credential: PhoneAuthCredential =
             PhoneAuthProvider.getCredential(localVerificationId, code)
-        singnInWithPhoneAuthCredential(credential)
+        signInWithPhoneAuthCredential(credential)
     }
 
     /**
@@ -159,14 +145,18 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
             }
     }
 
-    private fun singnInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
+    private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         authUser.signInWithCredential(credential)
-            .addOnCompleteListener {
-                livedataAuthProvider.value = AppState.Loading(AUTH_SECCES_OPEN_NEXT_SCREEN)
-            }
             .addOnFailureListener {
                 livedataAuthProvider.value = AppState.Error(it.message.toString())
             }
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    livedataAuthProvider.value = AppState.Loading(AUTH_SECCES_OPEN_NEXT_SCREEN)
+                }
+            }
+
+
     }
 
 

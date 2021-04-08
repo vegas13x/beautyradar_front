@@ -21,7 +21,7 @@ class InitialProfileSetupFragment : Fragment(R.layout.inital_profile_setup_fragm
         fun newInstance() = InitialProfileSetupFragment()
     }
 
-    private var binding: InitalProfileSetupFragmentBinding? = null
+    private lateinit var binding: InitalProfileSetupFragmentBinding
     private val viewModel: InitialProfileSetupViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,10 +32,10 @@ class InitialProfileSetupFragment : Fragment(R.layout.inital_profile_setup_fragm
             renderData(it)
         })
 
-        binding?.initialProfileSetupBtnGoTo?.setOnClickListener {
+        binding.initialProfileSetupBtnGoTo.setOnClickListener {
             viewModel.addEmailAndPasswordInProfile(
-                binding?.initialProfileSetupTietEmail?.text.toString(),
-                binding?.initialProfileSetupTietPassword?.text.toString()
+                binding.initialProfileSetupTietEmail.text.toString(),
+                binding.initialProfileSetupTietPassword.text.toString()
             )
         }
     }

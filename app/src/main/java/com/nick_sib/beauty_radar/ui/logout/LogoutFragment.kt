@@ -6,7 +6,7 @@ import android.view.View
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.LogoutFragmentBinding
-import com.nick_sib.beauty_radar.ui.login.LoginFragment
+import com.nick_sib.beauty_radar.ui.authScreen.AuthFragment
 import com.nick_sib.beauty_radar.ui.utils.USER_SIGNOUT
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -22,7 +22,7 @@ class LogoutFragment : Fragment(R.layout.logout_fragment) {
     }
 
     private val viewModel: LogoutViewModel by viewModel()
-    private var binding: LogoutFragmentBinding? = null
+    private lateinit var binding: LogoutFragmentBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,7 +31,7 @@ class LogoutFragment : Fragment(R.layout.logout_fragment) {
             renderData(it)
         })
 
-        binding?.logoutFragmentBtnLogout?.setOnClickListener {
+        binding.logoutFragmentBtnLogout.setOnClickListener {
             viewModel.exitInProfile()
         }
     }
@@ -42,7 +42,7 @@ class LogoutFragment : Fragment(R.layout.logout_fragment) {
                 when (appState.data) {
                     USER_SIGNOUT -> {
                         activity?.supportFragmentManager?.beginTransaction()
-                            ?.replace(R.id.main_activity_container, LoginFragment.newInstance())
+                            ?.replace(R.id.main_activity_container, AuthFragment.newInstance())
                             ?.addToBackStack("USER_SIGNOUT")?.commit()
                     }
                 }
