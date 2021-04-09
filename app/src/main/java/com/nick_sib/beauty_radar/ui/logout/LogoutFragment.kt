@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.data.state.AppState
-import com.nick_sib.beauty_radar.databinding.LogoutFragmentBinding
+import com.nick_sib.beauty_radar.databinding.FragmentLogoutBinding
 import com.nick_sib.beauty_radar.ui.authScreen.AuthFragment
 import com.nick_sib.beauty_radar.ui.utils.USER_SIGNOUT
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -15,18 +15,18 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  *
  * Фрагмент выхода из уч.записи
  */
-class LogoutFragment : Fragment(R.layout.logout_fragment) {
+class LogoutFragment : Fragment(R.layout.fragment_logout) {
 
     companion object {
         fun newInstance() = LogoutFragment()
     }
 
     private val viewModel: LogoutViewModel by viewModel()
-    private lateinit var binding: LogoutFragmentBinding
+    private lateinit var binding: FragmentLogoutBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = LogoutFragmentBinding.bind(view)
+        binding = FragmentLogoutBinding.bind(view)
         viewModel.subscribeLiveData(viewLifecycleOwner).observe(viewLifecycleOwner, {
             renderData(it)
         })

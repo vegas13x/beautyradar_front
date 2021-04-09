@@ -35,7 +35,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/check_in_fragment_tv_text_enter_phone">
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/check_in_fragment_tiet_phone"
+                android:id="@+id/fragment_auth_et_phone_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="phone"
@@ -45,7 +45,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/check_in_fragment_btn_get_code"
+        android:id="@+id/fragment_auth_btn_enter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
