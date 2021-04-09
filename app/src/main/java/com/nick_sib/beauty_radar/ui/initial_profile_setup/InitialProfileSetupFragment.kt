@@ -48,8 +48,8 @@ class InitialProfileSetupFragment : Fragment(R.layout.fragment_inital_profile_se
             is AppState.Loading -> {
                 when (appState.progress) {
                     EMAIL_ENTRY_OPEN_LOGOUT -> {
-                        activity?.supportFragmentManager?.beginTransaction()
-                            ?.replace(R.id.main_activity_container, LogoutFragment.newInstance())?.commit()
+                        requireActivity().supportFragmentManager.beginTransaction()
+                            .replace(R.id.main_activity_container, LogoutFragment.newInstance()).commit()
                     }
                 }
             }

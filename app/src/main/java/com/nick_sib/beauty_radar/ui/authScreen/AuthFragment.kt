@@ -53,12 +53,12 @@ class AuthFragment : Fragment(R.layout.fragment_auth_v2) {
             is AppState.Loading -> {
                 when (appState.progress) {
                     CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT -> {
-                        activity?.supportFragmentManager?.beginTransaction()
-                            ?.replace(
+                        requireActivity().supportFragmentManager.beginTransaction()
+                            .replace(
                                 R.id.main_activity_container,
                                 EnterCodeFragment.newInstance()
                             )
-                            ?.addToBackStack("EnterCode")?.commit()
+                            .addToBackStack("EnterCode").commit()
                     }
                 }
             }

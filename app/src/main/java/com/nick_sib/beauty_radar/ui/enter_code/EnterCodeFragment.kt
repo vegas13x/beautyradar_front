@@ -41,12 +41,12 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
             is AppState.Loading -> {
                 when (appState.progress) {
                     AUTH_SECCES_OPEN_NEXT_SCREEN -> {
-                        activity?.supportFragmentManager?.beginTransaction()
-                            ?.replace(
+                        requireActivity().supportFragmentManager.beginTransaction()
+                            .replace(
                                 R.id.main_activity_container,
                                 LogoutFragment.newInstance()
                             )
-                            ?.addToBackStack("Logout")?.commit()
+                            .addToBackStack("Logout").commit()
                     }
                 }
             }
