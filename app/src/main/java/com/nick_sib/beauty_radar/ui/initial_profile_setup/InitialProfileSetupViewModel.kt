@@ -25,7 +25,7 @@ class InitialProfileSetupViewModel(private val authProvider: IAuthProvider) :
     }
 
     override fun errorReturned(t: Throwable) {
-        TODO("Not yet implemented")
+        // TODO("Not yet implemented")
     }
 
 }

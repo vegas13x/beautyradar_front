@@ -14,7 +14,7 @@ import org.koin.dsl.module
 /**
  * @author Alex Volkov(Volkos)
  *
- * Класс модулей для Koin
+ * Created 08.04.2021
  */
 val appModule = module {
     single { FirebaseAuth.getInstance() }

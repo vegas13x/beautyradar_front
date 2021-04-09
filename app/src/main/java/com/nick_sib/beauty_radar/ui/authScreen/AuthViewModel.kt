@@ -21,6 +21,6 @@ class AuthViewModel(private val authProvider: IAuthProvider) : BaseViewModel<App
     }
 
     override fun errorReturned(t: Throwable) {
-        TODO("Not yet implemented")
+      //  TODO("Not yet implemented")
     }
 }

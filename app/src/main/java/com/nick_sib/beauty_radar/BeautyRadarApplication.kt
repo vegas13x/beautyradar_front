@@ -7,7 +7,7 @@ import org.koin.core.context.startKoin
 /**
  * @author Alex Volkov(Volkos)
  *
- * Класс говорит сам за себя=)
+ * Created 08.04.2021
  */
 class BeautyRadarApplication : Application() {
 

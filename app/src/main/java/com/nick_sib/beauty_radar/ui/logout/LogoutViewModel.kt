@@ -21,7 +21,7 @@ class LogoutViewModel(private val authProvider: IAuthProvider) : BaseViewModel<A
     }
 
     override fun errorReturned(t: Throwable) {
-        TODO("Not yet implemented")
+      //  TODO("Not yet implemented")
     }
 
 }

@@ -27,7 +27,7 @@ class EnterCodeViewModel(private val authProvider: IAuthProvider) : BaseViewMode
     }
 
     override fun errorReturned(t: Throwable) {
-        TODO("Not yet implemented")
+        // TODO("Not yet implemented")
     }
 
 }
