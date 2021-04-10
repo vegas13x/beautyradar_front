@@ -7,23 +7,23 @@ import android.view.View
 import android.widget.Toast
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.data.state.AppState
-import com.nick_sib.beauty_radar.databinding.EnterCodeFragmentBinding
+import com.nick_sib.beauty_radar.databinding.FragmentEnterCodeBinding
 import com.nick_sib.beauty_radar.ui.logout.LogoutFragment
 import com.nick_sib.beauty_radar.ui.utils.AUTH_SECCES_OPEN_NEXT_SCREEN
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class EnterCodeFragment : Fragment(R.layout.enter_code_fragment) {
+class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
 
     companion object {
         fun newInstance() = EnterCodeFragment()
     }
 
     private val viewModel: EnterCodeViewModel by viewModel()
-    private lateinit var binding: EnterCodeFragmentBinding
+    private lateinit var binding: FragmentEnterCodeBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = EnterCodeFragmentBinding.bind(view)
+        binding = FragmentEnterCodeBinding.bind(view)
 
         viewModel.subscribe(viewLifecycleOwner).observe(viewLifecycleOwner, { renderData(it) })
 
@@ -41,12 +41,12 @@ class EnterCodeFragment : Fragment(R.layout.enter_code_fragment) {
             is AppState.Loading -> {
                 when (appState.progress) {
                     AUTH_SECCES_OPEN_NEXT_SCREEN -> {
-                        activity?.supportFragmentManager?.beginTransaction()
-                            ?.replace(
+                        requireActivity().supportFragmentManager.beginTransaction()
+                            .replace(
                                 R.id.main_activity_container,
                                 LogoutFragment.newInstance()
                             )
-                            ?.addToBackStack("Logout")?.commit()
+                            .addToBackStack("Logout").commit()
                     }
                 }
             }

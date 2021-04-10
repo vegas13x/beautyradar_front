@@ -17,7 +17,11 @@ class AuthViewModel(private val authProvider: IAuthProvider) : BaseViewModel<App
     }
 
     fun startPhoneNumberVerification(activity: Activity, phone: String) {
+        if (phone.isNullOrEmpty()){
+            liveDataViewmodel.value = AppState.Error("Введите номер телефона")
+        }else{
         authProvider.startPhoneNumberVerification(activity, phone)
+        }
     }
 
     override fun errorReturned(t: Throwable) {

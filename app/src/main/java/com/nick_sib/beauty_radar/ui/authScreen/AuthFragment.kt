@@ -6,9 +6,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.data.state.AppState
-import com.nick_sib.beauty_radar.databinding.AuthFragmentBinding
+import com.nick_sib.beauty_radar.databinding.FragmentAuthV2Binding
 import com.nick_sib.beauty_radar.ui.enter_code.EnterCodeFragment
-import com.nick_sib.beauty_radar.ui.utils.AUTH_SECCES_OPEN_NEXT_SCREEN
 import com.nick_sib.beauty_radar.ui.utils.CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -17,27 +16,27 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  *
  *Фрагмент регистрации через телефон
  */
-class AuthFragment : Fragment(R.layout.auth_fragment) {
+class AuthFragment : Fragment(R.layout.fragment_auth_v2) {
 
     companion object {
         fun newInstance() = AuthFragment()
     }
 
     private val viewModel: AuthViewModel by viewModel()
-    private lateinit var binding: AuthFragmentBinding
+    private lateinit var binding: FragmentAuthV2Binding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = AuthFragmentBinding.bind(view)
+        binding = FragmentAuthV2Binding.bind(view)
         viewModel.subscribe(viewLifecycleOwner).observe(viewLifecycleOwner, {
             renderData(it)
         })
 
-        binding.checkInFragmentBtnGetCode.setOnClickListener {
+        binding.fragmentAuthBtnEnter.setOnClickListener {
             activity?.let { it1 ->
                 viewModel.startPhoneNumberVerification(
                     it1,
-                    binding.checkInFragmentTietPhone.text.toString()
+                    binding.fragmentAuthEtPhoneNumber.text.toString()
                 )
             }
         }
@@ -54,17 +53,17 @@ class AuthFragment : Fragment(R.layout.auth_fragment) {
             is AppState.Loading -> {
                 when (appState.progress) {
                     CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT -> {
-                        activity?.supportFragmentManager?.beginTransaction()
-                            ?.replace(
+                        requireActivity().supportFragmentManager.beginTransaction()
+                            .replace(
                                 R.id.main_activity_container,
                                 EnterCodeFragment.newInstance()
                             )
-                            ?.addToBackStack("EnterCode")?.commit()
+                            .addToBackStack("EnterCode").commit()
                     }
                 }
             }
             is AppState.Error -> {
-
+                toast(appState.error)
             }
             is AppState.SystemMessage -> {
 
@@ -72,5 +71,8 @@ class AuthFragment : Fragment(R.layout.auth_fragment) {
         }
     }
 
+    private fun toast(text: String) {
+        Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT).show()
+    }
 
 }

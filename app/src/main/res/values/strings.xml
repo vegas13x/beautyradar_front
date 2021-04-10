@@ -10,4 +10,10 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="cont">Продолжить</string>
+    <string name="registr">Зарегистрироваться</string>
+    <string name="warn1">Создавая учётную запись вы соглашаетесь</string>
+    <string name="warn2_link"><u>Условиями использования приложения</u></string>
+    <string name="enter">Вход</string>
 </resources>
