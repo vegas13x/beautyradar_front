@@ -10,4 +10,7 @@
     <color name="white_pink">#F3F1FE</color>
     <color name="violet">#8377D6</color>
     <color name="Black">#000</color>
+
+    <color name="splash_background">#E5E5E5</color>
+
 </resources>
