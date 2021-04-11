@@ -16,4 +16,7 @@
     <string name="warn1">Создавая учётную запись вы соглашаетесь</string>
     <string name="warn2_link"><u>Условиями использования приложения</u></string>
     <string name="enter">Вход</string>
+
+    <string name="d_iv_logo">firm logo</string>
+    <string name="d_iv_progress">simple infinity progress</string>
 </resources>
