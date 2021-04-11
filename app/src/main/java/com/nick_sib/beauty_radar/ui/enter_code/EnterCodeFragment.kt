@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
 import com.nick_sib.beauty_radar.R
+import com.nick_sib.beauty_radar.data.error.ToastError
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentEnterCodeBinding
 import com.nick_sib.beauty_radar.ui.logout.LogoutFragment
@@ -51,7 +52,10 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                 }
             }
             is AppState.Error -> {
-                toast(appState.error)
+                when (appState.error) {
+
+                    else -> toast(appState.error.message ?: "")
+                }
             }
             is AppState.SystemMessage -> {
 

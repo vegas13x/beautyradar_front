@@ -3,10 +3,15 @@ package com.nick_sib.beauty_radar.ui.authScreen
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import com.nick_sib.beauty_radar.R
+import com.nick_sib.beauty_radar.data.error.HintError
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentAuthV2Binding
+import com.nick_sib.beauty_radar.extension.digitToPhone
+import com.nick_sib.beauty_radar.extension.requestFocus
+import com.nick_sib.beauty_radar.extension.phoneToDigit
 import com.nick_sib.beauty_radar.ui.enter_code.EnterCodeFragment
 import com.nick_sib.beauty_radar.ui.utils.CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -32,16 +37,24 @@ class AuthFragment : Fragment(R.layout.fragment_auth_v2) {
             renderData(it)
         })
 
+        binding.fragmentAuthTilPhone.addOnEditTextAttachedListener { textInput ->
+            textInput.editText?.doOnTextChanged { charSequence, _, _, _ ->
+                val text = charSequence.toString()
+                val newText = text.phoneToDigit().digitToPhone(text)
+                if (text != newText) {
+                    textInput.editText?.setText(newText)
+                    textInput.editText?.setSelection(newText.length)
+                }
+            }
+        }
         binding.fragmentAuthBtnEnter.setOnClickListener {
             activity?.let { it1 ->
                 viewModel.startPhoneNumberVerification(
                     it1,
-                    binding.fragmentAuthEtPhoneNumber.text.toString()
+                    binding.fragmentAuthTietPhone.text.toString().phoneToDigit()
                 )
             }
         }
-
-
     }
 
 
@@ -63,7 +76,15 @@ class AuthFragment : Fragment(R.layout.fragment_auth_v2) {
                 }
             }
             is AppState.Error -> {
-                toast(appState.error)
+                when (appState.error) {
+                    is HintError -> {
+                        binding.fragmentAuthTilPhone.error = appState.error.message?.let {
+                            getString(R.string.s_phone_error)
+                        }
+                        binding.fragmentAuthTilPhone.isErrorEnabled = !appState.error.message.isNullOrEmpty()
+                        requestFocus(binding.fragmentAuthTilPhone)}
+                    else -> toast(appState.error.message ?: "")
+                }
             }
             is AppState.SystemMessage -> {
 

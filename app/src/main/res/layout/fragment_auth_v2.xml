@@ -1,126 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white_pink">
-
+    android:background="@color/light_pink">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/fragment_auth_iv_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/def_offset"
         android:background="@drawable/ic_welcome_picture"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/d_iv_logo"/>
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat_medium"
-        android:gravity="center"
-        android:text="Добро \nпожаловать"
-        android:textColor="@color/Black"
-        android:textSize="36sp"
+        android:id="@+id/fragment_auth_tv_welcome"
+        style="@style/TextWelcome"
+        android:text="@string/s_welcome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
+        app:layout_constraintTop_toBottomOf="@id/fragment_auth_iv_logo" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/montserrat_medium"
-        android:gravity="center"
-        android:text="@string/warn1"
-        android:textColor="@color/Black"
-        android:textSize="14sp"
+        android:id="@+id/fragment_auth_tv_warning"
+        style="@style/TextWarning"
+        android:layout_marginHorizontal="36dp"
+        android:layout_marginBottom="62dp"
+        android:text="@string/s_warning"
+        android:linksClickable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_auth_btn_enter" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat_medium"
-        android:gravity="center"
-        android:text="@string/warn2_link"
-        android:textColor="@color/Black"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <ImageView
-        android:id="@+id/fragment_auth_iv_bg_phone_number"
-        android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/rounded_corners_for_phone_number"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_auth_btn_enter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <ImageView
-        android:id="@+id/fragment_auth_iv_flag_nationality"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:src="@drawable/russian_flag"
-        app:layout_constraintBottom_toBottomOf="@+id/fragment_auth_iv_bg_phone_number"
-        app:layout_constraintStart_toStartOf="@+id/fragment_auth_iv_bg_phone_number"
-        app:layout_constraintTop_toTopOf="@+id/fragment_auth_iv_bg_phone_number" />
-
-    <TextView
-        android:id="@+id/fragment_auth_tv_text_number_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:text="@string/phone_number"
-        android:textColor="@color/Black"
-        android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/fragment_auth_iv_flag_nationality"
-        app:layout_constraintTop_toTopOf="@+id/fragment_auth_iv_flag_nationality" />
-
-    <EditText
-        android:id="@+id/fragment_auth_et_phone_number"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fragment_auth_til_phone"
+        app:boxCornerRadiusBottomEnd="@dimen/corner_radius"
+        app:boxCornerRadiusBottomStart="@dimen/corner_radius"
+        app:boxCornerRadiusTopEnd="@dimen/corner_radius"
+        app:boxCornerRadiusTopStart="@dimen/corner_radius"
+        style="@style/TextInputLayoutBG"
+        android:background="@drawable/text_rounded_background"
+        app:hintAnimationEnabled="true"
+        app:errorEnabled="true"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="17sp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toBottomOf="@+id/fragment_auth_iv_bg_phone_number"
-        app:layout_constraintEnd_toEndOf="@+id/fragment_auth_iv_bg_phone_number"
-        app:layout_constraintStart_toEndOf="@+id/fragment_auth_iv_flag_nationality"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_auth_tv_text_number_phone" />
+        android:layout_marginTop="75dp"
+        android:layout_marginHorizontal="35dp"
+        app:helperText="@string/s_phone_help"
+        android:textColorHint="@color/hint_color"
+        app:startIconDrawable="@drawable/ic_russian_flag"
+        app:startIconTintMode="multiply"
+        app:startIconTint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_auth_tv_welcome">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fragment_auth_tiet_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:hint="@string/phone_number"
+            android:inputType="number"
+            android:maxLength="18"
+            android:textColor="@color/Black"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/fragment_auth_btn_enter"
-        android:layout_width="305dp"
+        style="@style/ButtonLogin"
+        android:layout_width="0dp"
         android:layout_height="61dp"
-        android:layout_gravity="center"
-        android:background="@drawable/rounded_corners_for_button_cont"
-        android:fontFamily="@font/cardo104s"
         android:text="@string/enter"
-        android:textAllCaps="false"
-        android:textSize="16sp"
         android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="35dp"
         android:theme="@style/Theme.Beautyradar.Third"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_auth_iv_bg_phone_number"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="490dp" />
+        app:layout_constraintTop_toBottomOf="@id/fragment_auth_til_phone"
+        app:layout_constraintStart_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

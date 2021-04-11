@@ -13,7 +13,13 @@
     <string name="phone_number">Номер телефона</string>
     <string name="cont">Продолжить</string>
     <string name="registr">Зарегистрироваться</string>
-    <string name="warn1">Создавая учётную запись вы соглашаетесь</string>
-    <string name="warn2_link"><u>Условиями использования приложения</u></string>
-    <string name="enter">Вход</string>
+    <string name="s_warning">Создавая учётную запись вы соглашаетесь\n<br/><u>Условиями использования приложения</u></string>
+    <string name="enter">Войти</string>
+    <string name="d_iv_logo">product logo</string>
+    <string name="d_btn_flag">country flag</string>
+    <string name="d_iv_progress">loading infinity progress</string>
+    <string name="s_welcome">Добро<br/>\nпожаловать</string>
+    <string name="s_phone_help">Введите 7 цифр</string>
+    <string name="s_phone_error">Номер должен содержать 7 цифр и код оператора</string>
+
 </resources>
