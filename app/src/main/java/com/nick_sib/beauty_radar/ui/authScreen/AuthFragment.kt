@@ -1,7 +1,10 @@
 package com.nick_sib.beauty_radar.ui.authScreen
 
 import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
@@ -15,6 +18,7 @@ import com.nick_sib.beauty_radar.extension.phoneToDigit
 import com.nick_sib.beauty_radar.ui.enter_code.EnterCodeFragment
 import com.nick_sib.beauty_radar.ui.utils.CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import kotlin.math.log
 
 /**
  * @author Alex Volkov(Volkos)
@@ -28,16 +32,21 @@ class AuthFragment : Fragment(R.layout.fragment_auth_v2) {
     }
 
     private val viewModel: AuthViewModel by viewModel()
-    private lateinit var binding: FragmentAuthV2Binding
+    private var binding: FragmentAuthV2Binding? = null
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentAuthV2Binding.bind(view)
+        binding?.viewModel = viewModel
+
+        binding?.fragmentAuthTilPhone?.error = getString(R.string.s_phone_error)
+
         viewModel.subscribe(viewLifecycleOwner).observe(viewLifecycleOwner, {
             renderData(it)
         })
 
-        binding.fragmentAuthTilPhone.addOnEditTextAttachedListener { textInput ->
+        binding?.fragmentAuthTilPhone?.addOnEditTextAttachedListener { textInput ->
             textInput.editText?.doOnTextChanged { charSequence, _, _, _ ->
                 val text = charSequence.toString()
                 val newText = text.phoneToDigit().digitToPhone(text)
@@ -47,14 +56,16 @@ class AuthFragment : Fragment(R.layout.fragment_auth_v2) {
                 }
             }
         }
-        binding.fragmentAuthBtnEnter.setOnClickListener {
+        binding?.fragmentAuthBtnEnter?.setOnClickListener {
             activity?.let { it1 ->
                 viewModel.startPhoneNumberVerification(
                     it1,
-                    binding.fragmentAuthTietPhone.text.toString().phoneToDigit()
+                    binding?.fragmentAuthTietPhone?.text.toString().phoneToDigit()
                 )
             }
+            binding?.viewModel = viewModel
         }
+
     }
 
 
@@ -77,12 +88,12 @@ class AuthFragment : Fragment(R.layout.fragment_auth_v2) {
             }
             is AppState.Error -> {
                 when (appState.error) {
-                    is HintError -> {
-                        binding.fragmentAuthTilPhone.error = appState.error.message?.let {
-                            getString(R.string.s_phone_error)
-                        }
-                        binding.fragmentAuthTilPhone.isErrorEnabled = !appState.error.message.isNullOrEmpty()
-                        requestFocus(binding.fragmentAuthTilPhone)}
+//                    is HintError -> {
+//                        binding.fragmentAuthTilPhone.error = appState.error.message?.let {
+//                            getString(R.string.s_phone_error)
+//                        }
+//                        binding.fragmentAuthTilPhone.isErrorEnabled = !appState.error.message.isNullOrEmpty()
+//                        requestFocus(binding.fragmentAuthTilPhone)}
                     else -> toast(appState.error.message ?: "")
                 }
             }
@@ -94,6 +105,11 @@ class AuthFragment : Fragment(R.layout.fragment_auth_v2) {
 
     private fun toast(text: String) {
         Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 
 }

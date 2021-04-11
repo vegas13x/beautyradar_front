@@ -19,7 +19,7 @@
     <string name="d_btn_flag">country flag</string>
     <string name="d_iv_progress">loading infinity progress</string>
     <string name="s_welcome">Добро<br/>\nпожаловать</string>
-    <string name="s_phone_help">Введите 7 цифр</string>
+    <string name="s_phone_help">Введите код оператора и 7 цифр</string>
     <string name="s_phone_error">Номер должен содержать 7 цифр и код оператора</string>
 
 </resources>

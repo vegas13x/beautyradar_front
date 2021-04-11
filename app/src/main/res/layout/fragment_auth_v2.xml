@@ -1,85 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/light_pink">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:id="@+id/fragment_auth_iv_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/def_offset"
-        android:background="@drawable/ic_welcome_picture"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/d_iv_logo"/>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.nick_sib.beauty_radar.ui.authScreen.AuthViewModel" />
+    </data>
 
-    <TextView
-        android:id="@+id/fragment_auth_tv_welcome"
-        style="@style/TextWelcome"
-        android:text="@string/s_welcome"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_auth_iv_logo" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/light_pink">
 
-    <TextView
-        android:id="@+id/fragment_auth_tv_warning"
-        style="@style/TextWarning"
-        android:layout_marginHorizontal="36dp"
-        android:layout_marginBottom="62dp"
-        android:text="@string/s_warning"
-        android:linksClickable="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fragment_auth_til_phone"
-        app:boxCornerRadiusBottomEnd="@dimen/corner_radius"
-        app:boxCornerRadiusBottomStart="@dimen/corner_radius"
-        app:boxCornerRadiusTopEnd="@dimen/corner_radius"
-        app:boxCornerRadiusTopStart="@dimen/corner_radius"
-        style="@style/TextInputLayoutBG"
-        android:background="@drawable/text_rounded_background"
-        app:hintAnimationEnabled="true"
-        app:errorEnabled="true"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
-        android:layout_marginHorizontal="35dp"
-        app:helperText="@string/s_phone_help"
-        android:textColorHint="@color/hint_color"
-        app:startIconDrawable="@drawable/ic_russian_flag"
-        app:startIconTintMode="multiply"
-        app:startIconTint="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_auth_tv_welcome">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fragment_auth_tiet_phone"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/fragment_auth_iv_logo"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:hint="@string/phone_number"
-            android:inputType="number"
-            android:maxLength="18"
-            android:textColor="@color/Black"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="@dimen/def_offset"
+            android:background="@drawable/ic_welcome_picture"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/d_iv_logo" />
 
-    <Button
-        android:id="@+id/fragment_auth_btn_enter"
-        style="@style/ButtonLogin"
-        android:layout_width="0dp"
-        android:layout_height="61dp"
-        android:text="@string/enter"
-        android:layout_marginTop="15dp"
-        android:layout_marginHorizontal="35dp"
-        android:theme="@style/Theme.Beautyradar.Third"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_auth_til_phone"
-        app:layout_constraintStart_toStartOf="parent"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/fragment_auth_tv_welcome"
+            style="@style/TextWelcome"
+            android:text="@string/s_welcome"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_auth_iv_logo" />
+
+        <TextView
+            android:id="@+id/fragment_auth_tv_warning"
+            style="@style/TextWarning"
+            android:layout_marginHorizontal="36dp"
+            android:layout_marginBottom="62dp"
+            android:text="@string/s_warning"
+            android:linksClickable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fragment_auth_til_phone"
+            app:boxCornerRadiusBottomEnd="@dimen/corner_radius"
+            app:boxCornerRadiusBottomStart="@dimen/corner_radius"
+            app:boxCornerRadiusTopEnd="@dimen/corner_radius"
+            app:boxCornerRadiusTopStart="@dimen/corner_radius"
+            style="@style/TextInputLayoutBG"
+            android:background="@drawable/text_rounded_background"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="75dp"
+            android:layout_marginHorizontal="35dp"
+            app:helperText="@string/s_phone_help"
+            android:textColorHint="@color/hint_color"
+            app:startIconDrawable="@drawable/ic_russian_flag"
+            app:startIconTintMode="multiply"
+            app:startIconTint="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_auth_tv_welcome"
+            app:errorEnabled="@{viewModel.phoneError}">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fragment_auth_tiet_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:hint="@string/phone_number"
+                android:inputType="number"
+                android:maxLength="18"
+                android:textColor="@color/Black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/fragment_auth_btn_enter"
+            style="@style/ButtonLogin"
+            android:layout_width="0dp"
+            android:layout_height="61dp"
+            android:text="@string/enter"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="35dp"
+            android:theme="@style/Theme.Beautyradar.Third"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_auth_til_phone"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

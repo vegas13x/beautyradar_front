@@ -19,8 +19,7 @@ class EnterCodeViewModel(private val authProvider: IAuthProvider) : BaseViewMode
     }
 
     fun codeEntered(code: String) {
-        val localCode = code
-        if (localCode.isNullOrEmpty()) {
+        if (code.isNullOrEmpty()) {
             liveDataViewmodel.value = AppState.Error(ToastError(TAG_CODE_NULL))
         } else {
             authProvider.verifyPhoneNumber(code)
