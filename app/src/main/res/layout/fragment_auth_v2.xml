@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -64,17 +65,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fragment_auth_tv_welcome"
-            app:errorEnabled="@{viewModel.phoneError}">
+            bind:setError="@{viewModel.phoneError}">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/fragment_auth_tiet_phone"
+                android:id="@+id/auth_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
                 android:hint="@string/phone_number"
                 android:inputType="number"
                 android:maxLength="18"
-                android:textColor="@color/Black" />
+                android:imeOptions="actionDone"
+                android:textColor="@color/Black"
+                bind:onSingIn="@{viewModel.signIn}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -88,6 +91,7 @@
             android:theme="@style/Theme.Beautyradar.Third"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fragment_auth_til_phone"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            bind:onSingIn="@{viewModel.signIn}"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
