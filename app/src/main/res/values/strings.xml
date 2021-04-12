@@ -13,6 +13,9 @@
     <string name="phone_number">Номер телефона</string>
     <string name="cont">Продолжить</string>
     <string name="registr">Зарегистрироваться</string>
+    <string name="warn1">Создавая учётную запись вы соглашаетесь</string>
+    <string name="warn2_link"><u>Условиями использования приложения</u></string>
+
     <string name="s_warning">Создавая учётную запись вы соглашаетесь\n<br/><u>Условиями использования приложения</u></string>
     <string name="enter">Войти</string>
     <string name="d_iv_logo">product logo</string>

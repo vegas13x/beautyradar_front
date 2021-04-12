@@ -11,5 +11,8 @@
     <color name="violet">#8377D6</color>
     <color name="Black">#000</color>
 
+    <color name="splash_background">#E5E5E5</color>
+
+
     <color name="hint_color">#000000</color>
 </resources>
