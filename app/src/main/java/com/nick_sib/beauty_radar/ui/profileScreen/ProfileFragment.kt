@@ -10,6 +10,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfileFragment(uid: String) : Fragment(R.layout.fragment_profile) {
 
+    private val verify = uid
+
     companion object{
         fun newInstance(uid: String) = ProfileFragment(uid)
     }
@@ -30,7 +32,7 @@ class ProfileFragment(uid: String) : Fragment(R.layout.fragment_profile) {
 
             }
             is AppState.Loading -> {
-
+                viewModel.verifyUID(verify)
             }
             is AppState.Error -> {
 

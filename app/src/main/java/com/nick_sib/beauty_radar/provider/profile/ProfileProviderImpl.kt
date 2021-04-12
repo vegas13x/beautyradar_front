@@ -16,8 +16,7 @@ class ProfileProviderImpl(private val firebaseDatabase: FirebaseDatabase) : IPro
     override fun checkUIDUser(idToken: String) {
         Log.d("CreateNewUIDUser", idToken)
 
-        var database = FirebaseDatabase.getInstance()
-        var myRef = database.getReference("users").child("uid")
+        var myRef = firebaseDatabase.getReference("users").child("uid")
 
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
