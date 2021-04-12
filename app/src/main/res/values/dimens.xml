@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="big_offset">15dp</dimen>
+    <dimen name="def_offset">10dp</dimen>
+    <dimen name="small_offset">5dp</dimen>
+
+    <dimen name="corner_radius">14dp</dimen>
+
+    <dimen name="biggest_text">36sp</dimen>
+    <dimen name="small_text">14sp</dimen>
+    <dimen name="button_text">18sp</dimen>
+
+</resources>

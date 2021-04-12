@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
+import com.nick_sib.beauty_radar.data.error.ToastError
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.ui.utils.*
 import java.util.concurrent.TimeUnit
@@ -35,7 +36,7 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
             }
 
             override fun onVerificationFailed(firebaseException: FirebaseException) {
-                livedataAuthProvider.value = AppState.Error(firebaseException.message.toString())
+                livedataAuthProvider.value = AppState.Error(ToastError(firebaseException.message.toString()))
             }
 
             override fun onCodeSent(
@@ -115,7 +116,7 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
                 if (it.isSuccessful) {
                     livedataAuthProvider.value = AppState.Loading(EMAIL_ENTRY_OPEN_LOGOUT)
                 } else {
-                    livedataAuthProvider.value = AppState.Error("Данные пользователя не обновлены!")
+                    livedataAuthProvider.value = AppState.Error(ToastError("Данные пользователя не обновлены!"))
                 }
             }
     }
@@ -140,7 +141,7 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
                     )
                 } else {
                     livedataAuthProvider.value =
-                        AppState.Error("Пользователя не существует или неверно введены данные")
+                        AppState.Error(ToastError("Пользователя не существует или неверно введены данные"))
                 }
             }
     }
@@ -148,7 +149,7 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         authUser.signInWithCredential(credential)
             .addOnFailureListener {
-                livedataAuthProvider.value = AppState.Error(it.message.toString())
+                livedataAuthProvider.value = AppState.Error(ToastError(it.message.toString()))
             }
             .addOnCompleteListener {
                 if (it.isSuccessful) {

@@ -54,7 +54,9 @@ class InitialProfileSetupFragment : Fragment(R.layout.fragment_inital_profile_se
                 }
             }
             is AppState.Error -> {
-                toast(appState.error)
+                when (appState.error) {
+                    else -> toast(appState.error.message ?: "")
+                }
             }
             is AppState.SystemMessage -> {
 
