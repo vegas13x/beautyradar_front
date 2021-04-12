@@ -2,6 +2,7 @@ package com.nick_sib.beauty_radar.ui.enter_code
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
+import com.nick_sib.beauty_radar.data.error.ToastError
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.provider.auth_.IAuthProvider
 import com.nick_sib.beauty_radar.ui.base.BaseViewModel
@@ -18,9 +19,8 @@ class EnterCodeViewModel(private val authProvider: IAuthProvider) : BaseViewMode
     }
 
     fun codeEntered(code: String) {
-        val localCode = code
-        if (localCode.isNullOrEmpty()) {
-            liveDataViewmodel.value = AppState.Error(TAG_CODE_NULL)
+        if (code.isNullOrEmpty()) {
+            liveDataViewmodel.value = AppState.Error(ToastError(TAG_CODE_NULL))
         } else {
             authProvider.verifyPhoneNumber(code)
         }
