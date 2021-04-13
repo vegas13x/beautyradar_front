@@ -24,6 +24,9 @@ class ProfileFragment(uid: String) : Fragment(R.layout.fragment_profile) {
         viewModel.subscribe(viewLifecycleOwner).observe(viewLifecycleOwner, {
            renderData(it)
         })
+
+        binding.btSend.setOnClickListener {
+        }
     }
 
     private fun renderData(appState: AppState?) {

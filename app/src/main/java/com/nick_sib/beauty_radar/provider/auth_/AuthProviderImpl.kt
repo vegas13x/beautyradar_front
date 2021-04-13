@@ -46,8 +46,11 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
                 super.onCodeSent(verifyID, forceResendingToken)
                 localVerificationId = verifyID
                 resendingToken = forceResendingToken
-                livedataAuthProvider.value =
-                    AppState.Loading(CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT)
+                livedataAuthProvider.value = mapOf(Pair("UIDUID",authUser.uid))?.let {
+                    AppState.Success(it as Map<String, String>)
+                }
+                livedataAuthProvider.value = AppState.Loading(CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT)
+
             }
         }
 

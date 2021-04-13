@@ -5,8 +5,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.nick_sib.beauty_radar.provider.auth_.AuthProviderImpl
 import com.nick_sib.beauty_radar.provider.auth_.IAuthProvider
-import com.nick_sib.beauty_radar.provider.profile.IProfileProvider
-import com.nick_sib.beauty_radar.provider.profile.ProfileProviderImpl
+import com.nick_sib.beauty_radar.provider.profile.IRemoteDBProvider
+import com.nick_sib.beauty_radar.provider.profile.RemoteDBProvider
 import com.nick_sib.beauty_radar.ui.initial_profile_setup.InitialProfileSetupViewModel
 import com.nick_sib.beauty_radar.ui.authScreen.AuthViewModel
 import com.nick_sib.beauty_radar.ui.enter_code.EnterCodeViewModel
@@ -22,12 +22,12 @@ import org.koin.dsl.module
  */
 val appModule = module {
     single { FirebaseAuth.getInstance() }
-    single { FirebaseDatabase.getInstance() }
+    single { FirebaseDatabase.getInstance()}
     single<IAuthProvider> { AuthProviderImpl(get()) }
-    single<IProfileProvider> { ProfileProviderImpl(get()) }
+    single<IRemoteDBProvider> { RemoteDBProvider(get()) }
 }
 val authFragmentModule = module {
-    viewModel { AuthViewModel(get()) }
+    viewModel { AuthViewModel(get(), get()) }
 }
 val logoutModule = module {
     viewModel { LogoutViewModel(get()) }
