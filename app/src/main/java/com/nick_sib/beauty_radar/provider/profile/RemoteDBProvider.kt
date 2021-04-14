@@ -6,19 +6,18 @@ import androidx.lifecycle.MutableLiveData
 import com.google.firebase.database.*
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.provider.profile.entities.UserProfile
+import com.nick_sib.beauty_radar.ui.utils.TAG_DEBAG
 import com.nick_sib.beauty_radar.ui.utils.USER_IS_DISABLE_IN_DB
 import com.nick_sib.beauty_radar.ui.utils.USER_IS_ENABLE_IN_DB
 
 class RemoteDBProvider(private val firebaseDatabase: FirebaseDatabase) : IRemoteDBProvider {
 
     private val livedataProfileProvider: MutableLiveData<AppState> = MutableLiveData()
-    private lateinit var databaseUsers: DatabaseReference
+    private val databaseUsers: DatabaseReference = firebaseDatabase.getReference("users")
     private lateinit var databaseOther: DatabaseReference
 
     override fun createUIDUser(user: UserProfile) {
-        Log.d("createUIDUser", "createUIDUser: ${user.uid}")
-
-        databaseUsers = firebaseDatabase.getReference("users")
+        Log.d(TAG_DEBAG, "createUIDUser: ${user.uid}")
 
         databaseUsers.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -42,28 +41,35 @@ class RemoteDBProvider(private val firebaseDatabase: FirebaseDatabase) : IRemote
     }
 
     override fun getUser(uid: String) {
-        databaseUsers = firebaseDatabase.getReference("users")
-
-        var list = mutableListOf<UserProfile>()
-        databaseUsers.addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(error: DatabaseError) {
-                Log.d("TAG", "onCancelled: $error")
-            }
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (ds in snapshot.children) {
-                    if (ds.key == uid){
-                        livedataProfileProvider.value = AppState.Success(USER_IS_ENABLE_IN_DB)
-                    }else{
-                        livedataProfileProvider.value = AppState.Success(USER_IS_DISABLE_IN_DB)
-                    }
-                    Log.d("TAG", "onDataChange: ${ds.key}")
+        Log.d(TAG_DEBAG, "getUser: ${uid}")
+        Log.d(TAG_DEBAG, "getUser: ${firebaseDatabase}")
+        if (databaseUsers == null) {
+            Log.d(TAG_DEBAG, "getUser: база пуста")
+        } else {
+            Log.d(TAG_DEBAG, "getUser: база не пуста")
+            var list = mutableListOf<UserProfile>()
+            databaseUsers.addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(error: DatabaseError) {
+                    Log.d(TAG_DEBAG, "REMOTE PROVIDER onCancelled: $error")
                 }
-                Log.d("TAG", "onDataChange: $list")
 
-            }
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (ds in snapshot.children) {
+                        if (ds.key == uid) {
+                            Log.d(TAG_DEBAG, "onDataChange: ${ds.key} = ${uid}")
+                            livedataProfileProvider.value = AppState.Success(USER_IS_ENABLE_IN_DB)
+                        } else {
+                            Log.d(TAG_DEBAG, "onDataChange: ${ds.key} != ${uid}")
+                            livedataProfileProvider.value = AppState.Success(USER_IS_DISABLE_IN_DB)
+                        }
+                        Log.d(TAG_DEBAG, " REMOTE PROVIDERonDataChange: ${ds.key}")
+                    }
+                    Log.d(TAG_DEBAG, "onDataChange: $list")
 
-        })
+                }
+
+            })
+        }
     }
 
 

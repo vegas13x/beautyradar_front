@@ -27,7 +27,7 @@ val appModule = module {
     single<IRemoteDBProvider> { RemoteDBProvider(get()) }
 }
 val authFragmentModule = module {
-    viewModel { AuthViewModel(get(), get()) }
+    viewModel { AuthViewModel(get()) }
 }
 val logoutModule = module {
     viewModel { LogoutViewModel(get()) }
@@ -39,5 +39,5 @@ val initialProfileModule = module {
     viewModel { InitialProfileSetupViewModel(get()) }
 }
 val enterCodeFragmentModule = module {
-    viewModel { EnterCodeViewModel(get()) }
+    viewModel { EnterCodeViewModel(get(),get()) }
 }

@@ -9,8 +9,12 @@ import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.provider.auth_.IAuthProvider
 import com.nick_sib.beauty_radar.provider.profile.IRemoteDBProvider
 import com.nick_sib.beauty_radar.ui.base.BaseViewModel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-class AuthViewModel(private val authProvider: IAuthProvider, private val dbProvider: IRemoteDBProvider) : BaseViewModel<AppState>() {
+class AuthViewModel(
+    private val authProvider: IAuthProvider
+) : BaseViewModel<AppState>() {
 
     private val phoneDigitsLength = 10
     val phoneError = ObservableInt(0)
@@ -19,7 +23,6 @@ class AuthViewModel(private val authProvider: IAuthProvider, private val dbProvi
 
     fun subscribe(lifecycleOwner: LifecycleOwner): LiveData<AppState> {
         subscribeLiveDataAuth(lifecycleOwner)
-        subscribeLiveDataRemoteDB(lifecycleOwner)
         return liveDataViewmodel
     }
 
@@ -29,15 +32,7 @@ class AuthViewModel(private val authProvider: IAuthProvider, private val dbProvi
         })
     }
 
-    private fun subscribeLiveDataRemoteDB(lifecycleOwner: LifecycleOwner) {
-        dbProvider.getLiveDataProfileProvider().observe(lifecycleOwner, { appState ->
-            liveDataViewmodel.value = appState
-        })
-    }
 
-    fun checkUserInDB(uid: String){
-        dbProvider.getUser(uid)
-    }
 
     private fun checkPhone(value: String): Boolean =
         (value.length == phoneDigitsLength).also {

@@ -1,13 +1,16 @@
 package com.nick_sib.beauty_radar.provider.auth_
 
 import android.app.Activity
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
+import com.nick_sib.beauty_radar.data.entites.UserMaster
 import com.nick_sib.beauty_radar.data.error.ToastError
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.ui.utils.*
+import kotlinx.coroutines.CoroutineScope
 import java.util.concurrent.TimeUnit
 
 /**
@@ -24,10 +27,13 @@ import java.util.concurrent.TimeUnit
  * - Вход в приложение через созданую уч.запись по средством email/password.
  */
 class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
-
     private val livedataAuthProvider: MutableLiveData<AppState> = MutableLiveData()
     private lateinit var localVerificationId: String
     private var resendingToken: PhoneAuthProvider.ForceResendingToken? = null
+
+
+    private val currentUser
+        get() = authUser.currentUser
 
     private val callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks =
         object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -36,7 +42,8 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
             }
 
             override fun onVerificationFailed(firebaseException: FirebaseException) {
-                livedataAuthProvider.value = AppState.Error(ToastError(firebaseException.message.toString()))
+                livedataAuthProvider.value =
+                    AppState.Error(ToastError(firebaseException.message.toString()))
             }
 
             override fun onCodeSent(
@@ -46,10 +53,11 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
                 super.onCodeSent(verifyID, forceResendingToken)
                 localVerificationId = verifyID
                 resendingToken = forceResendingToken
-                livedataAuthProvider.value = mapOf(Pair("UIDUID",authUser.uid))?.let {
-                    AppState.Success(it as Map<String, String>)
+                livedataAuthProvider.value = mapOf(Pair("UIDUID", authUser.uid))?.let {
+                    AppState.Success(it as Map<*, *>)
                 }
-                livedataAuthProvider.value = AppState.Loading(CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT)
+                livedataAuthProvider.value =
+                    AppState.Loading(CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT)
 
             }
         }
@@ -102,6 +110,7 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
      * Подтверждение кода
      */
     override fun verifyPhoneNumber(code: String) {
+        Log.d(TAG_DEBAG, "verifyPhoneNumber: ${localVerificationId} , ${code}")
         val credential: PhoneAuthCredential =
             PhoneAuthProvider.getCredential(localVerificationId, code)
         signInWithPhoneAuthCredential(credential)
@@ -119,7 +128,8 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
                 if (it.isSuccessful) {
                     livedataAuthProvider.value = AppState.Loading(EMAIL_ENTRY_OPEN_LOGOUT)
                 } else {
-                    livedataAuthProvider.value = AppState.Error(ToastError("Данные пользователя не обновлены!"))
+                    livedataAuthProvider.value =
+                        AppState.Error(ToastError("Данные пользователя не обновлены!"))
                 }
             }
     }
@@ -156,7 +166,9 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
             }
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    livedataAuthProvider.value = AppState.Loading(AUTH_SECCES_OPEN_NEXT_SCREEN)
+                    Log.d(TAG_DEBAG, "signInWithPhoneAuthCredential: ${currentUser.uid}")
+                    livedataAuthProvider.value = AppState.Success<UserMaster>(UserMaster("testName","testEmail",uid = currentUser.uid))
+//                    livedataAuthProvider.value = AppState.Loading(AUTH_SECCES_OPEN_NEXT_SCREEN)
                 }
             }
 
