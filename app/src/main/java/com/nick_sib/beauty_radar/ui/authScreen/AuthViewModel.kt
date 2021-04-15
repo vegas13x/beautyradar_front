@@ -1,6 +1,7 @@
 package com.nick_sib.beauty_radar.ui.authScreen
 
 import android.app.Activity
+
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
@@ -8,6 +9,7 @@ import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.provider.auth_.IAuthProvider
 import com.nick_sib.beauty_radar.ui.base.BaseViewModel
+
 
 
 class AuthViewModel(
@@ -30,8 +32,6 @@ class AuthViewModel(
         })
     }
 
-
-
     private fun checkPhone(value: String): Boolean =
         (value.length == phoneDigitsLength).also {
             phoneError.set(if (it) 0 else R.string.s_phone_error)
@@ -46,6 +46,12 @@ class AuthViewModel(
     }
 
     override fun errorReturned(t: Throwable) {
+
+    }
+
+
+    override fun onCleared() {
+        super.onCleared()
 
     }
 }

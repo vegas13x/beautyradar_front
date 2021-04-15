@@ -15,4 +15,6 @@ interface IRemoteDBProvider {
     fun getUsersFromDb()
     fun createCalendarDateInDb(calendar: CalendareProfile)
     fun getCalendarDateFromDb(uid: String)
+    fun clearLivedata()
+
 }

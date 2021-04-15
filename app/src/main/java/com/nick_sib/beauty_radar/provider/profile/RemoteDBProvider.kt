@@ -8,9 +8,7 @@ import com.google.firebase.database.*
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.provider.profile.entities.CalendareProfile
 import com.nick_sib.beauty_radar.provider.profile.entities.UserProfile
-import com.nick_sib.beauty_radar.ui.utils.CALENDAR_DATE_IS_DISABLE_IN_DB
-import com.nick_sib.beauty_radar.ui.utils.USER_IS_DISABLE_IN_DB
-import com.nick_sib.beauty_radar.ui.utils.USER_IS_ENABLE_IN_DB
+import com.nick_sib.beauty_radar.ui.utils.*
 
 class RemoteDBProvider : IRemoteDBProvider {
 
@@ -18,6 +16,7 @@ class RemoteDBProvider : IRemoteDBProvider {
 
     private lateinit var databaseUsers: DatabaseReference
     private lateinit var databaseСalendar: DatabaseReference
+    private lateinit var databaseProfile: DatabaseReference
 
     override fun checkUserInDdByUID(uid: String) {
         databaseUsers = FirebaseDatabase.getInstance().getReference("MASTER_PROFILE").child(uid)
@@ -26,11 +25,14 @@ class RemoteDBProvider : IRemoteDBProvider {
                 if(snapshot.value == null){
                     livedataProfileProvider.value = AppState.Success(USER_IS_DISABLE_IN_DB)
                 }else{
+                    var hashMap = snapshot.value as HashMap<*, *>
                     livedataProfileProvider.value = AppState.Success(USER_IS_ENABLE_IN_DB)
                 }
             }
             override fun onCancelled(error: DatabaseError) {}
         })
+
+
     }
 
     override fun createUserInDb(user: UserProfile) {
@@ -88,6 +90,10 @@ class RemoteDBProvider : IRemoteDBProvider {
             }
             override fun onCancelled(error: DatabaseError) {}
         })
+    }
+
+    override fun clearLivedata() {
+        livedataProfileProvider.value = AppState.Success(CODE_NULL)
     }
 
     override fun getLiveDataProfileProvider(): LiveData<AppState> {

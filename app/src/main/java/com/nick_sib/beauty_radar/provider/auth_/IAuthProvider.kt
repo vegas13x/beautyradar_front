@@ -20,4 +20,5 @@ interface IAuthProvider {
     fun addEmailAndPasswordInCurrentUser(email: String, password: String)
     fun signOut()
     fun signInEmailPassword(email: String, password: String)
+    fun clearLivedata()
 }
