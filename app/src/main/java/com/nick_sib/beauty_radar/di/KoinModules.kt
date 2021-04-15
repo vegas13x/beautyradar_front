@@ -22,9 +22,8 @@ import org.koin.dsl.module
  */
 val appModule = module {
     single { FirebaseAuth.getInstance() }
-    single { FirebaseDatabase.getInstance()}
     single<IAuthProvider> { AuthProviderImpl(get()) }
-    single<IRemoteDBProvider> { RemoteDBProvider(get()) }
+    single<IRemoteDBProvider> { RemoteDBProvider() }
 }
 val authFragmentModule = module {
     viewModel { AuthViewModel(get()) }
