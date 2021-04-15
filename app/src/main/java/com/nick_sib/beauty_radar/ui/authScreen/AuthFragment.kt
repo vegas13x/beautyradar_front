@@ -1,6 +1,7 @@
 package com.nick_sib.beauty_radar.ui.authScreen
 
 import android.os.Bundle
+
 import android.view.View
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
@@ -38,6 +39,7 @@ class AuthFragment : Fragment(R.layout.fragment_auth_v2) {
             renderData(it)
         })
 
+
         binding?.fragmentAuthTilPhone?.addOnEditTextAttachedListener { textInput ->
             textInput.editText?.doOnTextChanged { charSequence, _, _, _ ->
                 val text = charSequence.toString()
@@ -64,8 +66,11 @@ class AuthFragment : Fragment(R.layout.fragment_auth_v2) {
                                 EnterCodeFragment.newInstance()
                             )
                             .addToBackStack("EnterCode").commit()
+
                     }
+
                 }
+
             }
             is AppState.Error -> {
                 when (appState.error) {

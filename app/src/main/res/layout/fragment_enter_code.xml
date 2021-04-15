@@ -4,40 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_pink"
     tools:context=".ui.enter_code.EnterCodeFragment">
 
     <TextView
-        android:id="@+id/enter_code_fragment_tv_confirmation"
+        android:id="@+id/enter_code_fragment_btn_back_to"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ПОДТВЕРЖДЕНИЕ"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/enter_code_fragment_et_entry_field_code"
+        android:layout_marginStart="@dimen/def_offset"
+        android:layout_marginTop="@dimen/big_offset"
+        android:background="@drawable/ic_arrow_left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/enter_code_fragment_tv_confirmation"
+        style="@style/TextConfirmation"
+        android:text="@string/the_confirmation"
         app:layout_constraintEnd_toEndOf="@+id/enter_code_fragment_et_entry_field_code"
         app:layout_constraintStart_toStartOf="@+id/enter_code_fragment_et_entry_field_code"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/enter_code_fragment_btn_back_to" />
+
+    <TextView
+        android:id="@+id/enter_code_fragment_tv_help_info_phone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="@dimen/big_offset"
+        android:layout_marginEnd="52dp"
+        android:gravity="center"
+        android:text="@string/text_help_info_phone"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enter_code_fragment_tv_confirmation" />
 
     <EditText
         android:id="@+id/enter_code_fragment_et_entry_field_code"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="@dimen/big_offset"
         android:layout_marginEnd="50dp"
-        android:inputType="textPassword"
-        android:textSize="32sp"
+        android:background="@color/transparent"
+        android:gravity="center"
+        android:inputType="numberPassword"
+        android:textSize="100sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/enter_code_fragment_tv_help_info_phone" />
 
-    <com.google.android.material.button.MaterialButton
+
+
+    <TextView
         android:id="@+id/enter_code_fragment_btn_go"
         android:layout_width="0dp"
-        android:layout_marginTop="15dp"
         android:layout_height="wrap_content"
-        android:text="продолжить"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_corners_for_button_cont"
+        android:backgroundTint="@color/hot_pink_75_transp"
+        android:clickable="false"
+        android:gravity="center"
+        android:paddingVertical="19dp"
+        android:text="@string/procced"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/enter_code_fragment_et_entry_field_code"
         app:layout_constraintStart_toStartOf="@+id/enter_code_fragment_et_entry_field_code"
         app:layout_constraintTop_toBottomOf="@+id/enter_code_fragment_et_entry_field_code" />
+
+    <TextView
+        android:id="@+id/enter_code_fragment_tv_sms_not_come"
+        style="@style/Widget.AppCompat.TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/def_offset"
+        android:layout_marginStart="126dp"
+        android:layout_marginEnd="126dp"
+        android:text="@string/sms_not_come"
+        android:textSize="@dimen/button_text"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enter_code_fragment_btn_go"
+        android:focusable="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

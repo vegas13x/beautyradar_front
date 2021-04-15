@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "845048393081",
+    "firebase_url": "https://qwink-8816a-default-rtdb.europe-west1.firebasedatabase.app/",
     "project_id": "qwink-8816a",
     "storage_bucket": "qwink-8816a.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "845048393081-e65ali1b2s02drmpb341nf71r0insdfr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nick_sib.beauty_radar",
+            "certificate_hash": "140da6c5ca93e9caf5e3eb6d0f95858a811c1715"
+          }
+        },
         {
           "client_id": "845048393081-m3f6q8a7ajnv68aqo2f76ipm351g8cqi.apps.googleusercontent.com",
           "client_type": 3

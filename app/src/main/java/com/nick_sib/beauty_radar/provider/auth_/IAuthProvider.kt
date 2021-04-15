@@ -2,8 +2,10 @@ package com.nick_sib.beauty_radar.provider.auth_
 
 import android.app.Activity
 import androidx.lifecycle.LiveData
-import com.nick_sib.beauty_radar.data.entites.UserMaster
+import com.google.firebase.auth.FirebaseUser
 import com.nick_sib.beauty_radar.data.state.AppState
+import kotlinx.coroutines.CoroutineScope
+
 /**
  * @author Alex Volkov(Volkos)
  *Интерфейс для взаимодействия с классом авторизации/регистрации
@@ -17,5 +19,5 @@ interface IAuthProvider {
     fun verifyPhoneNumber(code: String)
     fun addEmailAndPasswordInCurrentUser(email: String, password: String)
     fun signOut()
-    fun signInEmailPassword(email: String,password: String)
+    fun signInEmailPassword(email: String, password: String)
 }
