@@ -38,6 +38,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
 
     }
 
+
     private fun renderData(appState: AppState) {
         when (appState) {
             is AppState.Success<*> -> {

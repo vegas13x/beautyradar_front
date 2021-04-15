@@ -28,5 +28,6 @@
     <string name="text_help_info_phone">Введите код подтверждения из SMS, отправленного на номер:</string>
     <string name="procced">Продолжить</string>
     <string name="sms_not_come">SMS не пришёл</string>
+    <string name="name_and_secondname">Введите Ваше имя и \nфамилию</string>
 
 </resources>

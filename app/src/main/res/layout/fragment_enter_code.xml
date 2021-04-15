@@ -56,12 +56,11 @@
         app:layout_constraintTop_toBottomOf="@+id/enter_code_fragment_tv_help_info_phone" />
 
 
-
     <TextView
         android:id="@+id/enter_code_fragment_btn_go"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/rounded_corners_for_button_cont"
         android:backgroundTint="@color/hot_pink_75_transp"
         android:clickable="false"

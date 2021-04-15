@@ -1,6 +1,7 @@
 package com.nick_sib.beauty_radar.ui.authScreen
 
 import android.app.Activity
+import android.util.Log
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
@@ -27,6 +28,10 @@ class AuthViewModel(
     private fun subscribeLiveDataAuth(lifecycleOwner: LifecycleOwner) {
         authProvider.getLiveDataAuthProvider().observe(lifecycleOwner, { appState ->
             liveDataViewmodel.value = appState
+//            Log.d("TAG22222", "subscribeLiveDataAuth: " + appState)
+//            if (appState.toString().equals("subscribeLiveDataAuth: Success")) {
+//                authProvider.
+//            }
         })
     }
 
