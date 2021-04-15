@@ -1,7 +1,6 @@
 package com.nick_sib.beauty_radar.provider.auth_
 
 import android.app.Activity
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.FirebaseException
@@ -10,7 +9,6 @@ import com.nick_sib.beauty_radar.data.entites.UserMaster
 import com.nick_sib.beauty_radar.data.error.ToastError
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.ui.utils.*
-import kotlinx.coroutines.CoroutineScope
 import java.util.concurrent.TimeUnit
 
 /**
@@ -110,7 +108,6 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
      * Подтверждение кода
      */
     override fun verifyPhoneNumber(code: String) {
-        Log.d(TAG_DEBAG, "verifyPhoneNumber: ${localVerificationId} , ${code}")
         val credential: PhoneAuthCredential =
             PhoneAuthProvider.getCredential(localVerificationId, code)
         signInWithPhoneAuthCredential(credential)
@@ -166,9 +163,7 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
             }
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    Log.d(TAG_DEBAG, "signInWithPhoneAuthCredential: ${currentUser.uid}")
-                    livedataAuthProvider.value = AppState.Success<UserMaster>(UserMaster("testName","testEmail",uid = currentUser.uid))
-//                    livedataAuthProvider.value = AppState.Loading(AUTH_SECCES_OPEN_NEXT_SCREEN)
+                    livedataAuthProvider.value = AppState.Success<UserMaster>(UserMaster("testName","testEmail",uid = authUser.uid))
                 }
             }
 

@@ -10,8 +10,12 @@
     <color name="light_pink">#F3F1FE</color>
     <color name="violet">#8377D6</color>
     <color name="Black">#000</color>
+    <color name="transparent">#00000000</color>
 
     <color name="splash_background">#E5E5E5</color>
+    <color name="hot_pink">#FD8A8D</color>
+    <color name="hot_pink_75_transp">#BEFD8A8D</color>
+
 
 
     <color name="hint_color">#000000</color>

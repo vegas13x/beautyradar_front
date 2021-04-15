@@ -2,13 +2,11 @@ package com.nick_sib.beauty_radar.ui.enter_code
 
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.data.entites.UserMaster
-import com.nick_sib.beauty_radar.data.error.ToastError
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentEnterCodeBinding
 import com.nick_sib.beauty_radar.ui.logout.LogoutFragment
@@ -35,7 +33,6 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
 
 
         binding.enterCodeFragmentBtnGo.setOnClickListener {
-            Log.d(TAG_DEBAG, "onViewCreated: нажал кнопку проверки кода")
             viewModel.codeEntered(binding.enterCodeFragmentEtEntryFieldCode.text.toString())
         }
 
@@ -46,10 +43,18 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
             is AppState.Success<*> -> {
                 when (appState.data) {
                     is UserMaster -> appState.data.uid?.let {
-                        Log.d(TAG_DEBAG, "renderData: ${it}")
                         viewModel.checkUserInDB(it) }
-                    USER_IS_ENABLE_IN_DB -> toast("ok")
-                    USER_IS_DISABLE_IN_DB -> toast("no ok")
+                    USER_IS_ENABLE_IN_DB ->{
+                        requireActivity().supportFragmentManager.beginTransaction()
+                            .replace(
+                                R.id.main_activity_container,
+                                LogoutFragment.newInstance()
+                            )
+                            .addToBackStack("Logout").commit()
+                    }
+                    USER_IS_DISABLE_IN_DB -> {
+                        toast("no ok")
+                    }
                 }
             }
             is AppState.Loading -> {

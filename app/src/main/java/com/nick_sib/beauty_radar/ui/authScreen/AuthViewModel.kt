@@ -7,10 +7,8 @@ import androidx.lifecycle.LiveData
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.provider.auth_.IAuthProvider
-import com.nick_sib.beauty_radar.provider.profile.IRemoteDBProvider
 import com.nick_sib.beauty_radar.ui.base.BaseViewModel
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+
 
 class AuthViewModel(
     private val authProvider: IAuthProvider

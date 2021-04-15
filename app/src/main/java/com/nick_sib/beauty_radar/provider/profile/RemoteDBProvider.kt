@@ -32,6 +32,7 @@ class RemoteDBProvider : IRemoteDBProvider {
                 if(snapshot.value == null){
                     Log.d("hashMap.entries == null", "onDataChange: ${snapshot.value}")
                     livedataProfileProvider.value = AppState.Success(USER_IS_DISABLE_IN_DB)
+                    Log.d("hashMap.entries == null", "onDataChange: $USER_IS_DISABLE_IN_DB")
                 }else{
                     var hashMap = snapshot.value as HashMap<*, *>
                     Log.d("hashMap.entries != null", "onDataChange: ${hashMap.entries}")

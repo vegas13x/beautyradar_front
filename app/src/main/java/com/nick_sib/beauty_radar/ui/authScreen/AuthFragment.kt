@@ -1,7 +1,7 @@
 package com.nick_sib.beauty_radar.ui.authScreen
 
 import android.os.Bundle
-import android.util.Log
+
 import android.view.View
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
@@ -13,8 +13,6 @@ import com.nick_sib.beauty_radar.extension.digitToPhone
 import com.nick_sib.beauty_radar.extension.phoneToDigit
 import com.nick_sib.beauty_radar.ui.enter_code.EnterCodeFragment
 import com.nick_sib.beauty_radar.ui.utils.CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT
-import com.nick_sib.beauty_radar.ui.utils.USER_IS_DISABLE_IN_DB
-import com.nick_sib.beauty_radar.ui.utils.USER_IS_ENABLE_IN_DB
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
