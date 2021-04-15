@@ -6,8 +6,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.database.*
 import com.nick_sib.beauty_radar.data.state.AppState
+import com.nick_sib.beauty_radar.provider.profile.entities.CalendareProfile
 import com.nick_sib.beauty_radar.provider.profile.entities.UserProfile
-import com.nick_sib.beauty_radar.ui.utils.TAG_DEBAG
+import com.nick_sib.beauty_radar.ui.utils.CALENDAR_DATE_IS_DISABLE_IN_DB
 import com.nick_sib.beauty_radar.ui.utils.USER_IS_DISABLE_IN_DB
 import com.nick_sib.beauty_radar.ui.utils.USER_IS_ENABLE_IN_DB
 
@@ -17,14 +18,28 @@ class RemoteDBProvider : IRemoteDBProvider {
 
     private lateinit var databaseUsers: DatabaseReference
     private lateinit var databaseСalendar: DatabaseReference
-    private lateinit var databaseProfile: DatabaseReference
 
-    override fun createUIDUser(user: UserProfile) {
-        databaseUsers = FirebaseDatabase.getInstance().getReference("MASTER_PROFILE").child(user.uid)
+    override fun checkUserInDdByUID(uid: String) {
+        databaseUsers = FirebaseDatabase.getInstance().getReference("MASTER_PROFILE").child(uid)
+        databaseUsers.addListenerForSingleValueEvent(object :ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(snapshot.value == null){
+                    livedataProfileProvider.value = AppState.Success(USER_IS_DISABLE_IN_DB)
+                }else{
+                    livedataProfileProvider.value = AppState.Success(USER_IS_ENABLE_IN_DB)
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        })
+    }
+
+    override fun createUserInDb(user: UserProfile) {
+        databaseUsers =
+            user.uid?.let { FirebaseDatabase.getInstance().getReference("MASTER_PROFILE").child(it) }!!
         databaseUsers.setValue(user)
     }
 
-    override fun getUser(uid: String) {
+    override fun getUserFromDbByUID(uid: String) {
         databaseUsers = FirebaseDatabase.getInstance().getReference("MASTER_PROFILE").child(uid)
         databaseUsers.addListenerForSingleValueEvent(object :ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -32,55 +47,46 @@ class RemoteDBProvider : IRemoteDBProvider {
                     livedataProfileProvider.value = AppState.Success(USER_IS_DISABLE_IN_DB)
                 }else{
                     var hashMap = snapshot.value as HashMap<*, *>
-                    livedataProfileProvider.value = AppState.Success(USER_IS_ENABLE_IN_DB)
+                    livedataProfileProvider.value = AppState.Success(hashMap)
                 }
             }
-
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-
-        })
-
-
-    }
-
-
-    override fun getListUsers(list: ArrayList<UserProfile>) {
-
-        databaseUsers = FirebaseDatabase.getInstance().getReference("MASTER_PROFILE").child("uid")
-        databaseUsers.addListenerForSingleValueEvent(object :ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                var hashMap = snapshot.value as HashMap<*, *>
-                if (hashMap.entries != null){
-                    Log.d(TAG_DEBAG, "onDataChange: $databaseUsers")
-                    livedataProfileProvider.value = AppState.Success(USER_IS_ENABLE_IN_DB)
-                }else{
-                    livedataProfileProvider.value = AppState.Success(USER_IS_DISABLE_IN_DB)
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-            }
-
+            override fun onCancelled(error: DatabaseError) {}
         })
     }
 
-    override fun getCalendarDate(uid: String) {
-        databaseUsers = FirebaseDatabase.getInstance().getReference("CALENDAR_PROFILE").child("uid")
-        databaseUsers.addListenerForSingleValueEvent(object :ValueEventListener{
+    override fun getUsersFromDb() {
+        var list = mutableListOf<UserProfile>()
+        databaseUsers = FirebaseDatabase.getInstance().getReference("MASTER_PROFILE")
+        databaseUsers.addValueEventListener(object :ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                var hashMap = snapshot.value as HashMap<*, *>
-                if (hashMap.entries != null){
-                    livedataProfileProvider.value = AppState.Success(USER_IS_ENABLE_IN_DB)
+                for (ds in snapshot.children) {
+                    var users = ds.getValue(UserProfile::class.java)
+                    users?.let { data -> list.add(data) }
+                }
+                Log.d("getUsersFromDb", "onDataChange: $list")
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        })
+    }
+
+    override fun createCalendarDateInDb(calendar: CalendareProfile) {
+        databaseСalendar =
+            calendar.uid?.let { FirebaseDatabase.getInstance().getReference("CALENDAR_PROFILE").child(it) }!!
+        databaseСalendar.setValue(calendar)
+    }
+
+    override fun getCalendarDateFromDb(uid: String) {
+        databaseСalendar = FirebaseDatabase.getInstance().getReference("CALENDAR_PROFILE").child(uid)
+        databaseСalendar.addListenerForSingleValueEvent(object :ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(snapshot.value == null){
+                    livedataProfileProvider.value = AppState.Success(CALENDAR_DATE_IS_DISABLE_IN_DB)
                 }else{
-                    livedataProfileProvider.value = AppState.Success(USER_IS_DISABLE_IN_DB)
+                    var hashMap = snapshot.value as HashMap<*, *>
+                    livedataProfileProvider.value = AppState.Success(hashMap)
                 }
             }
-
-            override fun onCancelled(error: DatabaseError) {
-            }
-
+            override fun onCancelled(error: DatabaseError) {}
         })
     }
 
