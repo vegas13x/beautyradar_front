@@ -52,4 +52,9 @@ class EnterCodeViewModel(
         // TODO("Not yet implemented")
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        liveDataViewmodel.value = null
+    }
+
 }

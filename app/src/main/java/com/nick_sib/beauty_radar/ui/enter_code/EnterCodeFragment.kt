@@ -23,7 +23,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
     }
 
     private val viewModel: EnterCodeViewModel by viewModel()
-    private lateinit var binding: FragmentEnterCodeBinding
+    private var binding: FragmentEnterCodeBinding? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,9 +32,15 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
         viewModel.subscribe(viewLifecycleOwner).observe(viewLifecycleOwner, { renderData(it) })
 
 
-        binding.enterCodeFragmentBtnGo.setOnClickListener {
-            viewModel.codeEntered(binding.enterCodeFragmentEtEntryFieldCode.text.toString())
+        binding?.enterCodeFragmentBtnGo?.setOnClickListener {
+            viewModel.codeEntered(binding?.enterCodeFragmentEtEntryFieldCode?.text.toString())
         }
+
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
 
     }
 
