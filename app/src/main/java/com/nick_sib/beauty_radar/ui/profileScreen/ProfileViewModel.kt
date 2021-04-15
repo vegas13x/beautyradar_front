@@ -22,7 +22,7 @@ class ProfileViewModel(private val profileProvider: IRemoteDBProvider) : BaseVie
 
     fun createUser(user: UserProfile) {
         Log.d("sadsadasdasdasd", "createUser: user: UserProfile")
-        profileProvider.createUIDUser(user)
+        profileProvider.createUserInDb(user)
     }
 
     override fun errorReturned(t: Throwable) {

@@ -1,6 +1,7 @@
 package com.nick_sib.beauty_radar.provider.auth_
 
 import android.app.Activity
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.FirebaseException
@@ -29,14 +30,15 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
     private lateinit var localVerificationId: String
     private var resendingToken: PhoneAuthProvider.ForceResendingToken? = null
 
-
     private val currentUser
         get() = authUser.currentUser
 
     private val callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks =
         object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
+                Log.d(TAG_DEBAG, "AuthProviderImpl onVerificationCompleted: $phoneAuthCredential")
                 signInWithPhoneAuthCredential(phoneAuthCredential)
+
             }
 
             override fun onVerificationFailed(firebaseException: FirebaseException) {
@@ -51,9 +53,10 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
                 super.onCodeSent(verifyID, forceResendingToken)
                 localVerificationId = verifyID
                 resendingToken = forceResendingToken
-                livedataAuthProvider.value = mapOf(Pair("UIDUID", authUser.uid))?.let {
-                    AppState.Success(it as Map<*, *>)
-                }
+//                livedataAuthProvider.value = mapOf(Pair("UIDUID", authUser.uid))?.let {
+//                    AppState.Success(it as Map<*, *>)
+//                }
+                Log.d(TAG_DEBAG, "AuthProviderImpl onCodeSent: CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT")
                 livedataAuthProvider.value =
                     AppState.Loading(CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT)
 
@@ -79,6 +82,7 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
      * ждём ответ и обрабатывает посредством callback для аутентификатора телефона
      */
     override fun startPhoneNumberVerification(activity: Activity, phone: String) {
+        Log.d(TAG_DEBAG, "AuthProviderImpl START startPhoneNumberVerification: $phone")
         val options = PhoneAuthOptions.newBuilder(authUser)
             .setPhoneNumber(phone)       // Phone number to verify
             .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
@@ -86,6 +90,7 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
             .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
+        Log.d(TAG_DEBAG, "AuthProviderImpl END startPhoneNumberVerification: $options ")
     }
 
     /**
@@ -156,6 +161,10 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
             }
     }
 
+    override fun clearLivedata() {
+        livedataAuthProvider.value = null
+    }
+
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         authUser.signInWithCredential(credential)
             .addOnFailureListener {
@@ -163,6 +172,7 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
             }
             .addOnCompleteListener {
                 if (it.isSuccessful) {
+                    Log.d(TAG_DEBAG, "AuthProviderImpl ${authUser.uid}")
                     livedataAuthProvider.value = AppState.Success<UserMaster>(UserMaster("testName","testEmail",uid = authUser.uid))
                 }
             }

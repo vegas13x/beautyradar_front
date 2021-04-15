@@ -1,6 +1,7 @@
 package com.nick_sib.beauty_radar.ui.authScreen
 
 import android.os.Bundle
+import android.util.Log
 
 import android.view.View
 import android.widget.Toast
@@ -13,6 +14,7 @@ import com.nick_sib.beauty_radar.extension.digitToPhone
 import com.nick_sib.beauty_radar.extension.phoneToDigit
 import com.nick_sib.beauty_radar.ui.enter_code.EnterCodeFragment
 import com.nick_sib.beauty_radar.ui.utils.CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT
+import com.nick_sib.beauty_radar.ui.utils.TAG_DEBAG
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -36,9 +38,9 @@ class AuthFragment : Fragment(R.layout.fragment_auth_v2) {
         binding?.viewModel = viewModel
 
         viewModel.subscribe(viewLifecycleOwner).observe(viewLifecycleOwner, {
+            Log.d(TAG_DEBAG, "AuthFragment onViewCreated: $it ")
             renderData(it)
         })
-
 
         binding?.fragmentAuthTilPhone?.addOnEditTextAttachedListener { textInput ->
             textInput.editText?.doOnTextChanged { charSequence, _, _, _ ->
@@ -61,6 +63,7 @@ class AuthFragment : Fragment(R.layout.fragment_auth_v2) {
             is AppState.Loading -> {
                 when (appState.progress) {
                     CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT -> {
+                        Log.d(TAG_DEBAG, "AuthFragment renderData: создаем фрагмент ввода кода  CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT=112452")
                         requireActivity().supportFragmentManager.beginTransaction()
                             .replace(
                                 R.id.main_activity_container,
@@ -92,6 +95,7 @@ class AuthFragment : Fragment(R.layout.fragment_auth_v2) {
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
+        Log.d(TAG_DEBAG, "AuthFragment onDestroyView: убили биндинг")
     }
 
 

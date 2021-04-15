@@ -29,7 +29,7 @@ val authFragmentModule = module {
     viewModel { AuthViewModel(get()) }
 }
 val logoutModule = module {
-    viewModel { LogoutViewModel(get()) }
+    viewModel { LogoutViewModel(get(),get()) }
 }
 val profileModule = module {
     viewModel { ProfileViewModel(get()) }

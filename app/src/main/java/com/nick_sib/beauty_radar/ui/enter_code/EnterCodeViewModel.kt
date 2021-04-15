@@ -36,7 +36,7 @@ class EnterCodeViewModel(
     }
 
     fun checkUserInDB(uid: String) {
-        dbProvider.getUser(uid)
+        dbProvider.checkUserInDdByUID(uid)
     }
 
     fun codeEntered(code: String) {
@@ -51,5 +51,7 @@ class EnterCodeViewModel(
     override fun errorReturned(t: Throwable) {
         // TODO("Not yet implemented")
     }
+
+
 
 }
