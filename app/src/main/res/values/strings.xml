@@ -27,6 +27,6 @@
     <string name="the_confirmation">Подтверждение</string>
     <string name="text_help_info_phone">Введите код подтверждения из SMS, отправленного на номер:</string>
     <string name="procced">Продолжить</string>
-    <string name="sms_not_come">SMS не пришёл</string>
+    <string name="sms_not_come"><u>SMS не пришёл</u></string>
 
 </resources>
