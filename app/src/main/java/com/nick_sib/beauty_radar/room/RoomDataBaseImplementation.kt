@@ -1,9 +1,7 @@
 package com.nick_sib.beauty_radar.room
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import com.example.myapplication.HistoryDao
-import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.model.entity.room.RoomMaster
 
 

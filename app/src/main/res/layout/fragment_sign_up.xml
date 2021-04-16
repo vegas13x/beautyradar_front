@@ -36,7 +36,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/TextInputEditText1"
+            android:id="@+id/name_text"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:textSize="14sp"
@@ -73,7 +73,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditText"
+            android:id="@+id/second_name"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:textSize="14sp"
@@ -130,7 +130,7 @@
 
 
     <TextView
-        android:id="@+id/enter_code_fragment_btn_go2"
+        android:id="@+id/btn_continue"
         android:layout_width="366dp"
         android:layout_height="61dp"
         android:layout_marginTop="40dp"

@@ -3,18 +3,10 @@ package com.nick_sib.beauty_radar.room.roomView
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FormPageFragmentBinding
-import com.nick_sib.beauty_radar.databinding.FragmentAuthV2Binding
-import com.nick_sib.beauty_radar.extension.digitToPhone
-import com.nick_sib.beauty_radar.extension.phoneToDigit
-import com.nick_sib.beauty_radar.ui.authScreen.AuthFragment
-import com.nick_sib.beauty_radar.ui.authScreen.AuthViewModel
-import com.nick_sib.beauty_radar.ui.enter_code.EnterCodeFragment
-import com.nick_sib.beauty_radar.ui.utils.CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class Room: Fragment(R.layout.form_page_fragment) {

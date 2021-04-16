@@ -1,6 +1,5 @@
 package com.nick_sib.beauty_radar.ui.logout
 
-
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import com.nick_sib.beauty_radar.data.state.AppState
