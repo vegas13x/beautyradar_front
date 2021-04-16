@@ -21,7 +21,8 @@ class BeautyRadarApplication : Application() {
                     logoutModule,
                     profileModule,
                     initialProfileModule,
-                    enterCodeFragmentModule
+                    enterCodeFragmentModule,
+                    masterClientFragmentModule
                 )
             )
         }
