@@ -11,10 +11,13 @@ import com.nick_sib.beauty_radar.data.entites.UserMaster
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentEnterCodeBinding
 import com.nick_sib.beauty_radar.ui.logout.LogoutFragment
+import com.nick_sib.beauty_radar.ui.sign_up.SignUpFragment
 import com.nick_sib.beauty_radar.ui.utils.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
+
+    private var userUID: String? = null
 
     companion object {
         fun newInstance() = EnterCodeFragment()
@@ -50,6 +53,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
             is AppState.Success<*> -> {
                 when (appState.data) {
                     is UserMaster -> appState.data.uid?.let {
+                        userUID = it
                         Log.d(TAG_DEBAG, "EnterCodeFragment renderData: ")
                         viewModel.checkUserInDB(it) }
                     USER_IS_ENABLE_IN_DB ->{
@@ -62,7 +66,15 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                             .addToBackStack("Logout").commit()
                     }
                     USER_IS_DISABLE_IN_DB -> {
-                        toast("no ok")
+                        AppState.Success(CODE_NULL)
+                        userUID?.let { SignUpFragment.newInstance(it) }?.let {
+                            requireActivity().supportFragmentManager.beginTransaction()
+                                .replace(
+                                    R.id.main_activity_container,
+                                    it
+                                )
+                                .addToBackStack("Logout").commit()
+                        }
                     }
                 }
             }

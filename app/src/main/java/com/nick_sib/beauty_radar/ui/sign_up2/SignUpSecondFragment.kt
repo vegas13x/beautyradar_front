@@ -5,14 +5,13 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.data.state.AppState
-import com.nick_sib.beauty_radar.databinding.FragmentSignUp2Binding
-import com.nick_sib.beauty_radar.provider.profile.entities.UserProfile
-import com.nick_sib.beauty_radar.ui.sign_up.SignUpFragment
+import com.nick_sib.beauty_radar.databinding.FragmentSignUpSecondBinding
+import com.nick_sib.beauty_radar.ui.logout.LogoutFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class SignUpFragment2(uid: String, name: String, secondName: String) :
-    Fragment(R.layout.fragment_sign_up2) {
+class SignUpSecondFragment(uid: String, name: String, secondName: String) :
+    Fragment(R.layout.fragment_sign_up_second) {
 
     private val uid = uid
     private val name = name
@@ -21,26 +20,27 @@ class SignUpFragment2(uid: String, name: String, secondName: String) :
 
     companion object {
         fun newInstance(uid: String, name: String, secondName: String) =
-            SignUpFragment2(uid, name, secondName)
+            SignUpSecondFragment(uid, name, secondName)
     }
 
-    private val viewModel: SignUpViewModel2 by viewModel()
-    private lateinit var binding: FragmentSignUp2Binding
+    private val secondViewModel: SignUpSecondViewModel by viewModel()
+    private lateinit var binding: FragmentSignUpSecondBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentSignUp2Binding.bind(view)
-        viewModel.subscribe(viewLifecycleOwner).observe(viewLifecycleOwner) {
+        binding = FragmentSignUpSecondBinding.bind(view)
+        secondViewModel.subscribe(viewLifecycleOwner).observe(viewLifecycleOwner) {
             renderData(it)
         }
 
         binding.btnContinue.setOnClickListener {
-            viewModel.createNewUser(
-                uid,
-                name,
-                secondName,
-                job
-            )
+            secondViewModel.createNewUser(uid, name, secondName, job)
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(
+                    R.id.main_activity_container,
+                    LogoutFragment.newInstance()
+                )
+                .addToBackStack("Logout").commit()
         }
     }
 
@@ -54,10 +54,8 @@ class SignUpFragment2(uid: String, name: String, secondName: String) :
             }
             is AppState.Error -> {
 
-
             }
             is AppState.SystemMessage -> {
-
             }
         }
     }

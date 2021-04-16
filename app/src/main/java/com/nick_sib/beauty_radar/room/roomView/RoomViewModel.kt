@@ -3,10 +3,7 @@ package com.nick_sib.beauty_radar.room.roomView
 import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
-import androidx.navigation.Navigator
-import com.example.myapplication.HistoryDao
 import com.nick_sib.beauty_radar.data.state.AppState
-import com.nick_sib.beauty_radar.model.entity.room.RoomMaster
 import com.nick_sib.beauty_radar.provider.auth_.IAuthProvider
 import com.nick_sib.beauty_radar.room.IRoomSource
 import com.nick_sib.beauty_radar.ui.base.BaseViewModel

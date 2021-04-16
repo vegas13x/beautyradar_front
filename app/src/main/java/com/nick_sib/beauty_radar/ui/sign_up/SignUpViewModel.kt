@@ -4,7 +4,6 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.provider.profile.IRemoteDBProvider
-import com.nick_sib.beauty_radar.provider.profile.entities.UserProfile
 import com.nick_sib.beauty_radar.ui.base.BaseViewModel
 
 class SignUpViewModel(private val remoteDBProvider: IRemoteDBProvider): BaseViewModel<AppState>() {

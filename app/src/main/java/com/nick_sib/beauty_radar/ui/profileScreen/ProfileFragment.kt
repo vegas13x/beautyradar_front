@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentProfileBinding
-import com.nick_sib.beauty_radar.ui.authScreen.AuthFragment
 import com.nick_sib.beauty_radar.ui.sign_up.SignUpFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -38,17 +37,13 @@ class ProfileFragment(uid: String) : Fragment(R.layout.fragment_profile) {
     private fun renderData(appState: AppState?) {
         when (appState) {
             is AppState.Success<*> -> {
-
             }
             is AppState.Loading -> {
                 viewModel.getUserProfileFromDb(uid)
-
             }
             is AppState.Error -> {
-
             }
             is AppState.SystemMessage -> {
-
             }
         }
     }

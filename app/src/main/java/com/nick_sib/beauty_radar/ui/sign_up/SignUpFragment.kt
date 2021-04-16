@@ -6,8 +6,7 @@ import androidx.fragment.app.Fragment
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentSignUpBinding
-import com.nick_sib.beauty_radar.provider.profile.entities.UserProfile
-import com.nick_sib.beauty_radar.ui.sign_up2.SignUpFragment2
+import com.nick_sib.beauty_radar.ui.sign_up2.SignUpSecondFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignUpFragment(uid: String) : Fragment(R.layout.fragment_sign_up) {
@@ -34,7 +33,7 @@ class SignUpFragment(uid: String) : Fragment(R.layout.fragment_sign_up) {
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(
                     R.id.main_activity_container,
-                    SignUpFragment2.newInstance(
+                    SignUpSecondFragment.newInstance(
                         uid,
                         binding.nameText.text.toString(),
                         binding.secondName.text.toString()
@@ -49,14 +48,10 @@ class SignUpFragment(uid: String) : Fragment(R.layout.fragment_sign_up) {
             is AppState.Success<*> -> {
             }
             is AppState.Loading -> {
-
             }
             is AppState.Error -> {
-
-
             }
             is AppState.SystemMessage -> {
-
             }
         }
     }
