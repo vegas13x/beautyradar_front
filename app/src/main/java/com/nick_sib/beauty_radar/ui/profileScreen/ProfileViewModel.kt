@@ -13,6 +13,7 @@ class ProfileViewModel(private val remoteDBProvider: IRemoteDBProvider) : BaseVi
             liveDataViewmodel.value = it
         })
         return liveDataViewmodel
+
     }
 
     fun getUserProfileFromDb(uid: String) {

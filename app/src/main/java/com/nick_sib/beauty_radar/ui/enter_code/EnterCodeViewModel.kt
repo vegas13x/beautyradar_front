@@ -37,6 +37,7 @@ class EnterCodeViewModel(
 
     fun checkUserInDB(uid: String) {
         dbProvider.checkUserInDdByUID(uid)
+        dbProvider.getUserFromDbByUID(uid)
     }
 
     fun codeEntered(code: String) {

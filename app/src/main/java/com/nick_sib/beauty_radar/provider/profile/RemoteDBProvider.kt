@@ -48,11 +48,14 @@ class RemoteDBProvider : IRemoteDBProvider {
                 if(snapshot.value == null){
                     livedataProfileProvider.value = AppState.Success(USER_IS_DISABLE_IN_DB)
                 }else{
-                    for (ds in snapshot.children){
-                        var userProfile = ds.getValue(UserProfile::class.java)
-                        userProfile?.let { user -> list.add(user) }
-                    }
-                    livedataProfileProvider.value = AppState.Success(list)
+
+                    var hashMap = snapshot.value as HashMap<String,String>
+                    var userProfile = UserProfile(hashMap["uid"],hashMap["name"],null,
+                        null,hashMap["job"],null,null,null,
+                        null,null,null,null)
+                    livedataProfileProvider.value = AppState.Success(userProfile)
+
+                    Log.d("TAG22222", "onDataChange: $userProfile")
                 }
             }
             override fun onCancelled(error: DatabaseError) {}

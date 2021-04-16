@@ -12,6 +12,8 @@ import com.nick_sib.beauty_radar.ui.authScreen.AuthViewModel
 import com.nick_sib.beauty_radar.ui.enter_code.EnterCodeViewModel
 import com.nick_sib.beauty_radar.ui.logout.LogoutViewModel
 import com.nick_sib.beauty_radar.ui.profileScreen.ProfileViewModel
+import com.nick_sib.beauty_radar.ui.sign_up.SignUpViewModel
+import com.nick_sib.beauty_radar.ui.sign_up2.SignUpViewModel2
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -39,4 +41,12 @@ val initialProfileModule = module {
 }
 val enterCodeFragmentModule = module {
     viewModel { EnterCodeViewModel(get(),get()) }
+}
+
+val signUpModule = module {
+    viewModel { SignUpViewModel(get()) }
+}
+
+val signUp2Module  = module {
+    viewModel { SignUpViewModel2(get()) }
 }
