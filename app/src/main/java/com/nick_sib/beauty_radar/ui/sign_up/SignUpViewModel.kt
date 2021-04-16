@@ -16,10 +16,6 @@ class SignUpViewModel(private val remoteDBProvider: IRemoteDBProvider): BaseView
         return liveDataViewmodel
     }
 
-    fun createNewUser(uid: String, name: String, job: String){
-        var user = UserProfile(uid,name,null,null,job,null,null,null,null,null,null,null)
-        remoteDBProvider.createUserInDb(user)
-    }
 
     override fun errorReturned(t: Throwable) {
         TODO("Not yet implemented")

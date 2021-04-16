@@ -22,8 +22,9 @@ class SignUpViewModel2(private val remoteDBProvider: IRemoteDBProvider): BaseVie
 
     }
 
-    fun createNewUser(uid: String, name: String, job: String){
-        var user = UserProfile(uid,name,null,null,job,null,null,null,null,null,null,null)
+
+    fun createNewUser(uid: String, name: String, secondName: String , job: String){
+        var user = UserProfile(uid,name,secondName,null,null,job,null,null,null,null,null,null,null)
         remoteDBProvider.createUserInDb(user)
     }
 

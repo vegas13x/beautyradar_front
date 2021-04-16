@@ -36,8 +36,8 @@ class SignUpFragment(uid: String) : Fragment(R.layout.fragment_sign_up) {
                     R.id.main_activity_container,
                     SignUpFragment2.newInstance(
                         uid,
-                        binding.nameText.toString(),
-                        binding.secondName.toString()
+                        binding.nameText.text.toString(),
+                        binding.secondName.text.toString()
                     )
                 ).commitNow()
         }
@@ -47,7 +47,6 @@ class SignUpFragment(uid: String) : Fragment(R.layout.fragment_sign_up) {
     private fun renderData(appState: AppState?) {
         when (appState) {
             is AppState.Success<*> -> {
-                hashMap
             }
             is AppState.Loading -> {
 

@@ -11,14 +11,17 @@ import com.nick_sib.beauty_radar.ui.sign_up.SignUpFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class SignUpFragment2(uid: String, name: String, secondName: String) : Fragment(R.layout.fragment_sign_up2) {
+class SignUpFragment2(uid: String, name: String, secondName: String) :
+    Fragment(R.layout.fragment_sign_up2) {
 
     private val uid = uid
     private val name = name
     private val secondName = secondName
+    private val job = ""
 
-    companion object{
-        fun newInstance(uid: String, name: String, secondName: String) = SignUpFragment2(uid,name,secondName)
+    companion object {
+        fun newInstance(uid: String, name: String, secondName: String) =
+            SignUpFragment2(uid, name, secondName)
     }
 
     private val viewModel: SignUpViewModel2 by viewModel()
@@ -31,12 +34,18 @@ class SignUpFragment2(uid: String, name: String, secondName: String) : Fragment(
             renderData(it)
         }
 
-
-
+        binding.btnContinue.setOnClickListener {
+            viewModel.createNewUser(
+                uid,
+                name,
+                secondName,
+                job
+            )
+        }
     }
 
     private fun renderData(appState: AppState?) {
-        when (appState){
+        when (appState) {
             is AppState.Success<*> -> {
 
             }

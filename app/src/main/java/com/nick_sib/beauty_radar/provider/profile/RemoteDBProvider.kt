@@ -50,12 +50,12 @@ class RemoteDBProvider : IRemoteDBProvider {
                 }else{
 
                     var hashMap = snapshot.value as HashMap<String,String>
-                    var userProfile = UserProfile(hashMap["uid"],hashMap["name"],null,
+                    var userProfile = UserProfile(hashMap["uid"],hashMap["name"],hashMap["secondName"],null,
                         null,hashMap["job"],null,null,null,
                         null,null,null,null)
                     livedataProfileProvider.value = AppState.Success(userProfile)
 
-                    Log.d("TAG22222", "onDataChange: $userProfile")
+                    Log.d("TAG22222", "onDataChange:" + hashMap["uid"])
                 }
             }
             override fun onCancelled(error: DatabaseError) {}

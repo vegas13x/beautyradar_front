@@ -124,10 +124,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enter_code_fragment_btn_go2" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_continue" />
 
     <TextView
-        android:id="@+id/enter_code_fragment_btn_go2"
+        android:id="@+id/btn_continue"
         android:layout_width="366dp"
         android:layout_height="61dp"
         android:layout_marginTop="40dp"

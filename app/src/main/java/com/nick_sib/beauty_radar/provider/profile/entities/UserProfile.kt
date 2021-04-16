@@ -4,6 +4,7 @@ class UserProfile{
 
     var uid: String? = null
     var name: String? = null
+    var secondName: String? = null
     var job: String? = null
     var phone: String? = null
     var birthday: String? = null
@@ -17,11 +18,12 @@ class UserProfile{
 
 
     constructor()
-    constructor(uid: String?, name: String?, phone: String?, birthday: String?, job: String?,
+    constructor(uid: String?, name: String?,secondName: String?, phone: String?, birthday: String?, job: String?,
         visitToTheClient: String?, experience: String?, specialization: String?,
         services: String?, visitReminder: String?, schedule: String?, breaks: String?) {
         this.uid = uid
         this.name = name
+        this.secondName = secondName
         this.phone = phone
         this.birthday = birthday
         this.job = job
