@@ -4,9 +4,9 @@ class UserProfile{
 
     var uid: String? = null
     var name: String? = null
+    var job: String? = null
     var phone: String? = null
     var birthday: String? = null
-    var job: String? = null
     var visitToTheClient: String? = null
     var experience: String? = null
     var specialization: String? = null

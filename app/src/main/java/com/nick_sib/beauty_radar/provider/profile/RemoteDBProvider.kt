@@ -25,7 +25,6 @@ class RemoteDBProvider : IRemoteDBProvider {
                 if(snapshot.value == null){
                     livedataProfileProvider.value = AppState.Success(USER_IS_DISABLE_IN_DB)
                 }else{
-                    var hashMap = snapshot.value as HashMap<*, *>
                     livedataProfileProvider.value = AppState.Success(USER_IS_ENABLE_IN_DB)
                 }
             }
@@ -42,14 +41,18 @@ class RemoteDBProvider : IRemoteDBProvider {
     }
 
     override fun getUserFromDbByUID(uid: String) {
+        var list = mutableListOf<UserProfile>()
         databaseUsers = FirebaseDatabase.getInstance().getReference("MASTER_PROFILE").child(uid)
         databaseUsers.addListenerForSingleValueEvent(object :ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 if(snapshot.value == null){
                     livedataProfileProvider.value = AppState.Success(USER_IS_DISABLE_IN_DB)
                 }else{
-                    var hashMap = snapshot.value as HashMap<*, *>
-                    livedataProfileProvider.value = AppState.Success(hashMap)
+                    for (ds in snapshot.children){
+                        var userProfile = ds.getValue(UserProfile::class.java)
+                        userProfile?.let { user -> list.add(user) }
+                    }
+                    livedataProfileProvider.value = AppState.Success(list)
                 }
             }
             override fun onCancelled(error: DatabaseError) {}

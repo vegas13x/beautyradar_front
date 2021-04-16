@@ -1,29 +1,29 @@
-package com.nick_sib.beauty_radar.ui.profileScreen
+package com.nick_sib.beauty_radar.ui.sign_up
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.data.state.AppState
-import com.nick_sib.beauty_radar.databinding.FragmentProfileBinding
+import com.nick_sib.beauty_radar.databinding.FragmentSignUpBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ProfileFragment(uid: String) : Fragment(R.layout.fragment_profile) {
+class SignUpFragment(uid: String) : Fragment() {
 
-    private val uid = uid
+    private var uid = uid
 
     companion object{
-        fun newInstance(uid: String) = ProfileFragment(uid)
+        fun newInstance(uid: String) = SignUpFragment(uid)
     }
-    private val viewModel: ProfileViewModel by viewModel()
-    private lateinit var binding: FragmentProfileBinding
+
+    private val viewModel: SignUpViewModel by viewModel()
+    private lateinit var binding: FragmentSignUpBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentProfileBinding.bind(view)
-        viewModel.subscribe(viewLifecycleOwner).observe(viewLifecycleOwner, {
-           renderData(it)
-        })
+        binding = FragmentSignUpBinding.bind(view)
+        viewModel.subscribe(viewLifecycleOwner).observe(viewLifecycleOwner) {
+            renderData(it)
+        }
 
     }
 
@@ -33,9 +33,10 @@ class ProfileFragment(uid: String) : Fragment(R.layout.fragment_profile) {
 
             }
             is AppState.Loading -> {
-                viewModel.getUserProfileFromDb(uid)
+
             }
             is AppState.Error -> {
+
 
             }
             is AppState.SystemMessage -> {
