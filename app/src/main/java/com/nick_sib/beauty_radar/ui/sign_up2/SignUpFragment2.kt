@@ -11,16 +11,14 @@ import com.nick_sib.beauty_radar.ui.sign_up.SignUpFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class SignUpFragment2(bundle: Bundle) : Fragment(R.layout.fragment_sign_up2) {
+class SignUpFragment2(uid: String, name: String, secondName: String) : Fragment(R.layout.fragment_sign_up2) {
 
-
+    private val uid = uid
+    private val name = name
+    private val secondName = secondName
 
     companion object{
-        fun newInstance(userProfile: UserProfile) = SignUpFragment2().apply {
-            arguments = Bundle().apply {
-                putParcelable("userProfile",userProfile)
-            }
-        }
+        fun newInstance(uid: String, name: String, secondName: String) = SignUpFragment2(uid,name,secondName)
     }
 
     private val viewModel: SignUpViewModel2 by viewModel()
@@ -36,12 +34,6 @@ class SignUpFragment2(bundle: Bundle) : Fragment(R.layout.fragment_sign_up2) {
 
 
     }
-
-    private fun doSome() {
-        val aaa = arguments?.getParcelable("uid") as Bundle?
-    }
-
-
 
     private fun renderData(appState: AppState?) {
         when (appState){
