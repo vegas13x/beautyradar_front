@@ -57,10 +57,12 @@ class AuthFragment : Fragment(R.layout.fragment_authentication) {
         when (appState) {
             is AppState.Success<*> -> {
                 binding?.fragmentAuthLoadingDialog?.root?.isGone = true
-                (appState.data as Int).let {
-                    if (it == CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT)
-                        findNavController().navigate(AuthFragmentDirections.actionAuthFragmentToEnterCodeFragment())
+                val data: Int? = appState.data as? Int
+                if (data == CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT) {
+                    val phone = binding?.authPhone?.text.toString()
+                    findNavController().navigate(AuthFragmentDirections.actionAuthFragmentToEnterCodeFragment(phone))
                 }
+                viewModel.codeDone()
             }
             is AppState.Loading -> {
                 binding?.fragmentAuthLoadingDialog?.root?.isGone = false

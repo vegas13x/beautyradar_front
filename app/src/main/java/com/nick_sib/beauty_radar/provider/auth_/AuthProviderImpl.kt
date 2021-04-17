@@ -31,37 +31,38 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
     private val livedataAuthProvider: MutableLiveData<AppState> = MutableLiveData()
     private lateinit var localVerificationId: String
     private var resendingToken: PhoneAuthProvider.ForceResendingToken? = null
+    private var resendingPhone: String? = null
 
 
-//    private val currentUser
-//        get() = authUser.currentUser
+    private val currentUser
+        get() = authUser.currentUser
 
-    private val callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks =
-        object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-            override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
-                signInWithPhoneAuthCredential(phoneAuthCredential)
-            }
-
-            override fun onVerificationFailed(firebaseException: FirebaseException) {
-                livedataAuthProvider.value =
-                    AppState.Error(ToastError(firebaseException.message.toString()))
-            }
-
-            override fun onCodeSent(
-                verifyID: String,
-                forceResendingToken: PhoneAuthProvider.ForceResendingToken
-            ) {
-                super.onCodeSent(verifyID, forceResendingToken)
-                localVerificationId = verifyID
-                resendingToken = forceResendingToken
-                livedataAuthProvider.value = mapOf(Pair("UIDUID", authUser.uid)).let {
-                    AppState.Success(it as Map<*, *>)
-                }
-                livedataAuthProvider.value =
-                    AppState.Loading(CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT)
-
-            }
-        }
+//    private val callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks =
+//        object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+//            override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
+//                signInWithPhoneAuthCredential(phoneAuthCredential)
+//            }
+//
+//            override fun onVerificationFailed(firebaseException: FirebaseException) {
+//                livedataAuthProvider.value =
+//                    AppState.Error(ToastError(firebaseException.message.toString()))
+//            }
+//
+//            override fun onCodeSent(
+//                verifyID: String,
+//                forceResendingToken: PhoneAuthProvider.ForceResendingToken
+//            ) {
+//                super.onCodeSent(verifyID, forceResendingToken)
+//                localVerificationId = verifyID
+//                resendingToken = forceResendingToken
+//                livedataAuthProvider.value = mapOf(Pair("UIDUID", authUser.uid)).let {
+//                    AppState.Success(it as Map<*, *>)
+//                }
+//                livedataAuthProvider.value =
+//                    AppState.Loading(CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT)
+//
+//            }
+//        }
 
     /**
      * Метод подписки на локальную liveData провайдера(класса)
@@ -81,7 +82,7 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
         return suspendCoroutine {res ->
             val mcallbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                 override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-                    Log.d("myLOG", "onVerificationCompleted: ")
+                    signInWithPhoneAuthCredential(credential)
                     res.resume(AppState.Error(ToastError("")))
                 }
                 override fun onVerificationFailed(exception: FirebaseException) {
@@ -90,7 +91,9 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
 
                 override fun onCodeSent(verifyID: String, token: PhoneAuthProvider.ForceResendingToken) {
                     super.onCodeSent(verifyID, token)
-//                    Log.d("myLOG", "onCodeSent: ")
+                    localVerificationId = verifyID
+                    resendingToken = token
+                    resendingPhone = phone
                     res.resume(AppState.Success(CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT))
                 }
             }
@@ -101,24 +104,43 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
                 .setCallbacks(mcallbacks)          // OnVerificationStateChangedCallbacks
                 .build()
             PhoneAuthProvider.verifyPhoneNumber(options)
-//            Log.d("myLOG", "startPhoneNumberVerification: ")
         }
     }
 
     /**
      * Повторный запрос кода с использование полученого токена от первичного запроса
      */
-    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-    override fun resentVerificationCode(activity: Activity, phone: String) {
-        val options = PhoneAuthOptions.newBuilder(authUser)
-            .setPhoneNumber(phone)       // Phone number to verify
-            .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-            .setActivity(activity) // Activity (for callback binding)
-            .setForceResendingToken(resendingToken)
-            .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
-            .build()
-
-        PhoneAuthProvider.verifyPhoneNumber(options)
+//    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+    override suspend fun resentVerificationCode(activity: Activity/*, phone: String*/): AppState {
+        if (resendingPhone == null || resendingToken == null) {
+            return AppState.Error(ToastError("USER token not inited yet"))
+        } else {
+            return suspendCoroutine {res ->
+                val mcallbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                    override fun onVerificationCompleted(credential: PhoneAuthCredential) {
+                        res.resume(AppState.Error(ToastError("")))
+                    }
+                    override fun onVerificationFailed(exception: FirebaseException) {
+                        res.resume(AppState.Error(ToastError(exception.message.toString())))
+                    }
+                    override fun onCodeSent(
+                        verifyID: String,
+                        token: PhoneAuthProvider.ForceResendingToken
+                    ) {
+                    super.onCodeSent(verifyID, token)
+                        res.resume(AppState.Success(CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT))
+                    }
+                }
+                val options = PhoneAuthOptions.newBuilder(authUser)
+                    .setPhoneNumber(resendingPhone ?: "")       // Phone number to verify
+                    .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+                    .setActivity(activity) // Activity (for callback binding)
+                    .setForceResendingToken(resendingToken!!)
+                    .setCallbacks(mcallbacks)          // OnVerificationStateChangedCallbacks
+                    .build()
+                PhoneAuthProvider.verifyPhoneNumber(options)
+            }
+        }
     }
 
 

@@ -18,5 +18,10 @@
         android:id="@+id/enterCodeFragment"
         android:name="com.nick_sib.beauty_radar.ui.enter_code.EnterCodeFragment"
         android:label="fragment_enter_code"
-        tools:layout="@layout/fragment_enter_code" />
+        tools:layout="@layout/fragment_enter_code" >
+        <argument
+            android:name="phone"
+            app:argType="string"
+            android:defaultValue="err" />
+    </fragment>
 </navigation>

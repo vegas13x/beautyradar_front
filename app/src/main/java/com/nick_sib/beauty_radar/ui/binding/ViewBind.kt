@@ -40,3 +40,12 @@ fun View.onSingIn(function: Function1<Pair<String, Activity?>, Unit>?){
         }
     }
 }
+
+@BindingAdapter("bind:resendSMS")
+fun View.resendSMS(function: Function1<Activity?, Unit>?){
+    when (this) {
+        is Button -> setOnClickListener {
+            function?.let{ it(this.getActivity()) }
+        }
+    }
+}

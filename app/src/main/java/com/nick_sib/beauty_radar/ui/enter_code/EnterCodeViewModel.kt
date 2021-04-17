@@ -1,14 +1,19 @@
 package com.nick_sib.beauty_radar.ui.enter_code
 
+import android.app.Activity
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
+import androidx.navigation.fragment.navArgs
 import com.nick_sib.beauty_radar.data.error.ToastError
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.provider.auth_.IAuthProvider
 import com.nick_sib.beauty_radar.provider.profile.IRemoteDBProvider
 import com.nick_sib.beauty_radar.ui.base.BaseViewModel
+import com.nick_sib.beauty_radar.ui.utils.INFINITY_LOADING_PROGRESS
 import com.nick_sib.beauty_radar.ui.utils.TAG_DEBAG
+import kotlinx.coroutines.launch
 
 class EnterCodeViewModel(
     private val authProvider: IAuthProvider,
@@ -16,6 +21,7 @@ class EnterCodeViewModel(
 ) : BaseViewModel<AppState>() {
 
     private val TAG_CODE_NULL = "Code is equal to null. Please enter the code"
+    val resendSMS: Function1<Activity?, Unit> = this::resendSMS
 
     fun subscribe(lifecycleOwner: LifecycleOwner): LiveData<AppState> {
         subscribeLivedataAut(lifecycleOwner)
@@ -52,9 +58,20 @@ class EnterCodeViewModel(
         // TODO("Not yet implemented")
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        liveDataViewmodel.value = null
+    private fun resendSMS(value: Activity?){
+        value?.run{
+            liveDataViewmodel.value = AppState.Loading(INFINITY_LOADING_PROGRESS)
+            viewModelCoroutineScope.launch {
+                liveDataViewmodel.value =
+                    authProvider.resentVerificationCode(this@run)
+            }
+        }
+
+
+
+        Log.d("myLOG", "backPress: ")
     }
+
+
 
 }
