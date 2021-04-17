@@ -33,8 +33,8 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
     private var resendingToken: PhoneAuthProvider.ForceResendingToken? = null
 
 
-//    private val currentUser
-//        get() = authUser.currentUser
+    private val currentUser
+        get() = authUser.currentUser
 
     private val callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks =
         object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
