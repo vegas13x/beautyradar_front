@@ -1,9 +1,11 @@
 package com.nick_sib.beauty_radar.ui.authScreen
 
 import android.os.Bundle
+import android.util.Log
 
 import android.view.View
 import android.widget.Toast
+import androidx.core.view.isGone
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import com.nick_sib.beauty_radar.R
@@ -39,7 +41,6 @@ class AuthFragment : Fragment(R.layout.fragment_authentication) {
             renderData(it)
         })
 
-
         binding?.fragmentAuthTilPhone?.addOnEditTextAttachedListener { textInput ->
             textInput.editText?.doOnTextChanged { charSequence, _, _, _ ->
                 val text = charSequence.toString()
@@ -55,15 +56,14 @@ class AuthFragment : Fragment(R.layout.fragment_authentication) {
     private fun renderData(appState: AppState) {
         when (appState) {
             is AppState.Success<*> -> {
-
+                binding?.fragmentAuthLoadingDialog?.root?.isGone = true
+                (appState.data as Int).let {
+                    if (it == CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT)
+                        findNavController().navigate(AuthFragmentDirections.actionAuthFragmentToEnterCodeFragment())
+                }
             }
             is AppState.Loading -> {
-                when (appState.progress) {
-                    CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT -> {
-                        findNavController().navigate(AuthFragmentDirections.actionAuthFragmentToEnterCodeFragment())
-                    }
-                }
-
+                binding?.fragmentAuthLoadingDialog?.root?.isGone = false
             }
             is AppState.Error -> {
                 when (appState.error) {
