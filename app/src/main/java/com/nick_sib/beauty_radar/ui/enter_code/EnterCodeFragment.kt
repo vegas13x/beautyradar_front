@@ -11,16 +11,15 @@ import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentEnterCodeBinding
 import com.nick_sib.beauty_radar.ui.logout.LogoutFragment
 import com.nick_sib.beauty_radar.ui.utils.AUTH_SECCES_OPEN_NEXT_SCREEN
-import com.nick_sib.beauty_radar.ui.utils.TAG_DEBAG
 import com.nick_sib.beauty_radar.ui.utils.USER_IS_DISABLE_IN_DB
 import com.nick_sib.beauty_radar.ui.utils.USER_IS_ENABLE_IN_DB
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
 
-    companion object {
-        fun newInstance() = EnterCodeFragment()
-    }
+//    companion object {
+//        fun newInstance() = EnterCodeFragment()
+//    }
 
     private val viewModel: EnterCodeViewModel by viewModel()
     private var binding: FragmentEnterCodeBinding? = null
@@ -32,9 +31,9 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
         viewModel.subscribe(viewLifecycleOwner).observe(viewLifecycleOwner, { renderData(it) })
 
 
-        binding?.enterCodeFragmentBtnGo?.setOnClickListener {
-            viewModel.codeEntered(binding?.enterCodeFragmentEtEntryFieldCode?.text.toString())
-        }
+//        binding?.enterCodeFragmentBtnGo?.setOnClickListener {
+//            viewModel.codeEntered(binding?.enterCodeFragmentEtEntryFieldCode?.text.toString())
+//        }
 
     }
 

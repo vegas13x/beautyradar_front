@@ -25,7 +25,7 @@
     <string name="s_phone_help">Введите код оператора и 7 цифр</string>
     <string name="s_phone_error">Номер должен содержать 7 цифр и код оператора</string>
     <string name="the_confirmation">Подтверждение</string>
-    <string name="text_help_info_phone">Введите код подтверждения из SMS, отправленного на номер:</string>
+    <string name="text_help_info_phone">Введите код подтверждения из SMS, отправленного на номер: %s</string>
     <string name="procced">Продолжить</string>
     <string name="sms_not_come">SMS не пришёл</string>
 

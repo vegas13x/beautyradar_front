@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_authentication">
         <action
             android:id="@+id/action_authFragment_to_enterCodeFragment"
-            app:destination="@id/enterCodeFragment" />
+            app:destination="@id/enterCodeFragment"/>
     </fragment>
     <fragment
         android:id="@+id/enterCodeFragment"

@@ -16,7 +16,9 @@
     <dimen name="entr_code_frg_btn_back_mrg_top">40dp</dimen>
 
 <!--    stupid name while yet did not understand pattern of is use-->
+    <dimen name="offset52">52dp</dimen>
     <dimen name="offset62">62dp</dimen>
     <dimen name="offset75">75dp</dimen>
+    <dimen name="offset120">120dp</dimen>
 
 </resources>
