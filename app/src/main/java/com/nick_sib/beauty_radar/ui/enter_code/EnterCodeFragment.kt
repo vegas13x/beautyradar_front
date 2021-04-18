@@ -29,7 +29,8 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEnterCodeBinding.bind(view)
 
-        viewModel.subscribe(viewLifecycleOwner).observe(viewLifecycleOwner, { renderData(it) })
+        viewModel.subscribe(viewLifecycleOwner).observe(viewLifecycleOwner, {
+            renderData(it) })
 
 
         binding?.enterCodeFragmentBtnGo?.setOnClickListener {
@@ -66,12 +67,6 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
             is AppState.Loading -> {
                 when (appState.progress) {
                     AUTH_SECCES_OPEN_NEXT_SCREEN -> {
-//                        requireActivity().supportFragmentManager.beginTransaction()
-//                            .replace(
-//                                R.id.main_activity_container,
-//                                LogoutFragment.newInstance()
-//                            )
-//                            .addToBackStack("Logout").commit()
                     }
                 }
             }

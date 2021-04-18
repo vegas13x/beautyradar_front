@@ -10,9 +10,9 @@ import com.nick_sib.beauty_radar.ui.base.BaseViewModel
 class LogoutViewModel(private val authProvider: IAuthProvider) : BaseViewModel<AppState>() {
 
     fun subscribeLiveData(lifecycleOwner: LifecycleOwner): LiveData<AppState> {
-        authProvider.getLiveDataAuthProvider().observe(lifecycleOwner, {
-            liveDataViewmodel.value = it
-        })
+//        authProviderFrAuth.getLiveDataAuthProvider().observe(lifecycleOwner, {
+//            liveDataViewmodel.value = it
+//        })
         return liveDataViewmodel
     }
 
