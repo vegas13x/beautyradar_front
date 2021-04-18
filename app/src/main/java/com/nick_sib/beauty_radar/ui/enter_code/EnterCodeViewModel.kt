@@ -1,18 +1,16 @@
 package com.nick_sib.beauty_radar.ui.enter_code
 
 import android.app.Activity
-import android.util.Log
-import android.view.View
+import androidx.databinding.ObservableBoolean
+import androidx.databinding.ObservableField
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
-import androidx.navigation.fragment.navArgs
 import com.nick_sib.beauty_radar.data.error.ToastError
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.provider.auth_.IAuthProvider
 import com.nick_sib.beauty_radar.provider.profile.IRemoteDBProvider
 import com.nick_sib.beauty_radar.ui.base.BaseViewModel
 import com.nick_sib.beauty_radar.ui.utils.INFINITY_LOADING_PROGRESS
-import com.nick_sib.beauty_radar.ui.utils.TAG_DEBAG
 import kotlinx.coroutines.launch
 
 class EnterCodeViewModel(
@@ -22,6 +20,15 @@ class EnterCodeViewModel(
 
     private val TAG_CODE_NULL = "Code is equal to null. Please enter the code"
     val resendSMS: Function1<Activity?, Unit> = this::resendSMS
+
+    val errorDots = ObservableBoolean(false)
+    val editedCode = ObservableField<Int?>()
+    private var _editedCode: Int? = null
+        set(value) {
+            errorDots.set(false)
+            editedCode.set(value)
+            field = value
+        }
 
     fun subscribe(lifecycleOwner: LifecycleOwner): LiveData<AppState> {
         subscribeLivedataAut(lifecycleOwner)
@@ -41,16 +48,23 @@ class EnterCodeViewModel(
         })
     }
 
-    fun checkUserInDB(uid: String) {
-        dbProvider.getUser(uid)
+    fun checkUserInDB(uid: String?) {
+        uid?.run {
+            viewModelCoroutineScope.launch {
+                liveDataViewmodel.value = dbProvider.getUser(this@run)
+            }
+
+        }
     }
 
-    fun codeEntered(code: String) {
-        if (code.isNullOrEmpty()) {
+    private fun codeEntered(code: String) {
+        if (code.isEmpty()) {
             liveDataViewmodel.value = AppState.Error(ToastError(TAG_CODE_NULL))
         } else {
-            Log.d(TAG_DEBAG, "codeEntered: КОД ОТПРАВЛЕН НА ПРОВЕРКУ")
-            authProvider.verifyPhoneNumber(code)
+            liveDataViewmodel.value = AppState.Loading(INFINITY_LOADING_PROGRESS)
+            viewModelCoroutineScope.launch {
+                liveDataViewmodel.value = authProvider.verifyPhoneNumber(code)
+            }
         }
     }
 
@@ -64,14 +78,28 @@ class EnterCodeViewModel(
             viewModelCoroutineScope.launch {
                 liveDataViewmodel.value =
                     authProvider.resentVerificationCode(this@run)
+                _editedCode = null
             }
         }
-
-
-
-        Log.d("myLOG", "backPress: ")
     }
 
+    fun addDigit(value: Int){
+        _editedCode = (_editedCode ?: 0) * 10 + value
+        _editedCode?.run {
+            if (this > 99999) {
+                codeEntered(toString())
+            }
+        }
+    }
 
+    fun deleteDigit(){
+        _editedCode = _editedCode?.let {
+            if (it < 10) null else it / 10
+        }
+    }
 
+    fun codeError(){
+        _editedCode = null
+        errorDots.set(true)
+    }
 }

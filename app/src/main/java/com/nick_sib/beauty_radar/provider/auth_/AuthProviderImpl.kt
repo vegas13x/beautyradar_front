@@ -1,7 +1,6 @@
 package com.nick_sib.beauty_radar.provider.auth_
 
 import android.app.Activity
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.FirebaseException
@@ -36,33 +35,6 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
 
     private val currentUser
         get() = authUser.currentUser
-
-//    private val callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks =
-//        object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-//            override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
-//                signInWithPhoneAuthCredential(phoneAuthCredential)
-//            }
-//
-//            override fun onVerificationFailed(firebaseException: FirebaseException) {
-//                livedataAuthProvider.value =
-//                    AppState.Error(ToastError(firebaseException.message.toString()))
-//            }
-//
-//            override fun onCodeSent(
-//                verifyID: String,
-//                forceResendingToken: PhoneAuthProvider.ForceResendingToken
-//            ) {
-//                super.onCodeSent(verifyID, forceResendingToken)
-//                localVerificationId = verifyID
-//                resendingToken = forceResendingToken
-//                livedataAuthProvider.value = mapOf(Pair("UIDUID", authUser.uid)).let {
-//                    AppState.Success(it as Map<*, *>)
-//                }
-//                livedataAuthProvider.value =
-//                    AppState.Loading(CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT)
-//
-//            }
-//        }
 
     /**
      * Метод подписки на локальную liveData провайдера(класса)
@@ -110,7 +82,6 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
     /**
      * Повторный запрос кода с использование полученого токена от первичного запроса
      */
-//    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     override suspend fun resentVerificationCode(activity: Activity/*, phone: String*/): AppState {
         if (resendingPhone == null || resendingToken == null) {
             return AppState.Error(ToastError("USER token not inited yet"))
@@ -143,14 +114,23 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
         }
     }
 
-
     /**
      * Подтверждение кода
      */
-    override fun verifyPhoneNumber(code: String) {
+    override suspend fun verifyPhoneNumber(code: String): AppState {
         val credential: PhoneAuthCredential =
             PhoneAuthProvider.getCredential(localVerificationId, code)
-        signInWithPhoneAuthCredential(credential)
+        return suspendCoroutine {res ->
+            authUser.signInWithCredential(credential)
+                .addOnFailureListener {
+                    res.resume(AppState.Error(ToastError(it.message.toString())))
+                }
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        res.resume(AppState.Success(UserMaster("testName","testEmail",uid = authUser.uid)))
+                    }
+                }
+        }
     }
 
     /**
@@ -203,7 +183,7 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
             }
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    livedataAuthProvider.value = AppState.Success<UserMaster>(UserMaster("testName","testEmail",uid = authUser.uid))
+                    livedataAuthProvider.value = AppState.Success(UserMaster("testName","testEmail",uid = authUser.uid))
                 }
             }
     }

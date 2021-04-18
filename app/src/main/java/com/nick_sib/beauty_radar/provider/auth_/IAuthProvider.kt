@@ -13,8 +13,8 @@ import kotlinx.coroutines.CoroutineScope
 
 interface IAuthProvider {
     fun getLiveDataAuthProvider(): LiveData<AppState>
-    suspend fun resentVerificationCode(activity: Activity/*, phone: String*/): AppState
-    fun verifyPhoneNumber(code: String)
+    suspend fun resentVerificationCode(activity: Activity): AppState
+    suspend fun verifyPhoneNumber(code: String): AppState
     fun addEmailAndPasswordInCurrentUser(email: String, password: String)
     fun signOut()
     suspend fun startPhoneNumberVerification(activity: Activity, phone: String): AppState

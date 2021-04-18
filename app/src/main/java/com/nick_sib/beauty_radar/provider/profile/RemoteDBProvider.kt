@@ -5,11 +5,14 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.database.*
+import com.nick_sib.beauty_radar.data.error.ToastError
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.provider.profile.entities.UserProfile
 import com.nick_sib.beauty_radar.ui.utils.TAG_DEBAG
 import com.nick_sib.beauty_radar.ui.utils.USER_IS_DISABLE_IN_DB
 import com.nick_sib.beauty_radar.ui.utils.USER_IS_ENABLE_IN_DB
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 class RemoteDBProvider : IRemoteDBProvider {
 
@@ -24,23 +27,25 @@ class RemoteDBProvider : IRemoteDBProvider {
         databaseUsers.setValue(user)
     }
 
-    override fun getUser(uid: String) {
-        databaseUsers = FirebaseDatabase.getInstance().getReference("MASTER_PROFILE").child(uid)
-        databaseUsers.addListenerForSingleValueEvent(object :ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if(snapshot.value == null){
-                    livedataProfileProvider.value = AppState.Success(USER_IS_DISABLE_IN_DB)
-                }else{
-                    var hashMap = snapshot.value as HashMap<*, *>
-                    livedataProfileProvider.value = AppState.Success(USER_IS_ENABLE_IN_DB)
+    override suspend fun getUser(uid: String): AppState {
+        return suspendCoroutine {res ->
+            databaseUsers = FirebaseDatabase.getInstance().getReference("MASTER_PROFILE").child(uid)
+            databaseUsers.addListenerForSingleValueEvent(object :ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if(snapshot.value == null){
+                        res.resume(AppState.Success(USER_IS_DISABLE_IN_DB))
+                    } else {
+//                        var hashMap = snapshot.value as HashMap<*, *>
+                        res.resume(AppState.Success(USER_IS_ENABLE_IN_DB))
+                    }
                 }
-            }
+                override fun onCancelled(error: DatabaseError) {
+                    res.resume(AppState.Error(ToastError(error.message)))
+                }
 
-            override fun onCancelled(error: DatabaseError) {
+            })
+        }
 
-            }
-
-        })
 
 
     }

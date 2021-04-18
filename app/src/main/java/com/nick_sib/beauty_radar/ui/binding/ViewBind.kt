@@ -9,6 +9,7 @@ import android.widget.EditText
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.extension.getActivity
 import com.nick_sib.beauty_radar.extension.phoneToDigit
@@ -48,4 +49,10 @@ fun View.resendSMS(function: Function1<Activity?, Unit>?){
             function?.let{ it(this.getActivity()) }
         }
     }
+}
+
+@BindingAdapter("bind:setDotColor")
+fun setDotColor(view: View, value: Boolean){
+//    if (value)
+//        view.background = view.context.getDrawable(R.drawable.ic_circle_error)
 }

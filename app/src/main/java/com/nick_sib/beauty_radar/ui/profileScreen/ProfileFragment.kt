@@ -31,6 +31,7 @@ class ProfileFragment(uid: String) : Fragment(R.layout.fragment_profile) {
 
     private fun renderData(appState: AppState?) {
         when (appState){
+            is AppState.Empty -> {}
             is AppState.Success<*> -> {
 
             }

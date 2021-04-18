@@ -1,8 +1,6 @@
 package com.nick_sib.beauty_radar.ui.authScreen
 
 import android.os.Bundle
-import android.util.Log
-
 import android.view.View
 import android.widget.Toast
 import androidx.core.view.isGone
@@ -55,6 +53,7 @@ class AuthFragment : Fragment(R.layout.fragment_authentication) {
 
     private fun renderData(appState: AppState) {
         when (appState) {
+            is AppState.Empty -> {}
             is AppState.Success<*> -> {
                 binding?.fragmentAuthLoadingDialog?.root?.isGone = true
                 val data: Int? = appState.data as? Int

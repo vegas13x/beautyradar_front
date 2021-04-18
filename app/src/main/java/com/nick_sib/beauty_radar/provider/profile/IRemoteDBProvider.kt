@@ -8,7 +8,7 @@ interface IRemoteDBProvider {
 
     fun getLiveDataProfileProvider(): LiveData<AppState>
 
-    fun getUser(uid: String)
+    suspend fun getUser(uid: String): AppState
     fun createUIDUser(user: UserProfile)
     fun getListUsers(list: ArrayList<UserProfile>)
     fun getCalendarDate(uid: String)

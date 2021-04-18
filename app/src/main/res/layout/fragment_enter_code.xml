@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="viewModel"
             type="com.nick_sib.beauty_radar.ui.enter_code.EnterCodeViewModel"/>
@@ -21,6 +22,14 @@
             layout="@layout/dialog_loading"
             android:visibility="gone"/>
 
+        <include
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/dialog_dots_error"
+            app:layout_constraintStart_toStartOf="@id/enter_code_fragment_ll_dots"
+            app:layout_constraintTop_toTopOf="@id/enter_code_fragment_ll_dots"
+            app:show="@{viewModel.errorDots ? View.VISIBLE : View.GONE}"/>
+
         <ImageButton
             android:id="@+id/enter_code_fragment_iv_back_to"
             android:padding="10dp"
@@ -30,7 +39,8 @@
             android:src="@drawable/ic_arrow_left"
             android:background="@drawable/bg_transparent_button"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="@{View.VISIBLE}"/>
 
         <TextView
             android:id="@+id/enter_code_fragment_tv_confirmation"
@@ -49,54 +59,17 @@
             android:text="@string/text_help_info_phone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/enter_code_fragment_tv_confirmation" />
+            app:layout_constraintTop_toBottomOf="@id/enter_code_fragment_tv_confirmation" />
 
-        <LinearLayout
+        <include
             android:id="@+id/enter_code_fragment_ll_dots"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/offset_24"
-            android:orientation="horizontal"
+            layout="@layout/dialog_dots_code"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/enter_code_fragment_tv_info">
-
-            <View
-                android:layout_width="@dimen/dot_size"
-                android:layout_height="@dimen/dot_size"
-                android:layout_margin="@dimen/dot_margin"
-                android:background="@drawable/ic_circle_black" />
-
-            <View
-                android:layout_width="@dimen/dot_size"
-                android:layout_height="@dimen/dot_size"
-                android:layout_margin="@dimen/dot_margin"
-                android:background="@drawable/ic_circle_black" />
-
-            <View
-                android:layout_width="@dimen/dot_size"
-                android:layout_height="@dimen/dot_size"
-                android:layout_margin="@dimen/dot_margin"
-                android:background="@drawable/ic_circle_black" />
-
-            <View
-                android:layout_width="@dimen/dot_size"
-                android:layout_height="@dimen/dot_size"
-                android:layout_margin="@dimen/dot_margin"
-                android:background="@drawable/ic_circle_black" />
-
-            <View
-                android:layout_width="@dimen/dot_size"
-                android:layout_height="@dimen/dot_size"
-                android:layout_margin="@dimen/dot_margin"
-                android:background="@drawable/ic_circle_black" />
-
-            <View
-                android:layout_width="@dimen/dot_size"
-                android:layout_height="@dimen/dot_size"
-                android:layout_margin="@dimen/dot_margin"
-                android:background="@drawable/ic_circle_black" />
-        </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@id/enter_code_fragment_tv_info"
+            app:editedCode="@{viewModel.editedCode == null ? -1 : viewModel.editedCode}"/>
 
         <Button
             android:id="@+id/enter_code_fragment_b_resend_sms"
@@ -117,7 +90,6 @@
             app:layout_constraintTop_toBottomOf="@id/enter_code_fragment_ll_dots"
             bind:resendSMS="@{viewModel.resendSMS}"/>
 
-
         <Button
             android:id="@+id/enter_code_fragment_b_digit1"
             style="?attr/materialButtonOutlinedStyle"
@@ -130,7 +102,8 @@
             android:layout_marginHorizontal="@dimen/button_digit_margin"
             app:shapeAppearanceOverlay="@style/Button.Circle"
             app:layout_constraintBottom_toTopOf="@id/enter_code_fragment_b_digit5"
-            app:layout_constraintEnd_toStartOf="@id/enter_code_fragment_b_digit5"/>
+            app:layout_constraintEnd_toStartOf="@id/enter_code_fragment_b_digit5"
+            android:onClick="@{() -> viewModel.addDigit(1)}"/>
 
         <Button
             android:id="@+id/enter_code_fragment_b_digit2"
@@ -141,11 +114,11 @@
             android:text="@string/digit2"
             android:textColor="@color/black"
             android:textSize="@dimen/button_digit_text_size"
-            android:layout_marginHorizontal="@dimen/button_digit_margin"
             app:shapeAppearanceOverlay="@style/Button.Circle"
             app:layout_constraintBottom_toTopOf="@id/enter_code_fragment_b_digit5"
             app:layout_constraintEnd_toEndOf="@id/enter_code_fragment_b_digit5"
-            app:layout_constraintStart_toStartOf="@id/enter_code_fragment_b_digit5"/>
+            app:layout_constraintStart_toStartOf="@id/enter_code_fragment_b_digit5"
+            android:onClick="@{() -> viewModel.addDigit(2)}"/>
         <Button
             android:id="@+id/enter_code_fragment_b_digit3"
             style="?attr/materialButtonOutlinedStyle"
@@ -158,7 +131,8 @@
             android:layout_marginHorizontal="@dimen/button_digit_margin"
             app:shapeAppearanceOverlay="@style/Button.Circle"
             app:layout_constraintBottom_toTopOf="@id/enter_code_fragment_b_digit5"
-            app:layout_constraintStart_toEndOf="@id/enter_code_fragment_b_digit5"/>
+            app:layout_constraintStart_toEndOf="@id/enter_code_fragment_b_digit5"
+            android:onClick="@{() -> viewModel.addDigit(3)}"/>
         <Button
             android:id="@+id/enter_code_fragment_b_digit4"
             style="?attr/materialButtonOutlinedStyle"
@@ -172,7 +146,8 @@
             app:shapeAppearanceOverlay="@style/Button.Circle"
             app:layout_constraintBottom_toBottomOf="@id/enter_code_fragment_b_digit5"
             app:layout_constraintEnd_toStartOf="@id/enter_code_fragment_b_digit5"
-            app:layout_constraintTop_toTopOf="@id/enter_code_fragment_b_digit5"/>
+            app:layout_constraintTop_toTopOf="@id/enter_code_fragment_b_digit5"
+            android:onClick="@{() -> viewModel.addDigit(4)}"/>
         <Button
             android:id="@+id/enter_code_fragment_b_digit5"
             style="?attr/materialButtonOutlinedStyle"
@@ -183,12 +158,12 @@
             android:textColor="@color/black"
             android:textSize="@dimen/button_digit_text_size"
             android:layout_marginBottom="80dp"
-            android:layout_marginHorizontal="@dimen/button_digit_margin"
             app:shapeAppearanceOverlay="@style/Button.Circle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/enter_code_fragment_ll_dots"/>
+            app:layout_constraintTop_toBottomOf="@id/enter_code_fragment_ll_dots"
+            android:onClick="@{() -> viewModel.addDigit(5)}"/>
         <Button
             android:id="@+id/enter_code_fragment_b_digit6"
             style="?attr/materialButtonOutlinedStyle"
@@ -202,7 +177,8 @@
             app:shapeAppearanceOverlay="@style/Button.Circle"
             app:layout_constraintStart_toEndOf="@id/enter_code_fragment_b_digit5"
             app:layout_constraintBottom_toBottomOf="@id/enter_code_fragment_b_digit5"
-            app:layout_constraintTop_toTopOf="@id/enter_code_fragment_b_digit5"/>
+            app:layout_constraintTop_toTopOf="@id/enter_code_fragment_b_digit5"
+            android:onClick="@{() -> viewModel.addDigit(6)}"/>
         <Button
             android:id="@+id/enter_code_fragment_b_digit7"
             style="?attr/materialButtonOutlinedStyle"
@@ -215,7 +191,8 @@
             android:layout_marginHorizontal="@dimen/button_digit_margin"
             app:shapeAppearanceOverlay="@style/Button.Circle"
             app:layout_constraintEnd_toStartOf="@id/enter_code_fragment_b_digit5"
-            app:layout_constraintTop_toBottomOf="@id/enter_code_fragment_b_digit5"/>
+            app:layout_constraintTop_toBottomOf="@id/enter_code_fragment_b_digit5"
+            android:onClick="@{() -> viewModel.addDigit(7)}"/>
         <Button
             android:id="@+id/enter_code_fragment_b_digit8"
             style="?attr/materialButtonOutlinedStyle"
@@ -228,7 +205,8 @@
             app:shapeAppearanceOverlay="@style/Button.Circle"
             app:layout_constraintEnd_toEndOf="@id/enter_code_fragment_b_digit5"
             app:layout_constraintStart_toStartOf="@id/enter_code_fragment_b_digit5"
-            app:layout_constraintTop_toBottomOf="@id/enter_code_fragment_b_digit5"/>
+            app:layout_constraintTop_toBottomOf="@id/enter_code_fragment_b_digit5"
+            android:onClick="@{() -> viewModel.addDigit(8)}"/>
         <Button
             android:id="@+id/enter_code_fragment_b_digit9"
             style="?attr/materialButtonOutlinedStyle"
@@ -241,7 +219,8 @@
             android:layout_marginHorizontal="@dimen/button_digit_margin"
             app:shapeAppearanceOverlay="@style/Button.Circle"
             app:layout_constraintStart_toEndOf="@id/enter_code_fragment_b_digit5"
-            app:layout_constraintTop_toBottomOf="@id/enter_code_fragment_b_digit5"/>
+            app:layout_constraintTop_toBottomOf="@id/enter_code_fragment_b_digit5"
+            android:onClick="@{() -> viewModel.addDigit(9)}"/>
         <Button
             android:id="@+id/enter_code_fragment_b_digit0"
             style="?attr/materialButtonOutlinedStyle"
@@ -251,14 +230,14 @@
             android:text="@string/digit0"
             android:textColor="@color/black"
             android:textSize="@dimen/button_digit_text_size"
-            android:layout_marginHorizontal="@dimen/button_digit_margin"
             app:shapeAppearanceOverlay="@style/Button.Circle"
             app:layout_constraintStart_toStartOf="@id/enter_code_fragment_b_digit5"
             app:layout_constraintEnd_toEndOf="@id/enter_code_fragment_b_digit5"
-            app:layout_constraintTop_toBottomOf="@id/enter_code_fragment_b_digit8"/>
+            app:layout_constraintTop_toBottomOf="@id/enter_code_fragment_b_digit8"
+            android:onClick="@{() -> viewModel.addDigit(0)}"/>
 
         <ImageButton
-            android:id="@+id/enter_code_fragment_b_back"
+            android:id="@+id/enter_code_fragment_b_backspace"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginHorizontal="@dimen/button_digit_margin"
@@ -267,59 +246,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/enter_code_fragment_b_digit0"
             app:layout_constraintEnd_toEndOf="@+id/enter_code_fragment_b_digit9"
             app:layout_constraintStart_toStartOf="@+id/enter_code_fragment_b_digit9"
-            app:layout_constraintTop_toBottomOf="@+id/enter_code_fragment_b_digit8" />
-<!--        app:shapeAppearanceOverlay="@style/Button.Circle"-->
-        <!--        <EditText-->
-        <!--            android:id="@+id/enter_code_fragment_et_entry_field_code"-->
-        <!--            android:layout_width="0dp"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginStart="50dp"-->
-        <!--            android:layout_marginTop="@dimen/big_offset"-->
-        <!--            android:layout_marginEnd="50dp"-->
-        <!--            android:background="@color/transparent"-->
-        <!--            android:gravity="center"-->
-        <!--            android:inputType="numberPassword"-->
-        <!--            android:textSize="100sp"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintHorizontal_bias="0.0"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toBottomOf="@+id/enter_code_fragment_tv_info" />-->
-
-
-        <!--        <TextView-->
-        <!--            android:id="@+id/enter_code_fragment_btn_go"-->
-        <!--            android:layout_width="0dp"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginTop="15dp"-->
-        <!--            android:background="@drawable/rounded_corners_for_button_cont"-->
-        <!--            android:backgroundTint="@color/hot_pink_75_transp"-->
-        <!--            android:clickable="false"-->
-        <!--            android:gravity="center"-->
-        <!--            android:paddingVertical="19dp"-->
-        <!--            android:text="@string/procced"-->
-        <!--            android:textColor="@color/white"-->
-        <!--            android:textSize="18sp"-->
-        <!--            app:layout_constraintEnd_toEndOf="@+id/enter_code_fragment_et_entry_field_code"-->
-        <!--            app:layout_constraintStart_toStartOf="@+id/enter_code_fragment_et_entry_field_code"-->
-        <!--            app:layout_constraintTop_toBottomOf="@+id/enter_code_fragment_et_entry_field_code" />-->
-
-        <!--        <TextView-->
-        <!--            android:id="@+id/enter_code_fragment_tv_sms_not_come"-->
-        <!--            style="@style/Widget.AppCompat.TextView"-->
-        <!--            android:layout_width="0dp"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:clickable="true"-->
-        <!--            android:gravity="center"-->
-        <!--            android:layout_marginTop="@dimen/def_offset"-->
-        <!--            android:layout_marginStart="126dp"-->
-        <!--            android:layout_marginEnd="126dp"-->
-        <!--            android:text="@string/sms_not_come"-->
-        <!--            android:textSize="@dimen/button_text"-->
-        <!--            android:textStyle="normal"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toBottomOf="@+id/enter_code_fragment_btn_go"-->
-        <!--            android:focusable="true" />-->
-
+            app:layout_constraintTop_toBottomOf="@+id/enter_code_fragment_b_digit8"
+            android:onClick="@{() -> viewModel.deleteDigit()}"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
