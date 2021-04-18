@@ -9,7 +9,7 @@ import com.nick_sib.beauty_radar.data.state.AppState
  */
 
 interface IAuthProvider {
-    fun signOut()
+    suspend fun signOut():AppState
     suspend fun startPhoneNumberVerification(activity: Activity, phone: String): AppState
     suspend fun resentVerificationCode(activity: Activity, phone: String): AppState
     suspend fun verifyPhoneNumber(code: String): AppState

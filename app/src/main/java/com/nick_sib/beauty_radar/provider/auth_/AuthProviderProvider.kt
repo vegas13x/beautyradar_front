@@ -114,9 +114,11 @@ class AuthProviderProvider(private val authUser: FirebaseAuth) : IAuthProvider{
     /**
      * Функция выхода из учетной записи
      */
-    override fun signOut() {
-        authUser.signOut()
-//        livedataAuthProvider.value = AppState.Success(USER_SIGNOUT)
+    override suspend fun signOut():AppState {
+        return suspendCoroutine {
+            authUser.signOut()
+            it.resume(AppState.Success(USER_SIGNOUT))
+        }
     }
 
 

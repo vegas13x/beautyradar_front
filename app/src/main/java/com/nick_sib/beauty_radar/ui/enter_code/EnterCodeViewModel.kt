@@ -8,7 +8,6 @@ import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.provider.auth_.IAuthProvider
 import com.nick_sib.beauty_radar.provider.profile.IRemoteDBProvider
 import com.nick_sib.beauty_radar.ui.base.BaseViewModel
-import com.nick_sib.beauty_radar.ui.utils.TAG_DEBAG
 import kotlinx.coroutines.launch
 
 class EnterCodeViewModel(
