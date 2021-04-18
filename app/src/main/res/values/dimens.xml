@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="big_offset">15dp</dimen>
-    <dimen name="def_offset">10dp</dimen>
     <dimen name="small_offset">5dp</dimen>
+    <dimen name="def_offset">10dp</dimen>
+    <dimen name="big_offset">15dp</dimen>
+    <dimen name="def_horizontal_offset">36dp</dimen>
 
     <dimen name="corner_radius">14dp</dimen>
 
@@ -13,5 +14,9 @@
 
     <dimen name="entr_code_frg_btn_back_mrg_start">24dp</dimen>
     <dimen name="entr_code_frg_btn_back_mrg_top">40dp</dimen>
+
+<!--    stupid name while yet did not understand pattern of is use-->
+    <dimen name="offset62">62dp</dimen>
+    <dimen name="offset75">75dp</dimen>
 
 </resources>

@@ -1,6 +1,7 @@
 package com.nick_sib.beauty_radar.provider.auth_
 
 import android.app.Activity
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.FirebaseException
@@ -10,6 +11,8 @@ import com.nick_sib.beauty_radar.data.error.ToastError
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.ui.utils.*
 import java.util.concurrent.TimeUnit
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 /**
  * @author Alex Volkov(Volkoks)
@@ -51,7 +54,7 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
                 super.onCodeSent(verifyID, forceResendingToken)
                 localVerificationId = verifyID
                 resendingToken = forceResendingToken
-                livedataAuthProvider.value = mapOf(Pair("UIDUID", authUser.uid))?.let {
+                livedataAuthProvider.value = mapOf(Pair("UIDUID", authUser.uid)).let {
                     AppState.Success(it as Map<*, *>)
                 }
                 livedataAuthProvider.value =
@@ -67,25 +70,39 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
         return livedataAuthProvider
     }
 
-    /**
-     * Регистрация пользователя по средством email/password
-     */
-    override fun singUpEmailAndPasswordUser(email: String, password: String) {
-        authUser.createUserWithEmailAndPassword(email, password)
-    }
 
     /**
      *Старт регистрации по телефону: создаем настройки для кода - отправляем на сервер ,
      * ждём ответ и обрабатывает посредством callback для аутентификатора телефона
      */
-    override fun startPhoneNumberVerification(activity: Activity, phone: String) {
-        val options = PhoneAuthOptions.newBuilder(authUser)
-            .setPhoneNumber(phone)       // Phone number to verify
-            .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-            .setActivity(activity)                 // Activity (for callback binding)
-            .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
-            .build()
-        PhoneAuthProvider.verifyPhoneNumber(options)
+
+
+    override suspend fun startPhoneNumberVerification(activity: Activity, phone: String): AppState {
+        return suspendCoroutine {res ->
+            val mcallbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                override fun onVerificationCompleted(credential: PhoneAuthCredential) {
+                    Log.d("myLOG", "onVerificationCompleted: ")
+                    res.resume(AppState.Error(ToastError("")))
+                }
+                override fun onVerificationFailed(exception: FirebaseException) {
+                    res.resume(AppState.Error(ToastError(exception.message.toString())))
+                }
+
+                override fun onCodeSent(verifyID: String, token: PhoneAuthProvider.ForceResendingToken) {
+                    super.onCodeSent(verifyID, token)
+//                    Log.d("myLOG", "onCodeSent: ")
+                    res.resume(AppState.Success(CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT))
+                }
+            }
+            val options = PhoneAuthOptions.newBuilder(authUser)
+                .setPhoneNumber(phone)       // Phone number to verify
+                .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+                .setActivity(activity)                 // Activity (for callback binding)
+                .setCallbacks(mcallbacks)          // OnVerificationStateChangedCallbacks
+                .build()
+            PhoneAuthProvider.verifyPhoneNumber(options)
+//            Log.d("myLOG", "startPhoneNumberVerification: ")
+        }
     }
 
     /**
@@ -103,6 +120,7 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
 
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
+
 
     /**
      * Подтверждение кода
@@ -166,9 +184,14 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
                     livedataAuthProvider.value = AppState.Success<UserMaster>(UserMaster("testName","testEmail",uid = authUser.uid))
                 }
             }
-
-
     }
 
 
 }
+
+//    /**
+//     * Регистрация пользователя по средством email/password
+//     */
+//    override fun singUpEmailAndPasswordUser(email: String, password: String) {
+//        authUser.createUserWithEmailAndPassword(email, password)
+//    }
