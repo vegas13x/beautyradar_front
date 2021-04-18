@@ -11,7 +11,7 @@ import com.nick_sib.beauty_radar.ui.profileScreen.ProfileFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
-
+//  ТЕСТОВЫЕ ДАННЫЕ ДО МОМЕНТА ПРИКРУТКИ БД
     private val testListData = listOf(
         CalendareProfile("fkglknglksnglknf", "Саша", "1", "массаж"),
         CalendareProfile("fkglknglksngsadsadlknf", "Vasya", "4", "шугаринг"),
