@@ -35,8 +35,10 @@ class ProfileFragment(uid: String) : Fragment(R.layout.fragment_profile) {
     }
 
     private fun renderData(appState: AppState?) {
-        when (appState) {
+        when (appState){
+            is AppState.Empty -> {}
             is AppState.Success<*> -> {
+
             }
             is AppState.Loading -> {
                 viewModel.getUserProfileFromDb(uid)

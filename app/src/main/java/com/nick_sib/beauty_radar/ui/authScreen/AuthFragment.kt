@@ -1,8 +1,6 @@
 package com.nick_sib.beauty_radar.ui.authScreen
 
 import android.os.Bundle
-import android.util.Log
-
 import android.view.View
 import android.widget.Toast
 import androidx.core.view.isGone
@@ -55,12 +53,15 @@ class AuthFragment : Fragment(R.layout.fragment_authentication) {
 
     private fun renderData(appState: AppState) {
         when (appState) {
+            is AppState.Empty -> {}
             is AppState.Success<*> -> {
                 binding?.fragmentAuthLoadingDialog?.root?.isGone = true
-                (appState.data as Int).let {
-                    if (it == CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT)
-                        findNavController().navigate(AuthFragmentDirections.actionAuthFragmentToEnterCodeFragment())
+                val data: Int? = appState.data as? Int
+                if (data == CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT) {
+                    val phone = binding?.authPhone?.text.toString()
+                    findNavController().navigate(AuthFragmentDirections.actionAuthFragmentToEnterCodeFragment(phone))
                 }
+                viewModel.codeDone()
             }
             is AppState.Loading -> {
                 binding?.fragmentAuthLoadingDialog?.root?.isGone = false

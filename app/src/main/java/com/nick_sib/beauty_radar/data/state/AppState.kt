@@ -9,4 +9,5 @@ sealed class AppState {
     data class SystemMessage(val message: String) : AppState()
     data class Loading(val progress: Int) : AppState()
     data class Error(val error: Throwable) : AppState()
+    class Empty: AppState()
 }

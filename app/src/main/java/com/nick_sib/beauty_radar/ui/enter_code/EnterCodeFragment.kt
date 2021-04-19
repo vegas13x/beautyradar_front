@@ -1,96 +1,73 @@
 package com.nick_sib.beauty_radar.ui.enter_code
 
-
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
+import androidx.core.view.isGone
+import androidx.navigation.fragment.navArgs
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.data.entites.UserMaster
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentEnterCodeBinding
-import com.nick_sib.beauty_radar.ui.logout.LogoutFragment
-import com.nick_sib.beauty_radar.ui.sign_up.SignUpFragment
-import com.nick_sib.beauty_radar.ui.utils.*
+import com.nick_sib.beauty_radar.extension.findNavController
+import com.nick_sib.beauty_radar.ui.utils.USER_IS_DISABLE_IN_DB
+import com.nick_sib.beauty_radar.ui.utils.USER_IS_ENABLE_IN_DB
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
 
-    private var userUID: String? = null
-
-    companion object {
-        fun newInstance() = EnterCodeFragment()
-    }
-
     private val viewModel: EnterCodeViewModel by viewModel()
     private var binding: FragmentEnterCodeBinding? = null
+    private val args: EnterCodeFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEnterCodeBinding.bind(view)
 
-        viewModel.subscribe(viewLifecycleOwner).observe(viewLifecycleOwner, {
-            Log.d(TAG_DEBAG, "EnterCodeFragment onViewCreated: $it")
-            renderData(it) })
+        viewModel.subscribe(viewLifecycleOwner).observe(viewLifecycleOwner, { renderData(it) })
+        binding?.viewModel = viewModel
+        binding?.enterCodeFragmentTvInfo?.text =
+            getString(R.string.text_help_info_phone, "+7 ${args.phone}")
+        initListener()
+    }
 
-
-        binding?.enterCodeFragmentBtnGo?.setOnClickListener {
-            viewModel.codeEntered(binding?.enterCodeFragmentEtEntryFieldCode?.text.toString())
+    private fun initListener(){
+        binding?.enterCodeFragmentIvBackTo?.setOnClickListener {
+            findNavController().popBackStack()
         }
-
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
-        Log.d(TAG_DEBAG, "EnterCodeFragment onDestroyView: биндинг убит")
         binding = null
-
+        super.onDestroyView()
     }
 
     private fun renderData(appState: AppState) {
         when (appState) {
+            is AppState.Empty -> {}
             is AppState.Success<*> -> {
-                when (appState.data) {
-                    is UserMaster -> appState.data.uid?.let {
-                        userUID = it
-                        Log.d(TAG_DEBAG, "EnterCodeFragment renderData: ")
-                        viewModel.checkUserInDB(it) }
-                    USER_IS_ENABLE_IN_DB ->{
-                        AppState.Success<String>(CODE_NULL)
-                        requireActivity().supportFragmentManager.beginTransaction()
-                            .replace(
-                                R.id.main_activity_container,
-                                LogoutFragment.newInstance()
-                            )
-                            .addToBackStack("Logout").commit()
+                binding?.fragmentAuthLoadingDialog?.root?.isGone = true
+                val data: UserMaster? = appState.data as? UserMaster
+                data?.run { viewModel.checkUserInDB(uid) }
+                when (appState.data as? String) {
+                    USER_IS_ENABLE_IN_DB -> {
+                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToLogoutFragment())
                     }
                     USER_IS_DISABLE_IN_DB -> {
-                        AppState.Success(CODE_NULL)
-                        userUID?.let { SignUpFragment.newInstance(it) }?.let {
-                            requireActivity().supportFragmentManager.beginTransaction()
-                                .replace(
-                                    R.id.main_activity_container,
-                                    it
-                                )
-                                .addToBackStack("Logout").commit()
-                        }
+                        toast("no ok")
                     }
+                    else -> {}
                 }
             }
+
             is AppState.Loading -> {
-                when (appState.progress) {
-                    AUTH_SECCES_OPEN_NEXT_SCREEN -> {
-//                        requireActivity().supportFragmentManager.beginTransaction()
-//                            .replace(
-//                                R.id.main_activity_container,
-//                                LogoutFragment.newInstance()
-//                            )
-//                            .addToBackStack("Logout").commit()
-                    }
-                }
+                binding?.fragmentAuthLoadingDialog?.root?.isGone = false
             }
             is AppState.Error -> {
+                binding?.fragmentAuthLoadingDialog?.root?.isGone = true
+                viewModel.codeError()
                 when (appState.error) {
 
                     else -> toast(appState.error.message ?: "")
