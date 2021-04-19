@@ -3,7 +3,6 @@ package com.nick_sib.beauty_radar.provider.auth_
 import android.app.Activity
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
-import com.google.firebase.messaging.FirebaseMessaging
 import com.nick_sib.beauty_radar.data.entites.UserMaster
 import com.nick_sib.beauty_radar.data.error.ToastError
 import com.nick_sib.beauty_radar.data.state.AppState
@@ -30,6 +29,7 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider{
 
     private lateinit var localVerificationId: String
     private var resendingToken: PhoneAuthProvider.ForceResendingToken? = null
+    private var resendingPhone: String? = null
 
     /**
      *Старт регистрации по телефону: создаем настройки для кода - отправляем на сервер ,

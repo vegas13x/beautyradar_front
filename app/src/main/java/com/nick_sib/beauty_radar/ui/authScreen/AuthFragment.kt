@@ -37,7 +37,7 @@ class AuthFragment : Fragment(R.layout.fragment_authentication) {
         binding?.viewModel = viewModel
 
         viewModel.subscribe().observe(viewLifecycleOwner, {
-            Log.d(TAG_DEBAG, "onViewCreated: $it")
+//            Log.d(TAG_DEBAG, "onViewCreated: $it")
             renderData(it)
         })
 

@@ -70,7 +70,7 @@ class EnterCodeViewModel(
             liveDataViewmodel.value = AppState.Loading(INFINITY_LOADING_PROGRESS)
             viewModelCoroutineScope.launch {
                 liveDataViewmodel.value =
-                    authProvider.resentVerificationCode(this@run)
+                    authProvider.resentVerificationCode(this@run,"+79999999999")
                 _editedCode = null
             }
         }

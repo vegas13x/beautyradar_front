@@ -17,9 +17,9 @@ class RoomViewModel(private val authProvider: IAuthProvider, private val iRoomSo
     }
 
     private fun subscribeLiveDataAuth(lifecycleOwner: LifecycleOwner) {
-        authProvider.getLiveDataAuthProvider().observe(lifecycleOwner, { appState ->
-            liveDataViewmodel.value = appState
-        })
+//        authProvider.getLiveDataAuthProvider().observe(lifecycleOwner, { appState ->
+//            liveDataViewmodel.value = appState
+//        })
     }
 
     fun getData() {
