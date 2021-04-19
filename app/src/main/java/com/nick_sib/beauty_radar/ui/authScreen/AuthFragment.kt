@@ -13,6 +13,7 @@ import com.nick_sib.beauty_radar.extension.digitToPhone
 import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.extension.phoneToDigit
 import com.nick_sib.beauty_radar.ui.utils.CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT
+import com.nick_sib.beauty_radar.ui.utils.TAG_DEBAG
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -35,7 +36,8 @@ class AuthFragment : Fragment(R.layout.fragment_authentication) {
         binding = FragmentAuthenticationBinding.bind(view)
         binding?.viewModel = viewModel
 
-        viewModel.subscribe(viewLifecycleOwner).observe(viewLifecycleOwner, {
+        viewModel.subscribe().observe(viewLifecycleOwner, {
+            Log.d(TAG_DEBAG, "onViewCreated: $it")
             renderData(it)
         })
 

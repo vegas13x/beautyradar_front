@@ -31,15 +31,8 @@ class EnterCodeViewModel(
         }
 
     fun subscribe(lifecycleOwner: LifecycleOwner): LiveData<AppState> {
-        subscribeLivedataAut(lifecycleOwner)
         subscribeLiveDataRemoteDB(lifecycleOwner)
         return liveDataViewmodel
-    }
-
-    private fun subscribeLivedataAut(lifecycleOwner: LifecycleOwner) {
-        authProvider.getLiveDataAuthProvider().observe(lifecycleOwner, { appState ->
-            liveDataViewmodel.value = appState
-        })
     }
 
     private fun subscribeLiveDataRemoteDB(lifecycleOwner: LifecycleOwner) {
