@@ -187,6 +187,3 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
 
 
 }
-
-
-}
