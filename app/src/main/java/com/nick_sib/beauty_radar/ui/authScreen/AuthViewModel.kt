@@ -1,15 +1,11 @@
 package com.nick_sib.beauty_radar.ui.authScreen
 
 import android.app.Activity
-import android.content.Intent
-import android.util.Log
-import android.widget.Toast
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
-import com.google.firebase.messaging.FirebaseMessagingService
+import com.google.firebase.messaging.RemoteMessage
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.provider.auth_.IAuthProvider
@@ -53,8 +49,9 @@ class AuthViewModel(private val authProvider: IAuthProvider) : BaseViewModel<App
                 }
             }
 
-            var intent = Intent(this@run, FirebaseMessagingService::class.java)
-            startService(intent)
+
+
+
         }
     }
 
