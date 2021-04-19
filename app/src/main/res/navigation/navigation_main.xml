@@ -12,35 +12,68 @@
         tools:layout="@layout/fragment_authentication">
         <action
             android:id="@+id/action_authFragment_to_enterCodeFragment"
-            app:destination="@id/enterCodeFragment"/>
+            app:destination="@id/enterCodeFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/enterCodeFragment"
         android:name="com.nick_sib.beauty_radar.ui.enter_code.EnterCodeFragment"
         android:label="fragment_enter_code"
-        tools:layout="@layout/fragment_enter_code" >
+        tools:layout="@layout/fragment_enter_code">
         <argument
             android:name="phone"
-            app:argType="string"
-            android:defaultValue="err" />
-        <action
-            android:id="@+id/action_enterCodeFragment_to_profileFragment"
-            app:destination="@id/profileFragment"
-            app:popUpToInclusive="true" />
+            android:defaultValue="err"
+            app:argType="string" />
         <action
             android:id="@+id/action_enterCodeFragment_to_logoutFragment"
             app:destination="@id/logoutFragment"
             app:popUpTo="@id/enterCodeFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_enterCodeFragment_to_sign_upFragment"
+            app:destination="@id/signUpFragment"
+            app:popUpTo="@id/enterCodeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
+
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.nick_sib.beauty_radar.ui.profileScreen.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+
     <fragment
         android:id="@+id/logoutFragment"
         android:name="com.nick_sib.beauty_radar.ui.logout.LogoutFragment"
         android:label="fragment_logout"
-        tools:layout="@layout/fragment_logout" />
+        tools:layout="@layout/fragment_logout" >
+        <action
+            android:id="@+id/action_logoutFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:popUpTo="@id/logoutFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.nick_sib.beauty_radar.ui.sign_up.SignUpFragment"
+        android:label="sign_up_fragment"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_signUpFragmentSecond"
+            app:destination="@id/signUpFragmentSecond"
+            app:popUpTo="@id/signUpFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpFragmentSecond"
+        android:name="com.nick_sib.beauty_radar.ui.sign_up_second.SignUpSecondFragment"
+        android:label="sign_up_fragment_second"
+        tools:layout="@layout/fragment_sign_up_second">
+        <action
+            android:id="@+id/action_signUpFragmentSecond_to_sign_up_secondFragment"
+            app:destination="@id/logoutFragment"/>
+    </fragment>
+
 </navigation>

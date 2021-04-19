@@ -56,7 +56,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                         findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToLogoutFragment())
                     }
                     USER_IS_DISABLE_IN_DB -> {
-
+                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment())
                     }
                     else -> {}
                 }
