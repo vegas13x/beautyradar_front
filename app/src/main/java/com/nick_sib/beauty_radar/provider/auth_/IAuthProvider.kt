@@ -1,10 +1,7 @@
 package com.nick_sib.beauty_radar.provider.auth_
 
 import android.app.Activity
-import androidx.lifecycle.LiveData
-import com.google.firebase.auth.FirebaseUser
 import com.nick_sib.beauty_radar.data.state.AppState
-import kotlinx.coroutines.CoroutineScope
 
 /**
  * @author Alex Volkov(Volkos)
@@ -12,13 +9,13 @@ import kotlinx.coroutines.CoroutineScope
  */
 
 interface IAuthProvider {
-    fun getLiveDataAuthProvider(): LiveData<AppState>
-    fun resentVerificationCode(activity: Activity, phone: String)
-    fun verifyPhoneNumber(code: String)
-    fun addEmailAndPasswordInCurrentUser(email: String, password: String)
-    fun signOut()
+    suspend fun signOut():AppState
     suspend fun startPhoneNumberVerification(activity: Activity, phone: String): AppState
-    fun signInEmailPassword(email: String, password: String)
+    suspend fun resentVerificationCode(activity: Activity, phone: String): AppState
+    suspend fun verifyPhoneNumber(code: String): AppState
+
 }
 
 //    fun singUpEmailAndPasswordUser(email: String, password: String)
+//    fun addEmailAndPasswordInCurrentUser(email: String, password: String)
+//    fun signInEmailPassword(email: String, password: String)

@@ -42,6 +42,7 @@ class InitialProfileSetupFragment : Fragment(R.layout.fragment_inital_profile_se
 
     private fun renderData(appState: AppState) {
         when (appState) {
+            is AppState.Empty -> {}
             is AppState.Success<*> -> {
                 toast(appState.data.toString())
             }

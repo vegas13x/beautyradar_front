@@ -1,6 +1,7 @@
 package com.nick_sib.beauty_radar.ui.logout
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import com.nick_sib.beauty_radar.R
@@ -8,6 +9,7 @@ import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentLogoutBinding
 import com.nick_sib.beauty_radar.ui.authScreen.AuthFragment
 import com.nick_sib.beauty_radar.ui.profileScreen.ProfileFragment
+import com.nick_sib.beauty_radar.ui.utils.TAG_DEBAG
 import com.nick_sib.beauty_radar.ui.utils.USER_SIGNOUT
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -31,6 +33,7 @@ class LogoutFragment : Fragment(R.layout.fragment_logout) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentLogoutBinding.bind(view)
         viewModel.subscribeLiveData(viewLifecycleOwner).observe(viewLifecycleOwner, {
+            Log.d(TAG_DEBAG,  "Logout onViewCreated: $it")
             renderData(it)
         })
 
@@ -50,6 +53,7 @@ class LogoutFragment : Fragment(R.layout.fragment_logout) {
 
     private fun renderData(appState: AppState) {
         when (appState) {
+            is AppState.Empty -> {}
             is AppState.Success<*> -> {
                 when (appState.data) {
                     USER_SIGNOUT -> {
