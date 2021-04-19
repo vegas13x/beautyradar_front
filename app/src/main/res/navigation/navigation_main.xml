@@ -32,7 +32,7 @@
         <action
             android:id="@+id/action_enterCodeFragment_to_sign_upFragment"
             app:destination="@id/signUpFragment"
-            app:popUpTo="@id/enterCodeFragment"
+            app:popUpTo="@id/authFragment"
             app:popUpToInclusive="true" />
     </fragment>
 
