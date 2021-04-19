@@ -23,7 +23,7 @@ class ProfileFragment(uid: String) : Fragment(R.layout.fragment_profile) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentProfileBinding.bind(view)
-        viewModel.subscribe(viewLifecycleOwner).observe(viewLifecycleOwner, {
+        viewModel.subscribe().observe(viewLifecycleOwner, {
             renderData(it)
         })
 
@@ -36,13 +36,12 @@ class ProfileFragment(uid: String) : Fragment(R.layout.fragment_profile) {
 
     private fun renderData(appState: AppState?) {
         when (appState){
-            is AppState.Empty -> {}
+            is AppState.Empty -> {
+            }
             is AppState.Success<*> -> {
-
             }
             is AppState.Loading -> {
-                viewModel.getUserProfileFromDb(uid)
-            }
+                viewModel.getUserProfileFromDb(uid) }
             is AppState.Error -> {
             }
             is AppState.SystemMessage -> {

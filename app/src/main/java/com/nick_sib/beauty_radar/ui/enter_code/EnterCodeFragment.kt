@@ -1,17 +1,17 @@
 package com.nick_sib.beauty_radar.ui.enter_code
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
 import androidx.core.view.isGone
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.data.entites.UserMaster
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentEnterCodeBinding
 import com.nick_sib.beauty_radar.extension.findNavController
+import com.nick_sib.beauty_radar.ui.sign_up.SignUpFragment
 import com.nick_sib.beauty_radar.ui.utils.USER_IS_DISABLE_IN_DB
 import com.nick_sib.beauty_radar.ui.utils.USER_IS_ENABLE_IN_DB
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,7 +26,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEnterCodeBinding.bind(view)
 
-        viewModel.subscribe(viewLifecycleOwner).observe(viewLifecycleOwner, { renderData(it) })
+        viewModel.subscribe().observe(viewLifecycleOwner, { renderData(it) })
         binding?.viewModel = viewModel
         binding?.enterCodeFragmentTvInfo?.text =
             getString(R.string.text_help_info_phone, "+7 ${args.phone}")
@@ -56,7 +56,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                         findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToLogoutFragment())
                     }
                     USER_IS_DISABLE_IN_DB -> {
-                        toast("no ok")
+
                     }
                     else -> {}
                 }

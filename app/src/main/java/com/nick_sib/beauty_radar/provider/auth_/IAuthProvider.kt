@@ -15,7 +15,3 @@ interface IAuthProvider {
     suspend fun verifyPhoneNumber(code: String): AppState
 
 }
-
-//    fun singUpEmailAndPasswordUser(email: String, password: String)
-//    fun addEmailAndPasswordInCurrentUser(email: String, password: String)
-//    fun signInEmailPassword(email: String, password: String)

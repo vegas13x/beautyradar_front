@@ -1,19 +1,13 @@
 package com.nick_sib.beauty_radar.ui.profileScreen
 
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import com.nick_sib.beauty_radar.data.state.AppState
-import com.nick_sib.beauty_radar.provider.profile.IRemoteDBProvider
 import com.nick_sib.beauty_radar.ui.base.BaseViewModel
 
-class ProfileViewModel(private val remoteDBProvider: IRemoteDBProvider) : BaseViewModel<AppState>() {
+class ProfileViewModel : BaseViewModel<AppState>() {
 
-    fun subscribe(lifecycleOwner: LifecycleOwner): LiveData<AppState> {
-        remoteDBProvider.getLiveDataProfileProvider().observe(lifecycleOwner, {
-            liveDataViewmodel.value = it
-        })
+    fun subscribe(): LiveData<AppState> {
         return liveDataViewmodel
-
     }
 
     fun getUserProfileFromDb(uid: String) {

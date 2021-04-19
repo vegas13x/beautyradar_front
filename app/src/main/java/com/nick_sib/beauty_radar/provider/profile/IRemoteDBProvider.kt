@@ -1,21 +1,20 @@
 package com.nick_sib.beauty_radar.provider.profile
 
-import androidx.lifecycle.LiveData
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.provider.profile.entities.CalendareProfile
 import com.nick_sib.beauty_radar.provider.profile.entities.UserProfile
 
 interface IRemoteDBProvider {
 
-    fun getLiveDataProfileProvider(): LiveData<AppState>
+    suspend fun checkUserInDdByUID(uid: String): AppState
 
-    fun checkUserInDdByUID(uid: String)
     fun createUserInDb(user: UserProfile)
-    fun getUserFromDbByUID(uid: String)
-    fun getUsersFromDb()
-    fun createCalendarDateInDb(calendar: CalendareProfile)
-    fun getCalendarDateFromDb(uid: String)
-    fun clearLivedata()
+    suspend fun getUserFromDbByUID(uid: String): AppState
+    suspend fun getUsersFromDb(): AppState
 
-    suspend fun getUser(uid: String): AppState
+    fun createCalendarDateInDb(calendar: CalendareProfile)
+    suspend fun getCalendarDateFromDb(uid: String) : AppState
+
+    suspend fun clearLivedata() : AppState
+
 }

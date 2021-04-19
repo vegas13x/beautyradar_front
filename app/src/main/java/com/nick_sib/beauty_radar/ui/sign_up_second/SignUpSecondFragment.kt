@@ -1,4 +1,4 @@
-package com.nick_sib.beauty_radar.ui.sign_up2
+package com.nick_sib.beauty_radar.ui.sign_up_second
 
 import android.os.Bundle
 import android.view.View
@@ -29,7 +29,7 @@ class SignUpSecondFragment(uid: String, name: String, secondName: String) :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSignUpSecondBinding.bind(view)
-        secondViewModel.subscribe(viewLifecycleOwner).observe(viewLifecycleOwner) {
+        secondViewModel.subscribe().observe(viewLifecycleOwner) {
             renderData(it)
         }
 
@@ -46,14 +46,13 @@ class SignUpSecondFragment(uid: String, name: String, secondName: String) :
 
     private fun renderData(appState: AppState?) {
         when (appState) {
+            is AppState.Empty -> {
+            }
             is AppState.Success<*> -> {
-
             }
             is AppState.Loading -> {
-
             }
             is AppState.Error -> {
-
             }
             is AppState.SystemMessage -> {
             }
