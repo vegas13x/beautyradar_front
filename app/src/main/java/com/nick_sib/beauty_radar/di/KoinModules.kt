@@ -2,7 +2,7 @@ package com.nick_sib.beauty_radar.di
 
 
 import com.google.firebase.auth.FirebaseAuth
-import com.nick_sib.beauty_radar.provider.auth_.AuthProviderProvider
+import com.nick_sib.beauty_radar.provider.auth_.AuthProviderImpl
 import com.nick_sib.beauty_radar.provider.auth_.IAuthProvider
 import com.nick_sib.beauty_radar.provider.profile.IRemoteDBProvider
 import com.nick_sib.beauty_radar.provider.profile.RemoteDBProvider
@@ -21,7 +21,7 @@ import org.koin.dsl.module
  */
 val appModule = module {
     single { FirebaseAuth.getInstance() }
-    single<IAuthProvider> { AuthProviderProvider(get()) }
+    single<IAuthProvider> { AuthProviderImpl(get()) }
     single<IRemoteDBProvider> { RemoteDBProvider() }
 }
 val authFragmentModule = module {

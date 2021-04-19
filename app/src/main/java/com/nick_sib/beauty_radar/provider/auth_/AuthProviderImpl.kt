@@ -25,7 +25,7 @@ import kotlin.coroutines.suspendCoroutine
  * - Добавление email/password в уч.запись пользователя на Firebase.
  * - Вход в приложение через созданую уч.запись по средством email/password.
  */
-class AuthProviderProvider(private val authUser: FirebaseAuth) : IAuthProvider{
+class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider{
 
     private lateinit var localVerificationId: String
     private var resendingToken: PhoneAuthProvider.ForceResendingToken? = null
