@@ -18,7 +18,4 @@ interface IRemoteDBProvider {
     fun clearLivedata()
 
     suspend fun getUser(uid: String): AppState
-    fun createUIDUser(user: UserProfile)
-    fun getListUsers(list: ArrayList<UserProfile>)
-    fun getCalendarDate(uid: String)
 }
