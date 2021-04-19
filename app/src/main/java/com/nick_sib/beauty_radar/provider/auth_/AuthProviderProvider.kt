@@ -91,7 +91,6 @@ class AuthProviderProvider(private val authUser: FirebaseAuth) : IAuthProvider{
                 token: PhoneAuthProvider.ForceResendingToken
             ) {
                 super.onCodeSent(verifyID, token)
-//                    Log.d("myLOG", "onCodeSent: ")
                 localVerificationId = verifyID
                 resendingToken = token
                 res.resume(AppState.Success(CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT))
