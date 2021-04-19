@@ -1,9 +1,15 @@
 package com.nick_sib.beauty_radar.ui.authScreen
 
 import android.app.Activity
+import android.content.Intent
+import android.util.Log
+import android.widget.Toast
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
+import com.google.firebase.messaging.FirebaseMessagingService
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.provider.auth_.IAuthProvider
@@ -11,9 +17,8 @@ import com.nick_sib.beauty_radar.ui.base.BaseViewModel
 import com.nick_sib.beauty_radar.ui.utils.INFINITY_LOADING_PROGRESS
 import kotlinx.coroutines.launch
 
-class AuthViewModel(
-    private val authProvider: IAuthProvider
-) : BaseViewModel<AppState>() {
+
+class AuthViewModel(private val authProvider: IAuthProvider) : BaseViewModel<AppState>() {
 
     private val phoneDigitsLength = 10
     val phoneError = ObservableInt(0)
@@ -44,13 +49,18 @@ class AuthViewModel(
                 liveDataViewmodel.value = AppState.Loading(INFINITY_LOADING_PROGRESS)
                 viewModelCoroutineScope.launch {
                     liveDataViewmodel.value =
-                        authProvider.startPhoneNumberVerification(this@run,"+7${value.first}")
+                        authProvider.startPhoneNumberVerification(this@run, "+7${value.first}")
                 }
             }
+
+            var intent = Intent(this@run, FirebaseMessagingService::class.java)
+            startService(intent)
         }
     }
 
-    fun codeDone(){
+
+
+    fun codeDone() {
         liveDataViewmodel.value = AppState.Empty()
     }
 
