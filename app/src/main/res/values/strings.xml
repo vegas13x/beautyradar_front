@@ -39,4 +39,5 @@
     <string name="digit9">9</string>
     <string name="digit0">0</string>
     <string name="resend_sms">SMS код не пришел</string>
+    <string name="msg_token_fmt">Токен</string>
 </resources>

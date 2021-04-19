@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
+import com.google.firebase.messaging.FirebaseMessaging
 import com.nick_sib.beauty_radar.data.entites.UserMaster
 import com.nick_sib.beauty_radar.data.error.ToastError
 import com.nick_sib.beauty_radar.data.state.AppState
