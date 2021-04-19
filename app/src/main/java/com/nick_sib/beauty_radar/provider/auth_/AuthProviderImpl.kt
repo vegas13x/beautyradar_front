@@ -11,6 +11,8 @@ import com.nick_sib.beauty_radar.data.error.ToastError
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.ui.utils.*
 import java.util.concurrent.TimeUnit
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 /**
  * @author Alex Volkov(Volkoks)
@@ -30,15 +32,14 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
     private lateinit var localVerificationId: String
     private var resendingToken: PhoneAuthProvider.ForceResendingToken? = null
 
+
     private val currentUser
         get() = authUser.currentUser
 
     private val callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks =
         object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
-                Log.d(TAG_DEBAG, "AuthProviderImpl onVerificationCompleted: $phoneAuthCredential")
                 signInWithPhoneAuthCredential(phoneAuthCredential)
-
             }
 
             override fun onVerificationFailed(firebaseException: FirebaseException) {
@@ -53,10 +54,9 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
                 super.onCodeSent(verifyID, forceResendingToken)
                 localVerificationId = verifyID
                 resendingToken = forceResendingToken
-//                livedataAuthProvider.value = mapOf(Pair("UIDUID", authUser.uid))?.let {
-//                    AppState.Success(it as Map<*, *>)
-//                }
-                Log.d(TAG_DEBAG, "AuthProviderImpl onCodeSent: CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT")
+                livedataAuthProvider.value = mapOf(Pair("UIDUID", authUser.uid)).let {
+                    AppState.Success(it as Map<*, *>)
+                }
                 livedataAuthProvider.value =
                     AppState.Loading(CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT)
 
@@ -70,27 +70,39 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
         return livedataAuthProvider
     }
 
-    /**
-     * Регистрация пользователя по средством email/password
-     */
-    override fun singUpEmailAndPasswordUser(email: String, password: String) {
-        authUser.createUserWithEmailAndPassword(email, password)
-    }
 
     /**
      *Старт регистрации по телефону: создаем настройки для кода - отправляем на сервер ,
      * ждём ответ и обрабатывает посредством callback для аутентификатора телефона
      */
-    override fun startPhoneNumberVerification(activity: Activity, phone: String) {
-        Log.d(TAG_DEBAG, "AuthProviderImpl START startPhoneNumberVerification: $phone")
-        val options = PhoneAuthOptions.newBuilder(authUser)
-            .setPhoneNumber(phone)       // Phone number to verify
-            .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-            .setActivity(activity)                 // Activity (for callback binding)
-            .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
-            .build()
-        PhoneAuthProvider.verifyPhoneNumber(options)
-        Log.d(TAG_DEBAG, "AuthProviderImpl END startPhoneNumberVerification: $options ")
+
+
+    override suspend fun startPhoneNumberVerification(activity: Activity, phone: String): AppState {
+        return suspendCoroutine {res ->
+            val mcallbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                override fun onVerificationCompleted(credential: PhoneAuthCredential) {
+                    Log.d("myLOG", "onVerificationCompleted: ")
+                    res.resume(AppState.Error(ToastError("")))
+                }
+                override fun onVerificationFailed(exception: FirebaseException) {
+                    res.resume(AppState.Error(ToastError(exception.message.toString())))
+                }
+
+                override fun onCodeSent(verifyID: String, token: PhoneAuthProvider.ForceResendingToken) {
+                    super.onCodeSent(verifyID, token)
+//                    Log.d("myLOG", "onCodeSent: ")
+                    res.resume(AppState.Success(CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT))
+                }
+            }
+            val options = PhoneAuthOptions.newBuilder(authUser)
+                .setPhoneNumber(phone)       // Phone number to verify
+                .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+                .setActivity(activity)                 // Activity (for callback binding)
+                .setCallbacks(mcallbacks)          // OnVerificationStateChangedCallbacks
+                .build()
+            PhoneAuthProvider.verifyPhoneNumber(options)
+//            Log.d("myLOG", "startPhoneNumberVerification: ")
+        }
     }
 
     /**
@@ -161,10 +173,6 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
             }
     }
 
-    override fun clearLivedata() {
-        livedataAuthProvider.value = null
-    }
-
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         authUser.signInWithCredential(credential)
             .addOnFailureListener {
@@ -172,13 +180,13 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider {
             }
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    Log.d(TAG_DEBAG, "AuthProviderImpl ${authUser.uid}")
                     livedataAuthProvider.value = AppState.Success<UserMaster>(UserMaster("testName","testEmail",uid = authUser.uid))
                 }
             }
-
-
     }
+
+
+}
 
 
 }

@@ -13,12 +13,10 @@ import kotlinx.coroutines.CoroutineScope
 
 interface IAuthProvider {
     fun getLiveDataAuthProvider(): LiveData<AppState>
-    fun singUpEmailAndPasswordUser(email: String, password: String)
-    fun startPhoneNumberVerification(activity: Activity, phone: String)
     fun resentVerificationCode(activity: Activity, phone: String)
     fun verifyPhoneNumber(code: String)
     fun addEmailAndPasswordInCurrentUser(email: String, password: String)
     fun signOut()
+    suspend fun startPhoneNumberVerification(activity: Activity, phone: String): AppState
     fun signInEmailPassword(email: String, password: String)
-    fun clearLivedata()
 }

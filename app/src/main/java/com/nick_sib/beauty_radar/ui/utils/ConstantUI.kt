@@ -5,6 +5,8 @@ package com.nick_sib.beauty_radar.ui.utils
  *
  * Класс констант UI слоя
  */
+const val INFINITY_LOADING_PROGRESS = -1
+
 const val CODE_NULL = ""
 const val ERROR_ENTRY_TEXT = "Not all fields are filled"
 const val USER_SIGNOUT = "com.nick_sib.beauty_radar.ui.utils_user_singout"

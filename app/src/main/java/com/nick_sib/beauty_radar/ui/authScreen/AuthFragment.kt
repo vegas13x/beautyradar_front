@@ -5,16 +5,16 @@ import android.util.Log
 
 import android.view.View
 import android.widget.Toast
+import androidx.core.view.isGone
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.data.state.AppState
-import com.nick_sib.beauty_radar.databinding.FragmentAuthV2Binding
+import com.nick_sib.beauty_radar.databinding.FragmentAuthenticationBinding
 import com.nick_sib.beauty_radar.extension.digitToPhone
+import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.extension.phoneToDigit
-import com.nick_sib.beauty_radar.ui.enter_code.EnterCodeFragment
 import com.nick_sib.beauty_radar.ui.utils.CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT
-import com.nick_sib.beauty_radar.ui.utils.TAG_DEBAG
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -22,23 +22,22 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  *
  *Фрагмент регистрации через телефон
  */
-class AuthFragment : Fragment(R.layout.fragment_auth_v2) {
+class AuthFragment : Fragment(R.layout.fragment_authentication) {
 
     companion object {
         fun newInstance() = AuthFragment()
     }
 
     private val viewModel: AuthViewModel by viewModel()
-    private var binding: FragmentAuthV2Binding? = null
+    private var binding: FragmentAuthenticationBinding? = null
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentAuthV2Binding.bind(view)
+        binding = FragmentAuthenticationBinding.bind(view)
         binding?.viewModel = viewModel
 
         viewModel.subscribe(viewLifecycleOwner).observe(viewLifecycleOwner, {
-            Log.d(TAG_DEBAG, "AuthFragment onViewCreated: $it ")
             renderData(it)
         })
 
@@ -57,24 +56,14 @@ class AuthFragment : Fragment(R.layout.fragment_auth_v2) {
     private fun renderData(appState: AppState) {
         when (appState) {
             is AppState.Success<*> -> {
-
-
+                binding?.fragmentAuthLoadingDialog?.root?.isGone = true
+                (appState.data as Int).let {
+                    if (it == CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT)
+                        findNavController().navigate(AuthFragmentDirections.actionAuthFragmentToEnterCodeFragment())
+                }
             }
             is AppState.Loading -> {
-                when (appState.progress) {
-                    CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT -> {
-                        Log.d(TAG_DEBAG, "AuthFragment renderData: создаем фрагмент ввода кода  CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT=112452")
-                        requireActivity().supportFragmentManager.beginTransaction()
-                            .replace(
-                                R.id.main_activity_container,
-                                EnterCodeFragment.newInstance()
-                            )
-                            .addToBackStack("EnterCode").commit()
-
-                    }
-
-                }
-
+                binding?.fragmentAuthLoadingDialog?.root?.isGone = false
             }
             is AppState.Error -> {
                 when (appState.error) {
@@ -95,9 +84,6 @@ class AuthFragment : Fragment(R.layout.fragment_auth_v2) {
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
-        Log.d(TAG_DEBAG, "AuthFragment onDestroyView: убили биндинг")
     }
-
-
 
 }
