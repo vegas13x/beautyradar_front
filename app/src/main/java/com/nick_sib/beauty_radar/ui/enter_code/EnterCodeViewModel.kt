@@ -56,12 +56,14 @@ class EnterCodeViewModel(
         // TODO("Not yet implemented")
     }
 
+
+
     private fun resendSMS(value: Activity?) {
         value?.run {
             liveDataViewmodel.value = AppState.Loading(INFINITY_LOADING_PROGRESS)
             viewModelCoroutineScope.launch {
                 liveDataViewmodel.value =
-                    authProvider.resentVerificationCode(this@run, "+79999999999")
+                    authProvider.resentVerificationCode(this@run)
                 _editedCode = null
             }
         }

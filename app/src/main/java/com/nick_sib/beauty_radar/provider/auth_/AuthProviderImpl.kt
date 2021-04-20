@@ -37,6 +37,7 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider{
      */
 
     override suspend fun startPhoneNumberVerification(activity: Activity, phone: String): AppState {
+        resendingPhone = phone
         return suspendCoroutine { res ->
             val mcallbacks  = callback(res)
             val options = PhoneAuthOptions.newBuilder(authUser)
@@ -53,11 +54,11 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider{
      * Повторный запрос кода с использование полученого токена от первичного запроса
      */
     @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-    override suspend fun resentVerificationCode(activity: Activity, phone: String): AppState {
+    override suspend fun resentVerificationCode(activity: Activity): AppState {
         return suspendCoroutine {
             val mCallback = callback(it)
             val options = PhoneAuthOptions.newBuilder(authUser)
-                .setPhoneNumber(phone)       // Phone number to verify
+                .setPhoneNumber(resendingPhone)       // Phone number to verify
                 .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
                 .setActivity(activity) // Activity (for callback binding)
                 .setForceResendingToken(resendingToken)
@@ -142,6 +143,5 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider{
                     }
                 }
         }
-
     }
 }
