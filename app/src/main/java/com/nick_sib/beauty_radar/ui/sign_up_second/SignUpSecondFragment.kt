@@ -42,7 +42,7 @@ class SignUpSecondFragment :
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(
                     R.id.main_activity_container,
-                    LogoutFragment.newInstance()
+                    LogoutFragment()
                 )
                 .addToBackStack("Logout").commit()
         }

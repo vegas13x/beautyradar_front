@@ -20,12 +20,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  */
 class LogoutFragment : Fragment(R.layout.fragment_logout) {
 
-    var uid: String = "uvx86v1jCrPaRi0P3EUvrs4JX1P2"
-
-    companion object {
-        fun newInstance() = LogoutFragment()
-    }
-
     private val viewModel: LogoutViewModel by viewModel()
     private lateinit var binding: FragmentLogoutBinding
 
@@ -45,7 +39,7 @@ class LogoutFragment : Fragment(R.layout.fragment_logout) {
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(
                     R.id.main_activity_container,
-                    ProfileFragment.newInstance(uid)
+                    ProfileFragment()
                 )
                 .addToBackStack("Profile").commit()
         }

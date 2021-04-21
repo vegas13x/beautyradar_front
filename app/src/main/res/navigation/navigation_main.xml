@@ -47,7 +47,7 @@
             app:argType="err" />
         <action
             android:id="@+id/action_signUpFragment_to_signUpFragmentSecond"
-            app:destination="@id/signUpFragmentSecond"/>
+            app:destination="@id/signUpFragmentSecond" />
     </fragment>
 
     <fragment
@@ -83,7 +83,6 @@
             app:popUpTo="@id/logoutFragment"
             app:popUpToInclusive="true" />
     </fragment>
-
 
     <fragment
         android:id="@+id/profileFragment"
