@@ -7,6 +7,7 @@ import android.widget.Toast
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentInitalProfileSetupBinding
+import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.ui.logout.LogoutFragment
 import com.nick_sib.beauty_radar.ui.utils.EMAIL_ENTRY_OPEN_LOGOUT
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -16,10 +17,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  * Фрагмент добавления почты и пароля
  */
 class InitialProfileSetupFragment : Fragment(R.layout.fragment_inital_profile_setup) {
-
-    companion object {
-        fun newInstance() = InitialProfileSetupFragment()
-    }
 
     private lateinit var binding: FragmentInitalProfileSetupBinding
     private val viewModel: InitialProfileSetupViewModel by viewModel()
@@ -49,8 +46,8 @@ class InitialProfileSetupFragment : Fragment(R.layout.fragment_inital_profile_se
             is AppState.Loading -> {
                 when (appState.progress) {
                     EMAIL_ENTRY_OPEN_LOGOUT -> {
-                        requireActivity().supportFragmentManager.beginTransaction()
-                            .replace(R.id.main_activity_container, LogoutFragment.newInstance()).commit()
+//                        requireActivity().supportFragmentManager.beginTransaction()
+//                            .replace(R.id.main_activity_container, LogoutFragment()).commit()
                     }
                 }
             }

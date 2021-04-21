@@ -3,25 +3,24 @@ package com.nick_sib.beauty_radar.ui.sign_up_second
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.nick_sib.beauty_radar.R
+import com.nick_sib.beauty_radar.SingletonUID
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentSignUpSecondBinding
+import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.ui.logout.LogoutFragment
+import com.nick_sib.beauty_radar.ui.sign_up.SignUpFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class SignUpSecondFragment(uid: String, name: String, secondName: String) :
+class SignUpSecondFragment :
     Fragment(R.layout.fragment_sign_up_second) {
 
-    private val uid = uid
-    private val name = name
-    private val secondName = secondName
-    private val job = ""
+    private val args: SignUpSecondFragmentArgs by navArgs()
 
-    companion object {
-        fun newInstance(uid: String, name: String, secondName: String) =
-            SignUpSecondFragment(uid, name, secondName)
-    }
+    private var client : Boolean = false
+    private var master : Boolean = false
 
     private val secondViewModel: SignUpSecondViewModel by viewModel()
     private lateinit var binding: FragmentSignUpSecondBinding
@@ -33,14 +32,20 @@ class SignUpSecondFragment(uid: String, name: String, secondName: String) :
             renderData(it)
         }
 
+        binding.btnClient.setOnClickListener{
+            client = true
+        }
+
+        binding.btnMaster.setOnClickListener {
+            master = true
+        }
+
         binding.btnContinue.setOnClickListener {
-            secondViewModel.createNewUser(uid, name, secondName, job)
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(
-                    R.id.main_activity_container,
-                    LogoutFragment.newInstance()
-                )
-                .addToBackStack("Logout").commit()
+            secondViewModel.createNewUser(args.uid, args.name, args.secondName, client, master)
+            binding.btnContinue.setOnClickListener {
+                findNavController().navigate(
+                    SignUpSecondFragmentDirections.actionSignUpFragmentSecondToSignUpLogoutFragment())
+            }
         }
     }
 

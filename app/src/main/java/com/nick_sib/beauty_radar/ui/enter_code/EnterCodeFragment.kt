@@ -7,6 +7,7 @@ import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.nick_sib.beauty_radar.R
+import com.nick_sib.beauty_radar.SingletonUID
 import com.nick_sib.beauty_radar.data.entites.UserMaster
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentEnterCodeBinding
@@ -22,6 +23,8 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
     private var binding: FragmentEnterCodeBinding? = null
     private val args: EnterCodeFragmentArgs by navArgs()
 
+    private lateinit var uid: String
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEnterCodeBinding.bind(view)
@@ -31,6 +34,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
         binding?.enterCodeFragmentTvInfo?.text =
             getString(R.string.text_help_info_phone, "+7 ${args.phone}")
         initListener()
+        uid = SingletonUID.getInstance()!!.getUID().toString()
     }
 
     private fun initListener(){
@@ -56,7 +60,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                         findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToLogoutFragment())
                     }
                     USER_IS_DISABLE_IN_DB -> {
-                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment())
+                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment(uid))
                     }
                     else -> {}
                 }

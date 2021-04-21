@@ -5,8 +5,10 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import com.nick_sib.beauty_radar.R
+import com.nick_sib.beauty_radar.SingletonUID
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentLogoutBinding
+import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.ui.authScreen.AuthFragment
 import com.nick_sib.beauty_radar.ui.profileScreen.ProfileFragment
 import com.nick_sib.beauty_radar.ui.utils.TAG_DEBAG
@@ -20,11 +22,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  */
 class LogoutFragment : Fragment(R.layout.fragment_logout) {
 
-    var uid: String = "uvx86v1jCrPaRi0P3EUvrs4JX1P2"
-
-    companion object {
-        fun newInstance() = LogoutFragment()
-    }
+    private lateinit var uid: String
 
     private val viewModel: LogoutViewModel by viewModel()
     private lateinit var binding: FragmentLogoutBinding
@@ -32,6 +30,9 @@ class LogoutFragment : Fragment(R.layout.fragment_logout) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentLogoutBinding.bind(view)
+
+        uid = SingletonUID.getInstance()!!.getUID().toString()
+
         viewModel.subscribeLiveData(viewLifecycleOwner).observe(viewLifecycleOwner, {
             Log.d(TAG_DEBAG,  "Logout onViewCreated: $it")
             renderData(it)
@@ -42,12 +43,7 @@ class LogoutFragment : Fragment(R.layout.fragment_logout) {
         }
 
         binding.profileFragmentBtn.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(
-                    R.id.main_activity_container,
-                    ProfileFragment.newInstance(uid)
-                )
-                .addToBackStack("Profile").commit()
+            findNavController().navigate(LogoutFragmentDirections.actionLogoutFragmentToProfileFragment(uid))
         }
     }
 
@@ -57,9 +53,9 @@ class LogoutFragment : Fragment(R.layout.fragment_logout) {
             is AppState.Success<*> -> {
                 when (appState.data) {
                     USER_SIGNOUT -> {
-                        requireActivity().supportFragmentManager.beginTransaction()
-                            .replace(R.id.main_activity_container, AuthFragment.newInstance())
-                            .addToBackStack("USER_SIGNOUT").commit()
+//                        requireActivity().supportFragmentManager.beginTransaction()
+//                            .replace(R.id.main_activity_container, AuthFragment.newInstance())
+//                            .addToBackStack("USER_SIGNOUT").commit()
                     }
                 }
             }
