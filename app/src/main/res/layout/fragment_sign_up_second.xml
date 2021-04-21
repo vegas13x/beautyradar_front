@@ -21,11 +21,11 @@
         app:layout_constraintTop_toBottomOf="@+id/constrLayout01" >
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/btn_client"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
-            android:text="Клиент"
+            android:text="@string/client"
             android:textColor="@color/Black"
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -49,11 +49,11 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5">
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/btn_master"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
-            android:text="Мастер"
+            android:text="@string/master"
             android:textColor="@color/Black"
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"

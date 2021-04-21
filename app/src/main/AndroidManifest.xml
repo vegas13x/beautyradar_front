@@ -55,7 +55,7 @@
 
 
         <service
-            android:name=".push_notification.MyFirebaseMessagingService">
+            android:name=".push_notification.PushMessagingProvider">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>

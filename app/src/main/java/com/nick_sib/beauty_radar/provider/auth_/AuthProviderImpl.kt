@@ -35,7 +35,6 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider{
      *Старт регистрации по телефону: создаем настройки для кода - отправляем на сервер ,
      * ждём ответ и обрабатывает посредством callback для аутентификатора телефона
      */
-
     override suspend fun startPhoneNumberVerification(activity: Activity, phone: String): AppState {
         return suspendCoroutine { res ->
             val mcallbacks  = callback(res)

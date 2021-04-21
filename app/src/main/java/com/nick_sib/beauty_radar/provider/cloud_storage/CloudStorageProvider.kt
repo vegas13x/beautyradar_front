@@ -11,7 +11,7 @@ class CloudStorageProvider : ICloudStorageProvider {
     }
 
     override fun downloadAvatar(uid: String) {
-        TODO("Not yet implemented")
+        storageReference.storage.getReference("USER_AVATAR").child(uid)
     }
 
 

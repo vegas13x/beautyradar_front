@@ -7,14 +7,14 @@ import androidx.lifecycle.LiveData
 import com.nick_sib.beauty_radar.data.error.ToastError
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.provider.auth_.IAuthProvider
-import com.nick_sib.beauty_radar.provider.profile.IRemoteDBProvider
+import com.nick_sib.beauty_radar.provider.profile.IRemoteDBProviderProfile
 import com.nick_sib.beauty_radar.ui.base.BaseViewModel
 import com.nick_sib.beauty_radar.ui.utils.INFINITY_LOADING_PROGRESS
 import kotlinx.coroutines.launch
 
 class EnterCodeViewModel(
     private val authProvider: IAuthProvider,
-    private val dbProvider: IRemoteDBProvider
+    private val dbProviderProfile: IRemoteDBProviderProfile
 ) : BaseViewModel<AppState>() {
 
     private val TAG_CODE_NULL = "Code is equal to null. Please enter the code"
@@ -36,7 +36,7 @@ class EnterCodeViewModel(
     fun checkUserInDB(uid: String?) {
         uid?.run {
             viewModelCoroutineScope.launch {
-                liveDataViewmodel.value = dbProvider.checkUserInDdByUID(this@run)
+                liveDataViewmodel.value = dbProviderProfile.checkUserInDdByUID(this@run)
             }
         }
     }
