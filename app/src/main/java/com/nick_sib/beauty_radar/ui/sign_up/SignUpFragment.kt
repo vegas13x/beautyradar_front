@@ -34,6 +34,10 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                 (uid,binding.nameText.text.toString(),binding.secondName.text.toString()))
         }
 
+        binding.backArrow.setOnClickListener {
+            findNavController().navigate(SignUpFragmentDirections.actionSignUpFragmentToAuthFragment())
+        }
+
     }
 
     private fun renderData(appState: AppState?) {

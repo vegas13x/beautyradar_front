@@ -23,6 +23,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             renderData(it)
         })
 
+//        binding.profileJob.setOnClickListener {
+//            requireActivity().supportFragmentManager.beginTransaction()
+//                .replace(R.id.main_activity_container, SignUpFragment.newInstance(uid)).commitNow()
+//        }
+
     }
 
     private fun renderData(appState: AppState?) {

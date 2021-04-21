@@ -48,6 +48,9 @@
         <action
             android:id="@+id/action_signUpFragment_to_signUpFragmentSecond"
             app:destination="@id/signUpFragmentSecond" />
+        <action
+            android:id="@+id/action_signUpFragment_to_authFragment"
+            app:destination="@id/authFragment" />
     </fragment>
 
     <fragment
@@ -70,6 +73,9 @@
         <action
             android:id="@+id/action_signUpFragmentSecond_to_sign_up_logoutFragment"
             app:destination="@id/logoutFragment" />
+        <action
+            android:id="@+id/action_signUpFragmentSecond_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
     </fragment>
 
     <fragment
