@@ -22,10 +22,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  */
 class AuthFragment : Fragment(R.layout.fragment_authentication) {
 
-    companion object {
-        fun newInstance() = AuthFragment()
-    }
-
     private val viewModel: AuthViewModel by viewModel()
     private var binding: FragmentAuthenticationBinding? = null
 
@@ -36,7 +32,6 @@ class AuthFragment : Fragment(R.layout.fragment_authentication) {
         binding?.viewModel = viewModel
 
         viewModel.subscribe().observe(viewLifecycleOwner, {
-//            Log.d(TAG_DEBAG, "onViewCreated: $it")
             renderData(it)
         })
 
