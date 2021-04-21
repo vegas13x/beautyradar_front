@@ -51,9 +51,9 @@ class LogoutFragment : Fragment(R.layout.fragment_logout) {
             is AppState.Success<*> -> {
                 when (appState.data) {
                     USER_SIGNOUT -> {
-                        requireActivity().supportFragmentManager.beginTransaction()
-                            .replace(R.id.main_activity_container, AuthFragment.newInstance())
-                            .addToBackStack("USER_SIGNOUT").commit()
+//                        requireActivity().supportFragmentManager.beginTransaction()
+//                            .replace(R.id.main_activity_container, AuthFragment.newInstance())
+//                            .addToBackStack("USER_SIGNOUT").commit()
                     }
                 }
             }
