@@ -68,16 +68,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile_birthday"/>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/profile_job"
+        <TextView
+            android:id="@+id/profile_master"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="profile_job"
+            android:text="profile_master"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/attendance" />
+            app:layout_constraintTop_toBottomOf="@+id/attendance"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/profile_client"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="profile_client"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_master" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/profile_visit_to_the_client"
@@ -88,7 +99,7 @@
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profile_job" />
+            app:layout_constraintTop_toBottomOf="@+id/profile_client" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/profile_experience"

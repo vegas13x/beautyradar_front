@@ -44,7 +44,7 @@ class AuthViewModel(
 
 
     fun codeDone() {
-        liveDataViewmodel.value = AppState.Empty()
+        liveDataViewmodel.value = AppState.Empty
     }
 
     override fun errorReturned(t: Throwable) {

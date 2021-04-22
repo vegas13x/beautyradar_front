@@ -10,6 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentProfileBinding
+import com.nick_sib.beauty_radar.provider.profile.entities.UserProfile
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -60,9 +61,14 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             is AppState.Empty -> {
             }
             is AppState.Success<*> -> {
+                val data: UserProfile? = appState.data as? UserProfile
+                data?.run { viewModel.getUserProfileFromDb(args.uid) }
+                when(appState.data as? UserProfile){
+
+                }
             }
             is AppState.Loading -> {
-                viewModel.getUserProfileFromDb(args.uid) }
+            }
             is AppState.Error -> {
             }
             is AppState.SystemMessage -> {

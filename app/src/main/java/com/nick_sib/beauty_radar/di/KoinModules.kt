@@ -42,7 +42,7 @@ val logoutModule = module {
     viewModel { LogoutViewModel(get()) }
 }
 val profileModule = module {
-    viewModel { ProfileViewModel() }
+    viewModel { ProfileViewModel(get()) }
 }
 val initialProfileModule = module {
     viewModel { InitialProfileSetupViewModel(get()) }

@@ -1,5 +1,6 @@
 package com.nick_sib.beauty_radar.provider.profile
 
+import android.util.Log
 import com.google.firebase.database.*
 import com.nick_sib.beauty_radar.data.error.ToastError
 import com.nick_sib.beauty_radar.data.state.AppState
@@ -53,6 +54,7 @@ class RemoteDBProviderProfile : IRemoteDBProviderProfile {
                             null, hashMap["master"].toBoolean(), hashMap["client"].toBoolean(), null, null, null,
                             null, null, null, null
                         )
+                        Log.d("TAG", "onDataChange:$userProfile ")
                         res.resume(AppState.Success(userProfile))
                     }
                 }
