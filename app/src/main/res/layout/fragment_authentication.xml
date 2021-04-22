@@ -45,35 +45,36 @@
             android:id="@+id/fragment_auth_tv_warning"
             style="@style/TextWarning"
             android:layout_marginHorizontal="@dimen/def_horizontal_offset"
-            android:layout_marginBottom="@dimen/offset62"
-            android:text="@string/s_warning"
             android:linksClickable="true"
+            android:text="@string/s_warning"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.514"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/fragment_auth_btn_enter" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/fragment_auth_til_phone"
             style="@style/TextInputLayoutBG"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/def_horizontal_offset"
+            android:layout_marginTop="45dp"
+            android:animateLayoutChanges="true"
+            android:background="@drawable/text_rounded_background"
+            android:paddingBottom="@dimen/def_offset"
             app:boxCornerRadiusBottomEnd="@dimen/corner_radius"
             app:boxCornerRadiusBottomStart="@dimen/corner_radius"
             app:boxCornerRadiusTopEnd="@dimen/corner_radius"
             app:boxCornerRadiusTopStart="@dimen/corner_radius"
-            android:animateLayoutChanges="true"
-            android:paddingBottom="@dimen/def_offset"
-            android:background="@drawable/text_rounded_background"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/offset75"
-            android:layout_marginHorizontal="@dimen/def_horizontal_offset"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_auth_tv_welcome"
             app:prefixText="+7 "
             app:prefixTextColor="@color/Black"
             app:startIconDrawable="@drawable/ic_russian_flag"
-            app:startIconTintMode="multiply"
             app:startIconTint="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_auth_tv_welcome"
+            app:startIconTintMode="multiply"
             bind:setError="@{viewModel.phoneError}">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -82,11 +83,11 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
                 android:hint="@string/phone_number"
+                android:imeOptions="actionDone"
                 android:inputType="number"
                 android:maxLength="15"
-                android:imeOptions="actionDone"
                 android:textColor="@color/Black"
-                bind:onSingIn="@{viewModel.signIn}"/>
+                bind:onSingIn="@{viewModel.signIn}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button

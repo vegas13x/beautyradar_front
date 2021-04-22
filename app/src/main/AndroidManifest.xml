@@ -10,6 +10,7 @@
         android:name="com.github.hathibelagal.pn.permission.C2D_MESSAGE" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
 
 
@@ -55,7 +56,7 @@
 
 
         <service
-            android:name=".push_notification.MyFirebaseMessagingService">
+            android:name=".push_notification.PushMessagingProvider">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>

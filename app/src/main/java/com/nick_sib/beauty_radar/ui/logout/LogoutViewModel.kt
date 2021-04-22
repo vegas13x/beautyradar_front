@@ -1,6 +1,5 @@
 package com.nick_sib.beauty_radar.ui.logout
 
-
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import com.nick_sib.beauty_radar.data.state.AppState
@@ -10,10 +9,7 @@ import kotlinx.coroutines.launch
 
 class LogoutViewModel(private val authProvider: IAuthProvider) : BaseViewModel<AppState>() {
 
-    fun subscribeLiveData(lifecycleOwner: LifecycleOwner): LiveData<AppState> {
-//        authProviderFrAuth.getLiveDataAuthProvider().observe(lifecycleOwner, {
-//            liveDataViewmodel.value = it
-//        })
+    fun subscribeLiveData(): LiveData<AppState> {
         return liveDataViewmodel
     }
 

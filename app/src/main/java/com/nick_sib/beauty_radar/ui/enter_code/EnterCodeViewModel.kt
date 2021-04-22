@@ -3,19 +3,18 @@ package com.nick_sib.beauty_radar.ui.enter_code
 import android.app.Activity
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import com.nick_sib.beauty_radar.data.error.ToastError
 import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.provider.auth_.IAuthProvider
-import com.nick_sib.beauty_radar.provider.profile.IRemoteDBProvider
+import com.nick_sib.beauty_radar.provider.profile.IRemoteDBProviderProfile
 import com.nick_sib.beauty_radar.ui.base.BaseViewModel
 import com.nick_sib.beauty_radar.ui.utils.INFINITY_LOADING_PROGRESS
 import kotlinx.coroutines.launch
 
 class EnterCodeViewModel(
     private val authProvider: IAuthProvider,
-    private val dbProvider: IRemoteDBProvider
+    private val dbProviderProfile: IRemoteDBProviderProfile
 ) : BaseViewModel<AppState>() {
 
     private val TAG_CODE_NULL = "Code is equal to null. Please enter the code"
@@ -30,23 +29,15 @@ class EnterCodeViewModel(
             field = value
         }
 
-    fun subscribe(lifecycleOwner: LifecycleOwner): LiveData<AppState> {
-        subscribeLiveDataRemoteDB(lifecycleOwner)
+    fun subscribe(): LiveData<AppState> {
         return liveDataViewmodel
-    }
-
-    private fun subscribeLiveDataRemoteDB(lifecycleOwner: LifecycleOwner) {
-        dbProvider.getLiveDataProfileProvider().observe(lifecycleOwner, { appState ->
-            liveDataViewmodel.value = appState
-        })
     }
 
     fun checkUserInDB(uid: String?) {
         uid?.run {
             viewModelCoroutineScope.launch {
-                liveDataViewmodel.value = dbProvider.getUser(this@run)
+                liveDataViewmodel.value = dbProviderProfile.checkUserInDdByUID(this@run)
             }
-
         }
     }
 
@@ -65,18 +56,20 @@ class EnterCodeViewModel(
         // TODO("Not yet implemented")
     }
 
-    private fun resendSMS(value: Activity?){
-        value?.run{
+
+
+    private fun resendSMS(value: Activity?) {
+        value?.run {
             liveDataViewmodel.value = AppState.Loading(INFINITY_LOADING_PROGRESS)
             viewModelCoroutineScope.launch {
                 liveDataViewmodel.value =
-                    authProvider.resentVerificationCode(this@run,"+79999999999")
+                    authProvider.resentVerificationCode(this@run)
                 _editedCode = null
             }
         }
     }
 
-    fun addDigit(value: Int){
+    fun addDigit(value: Int) {
         _editedCode = (_editedCode ?: 0) * 10 + value
         _editedCode?.run {
             if (this > 99999) {
@@ -85,13 +78,13 @@ class EnterCodeViewModel(
         }
     }
 
-    fun deleteDigit(){
+    fun deleteDigit() {
         _editedCode = _editedCode?.let {
             if (it < 10) null else it / 10
         }
     }
 
-    fun codeError(){
+    fun codeError() {
         _editedCode = null
         errorDots.set(true)
     }

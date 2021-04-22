@@ -46,4 +46,6 @@
     <string name="menu_main">Главная</string>
     <string name="setting">Настройки</string>
 
+    <string name="master">Мастер</string>
+    <string name="client">Клиент</string>
 </resources>

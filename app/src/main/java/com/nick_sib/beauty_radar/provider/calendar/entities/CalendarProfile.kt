@@ -1,6 +1,6 @@
-package com.nick_sib.beauty_radar.provider.profile.entities
+package com.nick_sib.beauty_radar.provider.calendar.entities
 
-class CalendareProfile {
+class CalendarProfile {
 
     var uid: String? = null
     var name: String? = null
@@ -14,10 +14,5 @@ class CalendareProfile {
         this.dateStart = dateStart
         this.dateEnd = dateEnd
     }
-
-    override fun toString(): String {
-        return "CalendareProfile(uid=$uid, name=$name, dateStart=$dateStart, dateEnd=$dateEnd)"
-    }
-
 
 }

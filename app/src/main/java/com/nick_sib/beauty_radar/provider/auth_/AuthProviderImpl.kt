@@ -3,6 +3,7 @@ package com.nick_sib.beauty_radar.provider.auth_
 import android.app.Activity
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
+import com.nick_sib.beauty_radar.SingletonUID
 import com.nick_sib.beauty_radar.data.entites.UserMaster
 import com.nick_sib.beauty_radar.data.error.ToastError
 import com.nick_sib.beauty_radar.data.state.AppState
@@ -35,8 +36,8 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider{
      *Старт регистрации по телефону: создаем настройки для кода - отправляем на сервер ,
      * ждём ответ и обрабатывает посредством callback для аутентификатора телефона
      */
-
     override suspend fun startPhoneNumberVerification(activity: Activity, phone: String): AppState {
+        resendingPhone = phone
         return suspendCoroutine { res ->
             val mcallbacks  = callback(res)
             val options = PhoneAuthOptions.newBuilder(authUser)
@@ -53,11 +54,11 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider{
      * Повторный запрос кода с использование полученого токена от первичного запроса
      */
     @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-    override suspend fun resentVerificationCode(activity: Activity, phone: String): AppState {
+    override suspend fun resentVerificationCode(activity: Activity): AppState {
         return suspendCoroutine {
             val mCallback = callback(it)
             val options = PhoneAuthOptions.newBuilder(authUser)
-                .setPhoneNumber(phone)       // Phone number to verify
+                .setPhoneNumber(resendingPhone)       // Phone number to verify
                 .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
                 .setActivity(activity) // Activity (for callback binding)
                 .setForceResendingToken(resendingToken)
@@ -130,6 +131,7 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider{
                 }
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
+                        SingletonUID.getInstance()?.setUID(authUser.uid)
                         res.resume(
                             AppState.Success<UserMaster>(
                                 UserMaster(
@@ -142,6 +144,5 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider{
                     }
                 }
         }
-
     }
 }
