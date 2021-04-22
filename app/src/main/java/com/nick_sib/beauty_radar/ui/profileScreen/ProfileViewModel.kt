@@ -16,7 +16,7 @@ class ProfileViewModel(private val remoteDBProviderProfile: IRemoteDBProviderPro
     fun getUserProfileFromDb(uid: String) {
         uid.run {
             viewModelCoroutineScope.launch {
-                remoteDBProviderProfile.getUserFromDbByUID(uid)
+                liveDataViewmodel.value = remoteDBProviderProfile.getUserFromDbByUID(uid)
             }
         }
     }

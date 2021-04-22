@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
@@ -26,6 +27,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentProfileBinding.bind(view)
+        binding?.viewModel = viewModel
+
         viewModel.subscribe().observe(viewLifecycleOwner, {
             renderData(it)
         })
@@ -63,9 +66,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             is AppState.Success<*> -> {
                 val data: UserProfile? = appState.data as? UserProfile
                 data?.run { viewModel.getUserProfileFromDb(args.uid) }
-                when(appState.data as? UserProfile){
-
-                }
+                Log.d("TAG", "renderData:$data ")
             }
             is AppState.Loading -> {
             }
