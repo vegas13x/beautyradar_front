@@ -14,6 +14,9 @@ import com.nick_sib.beauty_radar.databinding.FragmentEnterCodeBinding
 import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.ui.utils.USER_IS_DISABLE_IN_DB
 import com.nick_sib.beauty_radar.ui.utils.USER_IS_ENABLE_IN_DB
+import com.nick_sib.beauty_radar.ui.logout.LogoutFragment
+import com.nick_sib.beauty_radar.ui.masterclient.MasterClientFragment
+import com.nick_sib.beauty_radar.ui.utils.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
@@ -54,6 +57,14 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                 when (appState.data as? String) {
                     USER_IS_ENABLE_IN_DB -> {
                         findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToLogoutFragment())
+                        //сделать переход на мастер-клиенты
+                        requireActivity().supportFragmentManager.beginTransaction()
+                            .replace(
+                                R.id.main_activity_container,
+                                MasterClientFragment.newInstance()
+                            )
+                            .addToBackStack("Logout").commit()
+
                     }
                     USER_IS_DISABLE_IN_DB -> {
                         toast("no ok")
