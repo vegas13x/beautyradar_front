@@ -37,6 +37,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             openGalleryForImage()
         }
 
+        viewModel.getUserProfileFromDb(args.uid)
+
     }
 
     private fun openGalleryForImage() {
@@ -64,9 +66,17 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             is AppState.Empty -> {
             }
             is AppState.Success<*> -> {
-                val data: UserProfile? = appState.data as? UserProfile
-                data?.run { viewModel.getUserProfileFromDb(args.uid) }
-                Log.d("TAG", "renderData:$data ")
+                val userProfile: UserProfile?
+                when (appState.data) {
+                    is UserProfile -> {
+                        userProfile = appState.data
+                        Log.d("TAG123", "renderData:$userProfile ")
+                        binding.profileName.text = userProfile.name.toString()
+                        binding.profileMaster.text = userProfile.master.toString()
+                        binding.profileClient.text = userProfile.client.toString()
+                    }
+                }
+
             }
             is AppState.Loading -> {
             }

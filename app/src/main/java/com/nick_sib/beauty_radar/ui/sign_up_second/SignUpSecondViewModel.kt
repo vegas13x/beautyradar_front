@@ -19,8 +19,8 @@ class SignUpSecondViewModel(private val remoteDBProviderProfile: IRemoteDBProvid
         uid: String,
         name: String,
         secondName: String,
-        master: Boolean,
-        client: Boolean
+        master: String?,
+        client: String?
     ) {
         var user = UserProfile(
             uid, name, secondName, null, null, master, client,

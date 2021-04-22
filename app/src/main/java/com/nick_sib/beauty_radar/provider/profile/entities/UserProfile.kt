@@ -5,8 +5,8 @@ class UserProfile{
     var uid: String? = null
     var name: String? = null
     var secondName: String? = null
-    var master: Boolean = false
-    var client: Boolean = false
+    var master: String? = null
+    var client: String? = null
     var phone: String? = null
     var birthday: String? = null
     var visitToTheClient: String? = null
@@ -20,7 +20,7 @@ class UserProfile{
 
     constructor()
     constructor(uid: String?, name: String?,secondName: String?, phone: String?, birthday: String?,
-                master: Boolean, client: Boolean, visitToTheClient: String?, experience: String?,
+                master: String?, client: String?, visitToTheClient: String?, experience: String?,
                 specialization: String?, services: String?, visitReminder: String?,
                 schedule: String?, breaks: String?) {
         this.uid = uid

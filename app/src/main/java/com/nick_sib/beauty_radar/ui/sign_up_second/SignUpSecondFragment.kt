@@ -16,8 +16,8 @@ class SignUpSecondFragment :
 
     private val args: SignUpSecondFragmentArgs by navArgs()
 
-    private var client: Boolean = false
-    private var master: Boolean = false
+    private var client: String? = null
+    private var master: String? = null
 
     private val secondViewModel: SignUpSecondViewModel by viewModel()
     private lateinit var binding: FragmentSignUpSecondBinding
@@ -31,21 +31,21 @@ class SignUpSecondFragment :
         }
 
         binding.btnMasterFull.setOnClickListener {
-            if (!master) {
-                master = true
+            if (master != "true") {
+                master = "true"
                 it.isSelected = true
             } else {
-                master = false
+                master = "false"
                 it.isSelected = false
             }
         }
 
         binding.btnClientFull.setOnClickListener {
-            if (!client) {
-                client = true
+            if (client != "true") {
+                client = "true"
                 it.isSelected = true
             } else {
-                client = false
+                client = "false"
                 it.isSelected = false
             }
         }

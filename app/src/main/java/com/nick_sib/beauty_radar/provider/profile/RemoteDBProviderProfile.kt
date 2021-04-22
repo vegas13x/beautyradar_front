@@ -51,7 +51,7 @@ class RemoteDBProviderProfile : IRemoteDBProviderProfile {
                         var hashMap = snapshot.value as HashMap<String, String>
                         var userProfile = UserProfile(
                             hashMap["uid"], hashMap["name"], hashMap["secondName"], null,
-                            null, hashMap["master"].toBoolean(), hashMap["client"].toBoolean(), null, null, null,
+                            null, hashMap["master"], hashMap["client"], null, null, null,
                             null, null, null, null
                         )
                         Log.d("TAG", "onDataChange:$userProfile ")
