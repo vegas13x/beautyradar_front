@@ -29,7 +29,7 @@
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_enterCodeFragment_to_logoutFragment"
-            app:destination="@id/logoutFragment"
+            app:destination="@id/masterClientsFragment"
             app:popUpTo="@id/enterCodeFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -43,4 +43,9 @@
         android:name="com.nick_sib.beauty_radar.ui.logout.LogoutFragment"
         android:label="fragment_logout"
         tools:layout="@layout/fragment_logout" />
+    <fragment
+        android:id="@+id/masterClientsFragment"
+        android:name="com.nick_sib.beauty_radar.ui.masterclient.MasterClientFragment"
+        android:label="fragment_master_client"
+        tools:layout="@layout/fragment_master_client"/>
 </navigation>
