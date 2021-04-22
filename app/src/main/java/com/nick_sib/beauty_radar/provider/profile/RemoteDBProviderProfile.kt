@@ -1,6 +1,5 @@
 package com.nick_sib.beauty_radar.provider.profile
 
-
 import com.google.firebase.database.*
 import com.nick_sib.beauty_radar.data.error.ToastError
 import com.nick_sib.beauty_radar.data.state.AppState

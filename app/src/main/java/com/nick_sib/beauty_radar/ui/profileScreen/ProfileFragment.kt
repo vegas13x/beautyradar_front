@@ -35,7 +35,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     }
 
-
     private fun openGalleryForImage() {
         val getIntent = Intent(Intent.ACTION_GET_CONTENT)
         getIntent.type = "image/*"
@@ -55,9 +54,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             binding.imageView3.setImageURI(data?.data) // handle chosen image
         }
     }
-
-
-
 
     private fun renderData(appState: AppState?) {
         when (appState){

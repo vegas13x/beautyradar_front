@@ -1,4 +1,4 @@
-package com.nick_sib.beauty_radar.model.entity.room
+package com.nick_sib.beauty_radar.room
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

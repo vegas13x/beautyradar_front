@@ -1,7 +1,6 @@
-package com.example.myapplication
+package com.nick_sib.beauty_radar.room
 
 import androidx.room.*
-import com.nick_sib.beauty_radar.model.entity.room.RoomMaster
 
 @Dao
 interface HistoryDao {

@@ -88,6 +88,9 @@
             app:destination="@id/profileFragment"
             app:popUpTo="@id/logoutFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_logoutFragment_to_authFragment"
+            app:destination="@id/authFragment"/>
     </fragment>
 
     <fragment

@@ -9,10 +9,7 @@ import kotlinx.coroutines.launch
 
 class LogoutViewModel(private val authProvider: IAuthProvider) : BaseViewModel<AppState>() {
 
-    fun subscribeLiveData(lifecycleOwner: LifecycleOwner): LiveData<AppState> {
-//        authProviderFrAuth.getLiveDataAuthProvider().observe(lifecycleOwner, {
-//            liveDataViewmodel.value = it
-//        })
+    fun subscribeLiveData(): LiveData<AppState> {
         return liveDataViewmodel
     }
 
