@@ -21,4 +21,5 @@
 
 
     <color name="hint_color">#000000</color>
+    <color name="onFocusBtn">#BEF8BCBD</color>
 </resources>

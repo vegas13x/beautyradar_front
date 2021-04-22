@@ -25,7 +25,6 @@ class AuthViewModel(
     }
 
 
-
     private fun checkPhone(value: String): Boolean =
         (value.length == phoneDigitsLength).also {
             phoneError.set(if (it) 0 else R.string.s_phone_error)
@@ -44,9 +43,8 @@ class AuthViewModel(
     }
 
 
-
     fun codeDone() {
-        liveDataViewmodel.value = AppState.Empty()
+        liveDataViewmodel.value = AppState.Empty
     }
 
     override fun errorReturned(t: Throwable) {

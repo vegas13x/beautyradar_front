@@ -1,9 +1,6 @@
 package com.nick_sib.beauty_radar.room
 
 import android.util.Log
-import com.example.myapplication.HistoryDao
-import com.nick_sib.beauty_radar.model.entity.room.RoomMaster
-
 
 class RoomDataBaseImplementation(private val historyDao: HistoryDao): IRoomSource{
 

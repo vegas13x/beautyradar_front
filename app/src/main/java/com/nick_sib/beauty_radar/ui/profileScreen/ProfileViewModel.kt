@@ -1,26 +1,27 @@
 package com.nick_sib.beauty_radar.ui.profileScreen
 
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import com.nick_sib.beauty_radar.data.state.AppState
-import com.nick_sib.beauty_radar.provider.profile.IRemoteDBProvider
+import com.nick_sib.beauty_radar.provider.profile.IRemoteDBProviderProfile
 import com.nick_sib.beauty_radar.ui.base.BaseViewModel
+import kotlinx.coroutines.launch
 
-class ProfileViewModel(private val remoteDBProvider: IRemoteDBProvider) : BaseViewModel<AppState>() {
+class ProfileViewModel(private val remoteDBProviderProfile: IRemoteDBProviderProfile) :
+    BaseViewModel<AppState>() {
 
-    fun subscribe(lifecycleOwner: LifecycleOwner): LiveData<AppState> {
-        remoteDBProvider.getLiveDataProfileProvider().observe(lifecycleOwner, {
-            liveDataViewmodel.value = it
-        })
+    fun subscribe(): LiveData<AppState> {
         return liveDataViewmodel
-
     }
 
     fun getUserProfileFromDb(uid: String) {
-        getUserProfileFromDb(uid)
+        uid.run {
+            viewModelCoroutineScope.launch {
+                liveDataViewmodel.value = remoteDBProviderProfile.getUserFromDbByUID(uid)
+            }
+        }
     }
 
     override fun errorReturned(t: Throwable) {
-     //   TODO("Not yet implemented")
+        //   TODO("Not yet implemented")
     }
 }
