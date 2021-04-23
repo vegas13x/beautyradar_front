@@ -1,6 +1,7 @@
 package com.nick_sib.beauty_radar.ui.masterclient
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import com.nick_sib.beauty_radar.R
@@ -9,6 +10,7 @@ import com.nick_sib.beauty_radar.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentMasterClientBinding
 import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.provider.calendar.entities.CalendarProfile
+import com.nick_sib.beauty_radar.ui.utils.TAG_DEBAG
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
@@ -22,10 +24,10 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
         setHasOptionsMenu(true)
         binding = FragmentMasterClientBinding.bind(view)
 
+        viewModel.getListClients()
         viewModel.subscribe().observe(viewLifecycleOwner, {
             renderData(it)
         })
-        viewModel.getListClients()
         binding?.fragmentMcBtnNavBar?.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_btm_nav_btn_setting -> {
@@ -54,22 +56,17 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
             is AppState.Empty -> {
             }
             is AppState.Success<*> -> {
-                when(appState.data){
-                    is List<*> ->{
-                       val data = appState.data
-                        if (adapter == null){
-                            adapter = ClientAdapter(data as List<CalendarProfile>)
+                when (appState.data) {
+                    is List<*> -> {
+                        Log.d(TAG_DEBAG, "renderData: list = ${appState.data}")
+                        Log.d(TAG_DEBAG, "renderData: adapter = $adapter")
+                        if (adapter == null) {
+                            adapter = ClientAdapter(appState.data as List<CalendarProfile>)
                             binding?.clientRecycler?.adapter = adapter
-                        }else{
-                            data?.let {
-                                adapter?.list = it as List<CalendarProfile>
-                                adapter?.notifyDataSetChanged()
-                            }
-
                         }
                     }
-
                 }
+
 
             }
 
@@ -85,9 +82,9 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.getListClients()
+    override fun onPause() {
+        super.onPause()
+        adapter = null
     }
 
 }
