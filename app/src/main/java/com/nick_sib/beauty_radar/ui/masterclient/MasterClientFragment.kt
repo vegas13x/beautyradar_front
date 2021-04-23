@@ -58,8 +58,6 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
             is AppState.Success<*> -> {
                 when (appState.data) {
                     is List<*> -> {
-                        Log.d(TAG_DEBAG, "renderData: list = ${appState.data}")
-                        Log.d(TAG_DEBAG, "renderData: adapter = $adapter")
                         if (adapter == null) {
                             adapter = ClientAdapter(appState.data as List<CalendarProfile>)
                             binding?.clientRecycler?.adapter = adapter
