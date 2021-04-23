@@ -20,6 +20,7 @@ import com.nick_sib.beauty_radar.ui.profileScreen.ProfileViewModel
 import com.nick_sib.beauty_radar.ui.sign_up.SignUpViewModel
 import com.nick_sib.beauty_radar.ui.sign_up_second.SignUpSecondViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 /**
@@ -52,7 +53,7 @@ val enterCodeFragmentModule = module {
     viewModel { EnterCodeViewModel(get(), get()) }
 }
 val masterClientFragmentModule = module {
-    viewModel { MasterClientViewModel() }
+    viewModel { MasterClientViewModel(get()) }
 }
 
 val signUpModule = module {

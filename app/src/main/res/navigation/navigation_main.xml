@@ -25,12 +25,7 @@
             android:defaultValue="err"
             app:argType="string" />
         <action
-            android:id="@+id/action_enterCodeFragment_to_logoutFragment"
-            app:destination="@id/logoutFragment"
-            app:popUpTo="@id/enterCodeFragment"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_enterCodeFragment_to_logoutFragment"
+            android:id="@+id/action_enterCodeFragment_to_masterClientFragment"
             app:destination="@id/masterClientsFragment"
             app:popUpTo="@id/enterCodeFragment"
             app:popUpToInclusive="true" />
@@ -50,9 +45,6 @@
             android:name="uid"
             android:defaultValue="err"
             app:argType="string" />
-        <action
-            android:id="@+id/action_profileFragment_to_logoutFragment"
-            app:destination="@id/logoutFragment" />
     </fragment>
 
     <fragment
@@ -89,22 +81,17 @@
             android:defaultValue="err"
             app:argType="string" />
         <action
-            android:id="@+id/action_signUpFragmentSecond_to_sign_up_logoutFragment"
-            app:destination="@id/logoutFragment" />
-        <action
             android:id="@+id/action_signUpFragmentSecond_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_signUpFragmentSecond_to_masterClientsFragment"
+            app:destination="@id/masterClientsFragment" />
     </fragment>
     <fragment
         android:id="@+id/logoutFragment"
         android:name="com.nick_sib.beauty_radar.ui.logout.LogoutFragment"
         android:label="fragment_logout"
         tools:layout="@layout/fragment_logout">
-        <action
-            android:id="@+id/action_logoutFragment_to_profileFragment"
-            app:destination="@id/profileFragment"
-            app:popUpTo="@id/logoutFragment"
-            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_logoutFragment_to_authFragment"
             app:destination="@id/authFragment"/>
@@ -113,5 +100,12 @@
         android:id="@+id/masterClientsFragment"
         android:name="com.nick_sib.beauty_radar.ui.masterclient.MasterClientFragment"
         android:label="fragment_master_client"
-        tools:layout="@layout/fragment_master_client"/>
+        tools:layout="@layout/fragment_master_client">
+        <action
+            android:id="@+id/action_masterClientsFragment_to_logoutFragment"
+            app:destination="@id/logoutFragment" />
+        <action
+            android:id="@+id/action_masterClientsFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 </navigation>

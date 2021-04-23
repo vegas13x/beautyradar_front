@@ -37,9 +37,6 @@ class LogoutFragment : Fragment(R.layout.fragment_logout) {
             viewModel.exitInProfile()
         }
 
-        binding.profileFragmentBtn.setOnClickListener {
-            findNavController().navigate(LogoutFragmentDirections.actionLogoutFragmentToProfileFragment(uid))
-        }
     }
 
     private fun renderData(appState: AppState) {

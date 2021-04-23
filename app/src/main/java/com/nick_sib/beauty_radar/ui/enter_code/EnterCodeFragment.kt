@@ -60,7 +60,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                 data?.run { viewModel.checkUserInDB(uid) }
                 when (appState.data as? String) {
                     USER_IS_ENABLE_IN_DB -> {
-                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToLogoutFragment())
+                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())
 
                     }
                     USER_IS_DISABLE_IN_DB -> {
