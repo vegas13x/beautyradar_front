@@ -1,3 +1,3 @@
 package com.nick_sib.beauty_radar.di
 
-const val TAG_MASTER_CLIENT_INTERACTOR = "com.nick_sib.beauty_radar.di-TAG_MASTER_CLIENT_INTERACTOR"
+const val DI_LOCAL_REPOSITORY = "com.nick_sib.beauty_radar.di-DI_LOCAL_REPOSITORY"

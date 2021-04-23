@@ -7,13 +7,13 @@
         <import type="android.view.View"/>
         <variable
             name="viewModel"
-            type="com.nick_sib.beauty_radar.ui.profileScreen.ProfileViewModel"/>
+            type="com.nick_sib.beauty_radar.view.profileScreen.ProfileViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.profileScreen.ProfileFragment">
+        tools:context=".view.profileScreen.ProfileFragment">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout

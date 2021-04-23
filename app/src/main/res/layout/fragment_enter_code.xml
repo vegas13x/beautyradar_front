@@ -8,14 +8,14 @@
         <import type="android.view.View"/>
         <variable
             name="viewModel"
-            type="com.nick_sib.beauty_radar.ui.enter_code.EnterCodeViewModel"/>
+            type="com.nick_sib.beauty_radar.view.enter_code.EnterCodeViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/light_pink"
-        tools:context=".ui.enter_code.EnterCodeFragment">
+        tools:context=".view.enter_code.EnterCodeFragment">
 
         <include
             android:id="@+id/fragment_auth_loading_dialog"
