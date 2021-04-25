@@ -1,4 +1,4 @@
-package com.nick_sib.beauty_radar.view.activity
+package com.nick_sib.beauty_radar.view.activitys
 
 import android.app.Activity
 import android.content.Intent

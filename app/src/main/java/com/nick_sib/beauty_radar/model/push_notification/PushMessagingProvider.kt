@@ -8,7 +8,7 @@ import android.content.Intent
 import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import com.nick_sib.beauty_radar.view.activity.MainActivity
+import com.nick_sib.beauty_radar.view.activitys.MainActivity
 
 
 class PushMessagingProvider: FirebaseMessagingService() {

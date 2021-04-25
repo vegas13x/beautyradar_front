@@ -32,7 +32,7 @@
             android:resource="@color/purple_200" />
 
         <activity
-            android:name=".view.activity.SplashActivity"
+            android:name=".view.activitys.SplashActivity"
             android:alwaysRetainTaskState="true"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
@@ -42,7 +42,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.activity.MainActivity">
+        <activity android:name=".view.activitys.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

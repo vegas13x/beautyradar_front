@@ -1,4 +1,4 @@
-package com.nick_sib.beauty_radar.view.adapter
+package com.nick_sib.beauty_radar.view.adapter.view_holders
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

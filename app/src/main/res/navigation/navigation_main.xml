@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/authFragment"
-        android:name="com.nick_sib.beauty_radar.view.authScreen.AuthFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.AuthFragment"
         android:label="AuthFragment"
         tools:layout="@layout/fragment_authentication">
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/enterCodeFragment"
-        android:name="com.nick_sib.beauty_radar.view.enter_code.EnterCodeFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.EnterCodeFragment"
         android:label="fragment_enter_code"
         tools:layout="@layout/fragment_enter_code">
         <argument
@@ -38,7 +38,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.nick_sib.beauty_radar.view.profileScreen.ProfileFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile">
         <argument
@@ -49,7 +49,7 @@
 
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.nick_sib.beauty_radar.view.sign_up.SignUpFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.SignUpFragment"
         android:label="sign_up_fragment"
         tools:layout="@layout/fragment_sign_up">
         <argument
@@ -65,7 +65,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragmentSecond"
-        android:name="com.nick_sib.beauty_radar.view.sign_up_second.SignUpSecondFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.SignUpSecondFragment"
         android:label="sign_up_fragment_second"
         tools:layout="@layout/fragment_sign_up_second">
         <argument
@@ -89,7 +89,7 @@
     </fragment>
     <fragment
         android:id="@+id/logoutFragment"
-        android:name="com.nick_sib.beauty_radar.view.logout.LogoutFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.LogoutFragment"
         android:label="fragment_logout"
         tools:layout="@layout/fragment_logout">
         <action
@@ -98,7 +98,7 @@
     </fragment>
     <fragment
         android:id="@+id/masterClientsFragment"
-        android:name="com.nick_sib.beauty_radar.view.masterclient.MasterClientFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.MasterClientFragment"
         android:label="fragment_master_client"
         tools:layout="@layout/fragment_master_client">
         <action

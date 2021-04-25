@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/violet"
-    tools:context=".view.masterclient.MasterClientFragment">
+    tools:context=".view.fragments.MasterClientFragment">
 
     <ImageView
         android:id="@+id/fragment_mc_bg_bottom_bg"

@@ -1,4 +1,4 @@
-package com.nick_sib.beauty_radar.view.masterclient
+package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +10,8 @@ import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentMasterClientBinding
 import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.model.provider.calendar.entities.CalendarProfile
+import com.nick_sib.beauty_radar.view.adapter.ClientAdapter
+import com.nick_sib.beauty_radar.view_model.MasterClientViewModel
 import com.nick_sib.beauty_radar.view.utils.TAG_DEBAG
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

@@ -1,4 +1,4 @@
-package com.nick_sib.beauty_radar.view.initial_profile_setup
+package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.widget.Toast
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentInitalProfileSetupBinding
+import com.nick_sib.beauty_radar.view_model.InitialProfileSetupViewModel
 import com.nick_sib.beauty_radar.view.utils.EMAIL_ENTRY_OPEN_LOGOUT
 import org.koin.androidx.viewmodel.ext.android.viewModel
 /**

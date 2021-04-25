@@ -1,4 +1,4 @@
-package com.nick_sib.beauty_radar.view.sign_up_second
+package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -8,6 +8,7 @@ import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentSignUpSecondBinding
 import com.nick_sib.beauty_radar.extension.findNavController
+import com.nick_sib.beauty_radar.view_model.SignUpSecondViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

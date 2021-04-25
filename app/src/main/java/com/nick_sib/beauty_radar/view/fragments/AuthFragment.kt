@@ -1,4 +1,4 @@
-package com.nick_sib.beauty_radar.view.authScreen
+package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -12,6 +12,7 @@ import com.nick_sib.beauty_radar.databinding.FragmentAuthenticationBinding
 import com.nick_sib.beauty_radar.extension.digitToPhone
 import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.extension.phoneToDigit
+import com.nick_sib.beauty_radar.view_model.AuthViewModel
 import com.nick_sib.beauty_radar.view.utils.CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

@@ -1,4 +1,4 @@
-package com.nick_sib.beauty_radar.view.enter_code
+package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -12,6 +12,7 @@ import com.nick_sib.beauty_radar.model.data.entites.UserMaster
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentEnterCodeBinding
 import com.nick_sib.beauty_radar.extension.findNavController
+import com.nick_sib.beauty_radar.view_model.EnterCodeViewModel
 import com.nick_sib.beauty_radar.view.utils.USER_IS_DISABLE_IN_DB
 import com.nick_sib.beauty_radar.view.utils.USER_IS_ENABLE_IN_DB
 import org.koin.androidx.viewmodel.ext.android.viewModel

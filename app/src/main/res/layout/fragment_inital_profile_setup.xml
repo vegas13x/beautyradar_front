@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.initial_profile_setup.InitialProfileSetupFragment">
+    tools:context=".view.fragments.InitialProfileSetupFragment">
 
     <TextView
         android:id="@+id/initial_profile_setup_tv_main_text"

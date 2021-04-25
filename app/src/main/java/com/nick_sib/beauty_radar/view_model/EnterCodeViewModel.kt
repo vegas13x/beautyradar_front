@@ -1,4 +1,4 @@
-package com.nick_sib.beauty_radar.view.enter_code
+package com.nick_sib.beauty_radar.view_model
 
 import android.app.Activity
 import androidx.databinding.ObservableBoolean

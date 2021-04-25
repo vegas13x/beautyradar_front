@@ -1,4 +1,4 @@
-package com.nick_sib.beauty_radar.view.profileScreen
+package com.nick_sib.beauty_radar.view_model
 
 import androidx.lifecycle.LiveData
 import com.nick_sib.beauty_radar.model.data.state.AppState

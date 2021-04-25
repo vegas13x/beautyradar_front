@@ -1,4 +1,4 @@
-package com.nick_sib.beauty_radar.view.sign_up
+package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -8,6 +8,7 @@ import com.nick_sib.beauty_radar.SingletonUID
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentSignUpBinding
 import com.nick_sib.beauty_radar.extension.findNavController
+import com.nick_sib.beauty_radar.view_model.SignUpViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignUpFragment : Fragment(R.layout.fragment_sign_up) {

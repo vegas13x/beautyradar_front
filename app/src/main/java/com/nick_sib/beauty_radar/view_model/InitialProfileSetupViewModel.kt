@@ -1,4 +1,4 @@
-package com.nick_sib.beauty_radar.view.initial_profile_setup
+package com.nick_sib.beauty_radar.view_model
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData

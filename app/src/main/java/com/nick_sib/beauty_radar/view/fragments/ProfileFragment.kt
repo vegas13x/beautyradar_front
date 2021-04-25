@@ -1,4 +1,4 @@
-package com.nick_sib.beauty_radar.view.profileScreen
+package com.nick_sib.beauty_radar.view.fragments
 
 import android.app.Activity
 import android.content.Intent
@@ -12,6 +12,7 @@ import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentProfileBinding
 import com.nick_sib.beauty_radar.model.provider.profile.entities.UserProfile
+import com.nick_sib.beauty_radar.view_model.ProfileViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
