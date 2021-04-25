@@ -1,9 +1,9 @@
 package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.Toast
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.SingletonUID
 import com.nick_sib.beauty_radar.model.data.state.AppState
@@ -11,8 +11,8 @@ import com.nick_sib.beauty_radar.databinding.FragmentMasterClientBinding
 import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.model.provider.calendar.entities.CalendarProfile
 import com.nick_sib.beauty_radar.view.adapter.ClientAdapter
+import com.nick_sib.beauty_radar.view.utils.TRANSITION_TO_CALENDAR
 import com.nick_sib.beauty_radar.view_model.MasterClientViewModel
-import com.nick_sib.beauty_radar.view.utils.TAG_DEBAG
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
@@ -25,10 +25,10 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
         binding = FragmentMasterClientBinding.bind(view)
+        binding?.viewModel = viewModel
 
         viewModel.getListClients()
         viewModel.subscribe().observe(viewLifecycleOwner, {
-            Log.d(TAG_DEBAG, "onViewCreated: $it ")
             renderData(it)
         })
         binding?.fragmentMcBtnNavBar?.setOnNavigationItemSelectedListener {
@@ -59,11 +59,15 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
             is AppState.Empty -> {
             }
             is AppState.Success<*> -> {
-                Log.d(TAG_DEBAG, "renderData: ${appState.data} ")
                 when (appState.data) {
+                    TRANSITION_TO_CALENDAR->{
+                        Toast.makeText(
+                            requireContext(),
+                            "Переход на экран календаря",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                     is List<*> -> {
-                        Log.d(TAG_DEBAG, "renderData data: ${appState.data}")
-                        Log.d(TAG_DEBAG, "renderData adapter: ${adapter}")
                         if (adapter == null) {
                             adapter = ClientAdapter(appState.data as List<CalendarProfile>)
                             binding?.clientRecycler?.adapter = adapter
