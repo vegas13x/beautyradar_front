@@ -32,7 +32,7 @@
             android:resource="@color/purple_200" />
 
         <activity
-            android:name=".ui.activity.SplashActivity"
+            android:name=".view.activitys.SplashActivity"
             android:alwaysRetainTaskState="true"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
@@ -42,7 +42,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.MainActivity">
+        <activity android:name=".view.activitys.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -56,7 +56,7 @@
 
 
         <service
-            android:name=".push_notification.PushMessagingProvider">
+            android:name="com.nick_sib.beauty_radar.model.push_notification.PushMessagingProvider">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>

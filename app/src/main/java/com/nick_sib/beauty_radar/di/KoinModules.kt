@@ -1,30 +1,34 @@
 package com.nick_sib.beauty_radar.di
 
 import androidx.room.Room
-import com.nick_sib.beauty_radar.room.HistoryDataBase
+import com.nick_sib.beauty_radar.model.room.HistoryDataBase
 import com.google.firebase.auth.FirebaseAuth
-import com.nick_sib.beauty_radar.provider.auth_.AuthProviderImpl
-import com.nick_sib.beauty_radar.provider.auth_.IAuthProvider
-import com.nick_sib.beauty_radar.provider.calendar.IRemoteDBProviderCalendar
-import com.nick_sib.beauty_radar.provider.calendar.RemoteDBProviderCalendar
-import com.nick_sib.beauty_radar.provider.profile.IRemoteDBProviderProfile
-import com.nick_sib.beauty_radar.provider.profile.RemoteDBProviderProfile
-import com.nick_sib.beauty_radar.room.IRoomSource
-import com.nick_sib.beauty_radar.room.RoomDataBaseImplementation
-import com.nick_sib.beauty_radar.ui.initial_profile_setup.InitialProfileSetupViewModel
-import com.nick_sib.beauty_radar.ui.authScreen.AuthViewModel
-import com.nick_sib.beauty_radar.ui.enter_code.EnterCodeViewModel
-import com.nick_sib.beauty_radar.ui.logout.LogoutViewModel
-import com.nick_sib.beauty_radar.ui.masterclient.MasterClientViewModel
-import com.nick_sib.beauty_radar.ui.profileScreen.ProfileViewModel
-import com.nick_sib.beauty_radar.ui.sign_up.SignUpViewModel
-import com.nick_sib.beauty_radar.ui.sign_up_second.SignUpSecondViewModel
+import com.nick_sib.beauty_radar.model.data.state.AppState
+import com.nick_sib.beauty_radar.model.provider.auth_.AuthProviderImpl
+import com.nick_sib.beauty_radar.model.provider.auth_.IAuthProvider
+import com.nick_sib.beauty_radar.model.provider.calendar.IRemoteDBProviderCalendar
+import com.nick_sib.beauty_radar.model.provider.calendar.RemoteDBProviderCalendar
+import com.nick_sib.beauty_radar.model.provider.profile.IRemoteDBProviderProfile
+import com.nick_sib.beauty_radar.model.provider.profile.RemoteDBProviderProfile
+import com.nick_sib.beauty_radar.model.repository.core.RemoteRepository
+import com.nick_sib.beauty_radar.model.repository.impl.RemoteRepositoryImpl
+import com.nick_sib.beauty_radar.model.room.IRoomSource
+import com.nick_sib.beauty_radar.model.room.RoomDataBaseImplementation
+import com.nick_sib.beauty_radar.view_model.InitialProfileSetupViewModel
+import com.nick_sib.beauty_radar.view_model.AuthViewModel
+import com.nick_sib.beauty_radar.view_model.EnterCodeViewModel
+import com.nick_sib.beauty_radar.view_model.LogoutViewModel
+import com.nick_sib.beauty_radar.view_model.MasterClientViewModel
+import com.nick_sib.beauty_radar.view_model.ProfileViewModel
+import com.nick_sib.beauty_radar.view_model.SignUpViewModel
+import com.nick_sib.beauty_radar.view_model.SignUpSecondViewModel
+import com.nick_sib.beauty_radar.view_model.interactor.core.MasterClientInteractor
+import com.nick_sib.beauty_radar.view_model.interactor.impl.MasterClientInteractorImpl
 import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 /**
- * @author Alex Volkov(Volkos)
+ * @author Alex Volkov(Volkoks)
  *
  * Created 08.04.2021
  */
@@ -36,6 +40,9 @@ val appModule = module {
     single { Room.databaseBuilder(get(), HistoryDataBase::class.java, "HistoryDB").build() }
     single { get<HistoryDataBase>().historyDao() }
     single<IRoomSource> { RoomDataBaseImplementation(get()) }
+    factory<RemoteRepository<AppState>> { RemoteRepositoryImpl(get()) }
+    factory<MasterClientInteractor<AppState>> { MasterClientInteractorImpl(get()) }
+
 }
 val authFragmentModule = module {
     viewModel { AuthViewModel(get()) }
