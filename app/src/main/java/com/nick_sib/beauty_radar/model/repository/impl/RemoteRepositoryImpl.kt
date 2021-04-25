@@ -8,6 +8,6 @@ class RemoteRepositoryImpl(private val remoteDB: IRemoteDBProviderCalendar) :
     RemoteRepository<AppState> {
 
     override fun getData(): AppState {
-        return AppState.Success(remoteDB.test_getListData())
+        return AppState.Success(remoteDB.getListCalendarProfile())
     }
 }

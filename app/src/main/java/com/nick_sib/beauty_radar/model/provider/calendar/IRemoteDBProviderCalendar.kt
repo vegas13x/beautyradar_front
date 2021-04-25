@@ -5,7 +5,7 @@ import com.nick_sib.beauty_radar.model.provider.calendar.entities.CalendarProfil
 
 interface IRemoteDBProviderCalendar {
 
-    fun test_getListData():List<CalendarProfile>
+    fun getListCalendarProfile():List<CalendarProfile>
 
     fun createCalendarDateInDb(calendar: CalendarProfile)
     suspend fun getCalendarDateFromDb(uid: String) : AppState

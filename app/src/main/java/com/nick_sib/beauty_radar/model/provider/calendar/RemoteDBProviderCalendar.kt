@@ -12,8 +12,10 @@ class RemoteDBProviderCalendar : IRemoteDBProviderCalendar {
 
     private lateinit var databaseСalendar: DatabaseReference
 
-//ТЕСТОВЫЙ МЕТОД ДЛЯ ИМИТАЦИИ ЗАГРУЗКИ СПИСКА КЛИЕНТОВ!
-    override fun test_getListData(): List<CalendarProfile> {
+
+    override fun getListCalendarProfile(): List<CalendarProfile> {
+        //Test function!!!!
+        //Mock imitation loading users for MasterClientScreen
         return listOf(
             CalendarProfile("fkglknglksnglknf", "Саша", "1", "массаж"),
             CalendarProfile("fkglknglksngsadsadlknf", "Vasya", "4", "шугаринг"),
