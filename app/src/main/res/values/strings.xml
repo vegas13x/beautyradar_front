@@ -41,6 +41,11 @@
     <string name="resend_sms">SMS код не пришел</string>
     <string name="name_and_secondname">Введите Ваше имя и \nфамилию</string>
     <string name="msg_token_fmt">Токен</string>
+     <string name="text_test_recorded_client">Комбинированный маникюр, <br/>1000 руб., 60 мин</string>
+    <string name="menu_profile">Профиль</string>
+    <string name="menu_main">Главная</string>
+    <string name="setting">Настройки</string>
+
     <string name="master">Мастер</string>
     <string name="client">Клиент</string>
 </resources>

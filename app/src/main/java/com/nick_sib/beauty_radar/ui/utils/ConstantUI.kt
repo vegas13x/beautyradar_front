@@ -18,4 +18,4 @@ const val CALENDAR_DATE_IS_DISABLE_IN_DB = "674389543"
 const val EMAIL_ENTRY_OPEN_LOGOUT = 535673
 const val EMAIL_AND_PASSWORD_SUCCESS_GO_TO_LOGOUT = "com.nick_sib.beauty_radar.ui.utils_email_success_to_logout"
 
-const val TAG_DEBAG = "DEBAG_CHECK_USER"
+const val TAG_DEBAG = "DEBAG"
