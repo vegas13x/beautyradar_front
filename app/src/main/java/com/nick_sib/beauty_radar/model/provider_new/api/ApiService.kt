@@ -10,8 +10,8 @@ interface ApiService {
     @GET("user")
     fun createUser(@Body user: User)
 
-    @PUT()
-    fun updateUser(@Query("user") user: User)
+    @PUT("user")
+    fun updateUser(@Body user: User)
 
     @GET()
     fun getUserByUPN(@Query("user") upn: String): NewUserProfile
