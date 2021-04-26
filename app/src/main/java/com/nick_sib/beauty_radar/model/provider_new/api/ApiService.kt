@@ -1,4 +1,27 @@
 package com.nick_sib.beauty_radar.model.provider_new.api
 
-class ApiService {
+import com.nick_sib.beauty_radar.model.provider_new.repository.user.User
+import com.nick_sib.beauty_radar.model.provider_new.repository.user.NewUserProfile
+import retrofit2.http.GET
+import retrofit2.http.Query
+import retrofit2.http.DELETE
+import retrofit2.http.PUT
+
+interface ApiService {
+
+    @GET("")
+    fun createUser(@Query("user") user: List<User>)
+
+    @PUT("")
+    fun updateUser(@Query("user") user: List<User>)
+
+    @GET("")
+    fun getUserByUID(@Query("user") upn: String): NewUserProfile
+
+    @GET("user")
+    fun getUserList(): NewUserProfile
+
+    @DELETE
+    fun deleteUser(@Query("user") upn: String)
+
 }
