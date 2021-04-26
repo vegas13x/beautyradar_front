@@ -10,6 +10,8 @@ import com.nick_sib.beauty_radar.model.provider.calendar.IRemoteDBProviderCalend
 import com.nick_sib.beauty_radar.model.provider.calendar.RemoteDBProviderCalendar
 import com.nick_sib.beauty_radar.model.provider.profile.IRemoteDBProviderProfile
 import com.nick_sib.beauty_radar.model.provider.profile.RemoteDBProviderProfile
+import com.nick_sib.beauty_radar.model.provider_new.provider_db.ProviderRemoteDbImpl
+import com.nick_sib.beauty_radar.model.provider_new.retrofit.RetrofitImplementation
 import com.nick_sib.beauty_radar.model.repository.core.RemoteRepository
 import com.nick_sib.beauty_radar.model.repository.impl.RemoteRepositoryImpl
 import com.nick_sib.beauty_radar.model.room.IRoomSource
@@ -35,8 +37,15 @@ import org.koin.dsl.module
 val appModule = module {
     single { FirebaseAuth.getInstance() }
     single<IAuthProvider> { AuthProviderImpl(get()) }
+    //Старый провайдер Firebase *******************
     single<IRemoteDBProviderProfile> { RemoteDBProviderProfile() }
     single<IRemoteDBProviderCalendar> { RemoteDBProviderCalendar() }
+    //*********************************************
+
+    //Новый провайдер для БД бэка******************
+    single { ProviderRemoteDbImpl(get()) }
+    //**********************************************
+    single { RetrofitImplementation().createRetrofit() }
     single { Room.databaseBuilder(get(), HistoryDataBase::class.java, "HistoryDB").build() }
     single { get<HistoryDataBase>().historyDao() }
     single<IRoomSource> { RoomDataBaseImplementation(get()) }
