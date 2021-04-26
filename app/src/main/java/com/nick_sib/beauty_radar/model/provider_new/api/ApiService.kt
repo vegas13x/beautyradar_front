@@ -9,16 +9,16 @@ import retrofit2.http.PUT
 
 interface ApiService {
 
-    @GET("")
-    fun createUser(@Query("user") user: List<User>)
+    @GET()
+    fun createUser(@Query("user") user: User)
 
-    @PUT("")
-    fun updateUser(@Query("user") user: List<User>)
+    @PUT()
+    fun updateUser(@Query("user") user: User)
 
-    @GET("")
-    fun getUserByUID(@Query("user") upn: String): NewUserProfile
+    @GET()
+    fun getUserByUPN(@Query("user") upn: String): NewUserProfile
 
-    @GET("user")
+    @GET()
     fun getUserList(): NewUserProfile
 
     @DELETE

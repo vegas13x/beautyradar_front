@@ -1,6 +1,9 @@
 package com.nick_sib.beauty_radar.model.provider_new.repository.user
 
+import com.google.gson.annotations.SerializedName
+
 data class NewUserProfile (
-    private val user: User,
-    private val server: CodeServer,
-    private val message: CodeMessage)
+    @SerializedName("body") var body : User,
+    @SerializedName("code") var code : Int,
+    @SerializedName("message") var message : String
+)

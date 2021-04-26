@@ -1,13 +1,15 @@
 package com.nick_sib.beauty_radar.model.provider_new.repository.user
 
+import com.google.gson.annotations.SerializedName
+
 data class User(
-    private var email: String,
-    private var id: String,
-    private var img: String,
-    private var login: String,
-    private var master: List<UserMaster>,
-    private var name: String,
-    private var phone: String,
-    private var rating: String,
-    private var upn: String)
+    @SerializedName("email") var email : String,
+    @SerializedName("id") var id : Int,
+    @SerializedName("img") var img : String,
+    @SerializedName("login") var login : String,
+    @SerializedName("master") var master : Master,
+    @SerializedName("name") var name : String,
+    @SerializedName("phone") var phone : String,
+    @SerializedName("rating") var rating : Int,
+    @SerializedName("upn") var upn : String)
 
