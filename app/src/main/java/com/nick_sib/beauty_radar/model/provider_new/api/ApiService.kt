@@ -13,8 +13,8 @@ interface ApiService {
     @PUT("user")
     fun updateUser(@Body user: User)
 
-    @GET()
-    fun getUserByUPN(@Query("user") upn: String): NewUserProfile
+    @GET("/user/{upn}")
+    suspend fun getUserByUPN(@Path("upn") upn: String): NewUserProfile
 
     @GET()
     fun getUserList(): NewUserProfile
