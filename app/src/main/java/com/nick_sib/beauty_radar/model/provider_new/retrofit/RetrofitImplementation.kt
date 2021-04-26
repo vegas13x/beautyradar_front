@@ -27,6 +27,6 @@ class RetrofitImplementation{
 
 
     companion object {
-        private const val BASE_URL_LOCATIONS = "http://130.193.41.96:9999/frontgateway/"
+        private const val BASE_URL_LOCATIONS = "http://109.248.203.238:9999/frontgateway/"
     }
 }

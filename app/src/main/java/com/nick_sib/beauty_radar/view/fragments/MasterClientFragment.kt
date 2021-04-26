@@ -31,6 +31,7 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
         viewModel.subscribe().observe(viewLifecycleOwner, {
             renderData(it)
         })
+
         binding?.fragmentMcBtnNavBar?.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_btm_nav_btn_setting -> {

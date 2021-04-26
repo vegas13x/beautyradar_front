@@ -41,7 +41,7 @@ val appModule = module {
     single { get<HistoryDataBase>().historyDao() }
     single<IRoomSource> { RoomDataBaseImplementation(get()) }
     factory<RemoteRepository<AppState>> { RemoteRepositoryImpl(get()) }
-    factory<MasterClientInteractor<AppState>> { MasterClientInteractorImpl(get()) }
+
 
 }
 val authFragmentModule = module {
@@ -60,6 +60,7 @@ val enterCodeFragmentModule = module {
     viewModel { EnterCodeViewModel(get(), get()) }
 }
 val masterClientFragmentModule = module {
+    factory<MasterClientInteractor<AppState>> { MasterClientInteractorImpl(get()) }
     viewModel { MasterClientViewModel(get()) }
 }
 
