@@ -7,7 +7,7 @@ import retrofit2.http.*
 interface ApiService {
 
     @Headers("Content-Type: application/json")
-    @GET("user")
+    @POST("user")
     fun createUser(@Body user: User)
 
     @PUT("user")
