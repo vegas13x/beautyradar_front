@@ -12,6 +12,7 @@ import com.nick_sib.beauty_radar.model.data.entites.UserMaster
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentEnterCodeBinding
 import com.nick_sib.beauty_radar.extension.findNavController
+import com.nick_sib.beauty_radar.model.provider_new.repository.user.NewUserProfile
 import com.nick_sib.beauty_radar.view_model.EnterCodeViewModel
 import com.nick_sib.beauty_radar.view.utils.USER_IS_DISABLE_IN_DB
 import com.nick_sib.beauty_radar.view.utils.USER_IS_ENABLE_IN_DB
@@ -55,14 +56,26 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                 binding?.fragmentAuthLoadingDialog?.root?.isGone = true
                 val data: UserMaster? = appState.data as? UserMaster
                 data?.run { viewModel.checkUserInDB(uid) }
-                when (appState.data as? String) {
-                    USER_IS_ENABLE_IN_DB -> {
-                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())
+                when (appState.data) {
+                    is String->{
+                        when(appState.data){
+                            USER_IS_ENABLE_IN_DB -> {
+                                findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())
+                            }
+                            USER_IS_DISABLE_IN_DB -> {
+                                findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment(uid))
+                            }
+                        }
 
                     }
-                    USER_IS_DISABLE_IN_DB -> {
-                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment(uid))
+                    is NewUserProfile->{
+                        //TEST LOADING USER FROM DB BACKEND!!!!
+                        Toast.makeText(requireContext(), "ПРИШЁЛ ЮЗЕР С БЭКА", Toast.LENGTH_SHORT)
+                            .show()
+
                     }
+
+
                     else -> {}
                 }
             }

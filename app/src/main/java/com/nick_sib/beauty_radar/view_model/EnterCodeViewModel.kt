@@ -8,13 +8,16 @@ import com.nick_sib.beauty_radar.model.data.error.ToastError
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.auth_.IAuthProvider
 import com.nick_sib.beauty_radar.model.provider.profile.IRemoteDBProviderProfile
+import com.nick_sib.beauty_radar.model.provider_new.provider_db.IProviderRemoteDB
 import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
 import com.nick_sib.beauty_radar.view.utils.INFINITY_LOADING_PROGRESS
+import com.nick_sib.beauty_radar.view_model.interactor.core.EnterCodeInteractor
 import kotlinx.coroutines.launch
 
 class EnterCodeViewModel(
     private val authProvider: IAuthProvider,
-    private val dbProviderProfile: IRemoteDBProviderProfile
+    private val dbProviderProfile: IRemoteDBProviderProfile,
+    private val interactor: EnterCodeInteractor<AppState>
 ) : BaseViewModel<AppState>() {
 
     private val TAG_CODE_NULL = "Code is equal to null. Please enter the code"
@@ -36,7 +39,9 @@ class EnterCodeViewModel(
     fun checkUserInDB(uid: String?) {
         uid?.run {
             viewModelCoroutineScope.launch {
-                liveDataViewmodel.value = dbProviderProfile.checkUserInDdByUID(this@run)
+                liveDataViewmodel.postValue(interactor.checkUserInDB(uid))
+
+//                liveDataViewmodel.value = dbProviderProfile.checkUserInDdByUID(this@run)
             }
         }
     }
@@ -55,7 +60,6 @@ class EnterCodeViewModel(
     override fun errorReturned(t: Throwable) {
         // TODO("Not yet implemented")
     }
-
 
 
     private fun resendSMS(value: Activity?) {
