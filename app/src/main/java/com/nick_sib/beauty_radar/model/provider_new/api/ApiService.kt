@@ -2,15 +2,13 @@ package com.nick_sib.beauty_radar.model.provider_new.api
 
 import com.nick_sib.beauty_radar.model.provider_new.repository.user.User
 import com.nick_sib.beauty_radar.model.provider_new.repository.user.NewUserProfile
-import retrofit2.http.GET
-import retrofit2.http.Query
-import retrofit2.http.DELETE
-import retrofit2.http.PUT
+import retrofit2.http.*
 
 interface ApiService {
 
-    @GET()
-    fun createUser(@Query("user") user: User)
+    @Headers("Content-Type: application/json")
+    @GET("user")
+    fun createUser(@Body user: User)
 
     @PUT()
     fun updateUser(@Query("user") user: User)
