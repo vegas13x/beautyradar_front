@@ -2,21 +2,23 @@ package com.nick_sib.beauty_radar.model.provider_new.api
 
 import com.nick_sib.beauty_radar.model.provider_new.repository.user.User
 import com.nick_sib.beauty_radar.model.provider_new.repository.user.NewUserProfile
-import retrofit2.http.*
+import retrofit2.http.GET
+import retrofit2.http.Query
+import retrofit2.http.DELETE
+import retrofit2.http.PUT
 
 interface ApiService {
 
-    @Headers("Content-Type: application/json")
-    @POST("user")
-    fun createUser(@Body user: User)
+    @GET("")
+    fun createUser(@Query("user") user: List<User>)
 
-    @PUT("user")
-    fun updateUser(@Body user: User)
+    @PUT("")
+    fun updateUser(@Query("user") user: List<User>)
 
-    @GET("/user/{upn}")
-    suspend fun getUserByUPN(@Path("upn") upn: String): NewUserProfile
+    @GET("frontgateway/user/{upn}")
+    fun getUserByUID(@Path("upn") upn: String): Call<Base>
 
-    @GET()
+    @GET("user")
     fun getUserList(): NewUserProfile
 
     @DELETE
