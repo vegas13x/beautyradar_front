@@ -6,9 +6,9 @@ import retrofit2.http.*
 
 interface ApiService {
 
-    @Headers("Content-Type: application/json")
+//    @Headers("Content-Type: application/json")
     @POST("user")
-    fun createUser(@Body user: User)
+    suspend fun createUser(@Body user: User): NewUserProfile
 
     @PUT("user")
     fun updateUser(@Body user: User)

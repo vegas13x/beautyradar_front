@@ -10,6 +10,8 @@ import com.nick_sib.beauty_radar.model.provider.calendar.IRemoteDBProviderCalend
 import com.nick_sib.beauty_radar.model.provider.calendar.RemoteDBProviderCalendar
 import com.nick_sib.beauty_radar.model.provider.profile.IRemoteDBProviderProfile
 import com.nick_sib.beauty_radar.model.provider.profile.RemoteDBProviderProfile
+import com.nick_sib.beauty_radar.model.provider_new.api.ApiService
+import com.nick_sib.beauty_radar.model.provider_new.retrofit.RetrofitImplementation
 import com.nick_sib.beauty_radar.model.repository.core.RemoteRepository
 import com.nick_sib.beauty_radar.model.repository.impl.RemoteRepositoryImpl
 import com.nick_sib.beauty_radar.model.room.IRoomSource
@@ -41,7 +43,7 @@ val appModule = module {
     single { get<HistoryDataBase>().historyDao() }
     single<IRoomSource> { RoomDataBaseImplementation(get()) }
     factory<RemoteRepository<AppState>> { RemoteRepositoryImpl(get()) }
-
+    single<ApiService> { RetrofitImplementation().provideRequestApi(get(), get(), get()) }
 
 }
 val authFragmentModule = module {
