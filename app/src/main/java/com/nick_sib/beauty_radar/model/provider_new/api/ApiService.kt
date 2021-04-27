@@ -1,7 +1,7 @@
 package com.nick_sib.beauty_radar.model.provider_new.api
 
-import com.nick_sib.beauty_radar.model.provider_new.repository.user.User
-import com.nick_sib.beauty_radar.model.provider_new.repository.user.NewUserProfile
+import com.nick_sib.beauty_radar.model.provider_new.repository.user.UserDTO
+import com.nick_sib.beauty_radar.model.provider_new.repository.user.UserResponse
 import kotlinx.coroutines.Deferred
 import retrofit2.http.*
 
@@ -9,18 +9,18 @@ interface ApiService {
 
     @Headers("Content-Type: application/json")
     @POST("user")
-    suspend fun createUserAsync(@Body user: User): Deferred<NewUserProfile>
+    suspend fun createUserAsync(@Body UserDTO: UserDTO): Deferred<UserResponse>
 
     @PUT("user")
-    suspend fun updateUserAsync(@Body user: User): Deferred<NewUserProfile>
+    suspend fun updateUserAsync(@Body UserDTO: UserDTO): Deferred<UserResponse>
 
     @GET("user/{upn}")
-    suspend fun getUserByUPNAsync(@Path("upn") upn: String): Deferred<NewUserProfile>
+    suspend fun getUserByUPNAsync(@Path("upn") upn: String): Deferred<UserResponse>
 
     @GET()
-    suspend fun getUserListAsync(): Deferred<List<NewUserProfile>>
+    suspend fun getUserListAsync(): Deferred<List<UserResponse>>
 
     @DELETE
-    suspend fun deleteUserAsync(@Query("user") upn: String): Deferred<NewUserProfile>
+    suspend fun deleteUserAsync(@Query("user") upn: String): Deferred<UserResponse>
 
 }

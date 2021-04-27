@@ -1,6 +1,7 @@
 package com.nick_sib.beauty_radar.view_model
 
 import android.app.Activity
+import android.util.Log
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
@@ -10,6 +11,7 @@ import com.nick_sib.beauty_radar.model.provider.auth_.IAuthProvider
 import com.nick_sib.beauty_radar.model.provider.profile.IRemoteDBProviderProfile
 import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
 import com.nick_sib.beauty_radar.view.utils.INFINITY_LOADING_PROGRESS
+import com.nick_sib.beauty_radar.view.utils.TAG_DEBAG
 import com.nick_sib.beauty_radar.view_model.interactor.core.EnterCodeInteractor
 import kotlinx.coroutines.launch
 
@@ -36,6 +38,7 @@ class EnterCodeViewModel(
     }
 
     fun checkUserInDB(uid: String?) {
+        Log.d(TAG_DEBAG, "checkUserInDB: $uid")
         uid?.run {
             viewModelCoroutineScope.launch {
                 liveDataViewmodel.postValue(interactor.getUserByUPNFromDB(uid))

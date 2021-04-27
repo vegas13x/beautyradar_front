@@ -3,10 +3,8 @@ package com.nick_sib.beauty_radar.view_model
 import androidx.lifecycle.LiveData
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.profile.IRemoteDBProviderProfile
-import com.nick_sib.beauty_radar.model.provider.profile.entities.UserProfile
-import com.nick_sib.beauty_radar.model.provider_new.repository.user.Master
-import com.nick_sib.beauty_radar.model.provider_new.repository.user.NewUserProfile
-import com.nick_sib.beauty_radar.model.provider_new.repository.user.User
+import com.nick_sib.beauty_radar.model.provider_new.repository.user.MasterDTO
+import com.nick_sib.beauty_radar.model.provider_new.repository.user.UserDTO
 import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
 import com.nick_sib.beauty_radar.view_model.interactor.core.SignUpInteractor
 import kotlinx.coroutines.launch
@@ -35,8 +33,8 @@ class SignUpSecondViewModel(
 //            null, null, null, null, null, null, null
 //        )
 //        remoteDBProviderProfile.createUserInDb(user)
-        var master = Master("Moscow", 0, 5)
-        var user = User(
+        var master = MasterDTO("Moscow", 0, 5)
+        var user = UserDTO(
             "tyty@mail.ru",
             0,
             "null",

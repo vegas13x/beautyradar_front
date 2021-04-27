@@ -1,11 +1,11 @@
 package com.nick_sib.beauty_radar.model.repository.core
 
-import com.nick_sib.beauty_radar.model.provider_new.repository.user.User
+import com.nick_sib.beauty_radar.model.provider_new.repository.user.UserDTO
 
 interface RemoteRepository<S> : Repository<S> {
 
-    suspend fun createUser(user: User): S
-    suspend fun updateUser(user: User): S
+    suspend fun createUser(UserDTO: UserDTO): S
+    suspend fun updateUser(UserDTO: UserDTO): S
 
     suspend fun getUserByUPNFromDB(uid: String): S
 

@@ -13,8 +13,7 @@ import com.nick_sib.beauty_radar.model.data.entites.UserMaster
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentEnterCodeBinding
 import com.nick_sib.beauty_radar.extension.findNavController
-import com.nick_sib.beauty_radar.model.provider_new.repository.user.NewUserProfile
-import com.nick_sib.beauty_radar.model.provider_new.repository.user.User
+import com.nick_sib.beauty_radar.model.provider_new.repository.user.UserResponse
 import com.nick_sib.beauty_radar.view.utils.TAG_DEBAG
 import com.nick_sib.beauty_radar.view_model.EnterCodeViewModel
 import com.nick_sib.beauty_radar.view.utils.USER_IS_DISABLE_IN_DB
@@ -83,7 +82,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                         }
 
                     }
-                    is NewUserProfile -> {
+                    is UserResponse -> {
                         //TEST LOADING USER FROM DB BACKEND!!!!
                         Toast.makeText(requireContext(), "ПРИШЁЛ ЮЗЕР С БЭКА", Toast.LENGTH_SHORT)
                             .show()
