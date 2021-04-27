@@ -34,8 +34,9 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
         binding = FragmentEnterCodeBinding.bind(view)
 
         viewModel.subscribe().observe(viewLifecycleOwner, {
-            Log.d(TAG_DEBAG, "onViewCreated:${it} ")
-            renderData(it) })
+            Log.d(TAG_DEBAG, "EnterCodeFragment onViewCreated:${it} ")
+            renderData(it)
+        })
         binding?.viewModel = viewModel
         binding?.enterCodeFragmentTvInfo?.text =
             getString(R.string.text_help_info_phone, "+7 ${args.phone}")
@@ -43,7 +44,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
         uid = SingletonUID.getInstance()?.getUID().toString()
     }
 
-    private fun initListener(){
+    private fun initListener() {
         binding?.enterCodeFragmentIvBackTo?.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -56,25 +57,33 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
 
     private fun renderData(appState: AppState) {
         when (appState) {
-            is AppState.Empty -> {}
+            is AppState.Empty -> {
+            }
             is AppState.Success<*> -> {
                 Log.d(TAG_DEBAG, "renderData: ${appState.data} ")
                 binding?.fragmentAuthLoadingDialog?.root?.isGone = true
-                val data: User? = appState.data as? User
-                data?.run { viewModel.checkUserInDB(uid) }
+//                val data: User? = appState.data as? User
+//                data?.run { viewModel.checkUserInDB(uid) }
                 when (appState.data) {
-                    is String->{
-                        when(appState.data){
+                    is UserMaster -> {
+                        viewModel.checkUserInDB(appState.data.uid)
+                    }
+                    is String -> {
+                        when (appState.data) {
                             USER_IS_ENABLE_IN_DB -> {
                                 findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())
                             }
                             USER_IS_DISABLE_IN_DB -> {
-                                findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment(uid))
+                                findNavController().navigate(
+                                    EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment(
+                                        uid
+                                    )
+                                )
                             }
                         }
 
                     }
-                    is NewUserProfile->{
+                    is NewUserProfile -> {
                         //TEST LOADING USER FROM DB BACKEND!!!!
                         Toast.makeText(requireContext(), "ПРИШЁЛ ЮЗЕР С БЭКА", Toast.LENGTH_SHORT)
                             .show()
@@ -82,7 +91,8 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                     }
 
 
-                    else -> {}
+                    else -> {
+                    }
                 }
             }
 

@@ -53,7 +53,7 @@ val appModule = module {
 
     factory<RemoteRepository<AppState>> { RemoteRepositoryImpl(get(), get()) }
 
-    factory<EnterCodeInteractor<AppState>> { EnterCodeInteractorImpl(get()) }
+
     factory<ProfileInteractor<AppState>> { ProfileInteractorImpl(get()) }
     factory<SignUpInteractor<AppState>> { SignUpInteractorImpl(get()) }
     //**********************************************
@@ -69,6 +69,7 @@ val authFragmentModule = module {
 }
 
 val enterCodeFragmentModule = module {
+    factory<EnterCodeInteractor<AppState>> { EnterCodeInteractorImpl(get()) }
     viewModel { EnterCodeViewModel(get(), get(),get()) }
 }
 
