@@ -1,6 +1,7 @@
 package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.view.isGone
@@ -13,6 +14,8 @@ import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentEnterCodeBinding
 import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.model.provider_new.repository.user.NewUserProfile
+import com.nick_sib.beauty_radar.model.provider_new.repository.user.User
+import com.nick_sib.beauty_radar.view.utils.TAG_DEBAG
 import com.nick_sib.beauty_radar.view_model.EnterCodeViewModel
 import com.nick_sib.beauty_radar.view.utils.USER_IS_DISABLE_IN_DB
 import com.nick_sib.beauty_radar.view.utils.USER_IS_ENABLE_IN_DB
@@ -30,12 +33,14 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEnterCodeBinding.bind(view)
 
-        viewModel.subscribe().observe(viewLifecycleOwner, { renderData(it) })
+        viewModel.subscribe().observe(viewLifecycleOwner, {
+            Log.d(TAG_DEBAG, "onViewCreated:${it} ")
+            renderData(it) })
         binding?.viewModel = viewModel
         binding?.enterCodeFragmentTvInfo?.text =
             getString(R.string.text_help_info_phone, "+7 ${args.phone}")
         initListener()
-        uid = SingletonUID.getInstance()!!.getUID().toString()
+        uid = SingletonUID.getInstance()?.getUID().toString()
     }
 
     private fun initListener(){
@@ -53,8 +58,9 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
         when (appState) {
             is AppState.Empty -> {}
             is AppState.Success<*> -> {
+                Log.d(TAG_DEBAG, "renderData: ${appState.data} ")
                 binding?.fragmentAuthLoadingDialog?.root?.isGone = true
-                val data: UserMaster? = appState.data as? UserMaster
+                val data: User? = appState.data as? User
                 data?.run { viewModel.checkUserInDB(uid) }
                 when (appState.data) {
                     is String->{

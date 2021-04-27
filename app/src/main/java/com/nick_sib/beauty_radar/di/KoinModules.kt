@@ -9,9 +9,8 @@ import com.nick_sib.beauty_radar.model.provider.calendar.IRemoteDBProviderCalend
 import com.nick_sib.beauty_radar.model.provider.calendar.RemoteDBProviderCalendar
 import com.nick_sib.beauty_radar.model.provider.profile.IRemoteDBProviderProfile
 import com.nick_sib.beauty_radar.model.provider.profile.RemoteDBProviderProfile
-import com.nick_sib.beauty_radar.model.provider_new.api.ApiService
 import com.nick_sib.beauty_radar.model.provider_new.provider_db.IProviderRemoteDB
-import com.nick_sib.beauty_radar.model.provider_new.provider_db.ProviderRemoteDbImpl
+import com.nick_sib.beauty_radar.model.provider_new.provider_db.ProviderRemoteDBImpl
 import com.nick_sib.beauty_radar.model.provider_new.retrofit.RetrofitImplementation
 import com.nick_sib.beauty_radar.model.repository.core.RemoteRepository
 import com.nick_sib.beauty_radar.model.repository.impl.RemoteRepositoryImpl
@@ -46,7 +45,7 @@ val appModule = module {
     //Новый провайдер для БД бэка******************
 
     single { RetrofitImplementation().createRetrofit() }
-    single<IProviderRemoteDB> {ProviderRemoteDbImpl(get())}
+    single<IProviderRemoteDB> {ProviderRemoteDBImpl(get())}
 
     factory<RemoteRepository<AppState>> { RemoteRepositoryImpl(get(), get()) }
     factory<EnterCodeInteractor<AppState>> { EnterCodeInteractorImpl(get()) }

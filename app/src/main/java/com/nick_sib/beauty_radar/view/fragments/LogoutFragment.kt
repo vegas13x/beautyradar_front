@@ -28,7 +28,7 @@ class LogoutFragment : Fragment(R.layout.fragment_logout) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentLogoutBinding.bind(view)
 
-        uid = SingletonUID.getInstance()!!.getUID().toString()
+        uid = SingletonUID.getInstance()?.getUID().toString()
 
         viewModel.subscribeLiveData().observe(viewLifecycleOwner, {
             renderData(it)

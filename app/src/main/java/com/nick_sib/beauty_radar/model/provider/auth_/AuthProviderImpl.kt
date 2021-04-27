@@ -73,15 +73,15 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider{
     private fun callback(res: Continuation<AppState>): PhoneAuthProvider.OnVerificationStateChangedCallbacks {
         val mcallbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-                res.resume(
-                        AppState.Success<UserMaster>(
-                            UserMaster(
-                                "testName",
-                                "testEmail",
-                                uid = authUser.uid
-                            )
-                        )
-                    )
+//                res.resume(
+//                        AppState.Success<UserMaster>(
+//                            UserMaster(
+//                                "testName",
+//                                "testEmail",
+//                                uid = authUser.uid
+//                            )
+//                        )
+//                    )
             }
 
             override fun onVerificationFailed(exception: FirebaseException) {
@@ -132,15 +132,15 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider{
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
                         SingletonUID.getInstance()?.setUID(authUser.uid)
-                        res.resume(
-                            AppState.Success<UserMaster>(
-                                UserMaster(
-                                    "testName",
-                                    "testEmail",
-                                    uid = authUser.uid
-                                )
-                            )
-                        )
+//                        res.resume(
+//                            AppState.Success<UserMaster>(
+//                                UserMaster(
+//                                    "testName",
+//                                    "testEmail",
+//                                    uid = authUser.uid
+//                                )
+//                            )
+//                        )
                     }
                 }
         }
