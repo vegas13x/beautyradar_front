@@ -14,7 +14,7 @@ interface ApiService {
     @PUT("user")
     suspend fun updateUserAsync(@Body user: User): Deferred<NewUserProfile>
 
-    @GET("/user/{upn}")
+    @GET("user/{upn}")
     suspend fun getUserByUPNAsync(@Path("upn") upn: String): Deferred<NewUserProfile>
 
     @GET()
