@@ -5,8 +5,8 @@ import com.nick_sib.beauty_radar.model.provider_new.repository.user.User
 
 interface IProviderRemoteDB {
 
-    fun createUser(user: User)
-    fun updateUser(user: User)
+    suspend fun createUser(user: User): NewUserProfile
+    suspend fun updateUser(user: User): NewUserProfile
 
     suspend fun getUserByUPN(upn: String): NewUserProfile
     suspend fun getUserList():List<NewUserProfile>

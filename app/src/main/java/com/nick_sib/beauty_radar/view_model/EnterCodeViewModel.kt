@@ -8,7 +8,6 @@ import com.nick_sib.beauty_radar.model.data.error.ToastError
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.auth_.IAuthProvider
 import com.nick_sib.beauty_radar.model.provider.profile.IRemoteDBProviderProfile
-import com.nick_sib.beauty_radar.model.provider_new.provider_db.IProviderRemoteDB
 import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
 import com.nick_sib.beauty_radar.view.utils.INFINITY_LOADING_PROGRESS
 import com.nick_sib.beauty_radar.view_model.interactor.core.EnterCodeInteractor
@@ -39,7 +38,7 @@ class EnterCodeViewModel(
     fun checkUserInDB(uid: String?) {
         uid?.run {
             viewModelCoroutineScope.launch {
-                liveDataViewmodel.postValue(interactor.checkUserInDB(uid))
+                liveDataViewmodel.postValue(interactor.getUserByUPNFromDB(uid))
 
 //                liveDataViewmodel.value = dbProviderProfile.checkUserInDdByUID(this@run)
             }

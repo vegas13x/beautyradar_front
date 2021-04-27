@@ -30,13 +30,11 @@ class RetrofitImplementation {
     }
 
     private inner class PODInterceptor : Interceptor {
-
         @Throws(IOException::class)
         override fun intercept(chain: Interceptor.Chain): okhttp3.Response {
             return chain.proceed(chain.request())
         }
     }
-
 
     companion object {
         private const val BASE_URL_LOCATIONS = "http://109.248.203.238:9999/frontgateway/"

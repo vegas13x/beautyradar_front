@@ -20,8 +20,12 @@ import com.nick_sib.beauty_radar.model.room.RoomDataBaseImplementation
 import com.nick_sib.beauty_radar.view_model.*
 import com.nick_sib.beauty_radar.view_model.interactor.core.EnterCodeInteractor
 import com.nick_sib.beauty_radar.view_model.interactor.core.MasterClientInteractor
+import com.nick_sib.beauty_radar.view_model.interactor.core.ProfileInteractor
+import com.nick_sib.beauty_radar.view_model.interactor.core.SignUpInteractor
 import com.nick_sib.beauty_radar.view_model.interactor.impl.EnterCodeInteractorImpl
 import com.nick_sib.beauty_radar.view_model.interactor.impl.MasterClientInteractorImpl
+import com.nick_sib.beauty_radar.view_model.interactor.impl.ProfileInteractorImpl
+import com.nick_sib.beauty_radar.view_model.interactor.impl.SignUpInteractorImpl
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -48,8 +52,10 @@ val appModule = module {
     single<IProviderRemoteDB> {ProviderRemoteDBImpl(get())}
 
     factory<RemoteRepository<AppState>> { RemoteRepositoryImpl(get(), get()) }
-    factory<EnterCodeInteractor<AppState>> { EnterCodeInteractorImpl(get()) }
 
+    factory<EnterCodeInteractor<AppState>> { EnterCodeInteractorImpl(get()) }
+    factory<ProfileInteractor<AppState>> { ProfileInteractorImpl(get()) }
+    factory<SignUpInteractor<AppState>> { SignUpInteractorImpl(get()) }
     //**********************************************
 
     single { Room.databaseBuilder(get(), HistoryDataBase::class.java, "HistoryDB").build() }
@@ -71,7 +77,7 @@ val signUpModule = module {
 }
 
 val signUpSecondModule = module {
-    viewModel { SignUpSecondViewModel(get()) }
+    viewModel { SignUpSecondViewModel(get(), get()) }
 }
 
 val masterClientFragmentModule = module {
@@ -80,7 +86,7 @@ val masterClientFragmentModule = module {
 }
 
 val profileModule = module {
-    viewModel { ProfileViewModel(get()) }
+    viewModel { ProfileViewModel(get(), get()) }
 }
 
 val logoutModule = module {

@@ -9,18 +9,18 @@ interface ApiService {
 
     @Headers("Content-Type: application/json")
     @POST("user")
-    fun createUser(@Body user: User): Deferred<NewUserProfile>
+    suspend fun createUserAsync(@Body user: User): Deferred<NewUserProfile>
 
     @PUT("user")
-    fun updateUser(@Body user: User): Deferred<NewUserProfile>
+    suspend fun updateUserAsync(@Body user: User): Deferred<NewUserProfile>
 
     @GET("/user/{upn}")
-    suspend fun getUserByUPN(@Path("upn") upn: String): Deferred<NewUserProfile>
+    suspend fun getUserByUPNAsync(@Path("upn") upn: String): Deferred<NewUserProfile>
 
     @GET()
-    suspend fun getUserList(): Deferred<List<NewUserProfile>>
+    suspend fun getUserListAsync(): Deferred<List<NewUserProfile>>
 
     @DELETE
-    suspend fun deleteUser(@Query("user") upn: String): Deferred<NewUserProfile>
+    suspend fun deleteUserAsync(@Query("user") upn: String): Deferred<NewUserProfile>
 
 }
