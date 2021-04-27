@@ -41,7 +41,9 @@ class EnterCodeViewModel(
         Log.d(TAG_DEBAG, "checkUserInDB: $uid")
         uid?.run {
             viewModelCoroutineScope.launch {
-                liveDataViewmodel.postValue(interactor.getUserByUPNFromDB(uid))
+                val user = interactor.getUserByUPNFromDB(uid)
+                Log.d(TAG_DEBAG, "Viewmodel checkUserInDB: $user ")
+                liveDataViewmodel.value = user
 
 //                liveDataViewmodel.value = dbProviderProfile.checkUserInDdByUID(this@run)
             }

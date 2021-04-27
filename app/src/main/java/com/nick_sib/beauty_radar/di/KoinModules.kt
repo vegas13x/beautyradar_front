@@ -35,9 +35,9 @@ import org.koin.dsl.module
  * Created 08.04.2021
  */
 val appModule = module {
-
     single { FirebaseAuth.getInstance() }
     single<IAuthProvider> { AuthProviderImpl(get()) }
+    single { RetrofitImplementation().createRetrofit() }
 
     //Старый провайдер Firebase *******************
 
@@ -48,14 +48,9 @@ val appModule = module {
 
     //Новый провайдер для БД бэка******************
 
-    single { RetrofitImplementation().createRetrofit() }
-    single<IProviderRemoteDB> {ProviderRemoteDBImpl(get())}
-
+    single<IProviderRemoteDB> { ProviderRemoteDBImpl(get()) }
     factory<RemoteRepository<AppState>> { RemoteRepositoryImpl(get(), get()) }
 
-
-    factory<ProfileInteractor<AppState>> { ProfileInteractorImpl(get()) }
-    factory<SignUpInteractor<AppState>> { SignUpInteractorImpl(get()) }
     //**********************************************
 
     single { Room.databaseBuilder(get(), HistoryDataBase::class.java, "HistoryDB").build() }
@@ -70,10 +65,11 @@ val authFragmentModule = module {
 
 val enterCodeFragmentModule = module {
     factory<EnterCodeInteractor<AppState>> { EnterCodeInteractorImpl(get()) }
-    viewModel { EnterCodeViewModel(get(), get(),get()) }
+    viewModel { EnterCodeViewModel(get(), get(), get()) }
 }
 
 val signUpModule = module {
+    factory<SignUpInteractor<AppState>> { SignUpInteractorImpl(get()) }
     viewModel { SignUpViewModel() }
 }
 
@@ -87,6 +83,7 @@ val masterClientFragmentModule = module {
 }
 
 val profileModule = module {
+    factory<ProfileInteractor<AppState>> { ProfileInteractorImpl(get()) }
     viewModel { ProfileViewModel(get(), get()) }
 }
 

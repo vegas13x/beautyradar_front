@@ -12,9 +12,8 @@ class EnterCodeInteractorImpl(private val remoteRepo: RemoteRepository<AppState>
 
 
     override suspend fun getUserByUPNFromDB(uid: String): AppState {
-        Log.d(TAG_DEBAG, "getUserByUPNFromDB: $uid")
         val user = remoteRepo.getUserByUPNFromDB(uid)
-        Log.d(TAG_DEBAG, "getUserByUPNFromDB user: $user")
+        Log.d(TAG_DEBAG, "getUserByUPNFromDB: $user")
         if (user != null) {
             return AppState.Success(user)
         } else {

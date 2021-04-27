@@ -33,7 +33,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
         binding = FragmentEnterCodeBinding.bind(view)
 
         viewModel.subscribe().observe(viewLifecycleOwner, {
-            Log.d(TAG_DEBAG, "EnterCodeFragment onViewCreated:${it} ")
+            Log.d(TAG_DEBAG, "EnterCodeFragment onViewCreated: $it")
             renderData(it)
         })
         binding?.viewModel = viewModel
@@ -59,7 +59,6 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
             is AppState.Empty -> {
             }
             is AppState.Success<*> -> {
-                Log.d(TAG_DEBAG, "renderData: ${appState.data} ")
                 binding?.fragmentAuthLoadingDialog?.root?.isGone = true
 //                val data: User? = appState.data as? User
 //                data?.run { viewModel.checkUserInDB(uid) }

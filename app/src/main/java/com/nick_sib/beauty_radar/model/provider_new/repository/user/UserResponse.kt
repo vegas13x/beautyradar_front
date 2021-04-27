@@ -1,9 +1,9 @@
 package com.nick_sib.beauty_radar.model.provider_new.repository.user
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 
-data class UserResponse (
-    @field:Json(name = "body") val body: UserDTO? = null,
-    @field:Json(name = "code") val code: Int,
-    @field:Json(name = "message") val message: String,
+data class UserResponse(
+    @SerializedName("body") val body: UserDTO? = null,
+    @SerializedName("code") val code: Int,
+    @SerializedName("message") val message: String,
 )

@@ -21,7 +21,9 @@ class RemoteRepositoryImpl(
 
     // Новая DB
     override suspend fun getUserByUPNFromDB(uid: String): AppState {
-        return AppState.Success(remoteDBBackend.getUserByUPN(uid))
+        val tt = remoteDBBackend.getUserByUPN(uid)
+        Log.d(TAG_DEBAG, "getUserByUPNFromDB: $tt")
+        return AppState.Success(tt)
     }
 
     override suspend fun createUser(UserDTO: UserDTO): AppState {
