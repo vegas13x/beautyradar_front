@@ -10,8 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.databinding.FragmentProfileBinding
 import com.nick_sib.beauty_radar.model.data.state.AppState
-import com.nick_sib.beauty_radar.model.provider_new.repository.user.UserDTO
-import com.nick_sib.beauty_radar.model.provider_new.repository.user.UserResponse
+import com.nick_sib.beauty_radar.model.provider.repository.user.UserResponse
 import com.nick_sib.beauty_radar.view_model.ProfileViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -74,14 +73,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                         binding.profileName.text = user.body?.name.toString()
                     }
                 }
+            }
 
-            }
-            is AppState.Loading -> {
-            }
-            is AppState.Error -> {
-            }
-            is AppState.SystemMessage -> {
-            }
+            else -> {}
         }
     }
 

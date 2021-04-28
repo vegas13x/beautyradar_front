@@ -3,18 +3,16 @@ package com.nick_sib.beauty_radar.di
 import androidx.room.Room
 import com.google.firebase.auth.FirebaseAuth
 import com.nick_sib.beauty_radar.model.data.state.AppState
-import com.nick_sib.beauty_radar.model.provider.auth_.AuthProviderImpl
-import com.nick_sib.beauty_radar.model.provider.auth_.IAuthProvider
+import com.nick_sib.beauty_radar.model.provider.auth.AuthProviderImpl
+import com.nick_sib.beauty_radar.model.provider.auth.IAuthProvider
 import com.nick_sib.beauty_radar.model.provider.calendar.IRemoteDBProviderCalendar
 import com.nick_sib.beauty_radar.model.provider.calendar.RemoteDBProviderCalendar
-import com.nick_sib.beauty_radar.model.provider_new.provider_db.IProviderRemoteDB
-import com.nick_sib.beauty_radar.model.provider_new.provider_db.ProviderRemoteDBImpl
-import com.nick_sib.beauty_radar.model.provider_new.retrofit.RetrofitImplementation
+import com.nick_sib.beauty_radar.model.provider.provider_db.IProviderRemoteDB
+import com.nick_sib.beauty_radar.model.provider.provider_db.ProviderRemoteDBImpl
+import com.nick_sib.beauty_radar.model.provider.retrofit.RetrofitImplementation
 import com.nick_sib.beauty_radar.model.repository.core.RemoteRepository
 import com.nick_sib.beauty_radar.model.repository.impl.RemoteRepositoryImpl
 import com.nick_sib.beauty_radar.model.room.HistoryDataBase
-import com.nick_sib.beauty_radar.model.room.IRoomSource
-import com.nick_sib.beauty_radar.model.room.RoomDataBaseImplementation
 import com.nick_sib.beauty_radar.view_model.*
 import com.nick_sib.beauty_radar.view_model.interactor.core.EnterCodeInteractor
 import com.nick_sib.beauty_radar.view_model.interactor.core.MasterClientInteractor
@@ -37,22 +35,13 @@ val appModule = module {
     single<IAuthProvider> { AuthProviderImpl(get()) }
     single { RetrofitImplementation().createRetrofit() }
 
-    //Старый провайдер Firebase *******************
-
     single<IRemoteDBProviderCalendar> { RemoteDBProviderCalendar() }
-
-    //*********************************************
-
-    //Новый провайдер для БД бэка******************
 
     single<IProviderRemoteDB> { ProviderRemoteDBImpl(get()) }
     factory<RemoteRepository<AppState>> { RemoteRepositoryImpl(get(), get()) }
 
-    //**********************************************
-
     single { Room.databaseBuilder(get(), HistoryDataBase::class.java, "HistoryDB").build() }
     single { get<HistoryDataBase>().historyDao() }
-    single<IRoomSource> { RoomDataBaseImplementation(get()) }
 
 }
 
@@ -87,8 +76,3 @@ val profileModule = module {
 val logoutModule = module {
     viewModel { LogoutViewModel(get()) }
 }
-
-val initialProfileModule = module {
-    viewModel { InitialProfileSetupViewModel(get()) }
-}
-

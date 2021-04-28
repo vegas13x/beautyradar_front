@@ -5,7 +5,6 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.SingletonUID
-import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentSignUpBinding
 import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.view_model.SignUpViewModel
@@ -24,13 +23,11 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
 
         uid = SingletonUID.getInstance()?.getUID().toString()
 
-        viewModel.subscribe().observe(viewLifecycleOwner) {
-            renderData(it)
-        }
+        viewModel.subscribe().observe(viewLifecycleOwner){}
 
         binding.btnContinue.setOnClickListener {
             findNavController().navigate(SignUpFragmentDirections.actionSignUpFragmentToSignUpFragmentSecond
-                (uid,binding.nameText.text.toString(),binding.secondName.text.toString()))
+                (uid,binding.nameText.text.toString()))
         }
 
         binding.backArrow.setOnClickListener {
@@ -38,21 +35,5 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
         }
 
     }
-
-    private fun renderData(appState: AppState?) {
-        when (appState) {
-            is AppState.Empty -> {
-            }
-            is AppState.Success<*> -> {
-            }
-            is AppState.Loading -> {
-            }
-            is AppState.Error -> {
-            }
-            is AppState.SystemMessage -> {
-            }
-        }
-    }
-
 
 }

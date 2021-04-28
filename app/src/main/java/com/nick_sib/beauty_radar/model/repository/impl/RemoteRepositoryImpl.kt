@@ -1,12 +1,10 @@
 package com.nick_sib.beauty_radar.model.repository.impl
 
-import android.util.Log
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.calendar.IRemoteDBProviderCalendar
-import com.nick_sib.beauty_radar.model.provider_new.provider_db.IProviderRemoteDB
-import com.nick_sib.beauty_radar.model.provider_new.repository.user.UserDTO
+import com.nick_sib.beauty_radar.model.provider.provider_db.IProviderRemoteDB
+import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
 import com.nick_sib.beauty_radar.model.repository.core.RemoteRepository
-import com.nick_sib.beauty_radar.view.utils.TAG_DEBAG
 
 class RemoteRepositoryImpl(
     private val remoteDB: IRemoteDBProviderCalendar,
@@ -14,15 +12,12 @@ class RemoteRepositoryImpl(
 ) :
     RemoteRepository<AppState> {
 
-    // Работа со старой DB
     override fun getData(): AppState {
         return AppState.Success(remoteDB.getListCalendarProfile())
     }
 
-    // Новая DB
     override suspend fun getUserByUPNFromDB(uid: String): AppState {
         val tt = remoteDBBackend.getUserByUPN(uid)
-        Log.d(TAG_DEBAG, "getUserByUPNFromDB: $tt")
         return AppState.Success(tt)
     }
 

@@ -2,7 +2,7 @@ package com.nick_sib.beauty_radar.view_model
 
 import androidx.lifecycle.LiveData
 import com.nick_sib.beauty_radar.model.data.state.AppState
-import com.nick_sib.beauty_radar.model.provider.auth_.IAuthProvider
+import com.nick_sib.beauty_radar.model.provider.auth.IAuthProvider
 import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
 import kotlinx.coroutines.launch
 

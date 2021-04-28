@@ -1,8 +1,8 @@
-package com.nick_sib.beauty_radar.model.provider_new.provider_db
+package com.nick_sib.beauty_radar.model.provider.provider_db
 
-import com.nick_sib.beauty_radar.model.provider_new.api.ApiService
-import com.nick_sib.beauty_radar.model.provider_new.repository.user.UserResponse
-import com.nick_sib.beauty_radar.model.provider_new.repository.user.UserDTO
+import com.nick_sib.beauty_radar.model.provider.api.ApiService
+import com.nick_sib.beauty_radar.model.provider.repository.user.UserResponse
+import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
 
 class ProviderRemoteDBImpl(private val api: ApiService) : IProviderRemoteDB {
 
@@ -14,10 +14,9 @@ class ProviderRemoteDBImpl(private val api: ApiService) : IProviderRemoteDB {
         return api.updateUserAsync(UserDTO).await()
     }
 
-
-    override suspend fun getUserByUPN(upn: String): UserResponse =
-        api.getUserByUPNAsync(upn)
-
+    override suspend fun getUserByUPN(upn: String): UserResponse {
+        return api.getUserByUPNAsync(upn).await()
+    }
 
     override suspend fun getUserList(): List<UserResponse> {
         return api.getUserListAsync().await()

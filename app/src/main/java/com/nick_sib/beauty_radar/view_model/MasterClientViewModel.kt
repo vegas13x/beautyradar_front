@@ -6,10 +6,8 @@ import com.nick_sib.beauty_radar.view.utils.TRANSITION_TO_CALENDAR
 import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
 import com.nick_sib.beauty_radar.view_model.interactor.core.MasterClientInteractor
 
-class MasterClientViewModel(private val interactor: MasterClientInteractor<AppState>) :
-    BaseViewModel<AppState>() {
-
-
+class MasterClientViewModel(private val interactor: MasterClientInteractor<AppState>)
+    : BaseViewModel<AppState>() {
 
   fun transitionToCalendar() {
         liveDataViewmodel.value = AppState.Success(TRANSITION_TO_CALENDAR)

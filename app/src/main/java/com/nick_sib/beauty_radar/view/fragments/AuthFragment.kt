@@ -50,7 +50,6 @@ class AuthFragment : Fragment(R.layout.fragment_authentication) {
 
     private fun renderData(appState: AppState) {
         when (appState) {
-            is AppState.Empty -> {}
             is AppState.Success<*> -> {
                 binding?.fragmentAuthLoadingDialog?.root?.isGone = true
                 val data: Int? = appState.data as? Int
@@ -69,9 +68,7 @@ class AuthFragment : Fragment(R.layout.fragment_authentication) {
                     else -> toast(appState.error.message ?: "")
                 }
             }
-            is AppState.SystemMessage -> {
-
-            }
+            else -> {}
         }
     }
 

@@ -42,7 +42,6 @@ class LogoutFragment : Fragment(R.layout.fragment_logout) {
 
     private fun renderData(appState: AppState) {
         when (appState) {
-            is AppState.Empty -> {}
             is AppState.Success<*> -> {
                 when (appState.data) {
                     USER_SIGNOUT -> {
@@ -50,15 +49,7 @@ class LogoutFragment : Fragment(R.layout.fragment_logout) {
                     }
                 }
             }
-            is AppState.Loading -> {
-
-            }
-            is AppState.Error -> {
-
-            }
-            is AppState.SystemMessage -> {
-
-            }
+            else -> {}
         }
     }
 

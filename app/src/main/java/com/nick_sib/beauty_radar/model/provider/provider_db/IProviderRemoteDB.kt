@@ -1,7 +1,7 @@
-package com.nick_sib.beauty_radar.model.provider_new.provider_db
+package com.nick_sib.beauty_radar.model.provider.provider_db
 
-import com.nick_sib.beauty_radar.model.provider_new.repository.user.UserResponse
-import com.nick_sib.beauty_radar.model.provider_new.repository.user.UserDTO
+import com.nick_sib.beauty_radar.model.provider.repository.user.UserResponse
+import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
 
 interface IProviderRemoteDB {
 

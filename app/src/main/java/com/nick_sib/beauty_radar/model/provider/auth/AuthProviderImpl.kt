@@ -1,4 +1,4 @@
-package com.nick_sib.beauty_radar.model.provider.auth_
+package com.nick_sib.beauty_radar.model.provider.auth
 
 import android.app.Activity
 import com.google.firebase.FirebaseException

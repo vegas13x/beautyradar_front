@@ -1,4 +1,4 @@
-package com.nick_sib.beauty_radar.model.provider_new.repository.user
+package com.nick_sib.beauty_radar.model.provider.repository.user
 
 import com.squareup.moshi.Json
 

@@ -12,8 +12,7 @@ import com.nick_sib.beauty_radar.databinding.FragmentEnterCodeBinding
 import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.model.data.entites.UserMaster
 import com.nick_sib.beauty_radar.model.data.state.AppState
-import com.nick_sib.beauty_radar.model.provider_new.repository.user.UserResponse
-import com.nick_sib.beauty_radar.view.utils.USER_IS_DISABLE_IN_DB
+import com.nick_sib.beauty_radar.model.provider.repository.user.UserResponse
 import com.nick_sib.beauty_radar.view_model.EnterCodeViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -78,10 +77,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                     else -> toast(appState.error.message ?: "")
                 }
             }
-            is AppState.Empty -> {
-            }
-            is AppState.SystemMessage -> {
-            }
+            else -> {}
         }
     }
 

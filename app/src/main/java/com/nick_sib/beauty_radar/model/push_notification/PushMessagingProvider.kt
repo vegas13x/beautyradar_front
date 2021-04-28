@@ -10,7 +10,6 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.nick_sib.beauty_radar.view.activitys.MainActivity
 
-
 class PushMessagingProvider: FirebaseMessagingService() {
 
     override fun onMessageReceived(p0: RemoteMessage) {

@@ -1,6 +1,6 @@
 package com.nick_sib.beauty_radar.model.repository.core
 
-import com.nick_sib.beauty_radar.model.provider_new.repository.user.UserDTO
+import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
 
 interface RemoteRepository<S> : Repository<S> {
 

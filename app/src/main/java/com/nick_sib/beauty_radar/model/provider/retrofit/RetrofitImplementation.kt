@@ -1,13 +1,12 @@
-package com.nick_sib.beauty_radar.model.provider_new.retrofit
+package com.nick_sib.beauty_radar.model.provider.retrofit
 
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.nick_sib.beauty_radar.model.provider_new.api.ApiService
+import com.nick_sib.beauty_radar.model.provider.api.ApiService
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.io.IOException
 
@@ -16,7 +15,7 @@ class RetrofitImplementation {
     fun createRetrofit(): ApiService {
         return Retrofit.Builder()
             .baseUrl(BASE_URL_LOCATIONS)
-            .addConverterFactory(MoshiConverterFactory.create())//GsonConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .client(createOkHttpClient(PODInterceptor()))
             .build()

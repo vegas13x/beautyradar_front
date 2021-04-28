@@ -10,7 +10,6 @@ class SignUpViewModel: BaseViewModel<AppState>() {
         return liveDataViewmodel
     }
 
-
     override fun errorReturned(t: Throwable) {
         TODO("Not yet implemented")
     }

@@ -1,7 +1,7 @@
-package com.nick_sib.beauty_radar.model.provider_new.api
+package com.nick_sib.beauty_radar.model.provider.api
 
-import com.nick_sib.beauty_radar.model.provider_new.repository.user.UserDTO
-import com.nick_sib.beauty_radar.model.provider_new.repository.user.UserResponse
+import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
+import com.nick_sib.beauty_radar.model.provider.repository.user.UserResponse
 import kotlinx.coroutines.Deferred
 import retrofit2.http.*
 
@@ -15,7 +15,7 @@ interface ApiService {
     suspend fun updateUserAsync(@Body UserDTO: UserDTO): Deferred<UserResponse>
 
     @GET("user/{upn}")
-    suspend fun getUserByUPNAsync(@Path("upn") upn: String): UserResponse
+    suspend fun getUserByUPNAsync(@Path("upn") upn: String): Deferred<UserResponse>
 
     @GET()
     suspend fun getUserListAsync(): Deferred<List<UserResponse>>

@@ -5,7 +5,7 @@ import androidx.databinding.ObservableInt
 import androidx.lifecycle.LiveData
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.model.data.state.AppState
-import com.nick_sib.beauty_radar.model.provider.auth_.IAuthProvider
+import com.nick_sib.beauty_radar.model.provider.auth.IAuthProvider
 import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
 import com.nick_sib.beauty_radar.view.utils.INFINITY_LOADING_PROGRESS
 import kotlinx.coroutines.launch
