@@ -34,7 +34,7 @@
         <item name="android:textColor">@color/Black</item>
         <item name="android:textSize">@dimen/biggest_text</item>
     </style>
-    
+
     <style name="TextConfirmation" parent="TextWelcome">
         <item name="android:layout_marginTop">@dimen/big_offset</item>
         <item name="android:textSize">@dimen/confirmation_text</item>
