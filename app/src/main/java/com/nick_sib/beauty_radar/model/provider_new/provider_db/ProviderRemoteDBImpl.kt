@@ -15,9 +15,9 @@ class ProviderRemoteDBImpl(private val api: ApiService) : IProviderRemoteDB {
     }
 
 
-    override suspend fun getUserByUPN(upn: String): UserResponse {
-        return api.getUserByUPNAsync(upn).await()
-    }
+    override suspend fun getUserByUPN(upn: String): UserResponse =
+        api.getUserByUPNAsync(upn)
+
 
     override suspend fun getUserList(): List<UserResponse> {
         return api.getUserListAsync().await()

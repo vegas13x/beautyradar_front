@@ -16,7 +16,7 @@ class RetrofitImplementation {
     fun createRetrofit(): ApiService {
         return Retrofit.Builder()
             .baseUrl(BASE_URL_LOCATIONS)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create())//GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .client(createOkHttpClient(PODInterceptor()))
             .build()

@@ -15,7 +15,7 @@ interface ApiService {
     suspend fun updateUserAsync(@Body UserDTO: UserDTO): Deferred<UserResponse>
 
     @GET("user/{upn}")
-    suspend fun getUserByUPNAsync(@Path("upn") upn: String): Deferred<UserResponse>
+    suspend fun getUserByUPNAsync(@Path("upn") upn: String): UserResponse
 
     @GET()
     suspend fun getUserListAsync(): Deferred<List<UserResponse>>
