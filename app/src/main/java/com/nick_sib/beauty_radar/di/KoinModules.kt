@@ -14,14 +14,7 @@ import com.nick_sib.beauty_radar.model.repository.core.RemoteRepository
 import com.nick_sib.beauty_radar.model.repository.impl.RemoteRepositoryImpl
 import com.nick_sib.beauty_radar.model.room.IRoomSource
 import com.nick_sib.beauty_radar.model.room.RoomDataBaseImplementation
-import com.nick_sib.beauty_radar.view_model.InitialProfileSetupViewModel
-import com.nick_sib.beauty_radar.view_model.AuthViewModel
-import com.nick_sib.beauty_radar.view_model.EnterCodeViewModel
-import com.nick_sib.beauty_radar.view_model.LogoutViewModel
-import com.nick_sib.beauty_radar.view_model.MasterClientViewModel
-import com.nick_sib.beauty_radar.view_model.ProfileViewModel
-import com.nick_sib.beauty_radar.view_model.SignUpViewModel
-import com.nick_sib.beauty_radar.view_model.SignUpSecondViewModel
+import com.nick_sib.beauty_radar.view_model.*
 import com.nick_sib.beauty_radar.view_model.interactor.core.MasterClientInteractor
 import com.nick_sib.beauty_radar.view_model.interactor.impl.MasterClientInteractorImpl
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -69,4 +62,8 @@ val signUpModule = module {
 
 val signUpSecondModule = module {
     viewModel { SignUpSecondViewModel(get()) }
+}
+
+val welcomeFragmenModule = module {
+    viewModel { WelcomeViewModel() }
 }
