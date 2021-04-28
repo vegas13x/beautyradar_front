@@ -83,6 +83,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                     }
                     is UserResponse -> {
                         //TEST LOADING USER FROM DB BACKEND!!!!
+                        Log.d(TAG_DEBAG, "renderData UserResponse:  ")
                         Toast.makeText(requireContext(), "ПРИШЁЛ ЮЗЕР С БЭКА", Toast.LENGTH_SHORT)
                             .show()
 

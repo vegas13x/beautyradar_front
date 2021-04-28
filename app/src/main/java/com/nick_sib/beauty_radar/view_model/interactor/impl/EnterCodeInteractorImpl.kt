@@ -15,7 +15,7 @@ class EnterCodeInteractorImpl(private val remoteRepo: RemoteRepository<AppState>
         val user = remoteRepo.getUserByUPNFromDB(uid)
         Log.d(TAG_DEBAG, "getUserByUPNFromDB: $user")
         if (user != null) {
-            return AppState.Success(user)
+            return user
         } else {
             return AppState.Success(USER_IS_DISABLE_IN_DB)
         }
