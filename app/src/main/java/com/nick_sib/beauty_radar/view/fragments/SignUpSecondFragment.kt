@@ -34,6 +34,11 @@ class SignUpSecondFragment :
         binding.btnMasterFull.setOnClickListener {
             if (master != "true") {
                 master = "true"
+
+                client == "false"
+                binding.btnClientFull.isSelected = false
+
+
                 it.isSelected = true
             } else {
                 master = "false"
@@ -44,6 +49,10 @@ class SignUpSecondFragment :
         binding.btnClientFull.setOnClickListener {
             if (client != "true") {
                 client = "true"
+
+                master == "false"
+                binding.btnMasterFull.isSelected = false
+
                 it.isSelected = true
             } else {
                 client = "false"

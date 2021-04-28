@@ -1,9 +1,7 @@
 package com.nick_sib.beauty_radar.view_model
 
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import com.nick_sib.beauty_radar.model.data.state.AppState
-import com.nick_sib.beauty_radar.model.provider.calendar.IRemoteDBProviderCalendar
 import com.nick_sib.beauty_radar.view.utils.TRANSITION_TO_CALENDAR
 import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
 import com.nick_sib.beauty_radar.view_model.interactor.core.MasterClientInteractor

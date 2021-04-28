@@ -7,8 +7,6 @@ import com.nick_sib.beauty_radar.model.provider.auth_.AuthProviderImpl
 import com.nick_sib.beauty_radar.model.provider.auth_.IAuthProvider
 import com.nick_sib.beauty_radar.model.provider.calendar.IRemoteDBProviderCalendar
 import com.nick_sib.beauty_radar.model.provider.calendar.RemoteDBProviderCalendar
-import com.nick_sib.beauty_radar.model.provider.profile.IRemoteDBProviderProfile
-import com.nick_sib.beauty_radar.model.provider.profile.RemoteDBProviderProfile
 import com.nick_sib.beauty_radar.model.provider_new.provider_db.IProviderRemoteDB
 import com.nick_sib.beauty_radar.model.provider_new.provider_db.ProviderRemoteDBImpl
 import com.nick_sib.beauty_radar.model.provider_new.retrofit.RetrofitImplementation
@@ -41,7 +39,6 @@ val appModule = module {
 
     //Старый провайдер Firebase *******************
 
-    single<IRemoteDBProviderProfile> { RemoteDBProviderProfile() }
     single<IRemoteDBProviderCalendar> { RemoteDBProviderCalendar() }
 
     //*********************************************
@@ -65,7 +62,7 @@ val authFragmentModule = module {
 
 val enterCodeFragmentModule = module {
     factory<EnterCodeInteractor<AppState>> { EnterCodeInteractorImpl(get()) }
-    viewModel { EnterCodeViewModel(get(), get(), get()) }
+    viewModel { EnterCodeViewModel(get(), get()) }
 }
 
 val signUpModule = module {
@@ -74,7 +71,7 @@ val signUpModule = module {
 }
 
 val signUpSecondModule = module {
-    viewModel { SignUpSecondViewModel(get(), get()) }
+    viewModel { SignUpSecondViewModel( get()) }
 }
 
 val masterClientFragmentModule = module {
@@ -84,7 +81,7 @@ val masterClientFragmentModule = module {
 
 val profileModule = module {
     factory<ProfileInteractor<AppState>> { ProfileInteractorImpl(get()) }
-    viewModel { ProfileViewModel(get(), get()) }
+    viewModel { ProfileViewModel( get()) }
 }
 
 val logoutModule = module {

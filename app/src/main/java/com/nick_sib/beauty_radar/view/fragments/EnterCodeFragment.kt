@@ -1,7 +1,6 @@
 package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.view.isGone
@@ -9,15 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.SingletonUID
-import com.nick_sib.beauty_radar.model.data.entites.UserMaster
-import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentEnterCodeBinding
 import com.nick_sib.beauty_radar.extension.findNavController
+import com.nick_sib.beauty_radar.model.data.entites.UserMaster
+import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider_new.repository.user.UserResponse
-import com.nick_sib.beauty_radar.view.utils.TAG_DEBAG
-import com.nick_sib.beauty_radar.view_model.EnterCodeViewModel
 import com.nick_sib.beauty_radar.view.utils.USER_IS_DISABLE_IN_DB
-import com.nick_sib.beauty_radar.view.utils.USER_IS_ENABLE_IN_DB
+import com.nick_sib.beauty_radar.view_model.EnterCodeViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
@@ -33,7 +30,6 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
         binding = FragmentEnterCodeBinding.bind(view)
 
         viewModel.subscribe().observe(viewLifecycleOwner, {
-            Log.d(TAG_DEBAG, "EnterCodeFragment onViewCreated: $it")
             renderData(it)
         })
         binding?.viewModel = viewModel
@@ -56,45 +52,21 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
 
     private fun renderData(appState: AppState) {
         when (appState) {
-            is AppState.Empty -> {
-            }
             is AppState.Success<*> -> {
                 binding?.fragmentAuthLoadingDialog?.root?.isGone = true
-//                val data: User? = appState.data as? User
-//                data?.run { viewModel.checkUserInDB(uid) }
                 when (appState.data) {
                     is UserMaster -> {
                         viewModel.checkUserInDB(appState.data.uid)
                     }
                     is String -> {
-                        when (appState.data) {
-                            USER_IS_ENABLE_IN_DB -> {
-                                findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())
-                            }
-                            USER_IS_DISABLE_IN_DB -> {
-                                findNavController().navigate(
-                                    EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment(
-                                        uid
-                                    )
-                                )
-                            }
-                        }
-
+                        findNavController().navigate(
+                            EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment(uid))
                     }
                     is UserResponse -> {
-                        //TEST LOADING USER FROM DB BACKEND!!!!
-                        Log.d(TAG_DEBAG, "renderData UserResponse:  ")
-                        Toast.makeText(requireContext(), "ПРИШЁЛ ЮЗЕР С БЭКА", Toast.LENGTH_SHORT)
-                            .show()
-
-                    }
-
-
-                    else -> {
+                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())
                     }
                 }
             }
-
             is AppState.Loading -> {
                 binding?.fragmentAuthLoadingDialog?.root?.isGone = false
             }
@@ -106,8 +78,9 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                     else -> toast(appState.error.message ?: "")
                 }
             }
+            is AppState.Empty -> {
+            }
             is AppState.SystemMessage -> {
-
             }
         }
     }

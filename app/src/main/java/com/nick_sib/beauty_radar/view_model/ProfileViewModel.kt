@@ -2,13 +2,11 @@ package com.nick_sib.beauty_radar.view_model
 
 import androidx.lifecycle.LiveData
 import com.nick_sib.beauty_radar.model.data.state.AppState
-import com.nick_sib.beauty_radar.model.provider.profile.IRemoteDBProviderProfile
 import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
 import com.nick_sib.beauty_radar.view_model.interactor.core.ProfileInteractor
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(
-    private val remoteDBProviderProfile: IRemoteDBProviderProfile,
     private val interactor: ProfileInteractor<AppState>
 ) :
     BaseViewModel<AppState>() {
@@ -21,7 +19,6 @@ class ProfileViewModel(
         uid.run {
             viewModelCoroutineScope.launch {
                 liveDataViewmodel.postValue(interactor.getUserByUPNFromDB(uid))
-                //liveDataViewmodel.value = remoteDBProviderProfile.getUserFromDbByUID(uid)
             }
         }
     }

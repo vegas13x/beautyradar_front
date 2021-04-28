@@ -1,6 +1,5 @@
 package com.nick_sib.beauty_radar.model.provider_new.repository.user
 
-import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
 
 data class MasterDTO(
