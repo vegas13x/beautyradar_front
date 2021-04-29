@@ -10,7 +10,6 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.nick_sib.beauty_radar.view.activitys.MainActivity
 
-
 class PushMessagingProvider: FirebaseMessagingService() {
 
     override fun onMessageReceived(p0: RemoteMessage) {
@@ -20,17 +19,11 @@ class PushMessagingProvider: FirebaseMessagingService() {
 
     private fun getFireBaseMessage(contentTitle: String, contentText: String) {
 
-//        val icon = BitmapFactory.decodeResource(
-//            application.resources,
-//            R.drawable.ic_menu_add
-//        )
-
         val builder = NotificationCompat.Builder(this,"myChannel")
             .setSmallIcon(R.drawable.ic_menu_add)
             .setContentTitle(contentTitle)
             .setContentText(contentText)
             .setAutoCancel(true)
-//            .setLargeIcon(icon)
 
         val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

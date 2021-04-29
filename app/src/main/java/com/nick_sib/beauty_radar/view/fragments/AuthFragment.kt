@@ -1,11 +1,13 @@
 package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
+import com.google.firebase.iid.FirebaseInstanceId
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentAuthenticationBinding
@@ -14,6 +16,7 @@ import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.extension.phoneToDigit
 import com.nick_sib.beauty_radar.view_model.AuthViewModel
 import com.nick_sib.beauty_radar.view.utils.CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT
+import com.nick_sib.beauty_radar.view.utils.TAG_DEBAG
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -45,12 +48,13 @@ class AuthFragment : Fragment(R.layout.fragment_authentication) {
                     textInput.editText?.setSelection(newText.length)
                 }
             }
+
+
         }
     }
 
     private fun renderData(appState: AppState) {
         when (appState) {
-            is AppState.Empty -> {}
             is AppState.Success<*> -> {
                 binding?.fragmentAuthLoadingDialog?.root?.isGone = true
                 val data: Int? = appState.data as? Int
@@ -69,9 +73,7 @@ class AuthFragment : Fragment(R.layout.fragment_authentication) {
                     else -> toast(appState.error.message ?: "")
                 }
             }
-            is AppState.SystemMessage -> {
-
-            }
+            else -> {}
         }
     }
 

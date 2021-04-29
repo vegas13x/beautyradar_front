@@ -5,20 +5,17 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.nick_sib.beauty_radar.R
-import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentSignUpSecondBinding
 import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.view_model.SignUpSecondViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 
 class SignUpSecondFragment :
     Fragment(R.layout.fragment_sign_up_second) {
 
     private val args: SignUpSecondFragmentArgs by navArgs()
 
-    private var client: String? = null
-    private var master: String? = null
+    private var job: String? = null
 
     private val secondViewModel: SignUpSecondViewModel by viewModel()
     private lateinit var binding: FragmentSignUpSecondBinding
@@ -27,32 +24,12 @@ class SignUpSecondFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSignUpSecondBinding.bind(view)
-        secondViewModel.subscribe().observe(viewLifecycleOwner) {
-            renderData(it)
-        }
+        secondViewModel.subscribe().observe(viewLifecycleOwner) {}
 
-        binding.btnMasterFull.setOnClickListener {
-            if (master != "true") {
-                master = "true"
-                it.isSelected = true
-            } else {
-                master = "false"
-                it.isSelected = false
-            }
-        }
-
-        binding.btnClientFull.setOnClickListener {
-            if (client != "true") {
-                client = "true"
-                it.isSelected = true
-            } else {
-                client = "false"
-                it.isSelected = false
-            }
-        }
+        checkUser()
 
         binding.btnContinue.setOnClickListener {
-            secondViewModel.createNewUser(args.uid, args.name, args.secondName, client, master)
+            secondViewModel.createNewUser(args.uid, args.name, job)
             findNavController().navigate(
                 SignUpSecondFragmentDirections.actionSignUpFragmentSecondToMasterClientsFragment()
             )
@@ -65,19 +42,19 @@ class SignUpSecondFragment :
         }
     }
 
+    private fun checkUser() {
+        binding.btnMasterFull.setOnClickListener {
+            it.isSelected
+            binding.btnClientFull.isSelected = false
+            job = "master"
 
-    private fun renderData(appState: AppState?) {
-        when (appState) {
-            is AppState.Empty -> {
-            }
-            is AppState.Success<*> -> {
-            }
-            is AppState.Loading -> {
-            }
-            is AppState.Error -> {
-            }
-            is AppState.SystemMessage -> {
-            }
+        }
+
+        binding.btnClientFull.setOnClickListener {
+            it.isSelected
+            binding.btnMasterFull.isSelected = false
+            job = "client"
         }
     }
+
 }

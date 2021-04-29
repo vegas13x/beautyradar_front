@@ -4,14 +4,13 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.nick_sib.beauty_radar.R
-import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentProfileBinding
-import com.nick_sib.beauty_radar.model.provider.profile.entities.UserProfile
+import com.nick_sib.beauty_radar.model.data.state.AppState
+import com.nick_sib.beauty_radar.model.provider.repository.user.UserResponse
 import com.nick_sib.beauty_radar.view_model.ProfileViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -67,24 +66,16 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             is AppState.Empty -> {
             }
             is AppState.Success<*> -> {
-                val userProfile: UserProfile?
+                val user: UserResponse
                 when (appState.data) {
-                    is UserProfile -> {
-                        userProfile = appState.data
-                        Log.d("TAG123", "renderData:$userProfile ")
-                        binding.profileName.text = userProfile.name.toString()
-                        binding.profileMaster.text = userProfile.master.toString()
-                        binding.profileClient.text = userProfile.client.toString()
+                    is UserResponse -> {
+                        user = appState.data
+                        binding.profileName.text = user.body?.name.toString()
                     }
                 }
+            }
 
-            }
-            is AppState.Loading -> {
-            }
-            is AppState.Error -> {
-            }
-            is AppState.SystemMessage -> {
-            }
+            else -> {}
         }
     }
 
