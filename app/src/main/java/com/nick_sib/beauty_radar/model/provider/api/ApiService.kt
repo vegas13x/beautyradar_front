@@ -7,10 +7,10 @@ import retrofit2.http.*
 interface ApiService {
 
     @Headers("Content-Type: application/json")
-    @POST("user")
+    @POST("user/")
     suspend fun createUserAsync(@Body userDTO: UserDTO): UserResponse
 
-    @PUT("user")
+    @PUT("user/")
     suspend fun updateUserAsync(@Body userDTO: UserDTO): UserResponse
 
     @GET("user/{upn}")
