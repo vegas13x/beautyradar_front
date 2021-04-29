@@ -12,30 +12,22 @@ class RemoteRepositoryImpl(
 ) :
     RemoteRepository<AppState> {
 
-    override fun getData(): AppState {
-        return AppState.Success(remoteDB.getListCalendarProfile())
-    }
+    override fun getData(): AppState =
+        AppState.Success(remoteDB.getListCalendarProfile())
 
-    override suspend fun getUserByUPNFromDB(uid: String): AppState {
-        val tt = remoteDBBackend.getUserByUPN(uid)
-        return AppState.Success(tt)
-    }
+    override suspend fun getUserByUPNFromDB(uid: String): AppState =
+        AppState.Success(remoteDBBackend.getUserByUPN(uid))
 
-    override suspend fun createUser(UserDTO: UserDTO): AppState {
-        return AppState.Success(remoteDBBackend.createUser(UserDTO))
-    }
+    override suspend fun createUser(UserDTO: UserDTO): AppState =
+        AppState.Success(remoteDBBackend.createUser(UserDTO))
 
-    override suspend fun updateUser(UserDTO: UserDTO): AppState {
-        return AppState.Success(remoteDBBackend.updateUser(UserDTO))
-    }
+    override suspend fun updateUser(UserDTO: UserDTO): AppState =
+        AppState.Success(remoteDBBackend.updateUser(UserDTO))
 
-    override suspend fun getUserList(): AppState {
-        return AppState.Success(remoteDBBackend.getUserList())
-    }
+    override suspend fun getUserList(): AppState =
+        AppState.Success(remoteDBBackend.getUserList())
 
-    override suspend fun deleteUser(uid: String): AppState {
-        return AppState.Success(remoteDBBackend.deleteUser(uid))
-    }
-
+    override suspend fun deleteUser(uid: String): AppState =
+        AppState.Success(remoteDBBackend.deleteUser(uid))
 
 }

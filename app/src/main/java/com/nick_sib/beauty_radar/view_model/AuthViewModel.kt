@@ -20,10 +20,7 @@ class AuthViewModel(
 
     val signIn: Function1<Pair<String, Activity?>, Unit> = this::startPhoneNumberVerification
 
-    fun subscribe(): LiveData<AppState> {
-        return liveDataViewmodel
-    }
-
+    fun subscribe(): LiveData<AppState> = liveDataViewmodel
 
     private fun checkPhone(value: String): Boolean =
         (value.length == phoneDigitsLength).also {
@@ -48,6 +45,6 @@ class AuthViewModel(
     }
 
     override fun errorReturned(t: Throwable) {
-
+        // TODO: 29.04.2021
     }
 }

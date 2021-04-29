@@ -11,9 +11,7 @@ class ProfileViewModel(
 ) :
     BaseViewModel<AppState>() {
 
-    fun subscribe(): LiveData<AppState> {
-        return liveDataViewmodel
-    }
+    fun subscribe(): LiveData<AppState> = liveDataViewmodel
 
     fun getUserProfileFromDb(uid: String) {
         uid.run {

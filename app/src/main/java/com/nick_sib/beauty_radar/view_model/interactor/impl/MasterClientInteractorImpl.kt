@@ -7,8 +7,7 @@ import com.nick_sib.beauty_radar.view_model.interactor.core.MasterClientInteract
 class MasterClientInteractorImpl(private val remoteRepo: RemoteRepository<AppState>) :
     MasterClientInteractor<AppState> {
 
+    override fun getData(): AppState =
+        remoteRepo.getData()
 
-    override fun getData(): AppState {
-        return remoteRepo.getData()
-    }
 }

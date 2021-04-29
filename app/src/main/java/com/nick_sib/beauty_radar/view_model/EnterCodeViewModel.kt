@@ -29,9 +29,7 @@ class EnterCodeViewModel(
             field = value
         }
 
-    fun subscribe(): LiveData<AppState> {
-        return liveDataViewmodel
-    }
+    fun subscribe(): LiveData<AppState> = liveDataViewmodel
 
     fun checkUserInDB(uid: String?) {
         uid?.run {

@@ -8,13 +8,10 @@ import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
 import com.nick_sib.beauty_radar.view_model.interactor.core.SignUpInteractor
 import kotlinx.coroutines.launch
 
-
 class SignUpSecondViewModel(private val interactor: SignUpInteractor<AppState>) :
     BaseViewModel<AppState>() {
 
-    fun subscribe(): LiveData<AppState> {
-        return liveDataViewmodel
-    }
+    fun subscribe(): LiveData<AppState> = liveDataViewmodel
 
     fun createNewUser(uid: String, name: String, job: String?) {
         var master = MasterDTO(null, 0, 0)

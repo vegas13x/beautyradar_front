@@ -8,9 +8,7 @@ import kotlinx.coroutines.launch
 
 class LogoutViewModel(private val authProvider: IAuthProvider) : BaseViewModel<AppState>() {
 
-    fun subscribeLiveData(): LiveData<AppState> {
-        return liveDataViewmodel
-    }
+    fun subscribeLiveData(): LiveData<AppState> = liveDataViewmodel
 
     fun exitInProfile() {
         viewModelCoroutineScope.launch {

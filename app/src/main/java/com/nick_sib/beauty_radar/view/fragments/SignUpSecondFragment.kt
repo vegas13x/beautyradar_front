@@ -10,7 +10,6 @@ import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.view_model.SignUpSecondViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class SignUpSecondFragment :
     Fragment(R.layout.fragment_sign_up_second) {
 

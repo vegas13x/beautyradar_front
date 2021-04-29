@@ -13,9 +13,7 @@ class MasterClientViewModel(private val interactor: MasterClientInteractor<AppSt
         liveDataViewmodel.value = AppState.Success(TRANSITION_TO_CALENDAR)
     }
 
-    fun subscribe(): LiveData<AppState> {
-        return liveDataViewmodel
-    }
+    fun subscribe(): LiveData<AppState> = liveDataViewmodel
 
     fun getListClients() {
         liveDataViewmodel.value =
