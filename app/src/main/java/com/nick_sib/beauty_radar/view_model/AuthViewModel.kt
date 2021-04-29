@@ -44,7 +44,5 @@ class AuthViewModel(
         liveDataViewmodel.value = AppState.Empty
     }
 
-    override fun errorReturned(t: Throwable) {
-        // TODO: 29.04.2021
-    }
+    override fun errorReturned(t: Throwable) {}
 }

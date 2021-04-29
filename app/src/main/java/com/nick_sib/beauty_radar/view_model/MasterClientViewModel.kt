@@ -20,8 +20,6 @@ class MasterClientViewModel(private val interactor: MasterClientInteractor<AppSt
             interactor.getData()
     }
 
-    override fun errorReturned(t: Throwable) {
-        TODO("Not yet implemented")
-    }
+    override fun errorReturned(t: Throwable) {}
 
 }

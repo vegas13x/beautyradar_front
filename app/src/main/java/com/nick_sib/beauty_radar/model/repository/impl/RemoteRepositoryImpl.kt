@@ -16,7 +16,7 @@ class RemoteRepositoryImpl(
         AppState.Success(remoteDB.getListCalendarProfile())
 
     override suspend fun getUserByUPNFromDB(uid: String): AppState =
-        AppState.Success(remoteDBBackend.getUserByUPN(uid))
+        AppState.Success(remoteDBBackend.getUserByUPN(uid).body)
 
     override suspend fun createUser(UserDTO: UserDTO): AppState =
         AppState.Success(remoteDBBackend.createUser(UserDTO))

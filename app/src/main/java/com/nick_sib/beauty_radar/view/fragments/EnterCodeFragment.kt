@@ -12,6 +12,7 @@ import com.nick_sib.beauty_radar.databinding.FragmentEnterCodeBinding
 import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.model.data.entites.UserMaster
 import com.nick_sib.beauty_radar.model.data.state.AppState
+import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
 import com.nick_sib.beauty_radar.model.provider.repository.user.UserResponse
 import com.nick_sib.beauty_radar.view_model.EnterCodeViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -57,11 +58,10 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                     is UserMaster -> {
                         viewModel.checkUserInDB(appState.data.uid)
                     }
-                    is String -> {
+                    is UserDTO -> {
                         findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())
-
                     }
-                    is UserResponse -> {
+                    null -> {
                         findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment(uid))
                     }
                 }
@@ -73,7 +73,6 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                 binding?.fragmentAuthLoadingDialog?.root?.isGone = true
                 viewModel.codeError()
                 when (appState.error) {
-
                     else -> toast(appState.error.message ?: "")
                 }
             }
