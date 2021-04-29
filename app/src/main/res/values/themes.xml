@@ -65,6 +65,13 @@
         <item name="android:textSize">@dimen/button_text</item>
         <item name="android:letterSpacing">-0.03</item>
     </style>
+    <style name="buttonEnter">
+        <item name="android:background">@drawable/rounded_corners_for_button_cont</item>
+        <item name="android:textSize">@dimen/text_size_btn_welcome_screen</item>
+        <item name="android:textColor">#2F4964</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 
     <style name="TextInputLayoutBG" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="boxBackgroundColor">@color/white</item>
