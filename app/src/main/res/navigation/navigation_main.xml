@@ -29,10 +29,8 @@
             app:destination="@id/masterClientsFragment"
              />
         <action
-            android:id="@+id/action_enterCodeFragment_to_sign_upFragment"
-            app:destination="@id/signUpFragment"
-            app:popUpTo="@id/authFragment"
-            app:popUpToInclusive="true" />
+            android:id="@+id/action_enterCodeFragment_to_signUpFragment2"
+            app:destination="@id/signUpFragment" />
     </fragment>
 
     <fragment

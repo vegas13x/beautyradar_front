@@ -1,6 +1,7 @@
 package com.nick_sib.beauty_radar.view_model
 
 import android.app.Activity
+import android.util.Log
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
@@ -9,6 +10,7 @@ import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.auth.IAuthProvider
 import com.nick_sib.beauty_radar.view.utils.INFINITY_LOADING_PROGRESS
 import com.nick_sib.beauty_radar.view.utils.TAG_CODE_NULL
+import com.nick_sib.beauty_radar.view.utils.TAG_DEBAG
 import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
 import com.nick_sib.beauty_radar.view_model.interactor.core.EnterCodeInteractor
 import kotlinx.coroutines.launch
@@ -32,9 +34,12 @@ class EnterCodeViewModel(
     fun subscribe(): LiveData<AppState> = liveDataViewmodel
 
     fun checkUserInDB(uid: String?) {
+        Log.d(TAG_DEBAG, "checkUserInDB: $uid")
         uid?.run {
             viewModelCoroutineScope.launch {
-                liveDataViewmodel.value = interactor.getUserByUPNFromDB(uid)
+                val user = interactor.getUserByUPNFromDB(uid)
+                Log.d(TAG_DEBAG, "checkUserInDB: 111111")
+                liveDataViewmodel.value = user
             }
         }
     }

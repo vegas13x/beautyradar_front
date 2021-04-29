@@ -1,8 +1,11 @@
 package com.nick_sib.beauty_radar.model.provider.auth
 
 import android.app.Activity
+import android.util.Log
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
+import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.iid.internal.FirebaseInstanceIdInternal
 import com.nick_sib.beauty_radar.SingletonUID
 import com.nick_sib.beauty_radar.model.data.entites.UserMaster
 import com.nick_sib.beauty_radar.model.data.error.ToastError

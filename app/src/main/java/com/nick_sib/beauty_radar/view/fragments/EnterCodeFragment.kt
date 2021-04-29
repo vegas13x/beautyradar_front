@@ -62,7 +62,15 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                         findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())
                     }
                     null -> {
-                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment(uid))
+                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment2(uid))
+                    }
+
+                    is UserDTO -> {
+                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())
+                    }
+
+                    null -> {
+                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment2(uid))
                     }
                 }
             }
@@ -76,7 +84,10 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                     else -> toast(appState.error.message ?: "")
                 }
             }
-            else -> {}
+            is AppState.Empty -> {
+            }
+            is AppState.SystemMessage -> {
+            }
         }
     }
 

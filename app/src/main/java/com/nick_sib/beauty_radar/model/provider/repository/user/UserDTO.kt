@@ -11,6 +11,7 @@ data class UserDTO(
     @field:Json(name = "name") var name: String? = null,
     @field:Json(name = "phone") var phone: String? = null,
     @field:Json(name = "rating") var rating: Int? = null,
-    @field:Json(name = "upn") var upn: String? = null
+    @field:Json(name = "upn") var upn: String? = null,
+    @field:Json(name = "token") var token: String? = null
 )
 
