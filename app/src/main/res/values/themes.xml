@@ -26,13 +26,18 @@
         <item name="colorPrimary">@color/white</item>
     </style>
 
-    <style name="TextWelcome">
+    <style name="BaseFont">>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/main_dark</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextWelcome" parent="BaseFont">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:fontFamily">@font/montserrat_medium</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textColor">@color/Black</item>
         <item name="android:textSize">@dimen/biggest_text</item>
+        <item name ="android:lineSpacingExtra">6sp</item>
     </style>
     
     <style name="TextConfirmation" parent="TextWelcome">

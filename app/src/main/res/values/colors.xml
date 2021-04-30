@@ -12,11 +12,13 @@
     <color name="Black">#000</color>
     <color name="transparent">#00000000</color>
 
-    <color name="splash_background">#E5E5E5</color>
+    <color name="main_dusty_rose_mid">#FFE5D0D8</color>
     <color name="hot_pink">#FD8A8D</color>
     <color name="hot_pink_75_transp">#BEFD8A8D</color>
     <color name="errorDots">#CF2E10</color>
 
+<!--    new style named-->
+    <color name="main_dark">#FF35384D</color>
 
 
 

@@ -33,7 +33,7 @@
             android:resource="@color/purple_200" />
 
         <activity
-            android:name=".view.activitys.SplashActivity"
+            android:name=".view.activitys.WelcomeActivity"
             android:alwaysRetainTaskState="true"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
