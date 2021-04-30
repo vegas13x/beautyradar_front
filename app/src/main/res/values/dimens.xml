@@ -33,5 +33,7 @@
     <dimen name="text_size_text_welcome">31sp</dimen>
     <dimen name="text_size_btn_welcome_screen">16sp</dimen>
     <dimen name="text_size_text_licens_welcome_screen">11sp</dimen>
+    <dimen name="edge_offset_of_button">57dp</dimen>
+
 
 </resources>
