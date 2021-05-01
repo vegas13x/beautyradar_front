@@ -17,6 +17,11 @@
     <color name="errorDots">#CF2E10</color>
     <color name="light_blue">#C9DEF4</color>
     <color name="blue_mid">#486C93</color>
+    //New color from designer Inga
+    // Main screen(fragment_master_client)
+    <color name="main_dark">#35384D</color>
+    <color name="main_dusty_rose_mid">#E6D0D8</color>
+    <color name="main_dusty_rose_light">#F8EDF1</color>
 
 
 
