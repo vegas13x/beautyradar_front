@@ -10,119 +10,165 @@
             type="com.nick_sib.beauty_radar.view_model.WelcomeViewModel" />
     </data>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        bind:context=".view.fragments.WelcomeFragment">
+        android:background="@color/main_dusty_rose_mid">
 
         <TextView
-            android:id="@+id/fragment_wc_tv_welcome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:id="@+id/fragment_welcome_tv_welcome"
+            style="@style/TextWelcome"
+            android:layout_marginTop="60dp"
             android:text="@string/s_welcome"
-            android:textColor="#486C93"
-            android:textSize="@dimen/text_size_text_welcome"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/fragment_wc_im_logo"/>
-
-        <ImageView
-            android:id="@+id/fragment_wc_im_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
-            app:layout_constraintBottom_toTopOf="@+id/fragment_wc_btn_enter"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_wc_tv_welcome"
-            app:srcCompat="@drawable/group_456" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/fragment_wc_btn_enter"
-            style="@style/buttonEnter"
-            android:layout_marginTop="135dp"
-            android:layout_marginBottom="12dp"
-            android:text="@string/enter"
-            app:backgroundTint="@null"
-            app:layout_constraintBottom_toTopOf="@+id/fragment_wc_btn_reg"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_wc_im_logo" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/fragment_wc_btn_reg"
-            style="@style/buttonEnter"
-            android:layout_marginBottom="50dp"
-            android:background="@drawable/rounded_corner_for_button_border"
-            android:text="@string/registr"
-            app:backgroundTint="@null"
-            app:layout_constraintBottom_toTopOf="@+id/fragment_wc_tv_warning"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_wc_btn_enter" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/fragment_wc_tv_warning"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="53dp"
-            android:text="@string/s_warning"
-            android:textAlignment="center"
-            android:textSize="@dimen/text_size_text_licens_welcome_screen"
+            android:id="@+id/fragment_welcome_tv_agreement"
+            style="@style/TextAgreement"
+            android:text="@string/s_agreement"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_wc_btn_reg" />
+            android:layout_marginHorizontal="@dimen/offset_24"
+            android:layout_marginBottom="53dp"/>
+
+        <Button
+            android:id="@+id/fragment_welcome_b_registry"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="50dp"
+            android:text="Зарегистрироваться"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_welcome_tv_agreement"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="15dp"
+            android:text="Войти"
+            app:layout_constraintBottom_toTopOf="@id/fragment_welcome_b_registry"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        bind:context=".view.fragments.WelcomeFragment">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/fragment_wc_tv_welcome"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="50dp"-->
+<!--            android:text="@string/s_welcome"-->
+<!--            android:textColor="#486C93"-->
+<!--            android:textSize="@dimen/text_size_text_welcome"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/fragment_wc_im_logo"/>-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/fragment_wc_im_logo"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="22dp"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/fragment_wc_btn_enter"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/fragment_wc_tv_welcome"-->
+<!--            app:srcCompat="@drawable/group_456" />-->
+
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/fragment_wc_btn_enter"-->
+<!--            style="@style/buttonEnter"-->
+<!--            android:layout_marginTop="135dp"-->
+<!--            android:layout_marginBottom="12dp"-->
+<!--            android:text="@string/enter"-->
+<!--            app:backgroundTint="@null"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/fragment_wc_btn_reg"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/fragment_wc_im_logo" />-->
+
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/fragment_wc_btn_reg"-->
+<!--            style="@style/buttonEnter"-->
+<!--            android:layout_marginBottom="50dp"-->
+<!--            android:background="@drawable/rounded_corner_for_button_border"-->
+<!--            android:text="@string/registr"-->
+<!--            app:backgroundTint="@null"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/fragment_wc_tv_warning"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/fragment_wc_btn_enter" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/fragment_wc_tv_warning"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="53dp"-->
+<!--            android:text="@string/s_warning"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textSize="@dimen/text_size_text_licens_welcome_screen"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/fragment_wc_btn_reg" />-->
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 </layout>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/main_dusty_rose_mid">
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="@color/main_dusty_rose_mid">-->
 
-    <TextView
-        android:id="@+id/fragment_welcome_tv_welcome"
-        style="@style/TextWelcome"
-        android:layout_marginTop="60dp"
-        android:text="@string/s_welcome"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <TextView
-        android:id="@+id/fragment_welcome_tv_agreement"
-        style="@style/TextAgreement"
-        android:text="@string/s_agreement"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginHorizontal="@dimen/offset_24"
-        android:layout_marginBottom="53dp"/>
-
-    <Button
-        android:id="@+id/fragment_welcome_b_registry"
-        android:layout_width="300dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="50dp"
-        android:text="Зарегистрироваться"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_welcome_tv_agreement"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="300dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="15dp"
-        android:text="Войти"
-        app:layout_constraintBottom_toTopOf="@id/fragment_welcome_b_registry"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+<!--    <TextView-->
+<!--        android:id="@+id/fragment_welcome_tv_welcome"-->
+<!--        style="@style/TextWelcome"-->
+<!--        android:layout_marginTop="60dp"-->
+<!--        android:text="@string/s_welcome"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<!--    <TextView-->
+<!--        android:id="@+id/fragment_welcome_tv_agreement"-->
+<!--        style="@style/TextAgreement"-->
+<!--        android:text="@string/s_agreement"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:layout_marginHorizontal="@dimen/offset_24"-->
+<!--        android:layout_marginBottom="53dp"/>-->
+
+<!--    <Button-->
+<!--        android:id="@+id/fragment_welcome_b_registry"-->
+<!--        android:layout_width="300dp"-->
+<!--        android:layout_height="48dp"-->
+<!--        android:layout_marginBottom="50dp"-->
+<!--        android:text="Зарегистрироваться"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/fragment_welcome_tv_agreement"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/button2"-->
+<!--        android:layout_width="300dp"-->
+<!--        android:layout_height="48dp"-->
+<!--        android:layout_marginBottom="15dp"-->
+<!--        android:text="Войти"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/fragment_welcome_b_registry"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
