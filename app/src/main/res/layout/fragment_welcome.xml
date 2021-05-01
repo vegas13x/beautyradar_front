@@ -78,3 +78,51 @@
             app:layout_constraintTop_toBottomOf="@+id/fragment_wc_btn_reg" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_dusty_rose_mid">
+
+    <TextView
+        android:id="@+id/fragment_welcome_tv_welcome"
+        style="@style/TextWelcome"
+        android:layout_marginTop="60dp"
+        android:text="@string/s_welcome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/fragment_welcome_tv_agreement"
+        style="@style/TextAgreement"
+        android:text="@string/s_agreement"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginHorizontal="@dimen/offset_24"
+        android:layout_marginBottom="53dp"/>
+
+    <Button
+        android:id="@+id/fragment_welcome_b_registry"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="50dp"
+        android:text="Зарегистрироваться"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_welcome_tv_agreement"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="15dp"
+        android:text="Войти"
+        app:layout_constraintBottom_toTopOf="@id/fragment_welcome_b_registry"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

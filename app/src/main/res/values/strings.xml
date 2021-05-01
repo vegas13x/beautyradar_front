@@ -16,7 +16,8 @@
     <string name="warn1">Создавая учётную запись вы соглашаетесь</string>
     <string name="warn2_link"><u>Условиями использования приложения</u></string>
 
-    <string name="s_warning">Выполняя вход вы соглашаетесь с <br/><u>Условиями использования приложения</u> и <u>Обработку персональных данных</u></string>
+
+    <string name="s_warning">Создавая учётную запись вы соглашаетесь\n<br/><u>Условиями использования приложения</u></string>
     <string name="enter">Войти</string>
     <string name="d_iv_logo">product logo</string>
     <string name="d_btn_flag">country flag</string>
@@ -48,4 +49,5 @@
 
     <string name="master">Мастер</string>
     <string name="client">Клиент</string>
+    <string name="s_agreement">Выполняя вход вы соглашаетесь с <u>Условиями пользовательского соглашения</u> и <u>Обработку персональных данных</u></string>
 </resources>

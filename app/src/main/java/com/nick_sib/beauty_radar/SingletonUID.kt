@@ -16,12 +16,14 @@ object SingletonUID {
         return uid
     }
 
-    fun getInstance(): SingletonUID? {
-        synchronized(syncObj) {
-            if (instance == null) {
-                instance = SingletonUID
+    fun getInstance(): SingletonUID {
+        if (instance == null) {
+            synchronized(syncObj) {
+                if (instance == null) {
+                    instance = SingletonUID
+                }
             }
-            return instance
         }
+        return instance!!
     }
 }

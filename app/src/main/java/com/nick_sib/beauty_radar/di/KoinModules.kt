@@ -1,22 +1,27 @@
 package com.nick_sib.beauty_radar.di
 
 import androidx.room.Room
-import com.nick_sib.beauty_radar.model.room.HistoryDataBase
 import com.google.firebase.auth.FirebaseAuth
 import com.nick_sib.beauty_radar.model.data.state.AppState
-import com.nick_sib.beauty_radar.model.provider.auth_.AuthProviderImpl
-import com.nick_sib.beauty_radar.model.provider.auth_.IAuthProvider
+import com.nick_sib.beauty_radar.model.provider.auth.AuthProviderImpl
+import com.nick_sib.beauty_radar.model.provider.auth.IAuthProvider
 import com.nick_sib.beauty_radar.model.provider.calendar.IRemoteDBProviderCalendar
 import com.nick_sib.beauty_radar.model.provider.calendar.RemoteDBProviderCalendar
-import com.nick_sib.beauty_radar.model.provider.profile.IRemoteDBProviderProfile
-import com.nick_sib.beauty_radar.model.provider.profile.RemoteDBProviderProfile
+import com.nick_sib.beauty_radar.model.provider.provider_db.IProviderRemoteDB
+import com.nick_sib.beauty_radar.model.provider.provider_db.ProviderRemoteDBImpl
+import com.nick_sib.beauty_radar.model.provider.retrofit.RetrofitImplementation
 import com.nick_sib.beauty_radar.model.repository.core.RemoteRepository
 import com.nick_sib.beauty_radar.model.repository.impl.RemoteRepositoryImpl
-import com.nick_sib.beauty_radar.model.room.IRoomSource
-import com.nick_sib.beauty_radar.model.room.RoomDataBaseImplementation
+import com.nick_sib.beauty_radar.model.room.HistoryDataBase
 import com.nick_sib.beauty_radar.view_model.*
+import com.nick_sib.beauty_radar.view_model.interactor.core.EnterCodeInteractor
 import com.nick_sib.beauty_radar.view_model.interactor.core.MasterClientInteractor
+import com.nick_sib.beauty_radar.view_model.interactor.core.ProfileInteractor
+import com.nick_sib.beauty_radar.view_model.interactor.core.SignUpInteractor
+import com.nick_sib.beauty_radar.view_model.interactor.impl.EnterCodeInteractorImpl
 import com.nick_sib.beauty_radar.view_model.interactor.impl.MasterClientInteractorImpl
+import com.nick_sib.beauty_radar.view_model.interactor.impl.ProfileInteractorImpl
+import com.nick_sib.beauty_radar.view_model.interactor.impl.SignUpInteractorImpl
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -28,41 +33,50 @@ import org.koin.dsl.module
 val appModule = module {
     single { FirebaseAuth.getInstance() }
     single<IAuthProvider> { AuthProviderImpl(get()) }
-    single<IRemoteDBProviderProfile> { RemoteDBProviderProfile() }
+    single { RetrofitImplementation().createRetrofit() }
+
     single<IRemoteDBProviderCalendar> { RemoteDBProviderCalendar() }
+
+    single<IProviderRemoteDB> { ProviderRemoteDBImpl(get()) }
+    factory<RemoteRepository<AppState>> { RemoteRepositoryImpl(get(), get()) }
+
     single { Room.databaseBuilder(get(), HistoryDataBase::class.java, "HistoryDB").build() }
     single { get<HistoryDataBase>().historyDao() }
-    single<IRoomSource> { RoomDataBaseImplementation(get()) }
-    factory<RemoteRepository<AppState>> { RemoteRepositoryImpl(get()) }
-    factory<MasterClientInteractor<AppState>> { MasterClientInteractorImpl(get()) }
 
 }
+
 val authFragmentModule = module {
     viewModel { AuthViewModel(get()) }
 }
-val logoutModule = module {
-    viewModel { LogoutViewModel(get()) }
-}
-val profileModule = module {
-    viewModel { ProfileViewModel(get()) }
-}
-val initialProfileModule = module {
-    viewModel { InitialProfileSetupViewModel(get()) }
-}
+
 val enterCodeFragmentModule = module {
+    factory<EnterCodeInteractor<AppState>> { EnterCodeInteractorImpl(get()) }
     viewModel { EnterCodeViewModel(get(), get()) }
-}
-val masterClientFragmentModule = module {
-    viewModel { MasterClientViewModel(get()) }
 }
 
 val signUpModule = module {
+    factory<SignUpInteractor<AppState>> { SignUpInteractorImpl(get()) }
     viewModel { SignUpViewModel() }
 }
 
 val signUpSecondModule = module {
-    viewModel { SignUpSecondViewModel(get()) }
+    viewModel { SignUpSecondViewModel( get()) }
 }
+
+val masterClientFragmentModule = module {
+    factory<MasterClientInteractor<AppState>> { MasterClientInteractorImpl(get()) }
+    viewModel { MasterClientViewModel(get()) }
+}
+
+val profileModule = module {
+    factory<ProfileInteractor<AppState>> { ProfileInteractorImpl(get()) }
+    viewModel { ProfileViewModel( get()) }
+}
+
+val logoutModule = module {
+    viewModel { LogoutViewModel(get()) }
+}
+
 
 val welcomeFragmenModule = module {
     viewModel { WelcomeViewModel() }
