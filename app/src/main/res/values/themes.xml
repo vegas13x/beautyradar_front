@@ -119,7 +119,6 @@
         <item name="backgroundTint">@null</item>
     </style>
     <style name="CardTextViewMainScreen" parent="BaseTextMainScreen">
-        <item name="elevation">@dimen/elevation_5</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/text_size_20</item>
     </style>
