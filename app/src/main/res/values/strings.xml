@@ -49,4 +49,5 @@
 
     <string name="master">Мастер</string>
     <string name="client">Клиент</string>
+    <string name="s_agreement">Выполняя вход вы соглашаетесь с <u>Условиями пользовательского соглашения</u> и <u>Обработку персональных данных</u></string>
 </resources>

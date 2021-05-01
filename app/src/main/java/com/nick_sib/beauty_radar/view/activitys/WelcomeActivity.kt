@@ -13,11 +13,11 @@ class WelcomeActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_welcome)
-        Handler(mainLooper).postDelayed({
-            val intent = Intent(this@WelcomeActivity, MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            startActivity(intent)
-            finish()
-        }, splashDuration)
+//        Handler(mainLooper).postDelayed({
+//            val intent = Intent(this@WelcomeActivity, MainActivity::class.java)
+//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+//            startActivity(intent)
+//            finish()
+//        }, splashDuration)
     }
 }

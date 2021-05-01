@@ -16,6 +16,15 @@
         <item name="android:lineHeight">@dimen/biggest_text_height</item>
     </style>
 
+    <style name="TextAgreement" parent="BaseFont">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">@dimen/small_text</item>
+        <item name="android:textFontWeight">400</item>
+        <item name="android:lineHeight">@dimen/small_text_height</item>
+    </style>
+
 
     <style name="TextConfirmation" parent="TextWelcome">
         <item name="android:textSize">@dimen/confirmation_text</item>

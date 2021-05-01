@@ -15,4 +15,35 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <TextView
+        android:id="@+id/fragment_welcome_tv_agreement"
+        style="@style/TextAgreement"
+        android:text="@string/s_agreement"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginHorizontal="@dimen/offset_24"
+        android:layout_marginBottom="53dp"/>
+
+    <Button
+        android:id="@+id/fragment_welcome_b_registry"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="50dp"
+        android:text="Зарегистрироваться"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_welcome_tv_agreement"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="15dp"
+        android:text="Войти"
+        app:layout_constraintBottom_toTopOf="@id/fragment_welcome_b_registry"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
