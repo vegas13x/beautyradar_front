@@ -12,7 +12,7 @@
     <string name="login_failed">"Login failed"</string>
     <string name="phone_number">Введите номер телефона</string>
     <string name="cont">Продолжить</string>
-    <string name="registr">Зарегистрироваться</string>
+    <string name="registry">Зарегистрироваться</string>
     <string name="warn1">Создавая учётную запись вы соглашаетесь</string>
     <string name="warn2_link"><u>Условиями использования приложения</u></string>
 

@@ -92,7 +92,7 @@
 
         <Button
             android:id="@+id/fragment_auth_btn_enter"
-            style="@style/ButtonLogin"
+            style="@style/ButtonBlack"
             android:layout_width="0dp"
             android:layout_height="@dimen/offset62"
             android:text="@string/enter"
