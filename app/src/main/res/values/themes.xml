@@ -136,4 +136,13 @@
         <item name="android:textSize">@dimen/text_size_20</item>
     </style>
 
+    <style name="ChipCalendarFragment" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/bg_btn_gap_day</item>
+        <item name="rippleColor">@color/bg_btn_gap_day</item>
+        <item name="android:textColor">@color/main_dark</item>
+        <item name="chipCornerRadius">8dp</item>
+        <item name="chipMinTouchTargetSize">5dp</item>
+        <item name="chipSurfaceColor">@color/transparent</item>
+    </style>
+
 </resources>
