@@ -3,7 +3,6 @@ package com.nick_sib.beauty_radar.view.fragments
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
-import android.widget.Toast
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.SingletonUID
 import com.nick_sib.beauty_radar.model.data.state.AppState
@@ -34,7 +33,7 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
 
         binding?.fragmentMcBtnNavBar?.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.menu_btm_nav_btn_setting -> {
+                R.id.menu_btm_nav_btn_clients -> {
                     findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToLogoutFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
