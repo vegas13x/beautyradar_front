@@ -22,6 +22,7 @@
     <!--    New color from designer Inga-->
     <!--     Main screen(fragment_master_client)-->
     <color name="main_dark">#35384D</color>
+    <color name="main_dark_20">#3335384D</color>
     <color name="main_dusty_rose_mid">#E6D0D8</color>
     <color name="main_dusty_rose_light">#F8EDF1</color>
     <color name="main_dusty_rose_light_tr">#0FF8EDF1</color>
