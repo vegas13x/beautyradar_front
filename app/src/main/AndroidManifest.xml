@@ -32,18 +32,6 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/purple_200" />
 
-<!--        <activity-->
-<!--            android:name=".view.activitys.WelcomeActivity"-->
-<!--            android:alwaysRetainTaskState="true"-->
-<!--            android:screenOrientation="portrait"-->
-<!--            tools:ignore="LockedOrientationActivity">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
-
         <activity
             android:name=".view.activitys.MainActivity"
             android:screenOrientation="portrait">
