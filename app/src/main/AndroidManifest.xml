@@ -21,7 +21,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Beautyradar">
+        android:theme="@style/Theme.Beautyradar"
+        android:usesCleartextTraffic="true">
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
@@ -32,7 +33,7 @@
             android:resource="@color/purple_200" />
 
         <activity
-            android:name=".view.activitys.SplashActivity"
+            android:name=".view.activitys.WelcomeActivity"
             android:alwaysRetainTaskState="true"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">

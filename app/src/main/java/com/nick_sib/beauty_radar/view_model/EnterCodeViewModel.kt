@@ -1,23 +1,25 @@
 package com.nick_sib.beauty_radar.view_model
 
 import android.app.Activity
+import android.util.Log
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import com.nick_sib.beauty_radar.model.data.error.ToastError
 import com.nick_sib.beauty_radar.model.data.state.AppState
-import com.nick_sib.beauty_radar.model.provider.auth_.IAuthProvider
-import com.nick_sib.beauty_radar.model.provider.profile.IRemoteDBProviderProfile
-import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
+import com.nick_sib.beauty_radar.model.provider.auth.IAuthProvider
 import com.nick_sib.beauty_radar.view.utils.INFINITY_LOADING_PROGRESS
+import com.nick_sib.beauty_radar.view.utils.TAG_CODE_NULL
+import com.nick_sib.beauty_radar.view.utils.TAG_DEBAG
+import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
+import com.nick_sib.beauty_radar.view_model.interactor.core.EnterCodeInteractor
 import kotlinx.coroutines.launch
 
 class EnterCodeViewModel(
     private val authProvider: IAuthProvider,
-    private val dbProviderProfile: IRemoteDBProviderProfile
+    private val interactor: EnterCodeInteractor<AppState>
 ) : BaseViewModel<AppState>() {
 
-    private val TAG_CODE_NULL = "Code is equal to null. Please enter the code"
     val resendSMS: Function1<Activity?, Unit> = this::resendSMS
 
     val errorDots = ObservableBoolean(false)
@@ -29,14 +31,15 @@ class EnterCodeViewModel(
             field = value
         }
 
-    fun subscribe(): LiveData<AppState> {
-        return liveDataViewmodel
-    }
+    fun subscribe(): LiveData<AppState> = liveDataViewmodel
 
     fun checkUserInDB(uid: String?) {
+        Log.d(TAG_DEBAG, "checkUserInDB: $uid")
         uid?.run {
             viewModelCoroutineScope.launch {
-                liveDataViewmodel.value = dbProviderProfile.checkUserInDdByUID(this@run)
+                val user = interactor.getUserByUPNFromDB(uid)
+                Log.d(TAG_DEBAG, "checkUserInDB: 111111")
+                liveDataViewmodel.value = user
             }
         }
     }
@@ -52,10 +55,7 @@ class EnterCodeViewModel(
         }
     }
 
-    override fun errorReturned(t: Throwable) {
-        // TODO("Not yet implemented")
-    }
-
+    override fun errorReturned(t: Throwable) {}
 
 
     private fun resendSMS(value: Activity?) {

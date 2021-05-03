@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.nick_sib.beauty_radar.databinding.ItemClientBinding
-import com.nick_sib.beauty_radar.model.provider.calendar.entities.CalendarProfile
+import com.nick_sib.beauty_radar.model.provider.calendar.CalendarProfile
 import com.nick_sib.beauty_radar.view.adapter.view_holders.BaseViewHolder
 
 class ClientAdapter(var list: List<CalendarProfile>) :

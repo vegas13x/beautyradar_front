@@ -8,13 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.SingletonUID
-import com.nick_sib.beauty_radar.model.data.entites.UserMaster
-import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentEnterCodeBinding
 import com.nick_sib.beauty_radar.extension.findNavController
+import com.nick_sib.beauty_radar.model.data.entites.UserMaster
+import com.nick_sib.beauty_radar.model.data.state.AppState
+import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
 import com.nick_sib.beauty_radar.view_model.EnterCodeViewModel
-import com.nick_sib.beauty_radar.view.utils.USER_IS_DISABLE_IN_DB
-import com.nick_sib.beauty_radar.view.utils.USER_IS_ENABLE_IN_DB
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
@@ -29,15 +28,17 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEnterCodeBinding.bind(view)
 
-        viewModel.subscribe().observe(viewLifecycleOwner, { renderData(it) })
+        viewModel.subscribe().observe(viewLifecycleOwner, {
+            renderData(it)
+        })
         binding?.viewModel = viewModel
         binding?.enterCodeFragmentTvInfo?.text =
             getString(R.string.text_help_info_phone, "+7 ${args.phone}")
         initListener()
-        uid = SingletonUID.getInstance()!!.getUID().toString()
+        uid = SingletonUID.getInstance()?.getUID().toString()
     }
 
-    private fun initListener(){
+    private fun initListener() {
         binding?.enterCodeFragmentIvBackTo?.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -50,23 +51,20 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
 
     private fun renderData(appState: AppState) {
         when (appState) {
-            is AppState.Empty -> {}
             is AppState.Success<*> -> {
                 binding?.fragmentAuthLoadingDialog?.root?.isGone = true
-                val data: UserMaster? = appState.data as? UserMaster
-                data?.run { viewModel.checkUserInDB(uid) }
-                when (appState.data as? String) {
-                    USER_IS_ENABLE_IN_DB -> {
+                when (appState.data) {
+                    is UserMaster -> {
+                        viewModel.checkUserInDB(appState.data.uid)
+                    }
+                    is UserDTO -> {
                         findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())
-
                     }
-                    USER_IS_DISABLE_IN_DB -> {
-                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment(uid))
+                    null -> {
+                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment2(uid))
                     }
-                    else -> {}
                 }
             }
-
             is AppState.Loading -> {
                 binding?.fragmentAuthLoadingDialog?.root?.isGone = false
             }
@@ -74,13 +72,10 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                 binding?.fragmentAuthLoadingDialog?.root?.isGone = true
                 viewModel.codeError()
                 when (appState.error) {
-
                     else -> toast(appState.error.message ?: "")
                 }
             }
-            is AppState.SystemMessage -> {
-
-            }
+            else -> {}
         }
     }
 

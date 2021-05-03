@@ -9,7 +9,7 @@ import com.nick_sib.beauty_radar.SingletonUID
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentMasterClientBinding
 import com.nick_sib.beauty_radar.extension.findNavController
-import com.nick_sib.beauty_radar.model.provider.calendar.entities.CalendarProfile
+import com.nick_sib.beauty_radar.model.provider.calendar.CalendarProfile
 import com.nick_sib.beauty_radar.view.adapter.ClientAdapter
 import com.nick_sib.beauty_radar.view.utils.TRANSITION_TO_CALENDAR
 import com.nick_sib.beauty_radar.view_model.MasterClientViewModel
@@ -31,6 +31,7 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
         viewModel.subscribe().observe(viewLifecycleOwner, {
             renderData(it)
         })
+
         binding?.fragmentMcBtnNavBar?.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_btm_nav_btn_setting -> {
@@ -56,8 +57,6 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
 
     private fun renderData(appState: AppState?) {
         when (appState) {
-            is AppState.Empty -> {
-            }
             is AppState.Success<*> -> {
                 when (appState.data) {
                     TRANSITION_TO_CALENDAR->{
@@ -74,19 +73,8 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
                         }
                     }
                 }
-
-
             }
-
-            is AppState.Loading -> {
-
-            }
-            is AppState.Error -> {
-
-            }
-            is AppState.SystemMessage -> {
-
-            }
+            else -> {}
         }
     }
 

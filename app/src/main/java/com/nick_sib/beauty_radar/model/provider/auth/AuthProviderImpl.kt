@@ -1,13 +1,17 @@
-package com.nick_sib.beauty_radar.model.provider.auth_
+package com.nick_sib.beauty_radar.model.provider.auth
 
 import android.app.Activity
 import com.google.firebase.FirebaseException
-import com.google.firebase.auth.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthOptions
+import com.google.firebase.auth.PhoneAuthProvider
 import com.nick_sib.beauty_radar.SingletonUID
 import com.nick_sib.beauty_radar.model.data.entites.UserMaster
 import com.nick_sib.beauty_radar.model.data.error.ToastError
 import com.nick_sib.beauty_radar.model.data.state.AppState
-import com.nick_sib.beauty_radar.view.utils.*
+import com.nick_sib.beauty_radar.view.utils.CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT
+import com.nick_sib.beauty_radar.view.utils.USER_SIGNOUT
 import java.util.concurrent.TimeUnit
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume

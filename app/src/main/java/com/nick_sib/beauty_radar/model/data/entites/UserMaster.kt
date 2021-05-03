@@ -4,6 +4,4 @@ data class UserMaster(
     val name: String,
     val email: String,
     val phone: String? = null,
-    val uid: String? = null
-
-)
+    val uid: String? = null)
