@@ -80,7 +80,7 @@
         <item name="android:layout_marginEnd">@dimen/edge_offset_of_button</item>
     </style>
 
-    <style name="ButtonRegistry" parent="ButtonBase">
+    <style name="ButtonSingUp" parent="ButtonBase">
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/main_dark</item>
@@ -88,6 +88,7 @@
 
     <style name="ButtonBlack" parent="ButtonBase">
         <item name="android:background">@drawable/button_black_rounded_corners</item>
+        <item name="android:textColor">@drawable/button_black_text</item>
 <!--        <item name="android:fontFamily">@font/cardo104s</item>-->
 <!--        <item name="android:textAllCaps">false</item>-->
 <!--        <item name="android:textSize">@dimen/button_text</item>-->

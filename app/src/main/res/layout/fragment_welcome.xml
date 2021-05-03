@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -35,117 +34,48 @@
             android:layout_marginBottom="53dp"/>
 
 
-        <ImageButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/fragment_welcome_button_sing_in"
+            style="@style/ButtonBlack"
+            app:backgroundTint="@null"
             android:layout_width="0dp"
             android:layout_height="@dimen/def_button_height"
-            android:background="@drawable/button_black_rounded_corners"
-            android:text="Войти"
+            android:textColor="@drawable/button_black_text"
+            android:text="@string/s_sing_in"
             android:layout_marginBottom="15dp"
-            app:layout_constraintBottom_toTopOf="@+id/fragment_welcome_button_registry"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_welcome_button_sing_up"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/fragment_welcome_button_registry"
-            style="@style/ButtonRegistry"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/fragment_welcome_button_sing_up"
+            style="@style/ButtonSingUp"
+            app:backgroundTint="@null"
             android:layout_width="0dp"
             android:layout_height="@dimen/def_button_height"
             android:background="@drawable/rounded_corner_for_button_border"
             android:foreground="?attr/selectableItemBackground"
-            app:backgroundTint="@null"
             android:text="@string/registry"
             android:layout_marginBottom="@dimen/offset50"
             app:layout_constraintBottom_toTopOf="@+id/fragment_welcome_tv_agreement"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
-
-
-        <!--        <com.google.android.material.button.MaterialButton-->
-<!--            android:id="@+id/fragment_wc_btn_enter"-->
-<!--            style="@style/ButtonBase"-->
-<!--            android:layout_marginTop="135dp"-->
-<!--            android:text="@string/enter"-->
-<!--            app:backgroundTint="@null"-->
-<!--            app:layout_constraintBottom_toTopOf="@+id/button2"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.517"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/fragment_wc_im_logo" />-->
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/ic_big_logo"
+            android:layout_margin="54dp"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_welcome_button_sing_in"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_welcome_tv_welcome"
+            android:contentDescription="@string/big_logotype_description"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        bind:context=".view.fragments.WelcomeFragment">-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/fragment_wc_tv_welcome"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="50dp"-->
-<!--            android:text="@string/s_welcome"-->
-<!--            android:textColor="#486C93"-->
-<!--            android:textSize="@dimen/text_size_text_welcome"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintBottom_toTopOf="@+id/fragment_wc_im_logo"/>-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/fragment_wc_im_logo"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="22dp"-->
-<!--            app:layout_constraintBottom_toTopOf="@+id/fragment_wc_btn_enter"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/fragment_wc_tv_welcome"-->
-<!--            app:srcCompat="@drawable/group_456" />-->
-
-
-
-<!--        <TextView-->
-<!--            android:id="@+id/fragment_wc_tv_warning"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginBottom="53dp"-->
-<!--            android:text="@string/s_warning"-->
-<!--            android:textAlignment="center"-->
-<!--            android:textSize="@dimen/text_size_text_licens_welcome_screen"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/fragment_wc_btn_reg" />-->
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 </layout>
-<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    android:background="@color/main_dusty_rose_mid">-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/fragment_welcome_tv_welcome"-->
-<!--        style="@style/TextWelcome"-->
-<!--        android:layout_marginTop="60dp"-->
-<!--        android:text="@string/s_welcome"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-
-<!--    <TextView-->
-<!--        android:id="@+id/fragment_welcome_tv_agreement"-->
-<!--        style="@style/TextAgreement"-->
-<!--        android:text="@string/s_agreement"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        android:layout_marginHorizontal="@dimen/offset_24"-->
-<!--        android:layout_marginBottom="53dp"/>-->
 
 
 

@@ -50,4 +50,6 @@
     <string name="master">Мастер</string>
     <string name="client">Клиент</string>
     <string name="s_agreement">Выполняя вход вы соглашаетесь с <u>Условиями пользовательского соглашения</u> и <u>Обработку персональных данных</u></string>
+    <string name="s_sing_in">Войти</string>
+    <string name="big_logotype_description">big logotype</string>
 </resources>
