@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.nick_sib.beauty_radar.view_model.CalendarViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_calendar_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_dusty_rose_mid"
+        tools:context=".view.fragments.CalendarFragment">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/fragment_calendar_btn_back_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/offset_24"
+            android:layout_marginTop="@dimen/offset_59"
+            android:src="@drawable/ic_back_by_inga"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/fragment_calendar_tv_title"
+            style="@style/NameMasterMainScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/schedule"
+            app:layout_constraintBottom_toBottomOf="@+id/fragment_calendar_btn_back_to"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/fragment_calendar_btn_back_to" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/fragment_calendar_bg"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/offset_15"
+            android:background="@drawable/bg_rounded_top_left_right_corner"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_calendar_tv_title"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="100dp"
+            android:layout_marginTop="@dimen/offset_15"
+            android:background="@drawable/bg_rounded_all_corner"
+            android:scrollbarSize="0dp"
+            app:layout_constraintBottom_toTopOf="@id/fragment_calendar_calendar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/fragment_calendar_bg">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/fragment_calendar_cg_gap_day"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:checkedChip="@id/fragment_calendar_chip_month"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/fragment_calendar_bg"
+                app:selectionRequired="true"
+                app:singleLine="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/fragment_calendar_chip_day"
+                    style="@style/ChipCalendarFragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="День" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/fragment_calendar_chip_week"
+                    style="@style/ChipCalendarFragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Неделя" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/fragment_calendar_chip_month"
+                    style="@style/ChipCalendarFragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Месяц" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/fragment_calendar_chip_year"
+                    style="@style/ChipCalendarFragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Год" />
+            </com.google.android.material.chip.ChipGroup>
+        </HorizontalScrollView>
+
+        <CalendarView
+            android:id="@+id/fragment_calendar_calendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/offset_15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/fragment_calendar_btn_free_window"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/free_window"
+            android:layout_marginTop="@dimen/offset_5"
+            android:paddingHorizontal="@dimen/offset_10"
+            android:paddingVertical="@dimen/offset_2"
+            android:background="@drawable/bg_free_window"
+            android:textSize="@dimen/text_size_12"
+            app:layout_constraintStart_toStartOf="@+id/fragment_calendar_calendar"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_calendar_calendar" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fragment_calendar_rv_clients"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/big_offset"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/fragment_calendar_btn_nav_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_calendar_btn_free_window"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_client" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/fragment_calendar_btn_nav_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:itemIconTint="@color/violet"
+            app:itemTextColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/menu_battom_nav_menu" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
