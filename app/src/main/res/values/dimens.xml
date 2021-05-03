@@ -44,6 +44,22 @@
     <dimen name="text_size_btn_welcome_screen">16sp</dimen>
     <dimen name="text_size_text_licens_welcome_screen">11sp</dimen>
     <dimen name="edge_offset_of_button">57dp</dimen>
+    <dimen name="offset_59">59dp</dimen>
+    <dimen name="size_text_name_master_main">26sp</dimen>
+    <dimen name="offset_20">20sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
+    <dimen name="text_size_13">13sp</dimen>
+    <dimen name="offset_13">13sp</dimen>
+    <dimen name="radius_15">15dp</dimen>
+    <dimen name="width_175">175dp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
+    <dimen name="offset_15">15dp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+    <dimen name="padding_8">8dp</dimen>
+    <dimen name="elevation_5">5dp</dimen>
+    <dimen name="text_size_14">14sp</dimen>
+    <dimen name="radius_10">10dp</dimen>
+    <dimen name="elevation_3">3dp</dimen>
 
 
 </resources>
