@@ -60,11 +60,7 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
             is AppState.Success<*> -> {
                 when (appState.data) {
                     TRANSITION_TO_CALENDAR->{
-                        Toast.makeText(
-                            requireContext(),
-                            "Переход на экран календаря",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToCalendarFragment())
                     }
                     is List<*> -> {
                         if (adapter == null) {

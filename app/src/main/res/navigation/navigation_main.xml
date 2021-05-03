@@ -104,5 +104,13 @@
         <action
             android:id="@+id/action_masterClientsFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_masterClientsFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.CalendarFragment"
+        android:label="CalendarFragment"
+        tools:layout="@layout/fragment_calendar"/>
 </navigation>

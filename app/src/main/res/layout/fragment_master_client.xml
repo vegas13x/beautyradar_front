@@ -190,6 +190,7 @@
             android:background="@drawable/bg_ronded_bottom_left_top_right_corner_rose_light"
             android:paddingVertical="@dimen/offset_24"
             android:text="@string/text_sing_up"
+
             app:layout_constraintBottom_toTopOf="@id/fragment_mc_tv_sessions"
             app:layout_constraintEnd_toStartOf="@id/fragment_mc_btn_calendar"
             app:layout_constraintStart_toStartOf="parent"
