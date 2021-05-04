@@ -63,6 +63,10 @@
     <dimen name="offset_10">10dp</dimen>
     <dimen name="offset_2">2dp</dimen>
     <dimen name="offset_5">5dp</dimen>
+    <dimen name="radius_8">8dp</dimen>
+    <dimen name="offset_57">57dp</dimen>
+    <dimen name="radius_20">20dp</dimen>
+    <dimen name="offset_7">7dp</dimen>
 
 
 </resources>
