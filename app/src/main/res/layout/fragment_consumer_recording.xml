@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.nick_sib.beauty_radar.view_model.ConsumerRecordingViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fragment_consumer_recording_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/main_dusty_rose_mid"
+                tools:context=".view.fragments.ConsumerRecordingFragment">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/fragment_consumer_recording_btn_back_to"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/offset_24"
+                    android:layout_marginTop="@dimen/offset_20"
+                    android:src="@drawable/ic_back_by_inga"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/fragment_consumer_recording_tv_text_recording"
+                    style="@style/NameMasterMainScreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recording"
+                    app:layout_constraintBottom_toBottomOf="@+id/fragment_consumer_recording_btn_back_to"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/fragment_consumer_recording_btn_back_to" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/fragment_consumer_recording_bg_bottom_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/offset_24"
+                    android:background="@drawable/bg_rounded_top_right_corner"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_consumer_recording_btn_back_to"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/fragment_consumer_recording_tv_text_add_name_client"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/offset_24"
+                    android:layout_marginTop="@dimen/offset_20"
+                    android:text="@string/add_fio_consumer"
+                    android:textColor="@color/main_dark"
+                    android:textSize="@dimen/text_size_18"
+                    app:layout_constraintBottom_toTopOf="@id/fragment_consumer_recording_til_add_name_client"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/fragment_consumer_recording_bg_bottom_bg" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/fragment_consumer_recording_til_add_name_client"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/offset_5"
+                    android:layout_marginEnd="@dimen/offset_24"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/fragment_consumer_recording_tv_text_add_name_client"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_consumer_recording_tv_text_add_name_client">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/fragment_consumer_recording_tied_add_name_client"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_et_recording_consumer_screen"
+                        android:hint="@string/fio" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/fragment_consumer_recording_tv_text_add_number_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/offset_24"
+                    android:layout_marginTop="@dimen/offset_20"
+                    android:text="@string/add_phone_client"
+                    android:textColor="@color/main_dark"
+                    android:textSize="@dimen/text_size_18"
+                    app:layout_constraintBottom_toTopOf="@id/fragment_consumer_recording_til_add_number_phone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_consumer_recording_til_add_name_client" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/fragment_consumer_recording_til_add_number_phone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/offset_5"
+                    android:layout_marginEnd="@dimen/offset_24"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/fragment_consumer_recording_tv_text_add_number_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_consumer_recording_tv_text_add_number_phone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/fragment_consumer_recording_tied_add_number_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_et_recording_consumer_screen"
+                        android:hint="@string/hint_phome_rus" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/fragment_consumer_recording_tv_text_choose_service"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/offset_24"
+                    android:layout_marginTop="@dimen/offset_20"
+                    android:text="@string/choose_service"
+                    android:textColor="@color/main_dark"
+                    android:textSize="@dimen/text_size_18"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_consumer_recording_til_add_number_phone" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/fragment_consumer_recording_tv_choose_service"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/offset_5"
+                    android:layout_marginEnd="@dimen/offset_24"
+                    android:background="@drawable/bg_et_recording_consumer_screen"
+                    android:drawableEnd="@drawable/ic_back_down"
+                    android:gravity="bottom"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="@{()->viewModel.openSheetService()}"
+                    android:paddingHorizontal="@dimen/offset_15"
+                    android:paddingVertical="@dimen/offset_15"
+                    android:textSize="@dimen/text_size_18"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/fragment_consumer_recording_tv_text_choose_service"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_consumer_recording_tv_text_choose_service"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="НАИМЕНОВАНИЕ УСЛУГИ" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/fragment_consumer_recording_tv_text_choose_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/offset_24"
+                    android:layout_marginTop="@dimen/offset_20"
+                    android:text="@string/choose_date"
+                    android:textColor="@color/main_dark"
+                    android:textSize="@dimen/text_size_18"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_consumer_recording_tv_choose_service" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/fragment_consumer_recording_tv_choose_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/offset_5"
+                    android:layout_marginEnd="@dimen/offset_24"
+                    android:background="@drawable/bg_et_recording_consumer_screen"
+                    android:drawableEnd="@drawable/ic_back_down"
+                    android:gravity="bottom"
+                    android:paddingHorizontal="@dimen/offset_15"
+                    android:paddingVertical="@dimen/offset_15"
+                    android:textSize="@dimen/text_size_18"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/fragment_consumer_recording_tv_text_choose_date"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_consumer_recording_tv_text_choose_date"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="01.01.2021" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/fragment_consumer_recording_tv_text_choose_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/offset_24"
+                    android:layout_marginTop="@dimen/offset_20"
+                    android:text="@string/choose_time"
+                    android:textColor="@color/main_dark"
+                    android:textSize="@dimen/text_size_18"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_consumer_recording_tv_choose_date" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/fragment_consumer_recording_tv_choose_time"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/offset_5"
+                    android:layout_marginEnd="@dimen/offset_24"
+                    android:background="@drawable/bg_et_recording_consumer_screen"
+                    android:drawableEnd="@drawable/ic_back_down"
+                    android:gravity="bottom"
+                    android:paddingHorizontal="@dimen/offset_15"
+                    android:paddingVertical="@dimen/offset_15"
+                    android:textSize="@dimen/text_size_18"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/fragment_consumer_recording_tv_text_choose_time"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_consumer_recording_tv_text_choose_time"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="15:15" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/fragment_consumer_recording_tv_text_commentaries"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/offset_24"
+                    android:layout_marginTop="@dimen/offset_20"
+                    android:text="@string/commentaries"
+                    android:textColor="@color/main_dark"
+                    android:textSize="@dimen/text_size_18"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_consumer_recording_tv_choose_time" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/fragment_consumer_recording_et_commentaries"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/offset_5"
+                    android:layout_marginEnd="@dimen/offset_24"
+                    android:background="@drawable/bg_et_recording_consumer_screen"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:maxHeight="100dp"
+                    android:minHeight="100dp"
+                    android:paddingHorizontal="@dimen/offset_5"
+                    android:paddingVertical="@dimen/offset_5"
+                    android:textColor="@color/main_dark"
+                    android:textSize="@dimen/text_size_18"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/fragment_consumer_recording_tv_text_commentaries"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_consumer_recording_tv_text_commentaries"
+                    tools:text="text test" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/fragment_consumer_recording_btn_recorded"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/offset_57"
+                    android:layout_marginTop="@dimen/offset_20"
+                    android:text="@string/recorded"
+                    android:textAllCaps="true"
+                    app:backgroundTint="@color/main_dark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_consumer_recording_et_commentaries"
+                    tools:layout_editor_absoluteX="170dp"
+                    tools:layout_editor_absoluteY="651dp" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <include
+            android:id="@+id/fragment_consumer_recording_bs_choose_service"
+            layout="@layout/bottom_sheet_service_selection"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
