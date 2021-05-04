@@ -32,7 +32,6 @@ class LogoutFragment : Fragment(R.layout.fragment_logout) {
 
         binding.logoutFragmentBtnLogout.setOnClickListener {
             viewModel.exitInProfile()
-            FirebaseMessaging.getInstance().deleteToken()
         }
 
     }
