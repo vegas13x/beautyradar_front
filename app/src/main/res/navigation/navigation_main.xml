@@ -107,10 +107,18 @@
         <action
             android:id="@+id/action_masterClientsFragment_to_calendarFragment"
             app:destination="@id/calendarFragment" />
+        <action
+            android:id="@+id/action_masterClientsFragment_to_consumerRecordingFragment"
+            app:destination="@id/consumerRecordingFragment" />
     </fragment>
     <fragment
         android:id="@+id/calendarFragment"
         android:name="com.nick_sib.beauty_radar.view.fragments.CalendarFragment"
         android:label="CalendarFragment"
         tools:layout="@layout/fragment_calendar"/>
+    <fragment
+        android:id="@+id/consumerRecordingFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.ConsumerRecordingFragment"
+        android:label="ConsumerRecordingFragment"
+        tools:layout="@layout/fragment_consumer_recording"/>
 </navigation>

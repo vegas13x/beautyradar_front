@@ -13,6 +13,7 @@ import com.nick_sib.beauty_radar.model.provider.retrofit.RetrofitImplementation
 import com.nick_sib.beauty_radar.model.repository.core.RemoteRepository
 import com.nick_sib.beauty_radar.model.repository.impl.RemoteRepositoryImpl
 import com.nick_sib.beauty_radar.model.room.HistoryDataBase
+import com.nick_sib.beauty_radar.view.fragments.ConsumerRecordingViewModel
 import com.nick_sib.beauty_radar.view_model.CalendarViewModel
 import com.nick_sib.beauty_radar.view_model.*
 import com.nick_sib.beauty_radar.view_model.interactor.core.EnterCodeInteractor
@@ -80,4 +81,7 @@ val logoutModule = module {
 
 val calendarModule = module {
     viewModel { CalendarViewModel() }
+}
+val consumerRecordingModule = module {
+    viewModel { ConsumerRecordingViewModel() }
 }

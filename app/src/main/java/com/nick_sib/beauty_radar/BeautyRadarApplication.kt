@@ -25,8 +25,10 @@ class BeautyRadarApplication : Application() {
                     enterCodeFragmentModule,
                     masterClientFragmentModule,
                     enterCodeFragmentModule,
-                    signUpModule ,
-                    signUpSecondModule
+                    signUpModule,
+                    signUpSecondModule,
+                    calendarModule,
+                    consumerRecordingModule
                 )
             )
         }

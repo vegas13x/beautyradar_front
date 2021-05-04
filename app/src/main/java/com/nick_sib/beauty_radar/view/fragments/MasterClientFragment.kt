@@ -11,6 +11,7 @@ import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.model.provider.calendar.CalendarProfile
 import com.nick_sib.beauty_radar.view.adapter.ClientAdapter
 import com.nick_sib.beauty_radar.view.utils.TRANSITION_TO_CALENDAR
+import com.nick_sib.beauty_radar.view.utils.TRANSITION_TO_CONSUMER_RECORDED
 import com.nick_sib.beauty_radar.view_model.MasterClientViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -61,6 +62,10 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
                     TRANSITION_TO_CALENDAR->{
                         findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToCalendarFragment())
                     }
+                    TRANSITION_TO_CONSUMER_RECORDED->{
+                        findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToConsumerRecordingFragment())
+                    }
+
                     is List<*> -> {
                         if (adapter == null) {
                             adapter = ClientAdapter(appState.data as List<CalendarProfile>)
