@@ -38,8 +38,8 @@ class EnterCodeViewModel(
         Log.d(TAG_DEBAG, "checkUserInDB: $uid")
         uid?.run {
             viewModelCoroutineScope.launch {
-                val user = interactor.getUserByUPNFromDB(uid)
-                liveDataViewmodel.value = user
+                val userFlag = interactor.existUserByUPNFromDB(uid)
+                liveDataViewmodel.value = userFlag
             }
         }
     }
@@ -60,7 +60,7 @@ class EnterCodeViewModel(
                 userDTO.upn,
                 interactor.getToken()
             )
-            liveDataViewmodel.postValue(interactor.updateUser(user))
+            liveDataViewmodel.postValue(interactor.updateUser(userDTO.id))
         }
     }
 
