@@ -11,9 +11,7 @@ import com.nick_sib.beauty_radar.view_model.interactor.core.EnterCodeInteractor
 class EnterCodeInteractorImpl(private val remoteRepo: RemoteRepository<AppState>) :
     EnterCodeInteractor<AppState> {
 
-    override suspend fun getUserByUPNFromDB(uid: String): AppState {
-        Log.d(TAG_DEBAG, "getUserByUPNFromDB1: ")
-        return remoteRepo.getUserByUPNFromDB(uid)}
-
+    override suspend fun existUserByUPNFromDB(uid: String): AppState {
+        return remoteRepo.existUserByUPNFromDB(uid)}
 }
 
