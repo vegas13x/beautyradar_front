@@ -1,3 +1,67 @@
 <resources>
     <string name="app_name">Beauty-radar</string>
+    <string name="error_entry_text_login">Not all fields are filled</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="phone_number">Введите номер телефона</string>
+    <string name="cont">Продолжить</string>
+    <string name="registry">Зарегистрироваться</string>
+    <string name="warn1">Создавая учётную запись вы соглашаетесь</string>
+    <string name="warn2_link"><u>Условиями использования приложения</u></string>
+
+
+    <string name="s_warning">Создавая учётную запись вы соглашаетесь\n<br/><u>Условиями использования приложения</u></string>
+    <string name="enter">Войти</string>
+    <string name="d_iv_logo">product logo</string>
+    <string name="d_btn_flag">country flag</string>
+    <string name="d_iv_progress">loading infinity progress</string>
+    <string name="s_welcome">Добро пожаловать!</string>
+    <string name="s_phone_help">Введите код оператора и 7 цифр</string>
+    <string name="s_phone_error">Номер должен содержать 7 цифр и код оператора</string>
+    <string name="the_confirmation">Подтверждение</string>
+    <string name="text_help_info_phone">Введите код подтверждения из SMS, отправленного на номер: %s</string>
+    <string name="procced">Продолжить</string>
+    <string name="sms_not_come">SMS не пришёл</string>
+    <string name="digit1">1</string>
+    <string name="digit2">2</string>
+    <string name="digit3">3</string>
+    <string name="digit4">4</string>
+    <string name="digit5">5</string>
+    <string name="digit6">6</string>
+    <string name="digit7">7</string>
+    <string name="digit8">8</string>
+    <string name="digit9">9</string>
+    <string name="digit0">0</string>
+    <string name="resend_sms">SMS код не пришел</string>
+    <string name="name_and_secondname">Введите Ваше имя и \nфамилию</string>
+    <string name="msg_token_fmt">Токен</string>
+     <string name="text_test_recorded_client">Комбинированный маникюр</string>
+    <string name="menu_profile">Профиль</string>
+    <string name="menu_main">Главная</string>
+    <string name="setting">Настройки</string>
+
+    <string name="master">Мастер</string>
+    <string name="client">Клиент</string>
+    <string name="s_sing_in">Войти</string>
+    <string name="big_logotype_description">big logotype</string>
+    <string name="text_hello_namemaster_test">Привет,[NameMaster]</string>
+    <string name="test_text_date">Вc,24.04.2021</string>
+    <string name="clients">Клиенты</string>
+    <string name="expectation">Ожидание</string>
+    <string name="text_test_10">10</string>
+    <string name="confirm">Подтвердить</string>
+    <string name="text_sing_up">Записать</string>
+    <string name="schedule">Расписание</string>
+    <string name="text_income">Доход</string>
+    <string name="sessions">Сеансов</string>
+    <string name="text_test_6">6</string>
+    <string name="test_text_1000">1000</string>
+    <string name="s_agreement">Выполняя вход вы соглашаетесь с <u>Условиями пользовательского соглашения</u> и <u>Обработку персональных данных</u></string>
 </resources>

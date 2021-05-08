@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="editedCode"
+            type="int"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="@dimen/dot_size"
+            android:layout_height="@dimen/dot_size"
+            android:layout_margin="@dimen/dot_margin"
+            android:background="@{editedCode > -1 ? @drawable/ic_circle_purple : @drawable/ic_circle_black, default=@drawable/ic_circle_black}"/>
+
+        <View
+            android:layout_width="@dimen/dot_size"
+            android:layout_height="@dimen/dot_size"
+            android:layout_margin="@dimen/dot_margin"
+            android:background="@{editedCode > 9 ? @drawable/ic_circle_purple : @drawable/ic_circle_black, default=@drawable/ic_circle_black}"/>
+
+        <View
+            android:layout_width="@dimen/dot_size"
+            android:layout_height="@dimen/dot_size"
+            android:layout_margin="@dimen/dot_margin"
+            android:background="@{editedCode > 99 ? @drawable/ic_circle_purple : @drawable/ic_circle_black, default=@drawable/ic_circle_black}"/>
+
+        <View
+            android:layout_width="@dimen/dot_size"
+            android:layout_height="@dimen/dot_size"
+            android:layout_margin="@dimen/dot_margin"
+            android:background="@{editedCode > 999 ? @drawable/ic_circle_purple : @drawable/ic_circle_black, default=@drawable/ic_circle_black}"/>
+
+        <View
+            android:layout_width="@dimen/dot_size"
+            android:layout_height="@dimen/dot_size"
+            android:layout_margin="@dimen/dot_margin"
+            android:background="@{editedCode > 9999 ? @drawable/ic_circle_purple : @drawable/ic_circle_black, default=@drawable/ic_circle_black}"/>
+
+        <View
+            android:layout_width="@dimen/dot_size"
+            android:layout_height="@dimen/dot_size"
+            android:layout_margin="@dimen/dot_margin"
+            android:background="@{editedCode > 99999 ? @drawable/ic_circle_purple : @drawable/ic_circle_black, default=@drawable/ic_circle_black}"/>
+    </LinearLayout>
+</layout>

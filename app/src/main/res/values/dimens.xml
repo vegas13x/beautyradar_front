@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="buttons_corners">8dp</dimen>
+
+    <dimen name="small_offset">5dp</dimen>
+    <dimen name="def_offset">10dp</dimen>
+    <dimen name="big_offset">15dp</dimen>
+    <dimen name="offset_24">24dp</dimen>
+    <dimen name="offset_42">42dp</dimen>
+    <dimen name="def_horizontal_offset">36dp</dimen>
+
+    <dimen name="corner_radius">14dp</dimen>
+
+    <dimen name="biggest_text">32sp</dimen>
+    <dimen name="biggest_text_height">38sp</dimen>
+    <dimen name="biggest_text_line_spacing">6sp</dimen>
+    <dimen name="small_text">11sp</dimen>
+    <dimen name="small_text_height">17sp</dimen>
+
+
+    <dimen name="button_text">18sp</dimen>
+    <dimen name="confirmation_text">32sp</dimen>
+
+    <dimen name="entr_code_frg_btn_back_mrg_start">24dp</dimen>
+    <dimen name="entr_code_frg_btn_back_mrg_top">40dp</dimen>
+
+    <dimen name="dot_size">22dp</dimen>
+    <dimen name="dot_margin">12dp</dimen>
+
+    <dimen name="def_button_height">48dp</dimen>
+    <dimen name="button_digit_margin">20dp</dimen>
+    <dimen name="button_digit_width">80dp</dimen>
+    <dimen name="button_digit_height">90dp</dimen>
+    <dimen name="button_digit_text_size">42sp</dimen>
+
+
+    <!--    stupid name while yet did not understand pattern of is use-->
+    <dimen name="offset50">50dp</dimen>
+    <dimen name="offset52">52dp</dimen>
+    <dimen name="offset62">62dp</dimen>
+    <dimen name="offset75">75dp</dimen>
+    <dimen name="offset80">80dp</dimen>
+    <dimen name="text_size_text_welcome">31sp</dimen>
+    <dimen name="text_size_btn_welcome_screen">16sp</dimen>
+    <dimen name="text_size_text_licens_welcome_screen">11sp</dimen>
+    <dimen name="edge_offset_of_button">57dp</dimen>
+    <dimen name="offset_59">59dp</dimen>
+    <dimen name="size_text_name_master_main">26sp</dimen>
+    <dimen name="offset_20">20sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
+    <dimen name="text_size_13">13sp</dimen>
+    <dimen name="offset_13">13sp</dimen>
+    <dimen name="radius_15">15dp</dimen>
+    <dimen name="width_175">175dp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
+    <dimen name="offset_15">15dp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+    <dimen name="padding_8">8dp</dimen>
+    <dimen name="elevation_5">5dp</dimen>
+    <dimen name="text_size_14">14sp</dimen>
+    <dimen name="radius_10">10dp</dimen>
+    <dimen name="elevation_3">3dp</dimen>
+
+
+</resources>

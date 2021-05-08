@@ -7,4 +7,27 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="light_pink">#F3F1FE</color>
+    <color name="violet">#8377D6</color>
+    <color name="Black">#000</color>
+
+    <color name="main_dusty_rose_mid">#FFE5D0D8</color>
+    <color name="black_button_clicked">#FF4C5270</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="splash_background">#E5E5E5</color>
+    <color name="hot_pink">#FD8A8D</color>
+    <color name="hot_pink_75_transp">#BEFD8A8D</color>
+    <color name="errorDots">#CF2E10</color>
+    <color name="light_blue">#C9DEF4</color>
+    <color name="blue_mid">#486C93</color>
+    //New color from designer Inga
+    // Main screen(fragment_master_client)
+    <color name="main_dusty_rose_light">#F8EDF1</color>
+
+<!--    new style named-->
+    <color name="main_dark">#FF35384D</color>
+
+    <color name="hint_color">#000000</color>
+    <color name="onFocusBtn">#BEF8BCBD</color>
 </resources>
