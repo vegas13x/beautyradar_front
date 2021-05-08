@@ -96,4 +96,7 @@ val logoutModule = module {
     viewModel { LogoutViewModel(get()) }
 }
 
+val welcomeFragmenModule = module {
+    viewModel { WelcomeViewModel() }
+}
 

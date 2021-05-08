@@ -44,6 +44,27 @@ class EnterCodeViewModel(
         }
     }
 
+    fun updateUserInDB(userDTO: UserDTO) {
+
+        viewModelCoroutineScope.launch {
+            Log.d("TAG111112", "updateUserInDB:"+ interactor.getToken())
+            var user = UserDTO(
+                userDTO.email,
+                userDTO.id,
+                userDTO.img,
+                userDTO.login,
+                userDTO.masterDTO,
+                userDTO.name,
+                userDTO.phone,
+                userDTO.rating,
+                userDTO.upn,
+                interactor.getToken()
+            )
+            liveDataViewmodel.postValue(interactor.updateUser(user))
+        }
+    }
+
+
     private fun codeEntered(code: String) {
         if (code.isEmpty()) {
             liveDataViewmodel.value = AppState.Error(ToastError(TAG_CODE_NULL))

@@ -1,8 +1,11 @@
 package com.nick_sib.beauty_radar.view_model
 
 import android.app.Activity
+import android.util.Log
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.LiveData
+import com.google.firebase.iid.FirebaseInstanceIdService
+import com.google.firebase.iid.internal.FirebaseInstanceIdInternal
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.auth.IAuthProvider
@@ -13,7 +16,7 @@ import kotlinx.coroutines.launch
 
 class AuthViewModel(
     private val authProvider: IAuthProvider
-) : BaseViewModel<AppState>() {
+) : BaseViewModel<AppState>(){
 
     private val phoneDigitsLength = 10
     val phoneError = ObservableInt(0)
