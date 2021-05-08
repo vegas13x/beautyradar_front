@@ -15,7 +15,7 @@ interface ApiService {
     suspend fun getUserByUPNAsync(@Path("id") id: String): UserResponse
 
     @PUT("user/{id}")
-    suspend fun updateUserAsync(@Path("id") id: String): UserResponse
+    suspend fun updateUserAsync(@Path("id") id: Int?): UserResponse
 
     @GET("user/{upn}/exists")
     suspend fun existUserByUPNAsync(@Path("upn") upn: String): UserDBCheck

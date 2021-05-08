@@ -7,7 +7,7 @@ import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
 interface IProviderRemoteDB {
 
     suspend fun createUser(UserDTO: UserDTO): UserResponse
-    suspend fun updateUser(id: String): UserResponse
+    suspend fun updateUser(id: Int?): UserResponse
     suspend fun getUserByUPN(id: String): UserResponse
     suspend fun existUserByUPN(upn: String): UserDBCheck
 

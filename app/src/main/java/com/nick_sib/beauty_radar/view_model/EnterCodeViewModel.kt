@@ -9,8 +9,6 @@ import com.nick_sib.beauty_radar.model.data.error.ToastError
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.auth.IAuthProvider
 import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
-import com.nick_sib.beauty_radar.model.provider.repository.user.UserDBCheck
-import com.nick_sib.beauty_radar.model.provider.repository.user.UserResponse
 import com.nick_sib.beauty_radar.view.utils.INFINITY_LOADING_PROGRESS
 import com.nick_sib.beauty_radar.view.utils.TAG_CODE_NULL
 import com.nick_sib.beauty_radar.view.utils.TAG_DEBAG
@@ -62,7 +60,7 @@ class EnterCodeViewModel(
                 userDTO.upn,
                 interactor.getToken()
             )
-            liveDataViewmodel.postValue(interactor.updateUser(user))
+            liveDataViewmodel.postValue(interactor.updateUser(userDTO.id))
         }
     }
 

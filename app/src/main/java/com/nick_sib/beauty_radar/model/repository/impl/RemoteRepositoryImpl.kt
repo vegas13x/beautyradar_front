@@ -21,7 +21,7 @@ class RemoteRepositoryImpl(
     override suspend fun createUser(UserDTO: UserDTO): AppState =
         AppState.Success(remoteDBBackend.createUser(UserDTO))
 
-    override suspend fun updateUser(id: String): AppState =
+    override suspend fun updateUser(id: Int?): AppState =
         AppState.Success(remoteDBBackend.updateUser(id))
 
 //    override suspend fun getUserList(): AppState =

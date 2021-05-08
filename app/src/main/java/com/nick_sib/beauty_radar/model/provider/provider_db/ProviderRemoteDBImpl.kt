@@ -10,7 +10,7 @@ class ProviderRemoteDBImpl(private val api: ApiService) : IProviderRemoteDB {
     override suspend fun createUser(UserDTO: UserDTO): UserResponse =
         api.createUserAsync(UserDTO)
 
-    override suspend fun updateUser(id: String): UserResponse =
+    override suspend fun updateUser(id: Int?): UserResponse =
         api.updateUserAsync(id)
 
     override suspend fun getUserByUPN(id: String): UserResponse =
