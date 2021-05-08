@@ -46,7 +46,7 @@ val appModule = module {
 }
 
 val authFragmentModule = module {
-    viewModel { AuthViewModel(get()) }
+    viewModel { SignUpViewModel(get()) }
 }
 
 val enterCodeFragmentModule = module {
@@ -56,7 +56,7 @@ val enterCodeFragmentModule = module {
 
 val signUpModule = module {
     factory<SignUpInteractor<AppState>> { SignUpInteractorImpl(get()) }
-    viewModel { SignUpViewModel() }
+    viewModel { SignUpViewModel_rem() }
 }
 
 val signUpSecondModule = module {

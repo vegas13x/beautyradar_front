@@ -5,9 +5,11 @@
     xmlns:bind="http://schemas.android.com/tools">
 
     <data>
+        <import type="com.nick_sib.beauty_radar.model.data.entites.FragmentType"/>
+        <import type="android.view.View"/>
         <variable
             name="viewModel"
-            type="com.nick_sib.beauty_radar.view_model.AuthViewModel" />
+            type="com.nick_sib.beauty_radar.view_model.SignUpViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,10 +37,11 @@
             android:id="@+id/fragment_sign_textview_name"
             style="@style/TextFragmentTitle"
             android:layout_marginBottom="15dp"
-            android:text="@string/s_sign_up"
+            android:text="@{viewModel.fragmentType == FragmentType.SIGNUP ? @string/s_sign_up : @string/s_sign_in}"
             app:layout_constraintBottom_toTopOf="@id/view_background_decorator"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Регистрация/Вход"/>
 
 
         <TextView
@@ -46,12 +49,12 @@
             style="@style/TextFragmentLabel"
             android:layout_marginTop="30dp"
             android:layout_marginStart="24dp"
-            android:text="@string/s_inpup_phone"
+            android:text="@string/s_signup_phone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/view_background_decorator" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/fragment_auth_til_phone"
+            android:id="@+id/fragment_sign_til_phone"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:boxBackgroundColor="@color/white"
             app:boxStrokeColor="@color/main_dark"
@@ -90,16 +93,29 @@
             android:layout_marginTop="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_auth_til_phone"
+            app:layout_constraintTop_toBottomOf="@id/fragment_sign_til_phone"
             bind:onSingIn="@{viewModel.signIn}"/>
 
         <TextView
             android:id="@+id/fragment_sign_goto_sing_in"
             style="@style/TextFragmentGotoSingIn"
             android:layout_marginTop="20dp"
-            android:text="@string/s_fragment_sign_in"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_sign_button_sing" />
+            app:layout_constraintTop_toBottomOf="@id/fragment_sign_button_sing"
+            android:text="@{viewModel.fragmentType == FragmentType.SIGNIN ? @string/s_fragment_sign_in : @string/s_fragment_sign_up}"
+            android:visibility="@{viewModel.phoneError ? View.GONE : View.VISIBLE}"
+            tools:text="@string/s_fragment_sign_in"/>
+
+        <TextView
+            android:id="@+id/fragment_sign_error"
+            style="@style/TextFragmentGotoSingIn"
+            android:layout_marginTop="20dp"
+            android:text="@string/e_incorrect_phone"
+            android:textColor="@color/error"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_sign_button_sing"
+            android:visibility="@{viewModel.phoneError ? View.VISIBLE : View.GONE}"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

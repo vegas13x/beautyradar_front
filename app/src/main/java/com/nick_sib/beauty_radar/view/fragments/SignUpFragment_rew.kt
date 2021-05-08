@@ -1,0 +1,34 @@
+package com.nick_sib.beauty_radar.view.fragments
+
+import androidx.fragment.app.Fragment
+import com.nick_sib.beauty_radar.R
+import com.nick_sib.beauty_radar.view_model.SignUpViewModel_rem
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
+class SignUpFragment_rew : Fragment(R.layout.fragment_sign_up) {
+
+//    private lateinit var uid: String
+//
+//    private val viewModel: SignUpViewModel_rem by viewModel()
+//    private lateinit var binding: FragmentSignUpBinding
+//
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        binding = FragmentSignUpBinding.bind(view)
+//
+//        uid = SingletonUID.getInstance()?.getUID().toString()
+//
+//        viewModel.subscribe().observe(viewLifecycleOwner){}
+//
+//        binding.btnContinue.setOnClickListener {
+//            findNavController().navigate(SignUpFragmentDirections.actionSignUpFragmentToSignUpFragmentSecond
+//                (uid,binding.nameText.text.toString()))
+//        }
+//
+//        binding.backArrow.setOnClickListener {
+//            findNavController().navigate(SignUpFragmentDirections.actionSignUpFragmentToAuthFragment())
+//        }
+//
+//    }
+
+}

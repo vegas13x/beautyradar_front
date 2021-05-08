@@ -20,10 +20,10 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
 
          binding?.run {
              fragmentWelcomeButtonSingUp.setOnClickListener {
-                 findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToAuthFragment())
+                 findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToSignUpFragment())
              }
              fragmentWelcomeButtonSingIn.setOnClickListener {
-                 findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToAuthFragment())
+                 findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToSignInFragment())
              }
          }
     }

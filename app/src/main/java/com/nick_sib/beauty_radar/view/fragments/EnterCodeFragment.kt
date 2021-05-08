@@ -58,10 +58,10 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                         viewModel.checkUserInDB(appState.data.uid)
                     }
                     is UserDTO -> {
-                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())
+//                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())
                     }
                     null -> {
-                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment2(uid))
+//                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment2(uid))
                     }
                 }
             }
