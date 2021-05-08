@@ -40,6 +40,31 @@
         <item name ="android:lineSpacingExtra">6sp</item>
     </style>
 
+    <style name="TextFragmentTitle" parent="BaseFont">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/title_text</item>
+        <item name ="android:lineSpacingExtra">14sp</item>
+    </style>
+
+    <style name="TextFragmentLabel" parent="BaseFont">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/label_text</item>
+        <item name ="android:lineSpacingExtra">12sp</item>
+    </style>
+
+    <style name="TextFragmentGotoSingIn" parent="BaseFont">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name ="android:lineSpacingExtra">4sp</item>
+    </style>
+
+
+
     <style name="TextAgreement" parent="BaseFont">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -89,10 +114,6 @@
     <style name="ButtonBlack" parent="ButtonBase">
         <item name="android:background">@drawable/button_black_rounded_corners</item>
         <item name="android:textColor">@drawable/button_black_text</item>
-<!--        <item name="android:fontFamily">@font/cardo104s</item>-->
-<!--        <item name="android:textAllCaps">false</item>-->
-<!--        <item name="android:textSize">@dimen/button_text</item>-->
-<!--        <item name="android:letterSpacing">-0.03</item>-->
     </style>
 
     <style name="TextInputLayoutBG" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
@@ -143,4 +164,11 @@
         <item name="android:textSize">@dimen/text_size_20</item>
     </style>
 
+    <style name="EditPhone">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/main_dark</item>
+        <item name="android:textSize">@dimen/text_size_18</item>
+    </style>
 </resources>

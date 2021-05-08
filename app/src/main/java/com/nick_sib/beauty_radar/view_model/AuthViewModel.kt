@@ -39,7 +39,6 @@ class AuthViewModel(
         }
     }
 
-
     fun codeDone() {
         liveDataViewmodel.value = AppState.Empty
     }

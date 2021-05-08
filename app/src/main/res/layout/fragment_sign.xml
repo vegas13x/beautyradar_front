@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.nick_sib.beauty_radar.view_model.AuthViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_dusty_rose_mid">
+
+        <include
+            android:id="@+id/fragment_sign_loading_dialog"
+            layout="@layout/dialog_loading"
+            android:visibility="gone"/>
+
+        <View
+            android:id="@+id/view_background_decorator"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/def_offset_decorator"
+            android:background="@drawable/bg_big_container"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <TextView
+            android:id="@+id/fragment_sign_textview_name"
+            style="@style/TextFragmentTitle"
+            android:layout_marginBottom="15dp"
+            android:text="@string/s_sign_up"
+            app:layout_constraintBottom_toTopOf="@id/view_background_decorator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <TextView
+            android:id="@+id/fragment_sign_textview_label"
+            style="@style/TextFragmentLabel"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="24dp"
+            android:text="@string/s_inpup_phone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view_background_decorator" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fragment_auth_til_phone"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/main_dark"
+            android:layout_marginTop="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/def_horizontal_offset"
+            android:animateLayoutChanges="true"
+            app:boxCornerRadiusBottomEnd="@dimen/corner_radius"
+            app:boxCornerRadiusBottomStart="@dimen/corner_radius"
+            app:boxCornerRadiusTopEnd="@dimen/corner_radius"
+            app:boxCornerRadiusTopStart="@dimen/corner_radius"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_sign_textview_label"
+            app:prefixText="+7 "
+            app:prefixTextColor="@color/Black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/auth_phone"
+                style="@style/EditPhone"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:maxLength="15"
+                tools:text="(999) 999-99-99"
+                bind:onSingIn="@{viewModel.signIn}"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/fragment_sign_button_sing"
+            style="@style/ButtonBlack"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/def_button_height"
+            android:text="@string/s_sing_in"
+            app:backgroundTint="@null"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_auth_til_phone"
+            bind:onSingIn="@{viewModel.signIn}"/>
+
+        <TextView
+            android:id="@+id/fragment_sign_goto_sing_in"
+            style="@style/TextFragmentGotoSingIn"
+            android:layout_marginTop="20dp"
+            android:text="@string/s_fragment_sign_in"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_sign_button_sing" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

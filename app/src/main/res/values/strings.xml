@@ -64,4 +64,8 @@
     <string name="sessions">Сеансов</string>
     <string name="text_test_6">6</string>
     <string name="test_text_1000">1000</string>
+    <string name="s_sign_up">Регистрация</string>
+    <string name="s_sign_in">Вход</string>
+    <string name="s_fragment_sign_in">Уже есть аккаунт? <b>Войти</b></string>
+    <string name="s_inpup_phone">Введите номер телефона</string>
 </resources>
