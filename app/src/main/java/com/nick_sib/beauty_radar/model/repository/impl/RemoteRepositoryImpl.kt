@@ -15,19 +15,19 @@ class RemoteRepositoryImpl(
     override fun getData(): AppState =
         AppState.Success(remoteDB.getListCalendarProfile())
 
-    override suspend fun getUserByUPNFromDB(uid: String): AppState =
-        AppState.Success(remoteDBBackend.getUserByUPN(uid).body)
+    override suspend fun existUserByUPNFromDB(uid: String): AppState =
+        AppState.Success(remoteDBBackend.existUserByUPN(uid).body)
 
     override suspend fun createUser(UserDTO: UserDTO): AppState =
         AppState.Success(remoteDBBackend.createUser(UserDTO))
 
-    override suspend fun updateUser(UserDTO: UserDTO): AppState =
-        AppState.Success(remoteDBBackend.updateUser(UserDTO))
+    override suspend fun updateUser(id: String): AppState =
+        AppState.Success(remoteDBBackend.updateUser(id))
 
-    override suspend fun getUserList(): AppState =
-        AppState.Success(remoteDBBackend.getUserList())
-
-    override suspend fun deleteUser(uid: String): AppState =
-        AppState.Success(remoteDBBackend.deleteUser(uid))
+//    override suspend fun getUserList(): AppState =
+//        AppState.Success(remoteDBBackend.getUserList())
+//
+//    override suspend fun deleteUser(uid: String): AppState =
+//        AppState.Success(remoteDBBackend.deleteUser(uid))
 
 }
