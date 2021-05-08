@@ -16,7 +16,7 @@ class ProfileViewModel(
     fun getUserProfileFromDb(uid: String) {
         uid.run {
             viewModelCoroutineScope.launch {
-                liveDataViewmodel.postValue(interactor.getUserByUPNFromDB(uid))
+                liveDataViewmodel.postValue(interactor.existUserByUPNFromDB(uid))
             }
         }
     }
