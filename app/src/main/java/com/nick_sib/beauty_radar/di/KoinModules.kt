@@ -76,3 +76,8 @@ val profileModule = module {
 val logoutModule = module {
     viewModel { LogoutViewModel(get()) }
 }
+
+
+val welcomeFragmenModule = module {
+    viewModel { WelcomeViewModel() }
+}

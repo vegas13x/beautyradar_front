@@ -12,5 +12,4 @@ import java.io.IOException
 
 class WelcomeViewModel : ViewModel() {
 
-
 }
