@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData
 import com.nick_sib.beauty_radar.model.data.error.ToastError
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.auth.IAuthProvider
+import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
 import com.nick_sib.beauty_radar.view.utils.INFINITY_LOADING_PROGRESS
 import com.nick_sib.beauty_radar.view.utils.TAG_CODE_NULL
 import com.nick_sib.beauty_radar.view.utils.TAG_DEBAG
@@ -37,12 +38,32 @@ class EnterCodeViewModel(
         Log.d(TAG_DEBAG, "checkUserInDB: $uid")
         uid?.run {
             viewModelCoroutineScope.launch {
-                val user = interactor.getUserByUPNFromDB(uid)
-                Log.d(TAG_DEBAG, "checkUserInDB: 111111")
-                liveDataViewmodel.value = user
+                val userFlag = interactor.existUserByUPNFromDB(uid)
+                liveDataViewmodel.value = userFlag
             }
         }
     }
+
+    fun updateUserInDB(userDTO: UserDTO) {
+
+        viewModelCoroutineScope.launch {
+            Log.d("TAG111112", "updateUserInDB:"+ interactor.getToken())
+            var user = UserDTO(
+                userDTO.email,
+                userDTO.id,
+                userDTO.img,
+                userDTO.login,
+                userDTO.masterDTO,
+                userDTO.name,
+                userDTO.phone,
+                userDTO.rating,
+                userDTO.upn,
+                interactor.getToken()
+            )
+            liveDataViewmodel.postValue(interactor.updateUser(userDTO.id))
+        }
+    }
+
 
     private fun codeEntered(code: String) {
         if (code.isEmpty()) {

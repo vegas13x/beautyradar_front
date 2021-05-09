@@ -3,17 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_main"
-    app:startDestination="@id/authFragment">
+    app:startDestination="@id/welcomeFragment">
 
     <fragment
-        android:id="@+id/authFragment"
-        android:name="com.nick_sib.beauty_radar.view.fragments.AuthFragment"
-        android:label="AuthFragment"
-        tools:layout="@layout/fragment_authentication">
+        android:id="@+id/welcomeFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.WelcomeFragment"
+        android:label="WelcomeFragment"
+        tools:layout="@layout/fragment_welcome">
         <action
-            android:id="@+id/action_authFragment_to_enterCodeFragment"
-            app:destination="@id/enterCodeFragment" />
+            android:id="@+id/action_welcomeFragment_to_authFragment"
+            app:destination="@id/authFragment" />
     </fragment>
+
+<!--    <fragment-->
+<!--        android:id="@+id/authFragment"-->
+<!--        android:name="com.nick_sib.beauty_radar.view.fragments.AuthFragment"-->
+<!--        android:label="AuthFragment"-->
+<!--        tools:layout="@layout/fragment_authentication">-->
+<!--        <action-->
+<!--            android:id="@+id/action_authFragment_to_enterCodeFragment"-->
+<!--            app:destination="@id/enterCodeFragment" />-->
+<!--    </fragment>-->
 
     <fragment
         android:id="@+id/enterCodeFragment"
@@ -108,6 +118,7 @@
             android:id="@+id/action_masterClientsFragment_to_calendarFragment"
             app:destination="@id/calendarFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/calendarFragment"
         android:name="com.nick_sib.beauty_radar.view.fragments.CalendarFragment"

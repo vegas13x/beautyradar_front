@@ -1,6 +1,8 @@
 package com.nick_sib.beauty_radar.view.fragments
 
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import com.nick_sib.beauty_radar.R
@@ -52,6 +54,10 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
             }
         }
 
+
+
+        viewModel.takePictureFromStorage()
+
     }
 
     private fun renderData(appState: AppState?) {
@@ -66,6 +72,9 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
                             adapter = ClientAdapter(appState.data as List<CalendarProfile>)
                             binding?.clientRecycler?.adapter = adapter
                         }
+                    }
+                    is Bitmap -> {
+                        binding?.fragmentMcIvAvatarMaster?.setImageBitmap(appState.data)
                     }
                 }
             }
