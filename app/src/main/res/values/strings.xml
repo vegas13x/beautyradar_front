@@ -72,4 +72,5 @@
     <string name="s_fragment_sign_in_two">Зарегистрироваться</string>
     <string name="s_signup_phone">Введите номер телефона</string>
     <string name="e_incorrect_phone">Неверно введен телефон, повторите ввод</string>
+    <string name="free_window">Свободные окна</string>
 </resources>

@@ -67,6 +67,14 @@
     <dimen name="text_size_14">14sp</dimen>
     <dimen name="radius_10">10dp</dimen>
     <dimen name="elevation_3">3dp</dimen>
+    <dimen name="radius_30">30dp</dimen>
+    <dimen name="radius_50">50dp</dimen>
+    <dimen name="offset_53">53dp</dimen>
+    <dimen name="text_size_12">12sp</dimen>
+    <dimen name="radius_28">28dp</dimen>
+    <dimen name="offset_10">10dp</dimen>
+    <dimen name="offset_2">2dp</dimen>
+    <dimen name="offset_5">5dp</dimen>
 
 
 </resources>
