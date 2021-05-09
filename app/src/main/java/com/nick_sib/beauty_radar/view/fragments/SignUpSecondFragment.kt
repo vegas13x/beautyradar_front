@@ -1,6 +1,7 @@
 package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
@@ -56,5 +57,7 @@ class SignUpSecondFragment :
             job = "client"
         }
     }
+
+
 
 }
