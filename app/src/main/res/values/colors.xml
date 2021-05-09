@@ -24,10 +24,11 @@
     //New color from designer Inga
     // Main screen(fragment_master_client)
     <color name="main_dusty_rose_light">#F8EDF1</color>
+    <color name="main_dusty_rose_light_tr">#0FF8EDF1</color>
 
 <!--    new style named-->
     <color name="main_dark">#FF35384D</color>
-
+    <color name="main_dark_20">#3335384D</color>
     <color name="hint_color">#000000</color>
     <color name="onFocusBtn">#BEF8BCBD</color>
 </resources>

@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
-import android.widget.Toast
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.SingletonUID
 import com.nick_sib.beauty_radar.model.data.state.AppState
@@ -36,7 +35,7 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
 
         binding?.fragmentMcBtnNavBar?.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.menu_btm_nav_btn_setting -> {
+                R.id.menu_btm_nav_btn_clients -> {
                     findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToLogoutFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
@@ -66,11 +65,7 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
             is AppState.Success<*> -> {
                 when (appState.data) {
                     TRANSITION_TO_CALENDAR->{
-                        Toast.makeText(
-                            requireContext(),
-                            "Переход на экран календаря",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToCalendarFragment())
                     }
                     is List<*> -> {
                         if (adapter == null) {

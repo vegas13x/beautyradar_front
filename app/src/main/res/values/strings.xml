@@ -64,4 +64,5 @@
     <string name="text_test_6">6</string>
     <string name="test_text_1000">1000</string>
     <string name="s_agreement">Выполняя вход вы соглашаетесь с <u>Условиями пользовательского соглашения</u> и <u>Обработку персональных данных</u></string>
+    <string name="free_window">Свободные окна</string>
 </resources>

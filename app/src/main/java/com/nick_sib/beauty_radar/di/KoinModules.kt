@@ -15,6 +15,7 @@ import com.nick_sib.beauty_radar.model.repository.core.RemoteRepository
 import com.nick_sib.beauty_radar.model.repository.impl.RemoteRepositoryImpl
 import com.nick_sib.beauty_radar.model.room.HistoryDao
 import com.nick_sib.beauty_radar.model.room.HistoryDataBase
+import com.nick_sib.beauty_radar.view_model.CalendarViewModel
 import com.nick_sib.beauty_radar.view_model.*
 import com.nick_sib.beauty_radar.view_model.interactor.core.EnterCodeInteractor
 import com.nick_sib.beauty_radar.view_model.interactor.core.MasterClientInteractor
@@ -86,11 +87,15 @@ val masterClientFragmentModule = module {
 
 val profileModule = module {
     factory<ProfileInteractor<AppState>> { ProfileInteractorImpl(get()) }
-    viewModel { ProfileViewModel( get()) }
+    viewModel { ProfileViewModel(get()) }
 }
 
 val logoutModule = module {
     viewModel { LogoutViewModel(get()) }
+}
+
+val calendarModule = module {
+    viewModel { CalendarViewModel() }
 }
 
 
