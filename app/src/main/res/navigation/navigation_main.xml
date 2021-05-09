@@ -11,18 +11,19 @@
         android:label="WelcomeFragment"
         tools:layout="@layout/fragment_welcome">
         <action
-            android:id="@+id/action_welcomeFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
-        <action
-            android:id="@+id/action_welcomeFragment_to_signInFragment"
-            app:destination="@id/signInFragment" />
+            android:id="@+id/action_welcomeFragment_to_signFragment"
+            app:destination="@id/signFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/signUpFragment"
-        android:name="com.nick_sib.beauty_radar.view.fragments.SignUpFragment"
+        android:id="@+id/signFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.SignFragment"
         android:label="AuthFragment"
         tools:layout="@layout/fragment_sign">
+        <argument
+            android:name="fragType"
+            android:defaultValue="SIGNUP"
+            app:argType="com.nick_sib.beauty_radar.model.data.entites.FragmentType" />
         <action
             android:id="@+id/action_authFragment_to_enterCodeFragment"
             app:destination="@id/enterCodeFragment" />
@@ -39,11 +40,10 @@
             app:argType="string" />
         <action
             android:id="@+id/action_enterCodeFragment_to_masterClientFragment"
-            app:destination="@id/masterClientsFragment"
-             />
+            app:destination="@id/masterClientsFragment"/>
         <action
             android:id="@+id/action_enterCodeFragment_to_signUpFragment2"
-            app:destination="@id/signUpFragment" />
+            app:destination="@id/signFragment" />
     </fragment>
 
     <fragment
@@ -57,22 +57,22 @@
             app:argType="string" />
     </fragment>
 
-<!--    <fragment-->
-<!--        android:id="@+id/signUpFragment"-->
-<!--        android:name="com.nick_sib.beauty_radar.view.fragments.SignUpFragment_rew"-->
-<!--        android:label="sign_up_fragment"-->
-<!--        tools:layout="@layout/fragment_sign_up">-->
-<!--        <argument-->
-<!--            android:name="uid"-->
-<!--            android:defaultValue="err"-->
-<!--            app:argType="string" />-->
-<!--        <action-->
-<!--            android:id="@+id/action_signUpFragment_to_signUpFragmentSecond"-->
-<!--            app:destination="@id/signUpFragmentSecond" />-->
-<!--        <action-->
-<!--            android:id="@+id/action_signUpFragment_to_authFragment"-->
-<!--            app:destination="@id/authFragment" />-->
-<!--    </fragment>-->
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.SignUpFragment"
+        android:label="sign_up_fragment"
+        tools:layout="@layout/fragment_sign_up">
+        <argument
+            android:name="uid"
+            android:defaultValue="err"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_signUpFragment_to_signUpFragmentSecond"
+            app:destination="@id/signUpFragmentSecond" />
+        <action
+            android:id="@+id/action_signUpFragment_to_authFragment"
+            app:destination="@id/signFragment" />
+    </fragment>
     <fragment
         android:id="@+id/signUpFragmentSecond"
         android:name="com.nick_sib.beauty_radar.view.fragments.SignUpSecondFragment"
@@ -92,7 +92,7 @@
             app:argType="string" />
         <action
             android:id="@+id/action_signUpFragmentSecond_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
+            app:destination="@id/signFragment" />
         <action
             android:id="@+id/action_signUpFragmentSecond_to_masterClientsFragment"
             app:destination="@id/masterClientsFragment" />
@@ -118,10 +118,5 @@
             android:id="@+id/action_masterClientsFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/signInFragment"
-        android:name="com.nick_sib.beauty_radar.view.fragments.SignInFragment"
-        android:label="SignInFragment"
-        tools:layout="@layout/fragment_sign"/>
 
 </navigation>

@@ -9,7 +9,7 @@
         <import type="android.view.View"/>
         <variable
             name="viewModel"
-            type="com.nick_sib.beauty_radar.view_model.SignUpViewModel" />
+            type="com.nick_sib.beauty_radar.view_model.SignViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +20,7 @@
         <include
             android:id="@+id/fragment_sign_loading_dialog"
             layout="@layout/dialog_loading"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <View
             android:id="@+id/view_background_decorator"
@@ -41,14 +41,14 @@
             app:layout_constraintBottom_toTopOf="@id/view_background_decorator"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="Регистрация/Вход"/>
+            tools:text="Регистрация/Вход" />
 
 
         <TextView
             android:id="@+id/fragment_sign_textview_label"
             style="@style/TextFragmentLabel"
-            android:layout_marginTop="30dp"
             android:layout_marginStart="24dp"
+            android:layout_marginTop="30dp"
             android:text="@string/s_signup_phone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/view_background_decorator" />
@@ -56,17 +56,17 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/fragment_sign_til_phone"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxBackgroundColor="@color/white"
-            app:boxStrokeColor="@color/main_dark"
-            android:layout_marginTop="10dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/def_horizontal_offset"
+            android:layout_marginTop="10dp"
             android:animateLayoutChanges="true"
+            app:boxBackgroundColor="@color/white"
             app:boxCornerRadiusBottomEnd="@dimen/corner_radius"
             app:boxCornerRadiusBottomStart="@dimen/corner_radius"
             app:boxCornerRadiusTopEnd="@dimen/corner_radius"
             app:boxCornerRadiusTopStart="@dimen/corner_radius"
+            app:boxStrokeColor="@color/main_dark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fragment_sign_textview_label"
@@ -79,8 +79,8 @@
                 android:imeOptions="actionDone"
                 android:inputType="number"
                 android:maxLength="15"
-                tools:text="(999) 999-99-99"
-                bind:onSingIn="@{viewModel.signIn}"/>
+                bind:onSingIn="@{viewModel.signIn}"
+                tools:text="(999) 999-99-99" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -88,24 +88,38 @@
             style="@style/ButtonBlack"
             android:layout_width="0dp"
             android:layout_height="@dimen/def_button_height"
+            android:layout_marginTop="40dp"
             android:text="@string/s_sing_in"
             app:backgroundTint="@null"
-            android:layout_marginTop="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fragment_sign_til_phone"
-            bind:onSingIn="@{viewModel.signIn}"/>
+            bind:onSingIn="@{viewModel.signIn}" />
 
         <TextView
-            android:id="@+id/fragment_sign_goto_sing_in"
+            android:id="@+id/fragment_sign_switch_type_textview"
             style="@style/TextFragmentGotoSingIn"
             android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@{viewModel.fragmentType == FragmentType.SIGNIN ? @string/s_fragment_sign_in_one : @string/s_fragment_sign_up_one}"
+            android:visibility="@{viewModel.phoneError ? View.GONE : View.VISIBLE}"
+            app:layout_constraintEnd_toStartOf="@id/bolddd"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fragment_sign_button_sing"
-            android:text="@{viewModel.fragmentType == FragmentType.SIGNIN ? @string/s_fragment_sign_in : @string/s_fragment_sign_up}"
-            android:visibility="@{viewModel.phoneError ? View.GONE : View.VISIBLE}"
-            tools:text="@string/s_fragment_sign_in"/>
+            tools:text="@string/s_fragment_sign_in_one" />
+
+        <TextView
+            android:id="@+id/bolddd"
+            style="@style/TextFragmentGotoSingIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@{viewModel.fragmentType == FragmentType.SIGNIN ? @string/s_fragment_sign_in_two : @string/s_fragment_sign_up_two}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/fragment_sign_switch_type_textview"
+            app:layout_constraintTop_toTopOf="@id/fragment_sign_switch_type_textview"
+            android:onClick="@{() -> viewModel.switchType()}"
+            tools:text="@string/s_fragment_sign_in_two"/>
 
         <TextView
             android:id="@+id/fragment_sign_error"
@@ -113,9 +127,10 @@
             android:layout_marginTop="20dp"
             android:text="@string/e_incorrect_phone"
             android:textColor="@color/error"
+            android:visibility="@{viewModel.phoneError ? View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fragment_sign_button_sing"
-            android:visibility="@{viewModel.phoneError ? View.VISIBLE : View.GONE}"/>
+            tools:visibility="gone" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

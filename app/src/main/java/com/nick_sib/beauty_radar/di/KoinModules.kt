@@ -46,7 +46,7 @@ val appModule = module {
 }
 
 val authFragmentModule = module {
-    viewModel { SignUpViewModel(get()) }
+    viewModel { SignViewModel(get()) }
 }
 
 val enterCodeFragmentModule = module {

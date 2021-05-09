@@ -5,6 +5,7 @@
         <item>@font/montserrat</item>
         <item>@font/montserrat</item>
         <item>@font/roboto</item>
+        <item>@font/roboto_bold</item>
         <item>@font/roboto_medium</item>
     </array>
 </resources>

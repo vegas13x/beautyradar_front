@@ -26,7 +26,7 @@
         <item name="colorPrimary">@color/white</item>
     </style>
 
-    <style name="BaseFont">>
+    <style name="BaseFont">
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textColor">@color/main_dark</item>
         <item name="android:textStyle">normal</item>

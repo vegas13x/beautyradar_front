@@ -66,8 +66,10 @@
     <string name="test_text_1000">1000</string>
     <string name="s_sign_up">Регистрация</string>
     <string name="s_sign_in">Вход</string>
-    <string name="s_fragment_sign_in">Уже есть аккаунт? <b>Войти</b></string>
-    <string name="s_fragment_sign_up">Ещё нет аккаунта? <b>Зарегистрироваться</b></string>
+    <string name="s_fragment_sign_up_one">Уже есть аккаунт?\u0020</string>
+    <string name="s_fragment_sign_up_two">Войти</string>
+    <string name="s_fragment_sign_in_one">Ещё нет аккаунта?\u0020</string>
+    <string name="s_fragment_sign_in_two">Зарегистрироваться</string>
     <string name="s_signup_phone">Введите номер телефона</string>
     <string name="e_incorrect_phone">Неверно введен телефон, повторите ввод</string>
 </resources>
