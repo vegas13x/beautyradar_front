@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.google.firebase.messaging.FirebaseMessaging
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.SingletonUID
 import com.nick_sib.beauty_radar.databinding.FragmentEnterCodeBinding
@@ -27,6 +28,8 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEnterCodeBinding.bind(view)
+
+        FirebaseMessaging.getInstance().deleteToken()
 
         viewModel.subscribe().observe(viewLifecycleOwner, {
             renderData(it)
@@ -57,11 +60,10 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                     is UserMaster -> {
                         viewModel.checkUserInDB(appState.data.uid)
                     }
-                    is UserDTO -> {
-//                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())
-                    }
-                    null -> {
-//                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment2(uid))
+                    is Boolean -> {
+                        if (appState.data == true) {
+                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())}
+                        else {findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment2(uid))}
                     }
                 }
             }

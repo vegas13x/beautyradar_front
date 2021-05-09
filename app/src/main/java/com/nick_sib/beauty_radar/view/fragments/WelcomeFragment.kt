@@ -27,6 +27,7 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
                  findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToSignFragment(FragmentType.SIGNIN))
             }
          }
+
     }
 
     override fun onDestroyView() {
