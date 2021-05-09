@@ -115,6 +115,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_bold"
             android:text="@{viewModel.fragmentType == FragmentType.SIGNIN ? @string/s_fragment_sign_in_two : @string/s_fragment_sign_up_two}"
+            android:visibility="@{viewModel.phoneError ? View.GONE : View.VISIBLE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/fragment_sign_switch_type_textview"
             app:layout_constraintTop_toTopOf="@id/fragment_sign_switch_type_textview"

@@ -9,10 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.databinding.FragmentSignBinding
+import com.nick_sib.beauty_radar.extension.*
 import com.nick_sib.beauty_radar.model.data.state.AppState
-import com.nick_sib.beauty_radar.extension.digitToPhone
-import com.nick_sib.beauty_radar.extension.findNavController
-import com.nick_sib.beauty_radar.extension.phoneToDigit
 import com.nick_sib.beauty_radar.view_model.SignViewModel
 import com.nick_sib.beauty_radar.view.utils.CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -46,6 +44,11 @@ class SignFragment : Fragment(R.layout.fragment_sign) {
                     textInput.editText?.setSelection(newText.length)
                 }
             }
+        }
+
+        binding?.run{
+            this@SignFragment.requestFocus(authPhone)
+            authPhone.showKeyboard()
         }
     }
 
