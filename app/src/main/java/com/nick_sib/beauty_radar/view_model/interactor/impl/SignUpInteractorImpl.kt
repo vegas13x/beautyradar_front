@@ -15,8 +15,8 @@ class SignUpInteractorImpl(private val remoteRepo: RemoteRepository<AppState>) :
     override suspend fun createUser(UserDTO: UserDTO): AppState =
         remoteRepo.createUser(UserDTO)
 
-    override suspend fun updateUser(UserDTO: Int): AppState =
-        remoteRepo.updateUser(UserDTO)
+    override suspend fun updateUser(UserDTO: Long?, userDTO: UserDTO): AppState =
+        remoteRepo.updateUser(UserDTO,userDTO)
 
     override suspend fun getToken(): String {
         return suspendCoroutine { res ->

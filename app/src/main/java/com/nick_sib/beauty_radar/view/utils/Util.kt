@@ -1,0 +1,55 @@
+package com.nick_sib.beauty_radar.view.utils
+
+class Util {
+
+    fun getBooks(): List<Books> {
+        var listBooks = mutableListOf<Books>()
+        var booksOne = Books()
+        booksOne.title = "GGGG"
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        listBooks.add(booksOne)
+        return  listBooks
+    }
+
+}

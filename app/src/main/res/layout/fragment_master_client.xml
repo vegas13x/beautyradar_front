@@ -41,14 +41,15 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/fragment_mc_btn_setting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="5dp"
+            android:layout_height="6dp"
             android:layout_marginEnd="@dimen/offset_24"
             android:src="@drawable/ic_setting"
             app:layout_constraintBottom_toBottomOf="@+id/fragment_mc_tv_name_master"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/fragment_mc_tv_name_master"
             app:layout_constraintTop_toTopOf="@+id/fragment_mc_tv_name_master" />
+
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/fragment_mc_bg_bottom_bg"
@@ -59,9 +60,10 @@
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_mc_btn_back_to" />
-
+            app:layout_constraintTop_toBottomOf="@+id/fragment_mc_btn_back_to"
+            app:layout_constraintVertical_bias="0.0" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/fragment_mc_btn_left_date"
@@ -97,16 +99,29 @@
             app:layout_constraintStart_toEndOf="@+id/fragment_mc_btn_left_date"
             app:layout_constraintTop_toTopOf="@+id/fragment_mc_btn_left_date" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+
+        <androidx.cardview.widget.CardView
             android:id="@+id/fragment_mc_iv_avatar_master"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginStart="@dimen/offset_24"
-            android:layout_marginTop="@dimen/offset_20"
-            android:src="@drawable/img_dog"
-            app:layout_constraintBottom_toTopOf="@id/fragment_mc_btn_sing_up"
+            android:layout_marginStart="24dp"
+            app:cardCornerRadius="40dp"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_mc_btn_sing_up"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_mc_tv_date" />
+            app:layout_constraintTop_toBottomOf="@+id/fragment_mc_tv_date" >
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_avatar"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                />
+
+
+
+        </androidx.cardview.widget.CardView>
+
+
 
 
         <androidx.appcompat.widget.AppCompatTextView

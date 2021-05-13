@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.databinding.FragmentSignBinding
+import com.nick_sib.beauty_radar.SingletonUID
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.extension.digitToPhone
 import com.nick_sib.beauty_radar.extension.findNavController
@@ -46,6 +47,8 @@ class SignFragment : Fragment(R.layout.fragment_sign) {
                     textInput.editText?.setSelection(newText.length)
                 }
             }
+
+
         }
     }
 

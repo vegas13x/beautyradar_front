@@ -5,6 +5,10 @@ import android.database.Observable
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
+import com.google.firebase.iid.FirebaseInstanceIdService
+import com.google.firebase.iid.internal.FirebaseInstanceIdInternal
+import com.nick_sib.beauty_radar.R
+import com.nick_sib.beauty_radar.SingletonUID
 import com.nick_sib.beauty_radar.model.data.entites.FragmentType
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.auth.IAuthProvider
@@ -22,6 +26,11 @@ class SignViewModel(
     val fragmentType = ObservableField(FragmentType.SIGNUP)
 
     private val phoneDigitsLength = 10
+    val phoneError = ObservableInt(0)
+
+    val signIn: Function1<Pair<String, Activity?>, Unit> = this::startPhoneNumberVerification
+
+    fun subscribe(): LiveData<AppState> = liveDataViewmodel
 
     private fun checkPhone(value: String): Boolean =
         (value.length == phoneDigitsLength).also {
@@ -53,6 +62,7 @@ class SignViewModel(
             }
         }
     }
+
 
     fun codeDone() {
         liveDataViewmodel.value = AppState.Empty

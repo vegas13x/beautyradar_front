@@ -1,6 +1,7 @@
 package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.view.isGone
@@ -23,13 +24,14 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
     private var binding: FragmentEnterCodeBinding? = null
     private val args: EnterCodeFragmentArgs by navArgs()
 
-    private lateinit var uid: String
+    private val uid: String?
+        get() = SingletonUID.getUID()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEnterCodeBinding.bind(view)
 
-        FirebaseMessaging.getInstance().deleteToken()
+
 
         viewModel.subscribe().observe(viewLifecycleOwner, {
             renderData(it)
@@ -38,7 +40,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
         binding?.enterCodeFragmentTvInfo?.text =
             getString(R.string.text_help_info_phone, "+7 ${args.phone}")
         initListener()
-        uid = SingletonUID.getInstance()?.getUID().toString()
+
     }
 
     private fun initListener() {
@@ -55,6 +57,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
     private fun renderData(appState: AppState) {
         when (appState) {
             is AppState.Success<*> -> {
+                val checkUid: String = uid ?: let { toast("Ошибка null");"" }
                 binding?.fragmentAuthLoadingDialog?.root?.isGone = true
                 when (appState.data) {
                     is UserMaster -> {
@@ -62,8 +65,19 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                     }
                     is Boolean -> {
                         if (appState.data == true) {
-                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())}
-//                        else {findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment2(uid))}
+                            viewModel.getUserByUID(checkUid)
+                        } else {
+                            findNavController().navigate(
+                                EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment2(checkUid)
+                            )
+                        }
+                    }
+                    is UserDTO -> {
+                        Log.d("TAG3333", "renderData: kaka")
+                        viewModel.setImgInSingleton(appState.data.img)
+                        FirebaseMessaging.getInstance().deleteToken()
+                        viewModel.updateUserByUserResponse(appState.data)
+                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())
                     }
                 }
             }

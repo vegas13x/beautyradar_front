@@ -102,3 +102,11 @@ val calendarModule = module {
 val welcomeFragmenModule = module {
     viewModel { WelcomeViewModel() }
 }
+
+val profileInfoEditModule = module {
+    viewModel { ProfileInfoEditViewModel() }
+}
+
+val profileInfoModule = module {
+    viewModel { ProfileInfoViewModel() }
+}

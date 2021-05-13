@@ -1,5 +1,6 @@
 package com.nick_sib.beauty_radar.model.repository.impl
 
+import com.nick_sib.beauty_radar.model.data.entites.UserMaster
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.calendar.IRemoteDBProviderCalendar
 import com.nick_sib.beauty_radar.model.provider.provider_db.IProviderRemoteDB
@@ -15,14 +16,20 @@ class RemoteRepositoryImpl(
     override fun getData(): AppState =
         AppState.Success(remoteDB.getListCalendarProfile())
 
+    override suspend fun getUserByUPNFromDB(uid: String): AppState =
+        AppState.Success(remoteDBBackend.getUserByUPN(uid).body)
+
     override suspend fun existUserByUPNFromDB(uid: String): AppState =
         AppState.Success(remoteDBBackend.existUserByUPN(uid).body)
 
     override suspend fun createUser(UserDTO: UserDTO): AppState =
         AppState.Success(remoteDBBackend.createUser(UserDTO))
 
-    override suspend fun updateUser(id: Int?): AppState =
-        AppState.Success(remoteDBBackend.updateUser(id))
+    override suspend fun updateUser(id: Long?, userDTO: UserDTO): AppState =
+        AppState.Success(remoteDBBackend.updateUser(id, userDTO))
+
+//    override suspend fun updateMaster(userMaster: UserMaster): AppState =
+//        AppState.Success(remoteDBBackend.createMaster(userMaster))
 
 //    override suspend fun getUserList(): AppState =
 //        AppState.Success(remoteDBBackend.getUserList())
