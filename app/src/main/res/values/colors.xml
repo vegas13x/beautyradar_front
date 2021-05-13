@@ -29,6 +29,7 @@
 <!--    new style named-->
     <color name="main_dark">#FF35384D</color>
     <color name="main_dark_20">#3335384D</color>
+    <color name="error">#FFD10227</color>
     <color name="hint_color">#000000</color>
     <color name="onFocusBtn">#BEF8BCBD</color>
 </resources>

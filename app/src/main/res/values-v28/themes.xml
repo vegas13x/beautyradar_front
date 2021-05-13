@@ -12,9 +12,34 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">@dimen/biggest_text</item>
-        <item name="android:textFontWeight">500</item>
         <item name="android:lineHeight">@dimen/biggest_text_height</item>
     </style>
+
+    <style name="TextFragmentTitle" parent="BaseFont">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">@dimen/title_text</item>
+        <item name ="android:lineHeight">@dimen/title_text_height</item>
+    </style>
+
+    <style name="TextFragmentLabel" parent="BaseFont">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/label_text</item>
+        <item name="android:textFontWeight">400</item>
+        <item name ="android:lineHeight">@dimen/label_text_height</item>
+    </style>
+
+    <style name="TextFragmentGotoSingIn" parent="BaseFont">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textFontWeight">400</item>
+        <item name ="android:lineHeight">@dimen/text_size_18</item>
+    </style>
+
 
     <style name="TextAgreement" parent="BaseFont">
         <item name="android:layout_width">0dp</item>
@@ -66,4 +91,12 @@
         <item name="android:textColor">@drawable/button_black_text</item>
     </style>
 
+    <style name="EditPhone">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/main_dark</item>
+        <item name="android:textFontWeight">400</item>
+        <item name="android:textSize">@dimen/text_size_18</item>
+    </style>
 </resources>

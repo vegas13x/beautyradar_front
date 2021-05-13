@@ -63,7 +63,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                     is Boolean -> {
                         if (appState.data == true) {
                         findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())}
-                        else {findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment2(uid))}
+//                        else {findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment2(uid))}
                     }
                 }
             }
