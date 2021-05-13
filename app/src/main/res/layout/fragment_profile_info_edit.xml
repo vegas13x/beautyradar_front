@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E5D0D8">
+
+
+    <ImageView
+        android:id="@+id/back_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/back3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="24dp"
+        android:text="Готово"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="22.5dp"
+        app:cardCornerRadius="62.5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/roundedImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ellipse"
+            android:background="@color/white"
+            android:scaleType="centerCrop"
+            />
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="85dp"
+        android:background="@drawable/rounded_corners2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="75dp"
+                android:text="Имя:"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/autoCompleteTextView2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Фамилия:"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/autoCompleteTextView2"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Адрес:"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/autoCompleteTextView2"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Телефон:"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/autoCompleteTextView2"
+                app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Дата рождения:"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/autoCompleteTextView2"
+                app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Обо мне:"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/autoCompleteTextView2"
+                app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="75dp"
+                android:text="Введите имя"
+                android:textColor="#7535384D"
+                app:layout_constraintStart_toEndOf="@+id/textView3"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Введите фамилию"
+                android:textColor="#7535384D"
+                app:layout_constraintStart_toEndOf="@+id/textView6"
+                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Введите фамилию"
+                android:textColor="#7535384D"
+                app:layout_constraintStart_toEndOf="@+id/textView16"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="+7(___)___ __ __"
+                android:textColor="#7535384D"
+                app:layout_constraintStart_toEndOf="@+id/textView21"
+                app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="01.01.1900"
+                android:textColor="#7535384D"
+                app:layout_constraintStart_toEndOf="@+id/textView23"
+                app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView2"
+                android:layout_width="366dp"
+                android:layout_height="96dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/for_pole_about_yourself"
+                android:gravity="top"
+                android:hint="Введите текст"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView24" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/fragment_mc_tv_sessions"
+                style="@style/CardTextViewMainScreen"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_rounded_right_top_corner"
+                android:paddingVertical="@dimen/padding_8"
+                android:text="Стаж работы"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/autoCompleteTextView2"
+                app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView2" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/fragment_mc_tv_counter_sessions"
+                style="@style/CardTextViewMainScreen"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rounded_left_bottom_corner"
+                android:elevation="@dimen/elevation_3"
+                android:paddingVertical="@dimen/padding_8"
+                android:text="3 года"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_mc_tv_sessions"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/fragment_mc_tv_sessions"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_mc_tv_sessions" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/notifications"
+                style="@style/CardTextViewMainScreen"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_rounded_right_top_corner"
+                android:paddingVertical="@dimen/padding_8"
+                android:text="Напоминания"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/autoCompleteTextView2"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_mc_tv_counter_sessions" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/time_notification"
+                style="@style/CardTextViewMainScreen"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rounded_left_bottom_corner"
+                android:elevation="@dimen/elevation_3"
+                android:paddingVertical="@dimen/padding_8"
+                android:text="зв 24ч., 2 ч."
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_mc_tv_sessions"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/fragment_mc_tv_sessions"
+                app:layout_constraintTop_toBottomOf="@+id/notifications" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/fragment_specialization"
+                style="@style/CardTextViewMainScreen"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_rounded_right_top_corner"
+                android:paddingVertical="@dimen/padding_8"
+                android:text="Специализация"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/autoCompleteTextView2"
+                app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView2" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/years_of_stage"
+                style="@style/CardTextViewMainScreen"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rounded_left_bottom_corner"
+                android:elevation="@dimen/elevation_3"
+                android:paddingVertical="@dimen/padding_8"
+                android:text="Ногтевой сервис"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_specialization"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/fragment_specialization"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_specialization" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/viezd_na_dom"
+                style="@style/CardTextViewMainScreen"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_rounded_right_top_corner"
+                android:paddingVertical="@dimen/padding_8"
+                android:text="Выезд на дом"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/autoCompleteTextView2"
+                app:layout_constraintTop_toBottomOf="@+id/years_of_stage" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/yes_or_no"
+                style="@style/CardTextViewMainScreen"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rounded_left_bottom_corner"
+                android:elevation="@dimen/elevation_3"
+                android:paddingVertical="@dimen/padding_8"
+                android:text="Да"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_specialization"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/fragment_specialization"
+                app:layout_constraintTop_toBottomOf="@+id/viezd_na_dom" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/fragment_mc_btn_sing_up"
+                style="@style/ButtonMainScreen"
+                android:layout_width="@dimen/width_175"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:letterSpacing="-0.02"
+                android:background="@drawable/bg_ronded_bottom_left_top_right_corner_rose_light"
+                android:paddingVertical="@dimen/offset_24"
+                android:text="График работы"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/yes_or_no"
+                app:layout_constraintTop_toBottomOf="@+id/yes_or_no" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/fragment_mc_btn_sing_up2"
+                style="@style/ButtonMainScreen"
+                android:layout_width="@dimen/width_175"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_ronded_bottom_left_top_right_corner_rose_light"
+                android:paddingVertical="@dimen/offset_24"
+                android:letterSpacing="-0.02"
+                android:text="Скидки и акции"
+                app:layout_constraintStart_toStartOf="@+id/yes_or_no"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_mc_btn_sing_up" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/fragment_mc_btn"
+                style="@style/ButtonMainScreen"
+                android:layout_width="@dimen/width_175"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_ronded_bottom_left_top_right_corner_rose_light"
+                android:paddingVertical="@dimen/offset_24"
+                android:letterSpacing="-0.02"
+                android:text="Услуги и прайс"
+                app:layout_constraintEnd_toEndOf="@+id/time_notification"
+                app:layout_constraintTop_toTopOf="@+id/fragment_mc_btn_sing_up" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/fragment_mc_btn2"
+                style="@style/ButtonMainScreen"
+                android:layout_width="@dimen/width_175"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_ronded_bottom_left_top_right_corner_rose_light"
+                android:paddingVertical="@dimen/offset_24"
+                android:letterSpacing="-0.02"
+                android:text="Финансы"
+                app:layout_constraintEnd_toEndOf="@+id/time_notification"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_mc_btn" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:visibility="invisible"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_mc_btn_sing_up2"
+                tools:srcCompat="@tools:sample/avatars" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/fragment_mc_btn_nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemIconTint="@color/violet"
+        app:itemTextColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_battom_nav_menu" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

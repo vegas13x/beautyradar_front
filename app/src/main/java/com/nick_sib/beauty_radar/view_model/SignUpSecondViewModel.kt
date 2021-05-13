@@ -23,8 +23,14 @@ class SignUpSecondViewModel(private val interactor: SignUpInteractor<AppState>) 
         var master = MasterDTO(null, 100, 0)
         viewModelCoroutineScope.launch {
             var user = UserDTO(
-                null, 0, null, "+72",
-                master, name, null, 5, uid, interactor.getToken())
+                null,
+                uid,
+                interactor.getToken(),
+                "+72",
+                name,
+                "+79",
+                null,
+                null)
             uid.run {
                 liveDataViewmodel.postValue(interactor.createUser(user))
             }

@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import com.google.firebase.iid.FirebaseInstanceIdService
 import com.google.firebase.iid.internal.FirebaseInstanceIdInternal
 import com.nick_sib.beauty_radar.R
+import com.nick_sib.beauty_radar.SingletonUID
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.auth.IAuthProvider
 import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
@@ -31,6 +32,8 @@ class AuthViewModel(
         }
 
     private fun startPhoneNumberVerification(value: Pair<String, Activity?>) {
+
+
         value.second?.run {
             if (checkPhone(value.first)) {
                 liveDataViewmodel.value = AppState.Loading(INFINITY_LOADING_PROGRESS)

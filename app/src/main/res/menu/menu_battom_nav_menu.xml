@@ -10,8 +10,8 @@
         android:icon="@drawable/ic_home"
         android:title="@string/menu_main" />
     <item
-        android:id="@+id/menu_btm_nav_btn_setting"
-        android:icon="@drawable/ic_setting"
-        android:title="@string/setting" />
+        android:id="@+id/menu_btm_nav_btn_clients"
+        android:icon="@drawable/ic_clients"
+        android:title="Клиенты" />
 
 </menu>

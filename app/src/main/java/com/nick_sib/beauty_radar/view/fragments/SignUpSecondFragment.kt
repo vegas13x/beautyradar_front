@@ -32,7 +32,7 @@ class SignUpSecondFragment :
         binding.btnContinue.setOnClickListener {
             secondViewModel.createNewUser(args.uid, args.name, job)
             findNavController().navigate(
-                SignUpSecondFragmentDirections.actionSignUpFragmentSecondToMasterClientsFragment()
+                SignUpSecondFragmentDirections.actionSignUpFragmentSecondToProfileInfoEditFragment()
             )
         }
 

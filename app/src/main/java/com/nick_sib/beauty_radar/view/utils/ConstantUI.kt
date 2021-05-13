@@ -20,3 +20,5 @@ const val EMAIL_AND_PASSWORD_SUCCESS_GO_TO_LOGOUT = "com.nick_sib.beauty_radar.u
 const val TRANSITION_TO_CALENDAR = "com.nick_sib.beauty_radar.view.utils-TRANSITION_TO_CALENDAR"
 const val TAG_CODE_NULL = "Code is equal to null. Please enter the code"
 const val TAG_DEBAG = "DEBAG"
+const val USE_DEFAULT_IMG = "111111"
+const val FINISH_BUTTON_MASTER_REG = "222222"

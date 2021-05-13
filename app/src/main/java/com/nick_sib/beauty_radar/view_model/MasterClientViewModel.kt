@@ -8,8 +8,10 @@ import android.widget.ImageView
 import androidx.exifinterface.media.ExifInterface
 import androidx.lifecycle.LiveData
 import com.google.firebase.storage.FirebaseStorage
+import com.nick_sib.beauty_radar.SingletonImgUrl
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.view.utils.TRANSITION_TO_CALENDAR
+import com.nick_sib.beauty_radar.view.utils.USE_DEFAULT_IMG
 import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
 import com.nick_sib.beauty_radar.view_model.interactor.core.MasterClientInteractor
 import kotlinx.coroutines.launch
@@ -20,9 +22,6 @@ import kotlin.coroutines.suspendCoroutine
 
 class MasterClientViewModel(private val interactor: MasterClientInteractor<AppState>) :
     BaseViewModel<AppState>() {
-
-    private val GSTORAGE = "gs://qwink-8816a.appspot.com"
-    private val NAMEOFPICTURE = "80b00a35-6391-4c4f-b042-17de861e151f.jpg"
 
     fun transitionToCalendar() {
         liveDataViewmodel.value = AppState.Success(TRANSITION_TO_CALENDAR)
@@ -39,8 +38,9 @@ class MasterClientViewModel(private val interactor: MasterClientInteractor<AppSt
 
 
     fun takePictureFromStorage() {
+        if (SingletonImgUrl.getImgUrl() != null) {
         val storage = FirebaseStorage.getInstance()
-        val riversRef = storage.getReferenceFromUrl(GSTORAGE).child(NAMEOFPICTURE)
+        val riversRef = storage.getReferenceFromUrl(SingletonImgUrl.getImgUrl().toString())
         val localFile = File.createTempFile("images", "jpg")
         riversRef.getFile(localFile)
             .addOnSuccessListener {
@@ -51,7 +51,10 @@ class MasterClientViewModel(private val interactor: MasterClientInteractor<AppSt
                     Log.d("TAG22222", "takePictureFormStorage: $bitmap")
                     liveDataViewmodel.value = AppState.Success(bitmap)
                 }
-            }.addOnFailureListener {}
+            }.addOnFailureListener {}}
+        else {
+            liveDataViewmodel.value = AppState.Success(USE_DEFAULT_IMG)
+        }
     }
 
 

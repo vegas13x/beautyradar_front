@@ -2,7 +2,7 @@ package com.nick_sib.beauty_radar.model.provider.repository.user
 
 import com.squareup.moshi.Json
 
-data class UserDTO(
+data class UserDTOUpdate(
     @field:Json(name = "id") var id: Long? = null,
     @field:Json(name = "upn") var upn: String? = null,
     @field:Json(name = "token") var token: String? = null,

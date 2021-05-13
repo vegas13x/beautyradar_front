@@ -9,6 +9,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import com.google.firebase.iid.FirebaseInstanceId
 import com.nick_sib.beauty_radar.R
+import com.nick_sib.beauty_radar.SingletonUID
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentAuthenticationBinding
 import com.nick_sib.beauty_radar.extension.digitToPhone

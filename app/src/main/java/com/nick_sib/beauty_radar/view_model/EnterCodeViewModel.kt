@@ -5,10 +5,12 @@ import android.util.Log
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
+import com.nick_sib.beauty_radar.SingletonImgUrl
 import com.nick_sib.beauty_radar.model.data.error.ToastError
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.auth.IAuthProvider
 import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
+import com.nick_sib.beauty_radar.view.fragments.LogoutFragmentDirections
 import com.nick_sib.beauty_radar.view.utils.INFINITY_LOADING_PROGRESS
 import com.nick_sib.beauty_radar.view.utils.TAG_CODE_NULL
 import com.nick_sib.beauty_radar.view.utils.TAG_DEBAG
@@ -44,23 +46,26 @@ class EnterCodeViewModel(
         }
     }
 
-    fun updateUserInDB(userDTO: UserDTO) {
+    fun getUserByUID(upn: String?) {
+        upn?.run {
+            viewModelCoroutineScope.launch {
+                val userDTO = interactor.getUserByUPNFromDB(upn)
+                liveDataViewmodel.value = userDTO
+            }
+        }
+    }
 
+    fun setImgInSingleton(imgUrl: String?) {
+        SingletonImgUrl.setImgUrl(imgUrl)
+        Log.d("TAG5555", "setImgInSingleton: " + SingletonImgUrl.getImgUrl())
+    }
+
+    fun updateUserByUserResponse(userDTO: UserDTO) {
         viewModelCoroutineScope.launch {
-            Log.d("TAG111112", "updateUserInDB:"+ interactor.getToken())
-            var user = UserDTO(
-                userDTO.email,
-                userDTO.id,
-                userDTO.img,
-                userDTO.login,
-                userDTO.masterDTO,
-                userDTO.name,
-                userDTO.phone,
-                userDTO.rating,
-                userDTO.upn,
-                interactor.getToken()
-            )
-            liveDataViewmodel.postValue(interactor.updateUser(userDTO.id))
+            Log.d("TAG4444", "updateUserByUserResponse: " + userDTO.token)
+            userDTO.token = interactor.getToken()
+            Log.d("TAG4444", "updateUserByUserResponse: " + userDTO.token)
+            interactor.updateUser(userDTO.id,userDTO)
         }
     }
 
