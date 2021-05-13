@@ -10,7 +10,10 @@ class SharedPreferences(context: Context) {
 
     private val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 
-    var paramString by prefs.string()
+    var paramString by prefs.string(
+        key = { "KEY_PARAM3" },
+        defaultValue = "default"
+    )
     var paramStringNullable by prefs.stringNullable()
     var paramInt by prefs.int()
 
