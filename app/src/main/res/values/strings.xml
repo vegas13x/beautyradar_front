@@ -68,9 +68,6 @@
     <string name="s_sign_in">Вход</string>
     <string name="s_fragment_sign_in">Уже есть аккаунт? <b>Войти</b></string>
     <string name="s_inpup_phone">Введите номер телефона</string>
-=========
-    <string name="s_agreement">Выполняя вход вы соглашаетесь с <u>Условиями пользовательского соглашения</u> и <u>Обработку персональных данных</u></string>
->>>>>>>>> Temporary merge branch 2
     <string name="s_fragment_sign_up_one">Уже есть аккаунт?\u0020</string>
     <string name="s_fragment_sign_up_two">Войти</string>
     <string name="s_fragment_sign_in_one">Ещё нет аккаунта?\u0020</string>

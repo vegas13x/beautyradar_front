@@ -68,7 +68,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                             viewModel.getUserByUID(checkUid)
                         } else {
                             findNavController().navigate(
-                                EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment2(checkUid)
+                                EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment2()
                             )
                         }
                     }

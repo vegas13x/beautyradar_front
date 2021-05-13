@@ -8,13 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nick_sib.beauty_radar.R
-import com.nick_sib.beauty_radar.databinding.BooksFragmentBinding
-import com.nick_sib.beauty_radar.databinding.FragmentAuthenticationBinding
 import com.nick_sib.beauty_radar.view.adapter.ClientAdapter
-import com.nick_sib.beauty_radar.view.utils.BooksRecyclerAdapter
-import com.nick_sib.beauty_radar.view.utils.Util
 import com.nick_sib.beauty_radar.view.utils.Util2
-import org.koin.android.ext.android.bind
 
 class BooksFragment : Fragment() {
 

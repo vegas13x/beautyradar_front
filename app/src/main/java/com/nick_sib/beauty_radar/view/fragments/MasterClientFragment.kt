@@ -1,45 +1,36 @@
 package com.nick_sib.beauty_radar.view.fragments
 
-import android.graphics.Bitmap
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.bumptech.glide.Glide
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.SingletonUID
-import com.nick_sib.beauty_radar.model.data.state.AppState
-import com.nick_sib.beauty_radar.databinding.FragmentMasterClientBinding
 import com.nick_sib.beauty_radar.databinding.FragmentMasterClientSecondBinding
 import com.nick_sib.beauty_radar.extension.findNavController
-import com.nick_sib.beauty_radar.model.provider.calendar.CalendarProfile
+import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.view.adapter.ClientAdapter
-import com.nick_sib.beauty_radar.view.utils.TRANSITION_TO_CALENDAR
-import com.nick_sib.beauty_radar.view.utils.USE_DEFAULT_IMG
 import com.nick_sib.beauty_radar.view_model.MasterClientViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MasterClientFragment : Fragment(R.layout.fragment_master_client_second) {
 
     private val viewModel: MasterClientViewModel by viewModel()
-    private var binding: FragmentMasterClientSecondBinding? = null
+    private lateinit var binding: FragmentMasterClientSecondBinding
     private var adapter: ClientAdapter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
         binding = FragmentMasterClientSecondBinding.bind(view)
-        binding?.viewModel = viewModel
 
         viewModel.getListClients()
         viewModel.subscribe().observe(viewLifecycleOwner, {
             renderData(it)
         })
 
-        binding?.fragmentMcBtnNavBar?.setOnNavigationItemSelectedListener {
+        binding.fragmentMcBtnNavBar.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_btm_nav_btn_clients -> {
                     findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToClientsFragment())
@@ -61,12 +52,11 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client_second) {
 //        binding?.fragmentMcBtnSetting?.setOnClickListener {
 //            findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToSettingsOneFragment2())
 //        }
-//
+
 //        viewModel.takePictureFromStorage()
 
         val pagerAdapter = ScreenSlidePagerAdapter(childFragmentManager)
         binding.viewPager.adapter = pagerAdapter
-        viewModel.takePictureFromStorage()
 
     }
 
@@ -104,48 +94,12 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client_second) {
 //                                .into(it)
 //                        }
 //                    }
-                    TRANSITION_TO_CALENDAR->{
-                        Toast.makeText(
-                            requireContext(),
-                            "Переход на экран календаря",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                    is List<*> -> {
-                        if (adapter == null) {
-                            adapter = ClientAdapter(appState.data as List<CalendarProfile>)
-                            binding?.clientRecycler?.adapter = adapter
-                        }
-                    }
-                    is Bitmap -> {
-                        binding?.fragmentMcIvAvatarMaster?.setImageBitmap(appState.data)
-                    }
                 }
             }
-            else -> {}
+            else -> {
+            }
         }
     }
-//    private fun renderData(appState: AppState?) {
-//        when (appState) {
-//            is AppState.Success<*> -> {
-//                when (appState.data) {
-//                    TRANSITION_TO_CALENDAR->{
-//                        findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToCalendarFragment())
-//                    }
-//                    is List<*> -> {
-//                        if (adapter == null) {
-//                            adapter = ClientAdapter(appState.data as List<CalendarProfile>)
-//                            binding?.clientRecycler?.adapter = adapter
-//                        }
-//                    }
-//                    is Bitmap -> {
-//                        binding?.fragmentMcIvAvatarMaster?.setImageBitmap(appState.data)
-//                    }
-//                }
-//            }
-//            else -> {}
-//        }
-//    }
 
     override fun onPause() {
         super.onPause()
