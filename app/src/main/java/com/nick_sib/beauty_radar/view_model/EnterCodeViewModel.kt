@@ -26,17 +26,15 @@ class EnterCodeViewModel(
 
     val enterPin: Function1<String, Unit> = this::codeEntered
     val resendSMS: Function1<Activity?, Unit> = this::resendSMS
-
     val secondsLeft = ObservableField("60")
 
-//    val errorDots = ObservableBoolean(false)
-    val editedCode = ObservableField<Int?>()
-    private var _editedCode: Int? = null
-        set(value) {
-//            errorDots.set(false)
-            editedCode.set(value)
-            field = value
-        }
+//    val editedCode = ObservableField<Int?>()
+//    private var _editedCode: Int? = null
+//        set(value) {
+////            errorDots.set(false)
+//            editedCode.set(value)
+//            field = value
+//        }
 
     fun subscribe(): LiveData<AppState> = liveDataViewmodel
 
@@ -93,13 +91,12 @@ class EnterCodeViewModel(
             viewModelCoroutineScope.launch {
                 liveDataViewmodel.value =
                     authProvider.resentVerificationCode(this@run)
-                _editedCode = null
             }
         }
     }
 
     fun codeError() {
-        _editedCode = null
+        Log.d("myLOG", "codeError: ERROR")
 //        errorDots.set(true)
     }
 }

@@ -70,12 +70,14 @@
                 android:id="@+id/fragment_enter_code_digit_edittext2"
                 style="@style/TextDigitPin"
                 android:nextFocusForward="@id/fragment_enter_code_digit_edittext3"
+                android:nextFocusLeft="@id/fragment_enter_code_digit_edittext1"
                 android:autofillHints="0"
                 bind:onFillGoToForwardEdit="@{1}"/>
             <EditText
                 android:id="@+id/fragment_enter_code_digit_edittext3"
                 style="@style/TextDigitPin"
                 android:nextFocusForward="@id/fragment_enter_code_digit_edittext4"
+                android:nextFocusLeft="@id/fragment_enter_code_digit_edittext2"
                 bind:onFillGoToForwardEdit="@{1}"/>
             <View
                 android:layout_width="16dp"
@@ -86,16 +88,20 @@
                 android:id="@+id/fragment_enter_code_digit_edittext4"
                 style="@style/TextDigitPin"
                 android:nextFocusForward="@id/fragment_enter_code_digit_edittext5"
+                android:nextFocusLeft="@id/fragment_enter_code_digit_edittext3"
                 bind:onFillGoToForwardEdit="@{1}"/>
             <EditText
                 android:id="@+id/fragment_enter_code_digit_edittext5"
                 style="@style/TextDigitPin"
                 android:nextFocusForward="@id/fragment_enter_code_digit_edittext6"
+                android:nextFocusLeft="@id/fragment_enter_code_digit_edittext4"
                 bind:onFillGoToForwardEdit="@{1}"/>
             <EditText
                 android:id="@+id/fragment_enter_code_digit_edittext6"
                 style="@style/TextDigitPin"
+                android:nextFocusLeft="@id/fragment_enter_code_digit_edittext5"
                 android:imeOptions="actionDone"
+                bind:onFillGoToForwardEdit="@{1}"
                 bind:onEnterPin="@{viewModel.enterPin}"/>
         </LinearLayout>
 

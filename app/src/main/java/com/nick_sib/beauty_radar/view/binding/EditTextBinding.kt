@@ -1,5 +1,7 @@
 package com.nick_sib.beauty_radar.view.binding
 
+import android.view.KeyEvent.ACTION_UP
+import android.view.KeyEvent.KEYCODE_DEL
 import android.view.View
 import android.view.ViewParent
 import android.widget.EditText
@@ -24,7 +26,20 @@ fun onFillGoToForwardEdit(view: EditText, maxLength: Int) {
         val parent = getParent(view)
         parent?.run{
             if (it?.length == maxLength)
-                (parent as View).findViewById<EditText>(view.nextFocusForwardId)?.requestFocus()
+                (parent as View).findViewById<EditText>(view.nextFocusForwardId)?.apply {
+                    requestFocus()
+                    selectAll()
+                }
         }
+    }
+    view.setOnKeyListener { _, keyCode, event ->
+        if (keyCode == KEYCODE_DEL && event.action == ACTION_UP) {
+            val parent = getParent(view)
+            (parent as View).findViewById<EditText>(view.nextFocusLeftId)?.apply {
+                requestFocus()
+                selectAll()
+            }
+        }
+        event.action == ACTION_UP
     }
 }
