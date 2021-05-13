@@ -16,6 +16,7 @@ import com.nick_sib.beauty_radar.model.data.entites.UserMaster
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
 import com.nick_sib.beauty_radar.view_model.EnterCodeViewModel
+import com.nick_sib.beauty_radar.view_model.shared_preferences.SharedPreferences
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {

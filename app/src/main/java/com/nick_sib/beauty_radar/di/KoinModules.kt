@@ -24,6 +24,7 @@ import com.nick_sib.beauty_radar.view_model.interactor.impl.EnterCodeInteractorI
 import com.nick_sib.beauty_radar.view_model.interactor.impl.MasterClientInteractorImpl
 import com.nick_sib.beauty_radar.view_model.interactor.impl.ProfileInteractorImpl
 import com.nick_sib.beauty_radar.view_model.interactor.impl.SignUpInteractorImpl
+import com.nick_sib.beauty_radar.view_model.shared_preferences.SharedPreferences
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -41,6 +42,7 @@ val appModule = module {
     single<IRemoteDBProviderCalendar> { RemoteDBProviderCalendar() }
 
     single<IProviderRemoteDB> { ProviderRemoteDBImpl(get()) }
+//    single {SharedPreferences(get())}
     factory<RemoteRepository<AppState>> { RemoteRepositoryImpl(get(), get()) }
 
 //    single { Room.databaseBuilder(get(), HistoryDataBase::class.java, "HistoryDB").build() }
