@@ -27,6 +27,17 @@ fun getPhone(view: View): String =
         (it as View).findViewById<EditText>(R.id.auth_phone)?.text.toString().phoneToDigit()
     } ?: ""
 
+fun getDigit(view: View, res: Int): String =
+    view.findViewById<EditText>(res)?.text.toString()
+
+fun getPin(view: View): String =
+    getDigit(view, R.id.fragment_enter_code_digit_edittext1)+
+    getDigit(view, R.id.fragment_enter_code_digit_edittext2)+
+    getDigit(view, R.id.fragment_enter_code_digit_edittext3)+
+    getDigit(view, R.id.fragment_enter_code_digit_edittext4)+
+    getDigit(view, R.id.fragment_enter_code_digit_edittext5)+
+    getDigit(view, R.id.fragment_enter_code_digit_edittext6)
+
 @BindingAdapter("bind:onSingIn")
 fun View.onSingIn(function: Function1<Pair<String, Activity?>, Unit>?){
     when (this) {
@@ -36,6 +47,20 @@ fun View.onSingIn(function: Function1<Pair<String, Activity?>, Unit>?){
         is TextInputEditText -> setOnEditorActionListener{ _, actionId, _ ->
             ((actionId == EditorInfo.IME_ACTION_DONE) && (function != null)).also {
                 function?.let{ it(getPhone(this) to this.getActivity()) }
+            }
+        }
+    }
+}
+
+@BindingAdapter("bind:onEnterPin")
+fun View.onEnterPin(function: Function1<String, Unit>?){
+    when (this) {
+        is Button -> setOnClickListener {
+            function?.let{ it(getPin(getParent(this) as View)) }
+        }
+        is EditText -> setOnEditorActionListener{ _, actionId, _ ->
+            ((actionId == EditorInfo.IME_ACTION_DONE) && (function != null)).also {
+                if (it) function?.let{ it(getPin(getParent(this) as View)) }
             }
         }
     }

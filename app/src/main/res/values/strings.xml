@@ -25,21 +25,11 @@
     <string name="s_welcome">Добро пожаловать!</string>
     <string name="s_phone_help">Введите код оператора и 7 цифр</string>
     <string name="s_phone_error">Номер должен содержать 7 цифр и код оператора</string>
-    <string name="the_confirmation">Подтверждение</string>
+    <string name="s_sms_title">Подтверждение</string>
+    <string name="s_sms_label">Введите код из СМС</string>
     <string name="text_help_info_phone">Введите код подтверждения из SMS, отправленного на номер: %s</string>
     <string name="procced">Продолжить</string>
-    <string name="sms_not_come">SMS не пришёл</string>
-    <string name="digit1">1</string>
-    <string name="digit2">2</string>
-    <string name="digit3">3</string>
-    <string name="digit4">4</string>
-    <string name="digit5">5</string>
-    <string name="digit6">6</string>
-    <string name="digit7">7</string>
-    <string name="digit8">8</string>
-    <string name="digit9">9</string>
-    <string name="digit0">0</string>
-    <string name="resend_sms">SMS код не пришел</string>
+
     <string name="name_and_secondname">Введите Ваше имя и \nфамилию</string>
     <string name="msg_token_fmt">Токен</string>
      <string name="text_test_recorded_client">Комбинированный маникюр</string>
@@ -73,4 +63,7 @@
     <string name="s_signup_phone">Введите номер телефона</string>
     <string name="e_incorrect_phone">Неверно введен телефон, повторите ввод</string>
     <string name="free_window">Свободные окна</string>
+    <string name="await_to_resend_sms">Отправить код повторно через\u0020</string>
+    <string name="resend_sms">Отправить код повторно</string>
+
 </resources>
