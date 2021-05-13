@@ -58,7 +58,7 @@ class EnterCodeViewModel(
         val total = mills / 1000
         val min = total / 60
         val sec = total % 60
-        return if (min >= 0) String.format("%02d:%02d", min, sec) else String.format("%02d", sec)
+        return if (min > 0) String.format("%02d:%02d", min, sec) else String.format("%02d", sec)
     }
 
     private fun startTimer() {
@@ -71,27 +71,6 @@ class EnterCodeViewModel(
             }
         }.start()
     }
-
-    fun updateUserInDB(userDTO: UserDTO) {
-
-        viewModelCoroutineScope.launch {
-            Log.d("TAG111112", "updateUserInDB:"+ interactor.getToken())
-            var user = UserDTO(
-                userDTO.email,
-                userDTO.id,
-                userDTO.img,
-                userDTO.login,
-                userDTO.masterDTO,
-                userDTO.name,
-                userDTO.phone,
-                userDTO.rating,
-                userDTO.upn,
-                interactor.getToken()
-            )
-            liveDataViewmodel.postValue(interactor.updateUser(userDTO.id))
-        }
-    }
-
 
     private fun codeEntered(code: String) {
         if (code.isEmpty()) {
@@ -110,26 +89,12 @@ class EnterCodeViewModel(
     private fun resendSMS(value: Activity?) {
         value?.run {
             liveDataViewmodel.value = AppState.Loading(INFINITY_LOADING_PROGRESS)
+            startTimer()
             viewModelCoroutineScope.launch {
                 liveDataViewmodel.value =
                     authProvider.resentVerificationCode(this@run)
                 _editedCode = null
             }
-        }
-    }
-
-    fun addDigit(value: Int) {
-        _editedCode = (_editedCode ?: 0) * 10 + value
-        _editedCode?.run {
-            if (this > 99999) {
-                codeEntered(toString())
-            }
-        }
-    }
-
-    fun deleteDigit() {
-        _editedCode = _editedCode?.let {
-            if (it < 10) null else it / 10
         }
     }
 

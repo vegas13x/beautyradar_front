@@ -6,6 +6,7 @@ import android.view.ViewParent
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import com.google.android.material.textfield.TextInputEditText
@@ -69,7 +70,7 @@ fun View.onEnterPin(function: Function1<String, Unit>?){
 @BindingAdapter("bind:resendSMS")
 fun View.resendSMS(function: Function1<Activity?, Unit>?){
     when (this) {
-        is Button -> setOnClickListener {
+        is TextView -> setOnClickListener {
             function?.let{ it(this.getActivity()) }
         }
     }
