@@ -63,12 +63,14 @@
             <EditText
                 android:id="@+id/fragment_enter_code_digit_edittext1"
                 style="@style/TextDigitPin"
+                android:background="@{viewModel.haveError ? @drawable/bg_item_pin_error : @drawable/bg_item_pin}"
                 android:nextFocusForward="@id/fragment_enter_code_digit_edittext2"
                 android:autofillHints="0"
                 bind:onFillGoToForwardEdit="@{1}"/>
             <EditText
                 android:id="@+id/fragment_enter_code_digit_edittext2"
                 style="@style/TextDigitPin"
+                android:background="@{viewModel.haveError ? @drawable/bg_item_pin_error : @drawable/bg_item_pin}"
                 android:nextFocusForward="@id/fragment_enter_code_digit_edittext3"
                 android:nextFocusLeft="@id/fragment_enter_code_digit_edittext1"
                 android:autofillHints="0"
@@ -76,6 +78,7 @@
             <EditText
                 android:id="@+id/fragment_enter_code_digit_edittext3"
                 style="@style/TextDigitPin"
+                android:background="@{viewModel.haveError ? @drawable/bg_item_pin_error : @drawable/bg_item_pin}"
                 android:nextFocusForward="@id/fragment_enter_code_digit_edittext4"
                 android:nextFocusLeft="@id/fragment_enter_code_digit_edittext2"
                 bind:onFillGoToForwardEdit="@{1}"/>
@@ -87,18 +90,21 @@
             <EditText
                 android:id="@+id/fragment_enter_code_digit_edittext4"
                 style="@style/TextDigitPin"
+                android:background="@{viewModel.haveError ? @drawable/bg_item_pin_error : @drawable/bg_item_pin}"
                 android:nextFocusForward="@id/fragment_enter_code_digit_edittext5"
                 android:nextFocusLeft="@id/fragment_enter_code_digit_edittext3"
                 bind:onFillGoToForwardEdit="@{1}"/>
             <EditText
                 android:id="@+id/fragment_enter_code_digit_edittext5"
                 style="@style/TextDigitPin"
+                android:background="@{viewModel.haveError ? @drawable/bg_item_pin_error : @drawable/bg_item_pin}"
                 android:nextFocusForward="@id/fragment_enter_code_digit_edittext6"
                 android:nextFocusLeft="@id/fragment_enter_code_digit_edittext4"
                 bind:onFillGoToForwardEdit="@{1}"/>
             <EditText
                 android:id="@+id/fragment_enter_code_digit_edittext6"
                 style="@style/TextDigitPin"
+                android:background="@{viewModel.haveError ? @drawable/bg_item_pin_error : @drawable/bg_item_pin}"
                 android:nextFocusLeft="@id/fragment_enter_code_digit_edittext5"
                 android:imeOptions="actionDone"
                 bind:onFillGoToForwardEdit="@{1}"
@@ -118,13 +124,24 @@
             app:layout_constraintTop_toBottomOf="@id/fragment_enter_code_pin_layout"
             bind:onEnterPin="@{viewModel.enterPin}" />
 
+        <TextView
+            android:id="@+id/fragment_sign_error_textview"
+            style="@style/TextFragmentGotoSingIn"
+            android:layout_marginTop="22dp"
+            android:textColor="@color/error"
+            android:text="Неверно введен код, повторите ввод"
+            android:visibility="@{viewModel.haveError ? View.VISIBLE : View.GONE}"
+            app:layout_constraintTop_toBottomOf="@id/fragment_sign_button_sing"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
             android:layout_marginTop="22dp"
-            app:layout_constraintTop_toBottomOf="@id/fragment_sign_button_sing">
+            app:layout_constraintTop_toBottomOf="@id/fragment_sign_error_textview">
 
             <TextView
                 style="@style/TextFragmentGotoSingIn"

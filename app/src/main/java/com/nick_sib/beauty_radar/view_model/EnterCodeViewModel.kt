@@ -27,6 +27,7 @@ class EnterCodeViewModel(
     val enterPin: Function1<String, Unit> = this::codeEntered
     val resendSMS: Function1<Activity?, Unit> = this::resendSMS
     val secondsLeft = ObservableField("60")
+    val haveError = ObservableField(false)
 
 //    val editedCode = ObservableField<Int?>()
 //    private var _editedCode: Int? = null
@@ -96,7 +97,6 @@ class EnterCodeViewModel(
     }
 
     fun codeError() {
-        Log.d("myLOG", "codeError: ERROR")
-//        errorDots.set(true)
+        haveError.set(true)
     }
 }
