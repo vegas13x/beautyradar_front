@@ -58,8 +58,7 @@ class SignFragment : Fragment(R.layout.fragment_sign) {
                 binding?.fragmentSignLoadingDialog?.root?.isGone = true
                 val data: Int? = appState.data as? Int
                 if (data == CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT) {
-                    val phone = binding?.authPhone?.text.toString()
-                    findNavController().navigate(SignFragmentDirections.actionAuthFragmentToEnterCodeFragment(phone))
+                    findNavController().navigate(SignFragmentDirections.actionAuthFragmentToEnterCodeFragment())
                 }
                 viewModel.codeDone()
             }

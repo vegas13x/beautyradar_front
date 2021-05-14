@@ -156,11 +156,11 @@
                 tools:text="60"/>
 
             <TextView
+                android:id="@+id/fragment_sign_resend_sms_textview"
                 style="@style/TextFragmentGotoSingIn"
                 android:fontFamily="@font/roboto_bold"
                 android:text="@string/resend_sms"
                 android:visibility="@{viewModel.secondsLeft != null ? View.GONE : View.VISIBLE}"
-                bind:resendSMS="@{viewModel.resendSMS}"
                 tools:visibility="gone"/>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,6 @@ package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import com.google.firebase.messaging.FirebaseMessaging
@@ -36,8 +35,27 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
         binding?.viewModel = viewModel
         uid = SingletonUID.getUID().toString()
 
-        binding?.run{
-            this@EnterCodeFragment.requestFocus(fragmentEnterCodeDigitEdittext1)
+        start()
+
+        binding?.run {
+            fragmentSignResendSmsTextview.setOnClickListener{
+                activity?.run {
+                    this@EnterCodeFragment.viewModel.resendSMS(this)
+                    start()
+                }
+            }
+        }
+    }
+
+    private fun start(){
+        binding?.apply {
+            fragmentEnterCodeDigitEdittext1.text.clear()
+            fragmentEnterCodeDigitEdittext2.text.clear()
+            fragmentEnterCodeDigitEdittext3.text.clear()
+            fragmentEnterCodeDigitEdittext4.text.clear()
+            fragmentEnterCodeDigitEdittext5.text.clear()
+            fragmentEnterCodeDigitEdittext6.text.clear()
+            fragmentEnterCodeDigitEdittext1.requestFocus()
             fragmentEnterCodeDigitEdittext1.showKeyboard()
         }
     }
@@ -68,16 +86,9 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
             is AppState.Error -> {
                 binding?.fragmentAuthLoadingDialog?.root?.isGone = true
                 viewModel.codeError()
-                when (appState.error) {
-                    else -> toast(appState.error.message ?: "")
-                }
             }
             else -> {}
         }
-    }
-
-    private fun toast(text: String) {
-        Toast.makeText(activity, text, Toast.LENGTH_SHORT).show()
     }
 
 }

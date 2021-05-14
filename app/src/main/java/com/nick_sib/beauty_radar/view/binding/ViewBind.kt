@@ -67,11 +67,3 @@ fun View.onEnterPin(function: Function1<String, Unit>?){
     }
 }
 
-@BindingAdapter("bind:resendSMS")
-fun View.resendSMS(function: Function1<Activity?, Unit>?){
-    when (this) {
-        is TextView -> setOnClickListener {
-            function?.let{ it(this.getActivity()) }
-        }
-    }
-}

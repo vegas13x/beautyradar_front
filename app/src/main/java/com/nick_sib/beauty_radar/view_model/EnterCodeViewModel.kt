@@ -18,7 +18,6 @@ class EnterCodeViewModel(
     val defSecondsLeft = 60
 
     val enterPin: Function1<String, Unit> = this::checkSMS
-    val resendSMS: Function1<Activity?, Unit> = this::resendSMS
     val secondsLeft = ObservableField("60")
     val haveError = ObservableField(false)
 
@@ -64,14 +63,13 @@ class EnterCodeViewModel(
 
     override fun errorReturned(t: Throwable) {}
 
-    private fun resendSMS(value: Activity?) {
-        value?.run {
-            liveDataViewmodel.value = AppState.Loading(INFINITY_LOADING_PROGRESS)
-            startTimer()
-            viewModelCoroutineScope.launch {
-                liveDataViewmodel.value =
-                    authProvider.resentVerificationCode(this@run)
-            }
+    fun resendSMS(activity: Activity) {
+        haveError.set(false)
+        liveDataViewmodel.value = AppState.Loading(INFINITY_LOADING_PROGRESS)
+        startTimer()
+        viewModelCoroutineScope.launch {
+            liveDataViewmodel.value =
+            authProvider.resentVerificationCode(activity)
         }
     }
 
