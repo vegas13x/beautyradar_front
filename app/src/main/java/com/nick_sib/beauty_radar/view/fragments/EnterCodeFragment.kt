@@ -37,7 +37,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
         start()
 
         binding?.run {
-            fragmentSignResendSmsTextview.setOnClickListener{
+            fragmentSignResendSmsTextview.setOnClickListener {
                 activity?.run {
                     this@EnterCodeFragment.viewModel.resendSMS(this)
                     start()
@@ -46,7 +46,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
         }
     }
 
-    private fun start(){
+    private fun start() {
         binding?.apply {
             fragmentEnterCodeDigitEdittext1.text.clear()
             fragmentEnterCodeDigitEdittext2.text.clear()
@@ -74,7 +74,10 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                     }
                     is Boolean -> {
                         if (appState.data == true) {
-                            findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())}
+                            findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())
+                        } else {
+                            findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment())
+                        }
                     }
                 }
             }
@@ -85,7 +88,8 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                 binding?.fragmentAuthLoadingDialog?.root?.isGone = true
                 viewModel.codeError()
             }
-            else -> {}
+            else -> {
+            }
         }
     }
 

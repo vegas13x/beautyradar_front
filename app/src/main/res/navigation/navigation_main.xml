@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_enterCodeFragment_to_masterClientFragment"
             app:destination="@id/masterClientsFragment"/>
+        <action
+            android:id="@+id/action_enterCodeFragment_to_SignUpFragment"
+            app:destination="@id/signUpFragment"/>
     </fragment>
 
     <fragment
@@ -115,7 +118,7 @@
             app:destination="@id/calendarFragment" />
         <action
             android:id="@+id/action_masterClientsFragment_to_settingsOneFragment2"
-            app:destination="@id/settingsOneFragment2" />
+            app:destination="@id/settingsFragment" />
         <action
             android:id="@+id/action_masterClientsFragment_to_profileInfoFragment"
             app:destination="@id/profileInfoFragment" />
@@ -158,16 +161,16 @@
             app:destination="@id/masterClientsFragment" />
         <action
             android:id="@+id/action_profileInfoEditFragment_to_settingsOneFragment2"
-            app:destination="@id/settingsOneFragment2" />
+            app:destination="@id/settingsFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/settingsOneFragment2"
-        android:name="com.nick_sib.beauty_radar.view.fragments.SettingsFragment"
-        android:label="SettingsOneFragment" >
-        <action
-            android:id="@+id/action_settingsOneFragment2_to_masterClientsFragment"
-            app:destination="@id/masterClientsFragment" />
-    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/settingsFragment"-->
+<!--        android:name="com.nick_sib.beauty_radar.view.fragments.SettingsFragment"-->
+<!--        android:label="@layout/fragment_settings" >-->
+<!--        <action-->
+<!--            android:id="@+id/action_settingsFragment_to_masterClientsFragment"-->
+<!--            app:destination="@id/masterClientsFragment" />-->
+<!--    </fragment>-->
     <fragment
         android:id="@+id/clientsFragment"
         android:name="com.nick_sib.beauty_radar.view.fragments.ClientsFragment"

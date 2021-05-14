@@ -32,7 +32,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_btm_nav_btn_main -> {
-                    findNavController().navigate(SettingsFragmentDirections.actionSettingsOneFragment2ToMasterClientsFragment())
+                    findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToMasterClientsFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 else -> false
