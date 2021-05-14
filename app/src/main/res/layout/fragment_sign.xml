@@ -23,35 +23,32 @@
             android:visibility="gone" />
 
         <View
-            android:id="@+id/view_background_decorator"
+            android:id="@+id/background_decorator_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/def_offset_decorator"
             android:background="@drawable/bg_big_container"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            tools:layout_editor_absoluteX="16dp" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-            android:id="@+id/fragment_sign_textview_name"
+            android:id="@+id/fragment_sign_title_textview"
             style="@style/TextFragmentTitle"
             android:layout_marginBottom="15dp"
             android:text="@{viewModel.fragmentType == FragmentType.SIGNUP ? @string/s_sign_up : @string/s_sign_in}"
-            app:layout_constraintBottom_toTopOf="@id/view_background_decorator"
+            app:layout_constraintBottom_toTopOf="@id/background_decorator_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Регистрация/Вход" />
 
-
         <TextView
-            android:id="@+id/fragment_sign_textview_label"
+            android:id="@+id/fragment_sign_label_textview"
             style="@style/TextFragmentLabel"
             android:layout_marginStart="24dp"
             android:layout_marginTop="30dp"
             android:text="@string/s_signup_phone"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/view_background_decorator" />
+            app:layout_constraintTop_toTopOf="@id/background_decorator_view" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/fragment_sign_til_phone"
@@ -69,7 +66,7 @@
             app:boxStrokeColor="@color/main_dark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_sign_textview_label"
+            app:layout_constraintTop_toBottomOf="@id/fragment_sign_label_textview"
             app:prefixText="+7 "
             app:prefixTextColor="@color/Black">
 
@@ -111,10 +108,9 @@
         <TextView
             android:id="@+id/bolddd"
             style="@style/TextFragmentGotoSingIn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_bold"
             android:text="@{viewModel.fragmentType == FragmentType.SIGNIN ? @string/s_fragment_sign_in_two : @string/s_fragment_sign_up_two}"
+            android:visibility="@{viewModel.phoneError ? View.GONE : View.VISIBLE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/fragment_sign_switch_type_textview"
             app:layout_constraintTop_toTopOf="@id/fragment_sign_switch_type_textview"

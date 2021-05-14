@@ -12,6 +12,8 @@ import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.SingletonUID
 import com.nick_sib.beauty_radar.databinding.FragmentEnterCodeBinding
 import com.nick_sib.beauty_radar.extension.findNavController
+import com.nick_sib.beauty_radar.extension.requestFocus
+import com.nick_sib.beauty_radar.extension.showKeyboard
 import com.nick_sib.beauty_radar.model.data.entites.UserMaster
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
@@ -22,7 +24,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
 
     private val viewModel: EnterCodeViewModel by viewModel()
     private var binding: FragmentEnterCodeBinding? = null
-    private val args: EnterCodeFragmentArgs by navArgs()
+    //private val args: EnterCodeFragmentArgs by navArgs()
 
     private val uid: String?
         get() = SingletonUID.getUID()
@@ -31,21 +33,39 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEnterCodeBinding.bind(view)
 
-
+        FirebaseMessaging.getInstance().deleteToken()
 
         viewModel.subscribe().observe(viewLifecycleOwner, {
             renderData(it)
         })
         binding?.viewModel = viewModel
+        uid = SingletonUID.getUID().toString()
+
+        start()
+
+        binding?.run {
+            fragmentSignResendSmsTextview.setOnClickListener{
+                activity?.run {
+                    this@EnterCodeFragment.viewModel.resendSMS(this)
+                    start()
+                }
+            }
         binding?.enterCodeFragmentTvInfo?.text =
             getString(R.string.text_help_info_phone, "+7 ${args.phone}")
         initListener()
 
+        }
     }
-
-    private fun initListener() {
-        binding?.enterCodeFragmentIvBackTo?.setOnClickListener {
-            findNavController().popBackStack()
+    private fun start(){
+        binding?.apply {
+            fragmentEnterCodeDigitEdittext1.text.clear()
+            fragmentEnterCodeDigitEdittext2.text.clear()
+            fragmentEnterCodeDigitEdittext3.text.clear()
+            fragmentEnterCodeDigitEdittext4.text.clear()
+            fragmentEnterCodeDigitEdittext5.text.clear()
+            fragmentEnterCodeDigitEdittext6.text.clear()
+            fragmentEnterCodeDigitEdittext1.requestFocus()
+            fragmentEnterCodeDigitEdittext1.showKeyboard()
         }
     }
 

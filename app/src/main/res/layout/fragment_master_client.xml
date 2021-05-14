@@ -99,7 +99,6 @@
             app:layout_constraintStart_toEndOf="@+id/fragment_mc_btn_left_date"
             app:layout_constraintTop_toTopOf="@+id/fragment_mc_btn_left_date" />
 
-
         <androidx.cardview.widget.CardView
             android:id="@+id/fragment_mc_iv_avatar_master"
             android:layout_width="80dp"
@@ -116,13 +115,7 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 />
-
-
-
         </androidx.cardview.widget.CardView>
-
-
-
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/fragment_mc_tv_counter_clients"

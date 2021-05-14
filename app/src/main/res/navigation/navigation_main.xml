@@ -34,16 +34,9 @@
         android:name="com.nick_sib.beauty_radar.view.fragments.EnterCodeFragment"
         android:label="fragment_enter_code"
         tools:layout="@layout/fragment_enter_code">
-        <argument
-            android:name="phone"
-            android:defaultValue="err"
-            app:argType="string" />
         <action
             android:id="@+id/action_enterCodeFragment_to_masterClientFragment"
             app:destination="@id/masterClientsFragment"/>
-        <action
-            android:id="@+id/action_enterCodeFragment_to_signUpFragment2"
-            app:destination="@id/signFragment" />
     </fragment>
 
     <fragment

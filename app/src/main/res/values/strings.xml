@@ -24,6 +24,7 @@
     <string name="d_iv_progress">loading infinity progress</string>
     <string name="s_welcome">Добро пожаловать!</string>
     <string name="s_phone_help">Введите код оператора и 7 цифр</string>
+    <string name="s_sms_title">Подтверждение</string>
     <string name="s_phone_error">Номер должен содержать 7 цифр и код оператора</string>
     <string name="the_confirmation">Подтверждение</string>
     <string name="text_help_info_phone">Введите код подтверждения из SMS, отправленного на номер: %s</string>
@@ -75,4 +76,5 @@
     <string name="s_signup_phone">Введите номер телефона</string>
     <string name="e_incorrect_phone">Неверно введен телефон, повторите ввод</string>
     <string name="free_window">Свободные окна</string>
+    <string name="await_to_resend_sms">Отправить код повторно через\u0020</string>
 </resources>

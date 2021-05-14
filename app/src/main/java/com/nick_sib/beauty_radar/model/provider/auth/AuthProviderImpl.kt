@@ -137,7 +137,7 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider{
                     if (it.isSuccessful) {
                         SingletonUID.setUID(authUser.uid)
                         res.resume(
-                            AppState.Success<UserMaster>(
+                            AppState.Success(
                                 UserMaster(
                                     "testName",
                                     "testEmail",

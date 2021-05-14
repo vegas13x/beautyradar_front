@@ -10,6 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.databinding.FragmentSignBinding
 import com.nick_sib.beauty_radar.SingletonUID
+import com.nick_sib.beauty_radar.extension.*
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.extension.digitToPhone
 import com.nick_sib.beauty_radar.extension.findNavController
@@ -47,8 +48,11 @@ class SignFragment : Fragment(R.layout.fragment_sign) {
                     textInput.editText?.setSelection(newText.length)
                 }
             }
+        }
 
-
+        binding?.run{
+            this@SignFragment.requestFocus(authPhone)
+            authPhone.showKeyboard()
         }
     }
 
@@ -58,8 +62,7 @@ class SignFragment : Fragment(R.layout.fragment_sign) {
                 binding?.fragmentSignLoadingDialog?.root?.isGone = true
                 val data: Int? = appState.data as? Int
                 if (data == CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT) {
-                    val phone = binding?.authPhone?.text.toString()
-                    findNavController().navigate(SignFragmentDirections.actionAuthFragmentToEnterCodeFragment(phone))
+                    findNavController().navigate(SignFragmentDirections.actionAuthFragmentToEnterCodeFragment())
                 }
                 viewModel.codeDone()
             }
