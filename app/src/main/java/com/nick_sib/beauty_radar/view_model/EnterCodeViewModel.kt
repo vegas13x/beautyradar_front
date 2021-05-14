@@ -4,10 +4,8 @@ import android.app.Activity
 import android.os.CountDownTimer
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
-import com.nick_sib.beauty_radar.SingletonImgUrl
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.auth.IAuthProvider
-import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
 import com.nick_sib.beauty_radar.view.utils.INFINITY_LOADING_PROGRESS
 import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
 import com.nick_sib.beauty_radar.view_model.interactor.core.EnterCodeInteractor
@@ -17,14 +15,25 @@ class EnterCodeViewModel(
     private val authProvider: IAuthProvider,
     private val interactor: EnterCodeInteractor<AppState>
 ) : BaseViewModel<AppState>() {
-
     val defSecondsLeft = 60
+
     val enterPin: Function1<String, Unit> = this::checkSMS
     val secondsLeft = ObservableField("60")
     val haveError = ObservableField(false)
 
+    fun subscribe(): LiveData<AppState> = liveDataViewmodel
+
     init {
         startTimer()
+    }
+
+    fun checkUserInDB(uid: String?) {
+        uid?.run {
+            viewModelCoroutineScope.launch {
+                val userFlag = interactor.existUserByUPNFromDB(uid)
+                liveDataViewmodel.value = userFlag
+            }
+        }
     }
 
     private fun getTimerText(mills: Long): String {
@@ -52,33 +61,7 @@ class EnterCodeViewModel(
         }
     }
 
-    fun subscribe(): LiveData<AppState> = liveDataViewmodel
-
-    fun checkUserInDB(uid: String?) {
-        uid?.run {
-            viewModelCoroutineScope.launch {
-                val userFlag = interactor.existUserByUPNFromDB(uid)
-                liveDataViewmodel.value = userFlag
-            }
-        }
-    }
-
-    fun getUserByUID(upn: String?) {
-        upn?.run {
-            viewModelCoroutineScope.launch {
-                val userDTO = interactor.getUserByUPNFromDB(upn)
-                liveDataViewmodel.value = userDTO
-            }
-        }
-    }
-
-    fun setImgInSingleton(imgUrl: String?) = SingletonImgUrl.setImgUrl(imgUrl)
-
-    fun updateUserByUserResponse(userDTO: UserDTO) =
-        viewModelCoroutineScope.launch {
-            userDTO.token = interactor.getToken()
-            interactor.updateUser(userDTO.id, userDTO)
-        }
+    override fun errorReturned(t: Throwable) {}
 
     fun resendSMS(activity: Activity) {
         haveError.set(false)
@@ -93,6 +76,4 @@ class EnterCodeViewModel(
     fun codeError() {
         haveError.set(true)
     }
-
-    override fun errorReturned(t: Throwable) {}
 }

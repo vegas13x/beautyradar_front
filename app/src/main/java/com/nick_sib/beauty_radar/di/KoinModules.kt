@@ -64,10 +64,17 @@ val masterClientFragmentModule = module {
     factory<MasterClientInteractor<AppState>> { MasterClientInteractorImpl(get()) }
     viewModel { MasterClientViewModel(get()) }
 }
+val masterClientInnerFragmentModule = module {
+    viewModel { MasterAndClientInnerViewModel() }
+}
 
 val profileModule = module {
     factory<ProfileInteractor<AppState>> { ProfileInteractorImpl(get()) }
     viewModel { ProfileViewModel(get()) }
+}
+
+val settingModule = module {
+    viewModel { SettingViewModel() }
 }
 
 val logoutModule = module {

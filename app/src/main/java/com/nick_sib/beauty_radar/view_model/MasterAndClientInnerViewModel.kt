@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData
 import com.google.firebase.storage.FirebaseStorage
 import com.nick_sib.beauty_radar.SingletonImgUrl
 import com.nick_sib.beauty_radar.model.data.state.AppState
+import com.nick_sib.beauty_radar.view.utils.TRANSITION_TO_CALENDAR
 import com.nick_sib.beauty_radar.view.utils.USE_DEFAULT_IMG
 import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
 import java.io.File
@@ -16,6 +17,10 @@ import java.io.IOException
 class MasterAndClientInnerViewModel: BaseViewModel<AppState>() {
 
     fun subscribe(): LiveData<AppState> = liveDataViewmodel
+
+    fun transitionToCalendar() {
+        liveDataViewmodel.value = AppState.Success(TRANSITION_TO_CALENDAR)
+    }
 
     fun takePictureFromStorage() {
         if (SingletonImgUrl.getImgUrl() != null) {

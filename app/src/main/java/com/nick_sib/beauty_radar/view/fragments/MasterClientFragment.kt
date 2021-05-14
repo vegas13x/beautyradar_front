@@ -4,27 +4,25 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
+import androidx.fragment.app.FragmentStatePagerAdapter
 import com.nick_sib.beauty_radar.R
-import com.nick_sib.beauty_radar.databinding.FragmentMasterClientSecondBinding
+import com.nick_sib.beauty_radar.databinding.FragmentMasterClientBinding
 import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.view.adapter.ClientAdapter
 import com.nick_sib.beauty_radar.view_model.MasterClientViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MasterClientFragment : Fragment(R.layout.fragment_master_client_second) {
+class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
 
     private val viewModel: MasterClientViewModel by viewModel()
-    private lateinit var binding: FragmentMasterClientSecondBinding
+    private lateinit var binding: FragmentMasterClientBinding
     private var adapter: ClientAdapter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-        binding = FragmentMasterClientSecondBinding.bind(view)
+        binding = FragmentMasterClientBinding.bind(view)
 
         viewModel.getListClients()
         viewModel.subscribe().observe(viewLifecycleOwner, {
@@ -45,9 +43,8 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client_second) {
             }
         }
 
-        val pagerAdapter = ScreenSlidePagerAdapter(childFragmentManager, lifecycle)
+        val pagerAdapter = ScreenSlidePagerAdapter(childFragmentManager)
         binding.viewPager.adapter = pagerAdapter
-        binding.viewPager.orientation = ViewPager2.ORIENTATION_VERTICAL
 
     }
 
@@ -67,11 +64,10 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client_second) {
         }
     }
 
-    private inner class ScreenSlidePagerAdapter(fm: FragmentManager, lifecycle: Lifecycle) :
-        FragmentStateAdapter(fm, lifecycle) {
-        override fun getItemCount(): Int = 1
-        override fun createFragment(position: Int): Fragment =
-            MasterAndClientInnerFragment().newInstance()
+    private inner class ScreenSlidePagerAdapter(fm: FragmentManager) :
+        FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+        override fun getCount(): Int = 1
+        override fun getItem(position: Int): Fragment = MasterAndClientInnerFragment().newInstance()
     }
 
 }
