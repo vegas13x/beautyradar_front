@@ -77,4 +77,5 @@
     <string name="e_incorrect_phone">Неверно введен телефон, повторите ввод</string>
     <string name="free_window">Свободные окна</string>
     <string name="await_to_resend_sms">Отправить код повторно через\u0020</string>
+    <string name="s_sms_label">Введите код из СМС</string>
 </resources>

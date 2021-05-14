@@ -19,7 +19,6 @@ class BooksFragment : Fragment() {
         return BooksFragment()
     }
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view : View? = inflater.inflate(R.layout.books_fragment, container, false)
         val rvBooks : RecyclerView = view!!.findViewById(R.id.clientRecycler)

@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.nick_sib.beauty_radar.R
-import com.nick_sib.beauty_radar.SingletonUID
 import com.nick_sib.beauty_radar.databinding.FragmentClientsBinding
-import com.nick_sib.beauty_radar.databinding.FragmentSettingsOneBinding
 import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.view_model.ProfileInfoViewModel

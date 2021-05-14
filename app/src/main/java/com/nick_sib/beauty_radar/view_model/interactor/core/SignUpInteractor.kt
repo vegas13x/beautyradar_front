@@ -1,6 +1,5 @@
 package com.nick_sib.beauty_radar.view_model.interactor.core
 
-import com.google.firebase.inject.Deferred
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
 

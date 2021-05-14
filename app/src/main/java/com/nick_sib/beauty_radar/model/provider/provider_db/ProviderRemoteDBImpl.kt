@@ -1,11 +1,9 @@
 package com.nick_sib.beauty_radar.model.provider.provider_db
 
-import com.nick_sib.beauty_radar.model.data.entites.UserMaster
 import com.nick_sib.beauty_radar.model.provider.api.ApiService
-import com.nick_sib.beauty_radar.model.provider.repository.user.MasterDTO
 import com.nick_sib.beauty_radar.model.provider.repository.user.UserDBCheck
-import com.nick_sib.beauty_radar.model.provider.repository.user.UserResponse
 import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
+import com.nick_sib.beauty_radar.model.provider.repository.user.UserResponse
 
 class ProviderRemoteDBImpl(private val api: ApiService) : IProviderRemoteDB {
 
@@ -23,8 +21,7 @@ class ProviderRemoteDBImpl(private val api: ApiService) : IProviderRemoteDB {
 
 //    override suspend fun createMaster(masterDTO: MasterDTO): UserResponse =
 //        api.createMasterAsync(masterDTO)
-
-
+//
 //    override suspend fun getUserList(): List<UserResponse> =
 //        api.getUserListAsync()
 //

@@ -1,18 +1,12 @@
 package com.nick_sib.beauty_radar.view_model
 
-import android.content.Context
-import android.preference.PreferenceManager
-import android.util.Log
 import androidx.lifecycle.LiveData
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.repository.user.MasterDTO
 import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
 import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
 import com.nick_sib.beauty_radar.view_model.interactor.core.SignUpInteractor
-import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.launch
-import kotlin.coroutines.coroutineContext
-
 
 class SignUpSecondViewModel(private val interactor: SignUpInteractor<AppState>) :
     BaseViewModel<AppState>() {

@@ -8,7 +8,6 @@ import com.nick_sib.beauty_radar.view_model.interactor.core.SignUpInteractor
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-
 class SignUpInteractorImpl(private val remoteRepo: RemoteRepository<AppState>) :
     SignUpInteractor<AppState> {
 
@@ -28,9 +27,5 @@ class SignUpInteractorImpl(private val remoteRepo: RemoteRepository<AppState>) :
             }
         }
     }
-
-
-
-
 
 }

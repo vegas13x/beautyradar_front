@@ -8,8 +8,6 @@ interface EnterCodeInteractor<S> : Interactor {
 
     suspend fun getUserByUPNFromDB(uid: String): S
 
-    suspend fun getUserInLocalDB()
-
     suspend fun updateUser(id: Long?, userDTO: UserDTO): S
 
     suspend fun getToken(): String

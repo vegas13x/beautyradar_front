@@ -15,9 +15,7 @@ class SignUpSecondFragment :
     Fragment(R.layout.fragment_sign_up_second) {
 
     private val args: SignUpSecondFragmentArgs by navArgs()
-
     private var job: String? = null
-
     private val secondViewModel: SignUpSecondViewModel by viewModel()
     private lateinit var binding: FragmentSignUpSecondBinding
 
@@ -57,7 +55,5 @@ class SignUpSecondFragment :
             job = "client"
         }
     }
-
-
 
 }

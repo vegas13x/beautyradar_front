@@ -3,11 +3,7 @@ package com.nick_sib.beauty_radar.view.fragments
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
-import androidx.viewpager.widget.ViewPager
 import com.nick_sib.beauty_radar.R
-import com.nick_sib.beauty_radar.SingletonUID
 import com.nick_sib.beauty_radar.databinding.FragmentProfileInfoBinding
 import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.model.data.state.AppState
@@ -66,9 +62,6 @@ class ProfileInfoFragment : Fragment(R.layout.fragment_profile_info) {
         }
 
     }
-
-
-
 
     private fun renderData(appState: AppState?) {
         when (appState) {

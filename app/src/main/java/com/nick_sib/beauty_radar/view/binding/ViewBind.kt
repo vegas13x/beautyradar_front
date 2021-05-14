@@ -6,7 +6,6 @@ import android.view.ViewParent
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import com.google.android.material.textfield.TextInputEditText

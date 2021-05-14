@@ -3,7 +3,6 @@ package com.nick_sib.beauty_radar.view.fragments
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.google.firebase.messaging.FirebaseMessaging
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.databinding.FragmentLogoutBinding
 import com.nick_sib.beauty_radar.extension.findNavController

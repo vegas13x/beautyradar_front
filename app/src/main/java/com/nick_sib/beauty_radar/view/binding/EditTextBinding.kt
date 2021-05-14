@@ -8,8 +8,6 @@ import android.widget.EditText
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.BindingAdapter
-import androidx.fragment.app.Fragment
-import com.nick_sib.beauty_radar.extension.requestFocus
 
 private fun getParent(v: View): ViewParent? {
     var pp: ViewParent? = v.parent ?: null

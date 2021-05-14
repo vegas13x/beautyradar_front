@@ -4,7 +4,6 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.util.Log
-import android.widget.ImageView
 import androidx.exifinterface.media.ExifInterface
 import androidx.lifecycle.LiveData
 import com.google.firebase.storage.FirebaseStorage
@@ -14,11 +13,8 @@ import com.nick_sib.beauty_radar.view.utils.TRANSITION_TO_CALENDAR
 import com.nick_sib.beauty_radar.view.utils.USE_DEFAULT_IMG
 import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
 import com.nick_sib.beauty_radar.view_model.interactor.core.MasterClientInteractor
-import kotlinx.coroutines.launch
 import java.io.File
 import java.io.IOException
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 
 class MasterClientViewModel(private val interactor: MasterClientInteractor<AppState>) :
     BaseViewModel<AppState>() {

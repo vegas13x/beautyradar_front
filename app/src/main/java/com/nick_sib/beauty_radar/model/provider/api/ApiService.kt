@@ -8,7 +8,6 @@ import retrofit2.http.*
 
 interface ApiService {
 
-//    @Headers("Content-Type: application/json")
     @POST("user/")
     suspend fun createUserAsync(@Body userDTO: UserDTO): UserResponse
 
@@ -23,8 +22,6 @@ interface ApiService {
 
     @POST("master/")
     suspend fun createMasterAsync(@Body masterDTO: MasterDTO): UserResponse
-
-
 
 //    @GET()
 //    suspend fun getUserListAsync(): List<UserResponse>

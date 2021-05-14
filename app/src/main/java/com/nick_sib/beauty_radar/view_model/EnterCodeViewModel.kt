@@ -3,14 +3,13 @@ package com.nick_sib.beauty_radar.view_model
 import android.app.Activity
 import android.os.CountDownTimer
 import android.util.Log
+import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import com.nick_sib.beauty_radar.SingletonImgUrl
-import com.nick_sib.beauty_radar.model.data.error.ToastError
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.auth.IAuthProvider
 import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
-import com.nick_sib.beauty_radar.view.fragments.LogoutFragmentDirections
 import com.nick_sib.beauty_radar.view.utils.INFINITY_LOADING_PROGRESS
 import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
 import com.nick_sib.beauty_radar.view_model.interactor.core.EnterCodeInteractor
@@ -21,8 +20,8 @@ class EnterCodeViewModel(
     private val interactor: EnterCodeInteractor<AppState>
 ) : BaseViewModel<AppState>() {
     val defSecondsLeft = 60
-
-    val resendSMS: Function1<Activity?, Unit> = this::resendSMS
+//
+//    val resendSMS: Function1<Activity?, Unit> = this::resendSMS
 
     val errorDots = ObservableBoolean(false)
     val editedCode = ObservableField<Int?>()

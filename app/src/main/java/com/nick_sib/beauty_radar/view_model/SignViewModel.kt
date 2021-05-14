@@ -3,7 +3,6 @@ package com.nick_sib.beauty_radar.view_model
 import android.app.Activity
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
-import androidx.databinding.ObservableInt
 import androidx.lifecycle.LiveData
 import com.nick_sib.beauty_radar.model.data.entites.FragmentType
 import com.nick_sib.beauty_radar.model.data.state.AppState
@@ -11,7 +10,6 @@ import com.nick_sib.beauty_radar.model.provider.auth.IAuthProvider
 import com.nick_sib.beauty_radar.view.utils.INFINITY_LOADING_PROGRESS
 import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
 import kotlinx.coroutines.launch
-
 
 class SignViewModel(
     private val authProvider: IAuthProvider

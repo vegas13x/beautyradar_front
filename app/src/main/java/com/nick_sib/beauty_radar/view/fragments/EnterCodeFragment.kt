@@ -6,13 +6,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.navArgs
 import com.google.firebase.messaging.FirebaseMessaging
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.SingletonUID
 import com.nick_sib.beauty_radar.databinding.FragmentEnterCodeBinding
 import com.nick_sib.beauty_radar.extension.findNavController
-import com.nick_sib.beauty_radar.extension.requestFocus
 import com.nick_sib.beauty_radar.extension.showKeyboard
 import com.nick_sib.beauty_radar.model.data.entites.UserMaster
 import com.nick_sib.beauty_radar.model.data.state.AppState
@@ -39,7 +37,6 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
             renderData(it)
         })
         binding?.viewModel = viewModel
-        uid = SingletonUID.getUID().toString()
 
         start()
 
@@ -50,9 +47,6 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                     start()
                 }
             }
-        binding?.enterCodeFragmentTvInfo?.text =
-            getString(R.string.text_help_info_phone, "+7 ${args.phone}")
-        initListener()
 
         }
     }
@@ -87,9 +81,9 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                         if (appState.data == true) {
                             viewModel.getUserByUID(checkUid)
                         } else {
-                            findNavController().navigate(
-                                EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment2()
-                            )
+//                            findNavController().navigate(
+//                                EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment2()
+//                            )
                         }
                     }
                     is UserDTO -> {
