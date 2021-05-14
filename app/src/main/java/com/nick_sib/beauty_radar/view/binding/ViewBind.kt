@@ -75,9 +75,3 @@ fun View.resendSMS(function: Function1<Activity?, Unit>?){
         }
     }
 }
-
-@BindingAdapter("bind:setDotColor")
-fun setDotColor(view: View, value: Boolean){
-//    if (value)
-//        view.background = view.context.getDrawable(R.drawable.ic_circle_error)
-}

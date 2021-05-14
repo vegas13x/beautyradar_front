@@ -135,9 +135,9 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider{
                 }
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
-                        SingletonUID.getInstance()?.setUID(authUser.uid)
+                        SingletonUID.setUID(authUser.uid)
                         res.resume(
-                            AppState.Success<UserMaster>(
+                            AppState.Success(
                                 UserMaster(
                                     "testName",
                                     "testEmail",

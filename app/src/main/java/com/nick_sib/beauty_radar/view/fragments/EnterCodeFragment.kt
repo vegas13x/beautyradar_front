@@ -2,12 +2,9 @@ package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
 import android.view.View
-import android.widget.EditText
 import android.widget.Toast
 import androidx.core.view.isGone
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.navArgs
 import com.google.firebase.messaging.FirebaseMessaging
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.SingletonUID
@@ -17,7 +14,6 @@ import com.nick_sib.beauty_radar.extension.requestFocus
 import com.nick_sib.beauty_radar.extension.showKeyboard
 import com.nick_sib.beauty_radar.model.data.entites.UserMaster
 import com.nick_sib.beauty_radar.model.data.state.AppState
-import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
 import com.nick_sib.beauty_radar.view_model.EnterCodeViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -25,7 +21,6 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
 
     private val viewModel: EnterCodeViewModel by viewModel()
     private var binding: FragmentEnterCodeBinding? = null
-//    private val args: EnterCodeFragmentArgs by navArgs()
 
     private lateinit var uid: String
 
@@ -39,29 +34,13 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
             renderData(it)
         })
         binding?.viewModel = viewModel
-//        binding?.enterCodeFragmentTvInfo?.text =
-//            getString(R.string.text_help_info_phone, "+7 ${args.phone}")
         uid = SingletonUID.getUID().toString()
-
-//        binding?.root?.findViewById<EditText>(R.id.digit1)?.run{
-//            addTextChangedListener {
-//                if (!it.isNullOrEmpty())
-//                    binding?.root?.findViewById<EditText>(nextFocusRightId)?.run {
-//                        requestFocus(this)
-//                }
-//            }
-//            setOnFocusChangeListener { v, hasFocus ->
-////                if (hasFocus) this@EditText.hint = ""
-//            }
-//        }
 
         binding?.run{
             this@EnterCodeFragment.requestFocus(fragmentEnterCodeDigitEdittext1)
             fragmentEnterCodeDigitEdittext1.showKeyboard()
         }
-
     }
-
 
     override fun onDestroyView() {
         binding = null

@@ -2,18 +2,11 @@ package com.nick_sib.beauty_radar.view_model
 
 import android.app.Activity
 import android.os.CountDownTimer
-import android.util.Log
-import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
-import androidx.databinding.ObservableInt
 import androidx.lifecycle.LiveData
-import com.nick_sib.beauty_radar.model.data.error.ToastError
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.auth.IAuthProvider
-import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
 import com.nick_sib.beauty_radar.view.utils.INFINITY_LOADING_PROGRESS
-import com.nick_sib.beauty_radar.view.utils.TAG_CODE_NULL
-import com.nick_sib.beauty_radar.view.utils.TAG_DEBAG
 import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
 import com.nick_sib.beauty_radar.view_model.interactor.core.EnterCodeInteractor
 import kotlinx.coroutines.launch
@@ -24,18 +17,10 @@ class EnterCodeViewModel(
 ) : BaseViewModel<AppState>() {
     val defSecondsLeft = 60
 
-    val enterPin: Function1<String, Unit> = this::codeEntered
+    val enterPin: Function1<String, Unit> = this::checkSMS
     val resendSMS: Function1<Activity?, Unit> = this::resendSMS
     val secondsLeft = ObservableField("60")
     val haveError = ObservableField(false)
-
-//    val editedCode = ObservableField<Int?>()
-//    private var _editedCode: Int? = null
-//        set(value) {
-////            errorDots.set(false)
-//            editedCode.set(value)
-//            field = value
-//        }
 
     fun subscribe(): LiveData<AppState> = liveDataViewmodel
 
@@ -44,7 +29,6 @@ class EnterCodeViewModel(
     }
 
     fun checkUserInDB(uid: String?) {
-        Log.d(TAG_DEBAG, "checkUserInDB: $uid")
         uid?.run {
             viewModelCoroutineScope.launch {
                 val userFlag = interactor.existUserByUPNFromDB(uid)
@@ -71,19 +55,14 @@ class EnterCodeViewModel(
         }.start()
     }
 
-    private fun codeEntered(code: String) {
-        if (code.isEmpty()) {
-            liveDataViewmodel.value = AppState.Error(ToastError(TAG_CODE_NULL))
-        } else {
-            liveDataViewmodel.value = AppState.Loading(INFINITY_LOADING_PROGRESS)
-            viewModelCoroutineScope.launch {
-                liveDataViewmodel.value = authProvider.verifyPhoneNumber(code)
-            }
+    private fun checkSMS(code: String) {
+        liveDataViewmodel.value = AppState.Loading(INFINITY_LOADING_PROGRESS)
+        viewModelCoroutineScope.launch {
+            liveDataViewmodel.value = authProvider.verifyPhoneNumber(code)
         }
     }
 
     override fun errorReturned(t: Throwable) {}
-
 
     private fun resendSMS(value: Activity?) {
         value?.run {
