@@ -2,6 +2,7 @@ package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
@@ -41,6 +42,14 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
                 }
                 else -> false
             }
+        }
+
+        binding.root.findViewById<ImageView>(R.id.setting_btn).setOnClickListener {
+            findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToSettingsOneFragment2())
+        }
+
+        binding.root.findViewById<ImageView>(R.id.back_btn).setOnClickListener {
+            findNavController().popBackStack()
         }
 
         val pagerAdapter = ScreenSlidePagerAdapter(childFragmentManager)
