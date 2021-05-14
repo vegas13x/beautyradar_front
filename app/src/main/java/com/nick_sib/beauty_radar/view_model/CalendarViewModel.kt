@@ -6,7 +6,6 @@ import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
 
 class CalendarViewModel : BaseViewModel<AppState>() {
 
-
     fun subscribe(): LiveData<AppState> {
         return liveDataViewmodel
     }

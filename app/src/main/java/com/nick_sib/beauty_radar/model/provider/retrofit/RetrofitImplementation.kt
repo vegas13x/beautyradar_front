@@ -1,6 +1,5 @@
 package com.nick_sib.beauty_radar.model.provider.retrofit
 
-
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.nick_sib.beauty_radar.model.provider.api.ApiService
 import okhttp3.Interceptor

@@ -1,295 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/pink_inga"
+        android:fitsSystemWindows="true">
 
-        <variable
-            name="viewModel"
-            type="com.nick_sib.beauty_radar.view_model.MasterClientViewModel" />
-    </data>
+        <include layout="@layout/toolbar"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/main_dusty_rose_mid"
-        tools:context=".view.fragments.MasterClientFragment">
+        android:layout_height="wrap_content"
+        android:paddingBottom="55dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/fragment_mc_btn_back_to"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/offset_24"
-            android:layout_marginTop="@dimen/offset_20"
-            android:src="@drawable/ic_back_by_inga"
-            app:layout_constraintEnd_toStartOf="@id/fragment_mc_tv_name_master"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/fragment_mc_btn_nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:itemIconTint="@color/violet"
+        app:itemTextColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_battom_nav_menu" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/fragment_mc_tv_name_master"
-            style="@style/NameMasterMainScreen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_hello_namemaster_test"
-            app:layout_constraintBottom_toBottomOf="@+id/fragment_mc_btn_back_to"
-            app:layout_constraintEnd_toStartOf="@id/fragment_mc_btn_setting"
-            app:layout_constraintStart_toEndOf="@id/fragment_mc_btn_back_to"
-            app:layout_constraintTop_toTopOf="@+id/fragment_mc_btn_back_to" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/fragment_mc_btn_setting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/offset_24"
-            android:src="@drawable/ic_setting"
-            app:layout_constraintBottom_toBottomOf="@+id/fragment_mc_tv_name_master"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/fragment_mc_tv_name_master"
-            app:layout_constraintTop_toTopOf="@+id/fragment_mc_tv_name_master" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/fragment_mc_bg_bottom_bg"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/offset_24"
-            android:background="@drawable/bg_rounded_top_right_corner"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_mc_btn_back_to" />
-
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/fragment_mc_btn_left_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/offset_24"
-            android:layout_marginEnd="@dimen/offset_24"
-            android:src="@drawable/ic_arrow_left_by_inga"
-            app:layout_constraintEnd_toStartOf="@id/fragment_mc_tv_date"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/fragment_mc_bg_bottom_bg" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/fragment_mc_btn_right_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/offset_24"
-            android:src="@drawable/ic_arrow_right_by_inga"
-            app:layout_constraintBottom_toBottomOf="@+id/fragment_mc_btn_left_date"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/fragment_mc_tv_date"
-            app:layout_constraintTop_toTopOf="@+id/fragment_mc_btn_left_date" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/fragment_mc_tv_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/DateMainScreen"
-            android:text="@string/test_text_date"
-            app:layout_constraintBottom_toBottomOf="@+id/fragment_mc_btn_left_date"
-            app:layout_constraintEnd_toStartOf="@+id/fragment_mc_btn_right_date"
-            app:layout_constraintStart_toEndOf="@+id/fragment_mc_btn_left_date"
-            app:layout_constraintTop_toTopOf="@+id/fragment_mc_btn_left_date" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/fragment_mc_iv_avatar_master"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="@dimen/offset_24"
-            android:layout_marginTop="@dimen/offset_20"
-            android:src="@drawable/img_dog"
-            app:layout_constraintBottom_toTopOf="@id/fragment_mc_btn_sing_up"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_mc_tv_date" />
-
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/fragment_mc_tv_counter_clients"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/CustomerPerformance.Counter"
-            android:text="207"
-            app:layout_constraintBottom_toTopOf="@id/fragment_mc_tv_text_clients"
-            app:layout_constraintEnd_toEndOf="@id/fragment_mc_tv_text_clients"
-            app:layout_constraintStart_toStartOf="@id/fragment_mc_tv_text_clients"
-            app:layout_constraintTop_toTopOf="@+id/fragment_mc_iv_avatar_master"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/fragment_mc_tv_text_clients"
-            style="@style/CustomerPerformance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/offset_24"
-            android:text="@string/clients"
-            app:layout_constraintBottom_toBottomOf="@+id/fragment_mc_iv_avatar_master"
-            app:layout_constraintEnd_toStartOf="@id/fragment_mc_tv_text_confirm"
-            app:layout_constraintStart_toEndOf="@+id/fragment_mc_iv_avatar_master"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_mc_tv_counter_clients" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/fragment_mc_tv_counter_confirm"
-            style="@style/CustomerPerformance.Counter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="7"
-            app:layout_constraintBottom_toTopOf="@id/fragment_mc_tv_text_confirm"
-            app:layout_constraintEnd_toEndOf="@+id/fragment_mc_tv_text_confirm"
-            app:layout_constraintStart_toStartOf="@+id/fragment_mc_tv_text_confirm"
-            app:layout_constraintTop_toTopOf="@+id/fragment_mc_iv_avatar_master"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/fragment_mc_tv_text_confirm"
-            style="@style/CustomerPerformance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/confirm"
-            app:layout_constraintBottom_toBottomOf="@+id/fragment_mc_iv_avatar_master"
-            app:layout_constraintEnd_toStartOf="@id/fragment_mc_tv_text_expectation"
-            app:layout_constraintStart_toEndOf="@+id/fragment_mc_tv_text_clients"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_mc_tv_counter_confirm" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/fragment_mc_tv_counter_expectation"
-            style="@style/CustomerPerformance.Counter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_test_10"
-            app:layout_constraintBottom_toTopOf="@id/fragment_mc_tv_text_expectation"
-            app:layout_constraintEnd_toEndOf="@+id/fragment_mc_tv_text_expectation"
-            app:layout_constraintStart_toStartOf="@+id/fragment_mc_tv_text_expectation"
-            app:layout_constraintTop_toTopOf="@+id/fragment_mc_iv_avatar_master"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/fragment_mc_tv_text_expectation"
-            style="@style/CustomerPerformance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/offset_24"
-            android:text="@string/expectation"
-            app:layout_constraintBottom_toBottomOf="@+id/fragment_mc_iv_avatar_master"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/fragment_mc_tv_text_confirm"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_mc_tv_counter_expectation" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/fragment_mc_btn_sing_up"
-            style="@style/ButtonMainScreen"
-            android:layout_width="@dimen/width_175"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/offset_15"
-            android:layout_marginTop="@dimen/offset_24"
-            android:background="@drawable/bg_ronded_bottom_left_top_right_corner_rose_light"
-            android:paddingVertical="@dimen/offset_24"
-            android:text="@string/text_sing_up"
-
-            app:layout_constraintBottom_toTopOf="@id/fragment_mc_tv_sessions"
-            app:layout_constraintEnd_toStartOf="@id/fragment_mc_btn_calendar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_mc_iv_avatar_master" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/fragment_mc_btn_calendar"
-            style="@style/ButtonMainScreen"
-            android:layout_width="@dimen/width_175"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/offset_15"
-            android:background="@drawable/bg_ronded_bottom_left_top_right_corner_rose_light"
-            android:onClick="@{()->viewModel.transitionToCalendar()}"
-            android:paddingVertical="@dimen/offset_24"
-            android:text="@string/schedule"
-            app:layout_constraintBottom_toBottomOf="@+id/fragment_mc_btn_sing_up"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/fragment_mc_btn_sing_up"
-            app:layout_constraintTop_toTopOf="@+id/fragment_mc_btn_sing_up" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/fragment_mc_tv_sessions"
-            style="@style/CardTextViewMainScreen"
-            android:layout_width="@dimen/width_175"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/offset_15"
-            android:layout_marginTop="@dimen/offset_20"
-            android:background="@drawable/bg_rounded_right_top_corner"
-            android:paddingVertical="@dimen/padding_8"
-            android:text="@string/sessions"
-            app:layout_constraintBottom_toTopOf="@id/fragment_mc_tv_counter_sessions"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/fragment_mc_tv_text_income"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_mc_btn_sing_up" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/fragment_mc_tv_counter_sessions"
-            style="@style/CardTextViewMainScreen"
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:elevation="@dimen/elevation_3"
-            android:background="@drawable/bg_rounded_left_bottom_corner"
-            android:paddingVertical="@dimen/padding_8"
-            android:text="@string/text_test_6"
-            app:layout_constraintEnd_toEndOf="@+id/fragment_mc_tv_sessions"
-            app:layout_constraintStart_toStartOf="@+id/fragment_mc_tv_sessions"
-            app:layout_constraintTop_toBottomOf="@id/fragment_mc_tv_sessions" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fragment_mc_tv_text_income"
-            style="@style/CardTextViewMainScreen"
-            android:layout_width="@dimen/width_175"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/offset_15"
-            android:background="@drawable/bg_rounded_right_top_corner"
-            android:paddingVertical="@dimen/padding_8"
-            android:text="@string/text_income"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/fragment_mc_tv_counter_income"
-            app:layout_constraintStart_toEndOf="@id/fragment_mc_tv_sessions"
-            app:layout_constraintTop_toTopOf="@+id/fragment_mc_tv_sessions" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/fragment_mc_tv_counter_income"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            style="@style/CardTextViewMainScreen"
-            android:background="@drawable/bg_rounded_left_bottom_corner"
-            android:paddingVertical="@dimen/padding_8"
-            android:elevation="@dimen/elevation_3"
-            android:text="@string/test_text_1000"
-            app:layout_constraintEnd_toEndOf="@+id/fragment_mc_tv_text_income"
-            app:layout_constraintStart_toStartOf="@+id/fragment_mc_tv_text_income"
-            app:layout_constraintTop_toBottomOf="@id/fragment_mc_tv_text_income" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/clientRecycler"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/big_offset"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toTopOf="@id/fragment_mc_btn_nav_bar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_mc_tv_counter_sessions"
-            tools:itemCount="5"
-            tools:listitem="@layout/item_client" />
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/fragment_mc_btn_nav_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:itemIconTint="@color/main_dark"
-            app:itemTextColor="@color/main_dark"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/menu_battom_nav_menu" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

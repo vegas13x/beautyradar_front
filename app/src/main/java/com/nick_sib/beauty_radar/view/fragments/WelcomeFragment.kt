@@ -6,6 +6,7 @@ import android.view.View
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.databinding.FragmentWelcomeBinding
 import com.nick_sib.beauty_radar.extension.findNavController
+import com.nick_sib.beauty_radar.model.data.entites.FragmentType
 import com.nick_sib.beauty_radar.view_model.WelcomeViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -18,13 +19,13 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentWelcomeBinding.bind(view)
 
-         binding?.run {
-             fragmentWelcomeButtonSingUp.setOnClickListener {
-                 findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToAuthFragment())
-             }
-             fragmentWelcomeButtonSingIn.setOnClickListener {
-                 findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToAuthFragment())
-             }
+        binding?.run {
+            fragmentWelcomeButtonSingUp.setOnClickListener {
+                findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToSignFragment(FragmentType.SIGNUP))
+            }
+            fragmentWelcomeButtonSingIn.setOnClickListener {
+                 findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToSignFragment(FragmentType.SIGNIN))
+            }
          }
 
     }
@@ -33,7 +34,5 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
         binding = null
         super.onDestroyView()
     }
-
-
 
 }

@@ -14,7 +14,6 @@ import com.nick_sib.beauty_radar.model.provider.repository.user.UserResponse
 import com.nick_sib.beauty_radar.view_model.ProfileViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private val args: ProfileFragmentArgs by navArgs()

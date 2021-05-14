@@ -21,7 +21,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSignUpBinding.bind(view)
 
-        uid = SingletonUID.getInstance()?.getUID().toString()
+        uid = SingletonUID.getUID().toString()
 
         viewModel.subscribe().observe(viewLifecycleOwner){}
 

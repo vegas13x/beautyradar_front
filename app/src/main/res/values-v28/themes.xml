@@ -8,12 +8,57 @@
     </style>
 
     <style name="TextWelcome" parent="BaseFont">
+        <item name="fontFamily">@font/roboto_medium</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">@dimen/biggest_text</item>
-        <item name="android:textFontWeight">500</item>
         <item name="android:lineHeight">@dimen/biggest_text_height</item>
+    </style>
+
+    <style name="TextFragmentTitle" parent="BaseFont">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">@dimen/title_text</item>
+        <item name ="android:lineHeight">@dimen/title_text_height</item>
+    </style>
+
+    <style name="TextFragmentLabel" parent="BaseFont">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/label_text</item>
+        <item name="android:textFontWeight">400</item>
+        <item name ="android:lineHeight">@dimen/label_text_height</item>
+    </style>
+
+    <style name="TextFragmentGotoSingIn" parent="BaseFont">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textFontWeight">400</item>
+        <item name ="android:lineHeight">@dimen/text_size_18</item>
+    </style>
+
+    <style name="TextDigitPin">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_item_pin</item>
+        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:hint">0</item>
+        <item name="android:textColorHint">@drawable/selector_hint</item>
+        <item name="android:textColor">@color/main_dark</item>
+        <item name="android:inputType">numberSigned</item>
+        <item name="android:maxLength">1</item>
+        <item name="android:layout_margin">@dimen/half_pin_offset</item>
+        <item name="android:textSize">@dimen/biggest_text_more</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:lineHeight">49sp</item>
+        <item name="android:textFontWeight">300</item>
+        <item name="android:paddingHorizontal">11dp</item>
+        <item name="android:paddingVertical">3dp</item>
     </style>
 
     <style name="TextAgreement" parent="BaseFont">
@@ -66,4 +111,12 @@
         <item name="android:textColor">@drawable/button_black_text</item>
     </style>
 
+    <style name="EditPhone">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/main_dark</item>
+        <item name="android:textFontWeight">400</item>
+        <item name="android:textSize">@dimen/text_size_18</item>
+    </style>
 </resources>

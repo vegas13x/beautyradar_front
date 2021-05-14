@@ -24,6 +24,7 @@
     <string name="d_iv_progress">loading infinity progress</string>
     <string name="s_welcome">Добро пожаловать!</string>
     <string name="s_phone_help">Введите код оператора и 7 цифр</string>
+    <string name="s_sms_title">Подтверждение</string>
     <string name="s_phone_error">Номер должен содержать 7 цифр и код оператора</string>
     <string name="the_confirmation">Подтверждение</string>
     <string name="text_help_info_phone">Введите код подтверждения из SMS, отправленного на номер: %s</string>
@@ -49,6 +50,7 @@
 
     <string name="master">Мастер</string>
     <string name="client">Клиент</string>
+    <string name="s_agreement">Выполняя вход вы соглашаетесь с <u>Условиями пользовательского соглашения</u> и <u>Обработку персональных данных</u></string>
     <string name="s_sing_in">Войти</string>
     <string name="big_logotype_description">big logotype</string>
     <string name="text_hello_namemaster_test">Привет,[NameMaster]</string>
@@ -63,6 +65,17 @@
     <string name="sessions">Сеансов</string>
     <string name="text_test_6">6</string>
     <string name="test_text_1000">1000</string>
-    <string name="s_agreement">Выполняя вход вы соглашаетесь с <u>Условиями пользовательского соглашения</u> и <u>Обработку персональных данных</u></string>
+    <string name="s_sign_up">Регистрация</string>
+    <string name="s_sign_in">Вход</string>
+    <string name="s_fragment_sign_in">Уже есть аккаунт? <b>Войти</b></string>
+    <string name="s_inpup_phone">Введите номер телефона</string>
+    <string name="s_fragment_sign_up_one">Уже есть аккаунт?\u0020</string>
+    <string name="s_fragment_sign_up_two">Войти</string>
+    <string name="s_fragment_sign_in_one">Ещё нет аккаунта?\u0020</string>
+    <string name="s_fragment_sign_in_two">Зарегистрироваться</string>
+    <string name="s_signup_phone">Введите номер телефона</string>
+    <string name="e_incorrect_phone">Неверно введен телефон, повторите ввод</string>
     <string name="free_window">Свободные окна</string>
+    <string name="await_to_resend_sms">Отправить код повторно через\u0020</string>
+    <string name="s_sms_label">Введите код из СМС</string>
 </resources>
