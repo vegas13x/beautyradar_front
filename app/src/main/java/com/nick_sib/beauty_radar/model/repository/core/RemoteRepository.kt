@@ -9,7 +9,4 @@ interface RemoteRepository<S> : Repository<S> {
     suspend fun updateUser(id: Long?,userDTO: UserDTO): S
     suspend fun existUserByUPNFromDB(uid: String): S
     suspend fun getUserByUPNFromDB(uid: String): AppState
-
-//    suspend fun getUserList(): S
-//    suspend fun deleteUser(uid: String): S
 }

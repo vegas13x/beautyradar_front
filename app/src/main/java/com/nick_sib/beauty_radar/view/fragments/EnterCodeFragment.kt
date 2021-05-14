@@ -1,7 +1,6 @@
 package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.view.isGone
@@ -22,7 +21,6 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
 
     private val viewModel: EnterCodeViewModel by viewModel()
     private var binding: FragmentEnterCodeBinding? = null
-    //private val args: EnterCodeFragmentArgs by navArgs()
 
     private val uid: String?
         get() = SingletonUID.getUID()
@@ -30,18 +28,16 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEnterCodeBinding.bind(view)
-
-        FirebaseMessaging.getInstance().deleteToken()
-
-        viewModel.subscribe().observe(viewLifecycleOwner, {
-            renderData(it)
-        })
         binding?.viewModel = viewModel
 
         start()
 
+        viewModel.subscribe().observe(viewLifecycleOwner, {
+            renderData(it)
+        })
+
         binding?.run {
-            fragmentSignResendSmsTextview.setOnClickListener{
+            fragmentSignResendSmsTextview.setOnClickListener {
                 activity?.run {
                     this@EnterCodeFragment.viewModel.resendSMS(this)
                     start()
@@ -50,7 +46,13 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
 
         }
     }
-    private fun start(){
+
+    override fun onDestroyView() {
+        binding = null
+        super.onDestroyView()
+    }
+
+    private fun start() {
         binding?.apply {
             fragmentEnterCodeDigitEdittext1.text.clear()
             fragmentEnterCodeDigitEdittext2.text.clear()
@@ -63,11 +65,6 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
         }
     }
 
-    override fun onDestroyView() {
-        binding = null
-        super.onDestroyView()
-    }
-
     private fun renderData(appState: AppState) {
         when (appState) {
             is AppState.Success<*> -> {
@@ -78,16 +75,9 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                         viewModel.checkUserInDB(appState.data.uid)
                     }
                     is Boolean -> {
-                        if (appState.data == true) {
-                            viewModel.getUserByUID(checkUid)
-                        } else {
-//                            findNavController().navigate(
-//                                EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment2()
-//                            )
-                        }
+                        viewModel.getUserByUID(checkUid)
                     }
                     is UserDTO -> {
-                        Log.d("TAG3333", "renderData: kaka")
                         viewModel.setImgInSingleton(appState.data.img)
                         FirebaseMessaging.getInstance().deleteToken()
                         viewModel.updateUserByUserResponse(appState.data)

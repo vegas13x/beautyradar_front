@@ -53,7 +53,7 @@ val enterCodeFragmentModule = module {
 
 val signUpModule = module {
     factory<SignUpInteractor<AppState>> { SignUpInteractorImpl(get()) }
-    viewModel { SignUpViewModel_rem() }
+    viewModel { SignUpViewModel() }
 }
 
 val signUpSecondModule = module {

@@ -18,14 +18,4 @@ class ProviderRemoteDBImpl(private val api: ApiService) : IProviderRemoteDB {
 
     override suspend fun existUserByUPN(upn: String): UserDBCheck =
         api.existUserByUPNAsync(upn)
-
-//    override suspend fun createMaster(masterDTO: MasterDTO): UserResponse =
-//        api.createMasterAsync(masterDTO)
-//
-//    override suspend fun getUserList(): List<UserResponse> =
-//        api.getUserListAsync()
-//
-//    override suspend fun deleteUser(upn: String): UserResponse =
-//        api.deleteUserAsync(upn)
-
 }

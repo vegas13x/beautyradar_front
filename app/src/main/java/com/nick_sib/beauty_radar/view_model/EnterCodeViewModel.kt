@@ -2,8 +2,6 @@ package com.nick_sib.beauty_radar.view_model
 
 import android.app.Activity
 import android.os.CountDownTimer
-import android.util.Log
-import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import com.nick_sib.beauty_radar.SingletonImgUrl
@@ -19,37 +17,14 @@ class EnterCodeViewModel(
     private val authProvider: IAuthProvider,
     private val interactor: EnterCodeInteractor<AppState>
 ) : BaseViewModel<AppState>() {
+
     val defSecondsLeft = 60
-//
-//    val resendSMS: Function1<Activity?, Unit> = this::resendSMS
-
-    val errorDots = ObservableBoolean(false)
-    val editedCode = ObservableField<Int?>()
-    private var _editedCode: Int? = null
-        set(value) {
-            errorDots.set(false)
-            editedCode.set(value)
-            field = value
-        }
-
-
     val enterPin: Function1<String, Unit> = this::checkSMS
     val secondsLeft = ObservableField("60")
     val haveError = ObservableField(false)
 
-    fun subscribe(): LiveData<AppState> = liveDataViewmodel
-
     init {
         startTimer()
-    }
-
-    fun checkUserInDB(uid: String?) {
-        uid?.run {
-            viewModelCoroutineScope.launch {
-                val userFlag = interactor.existUserByUPNFromDB(uid)
-                liveDataViewmodel.value = userFlag
-            }
-        }
     }
 
     private fun getTimerText(mills: Long): String {
@@ -70,6 +45,24 @@ class EnterCodeViewModel(
         }.start()
     }
 
+    private fun checkSMS(code: String) {
+        liveDataViewmodel.value = AppState.Loading(INFINITY_LOADING_PROGRESS)
+        viewModelCoroutineScope.launch {
+            liveDataViewmodel.value = authProvider.verifyPhoneNumber(code)
+        }
+    }
+
+    fun subscribe(): LiveData<AppState> = liveDataViewmodel
+
+    fun checkUserInDB(uid: String?) {
+        uid?.run {
+            viewModelCoroutineScope.launch {
+                val userFlag = interactor.existUserByUPNFromDB(uid)
+                liveDataViewmodel.value = userFlag
+            }
+        }
+    }
+
     fun getUserByUID(upn: String?) {
         upn?.run {
             viewModelCoroutineScope.launch {
@@ -79,28 +72,13 @@ class EnterCodeViewModel(
         }
     }
 
-    fun setImgInSingleton(imgUrl: String?) {
-        SingletonImgUrl.setImgUrl(imgUrl)
-        Log.d("TAG5555", "setImgInSingleton: " + SingletonImgUrl.getImgUrl())
-    }
+    fun setImgInSingleton(imgUrl: String?) = SingletonImgUrl.setImgUrl(imgUrl)
 
-    fun updateUserByUserResponse(userDTO: UserDTO) {
+    fun updateUserByUserResponse(userDTO: UserDTO) =
         viewModelCoroutineScope.launch {
-            Log.d("TAG4444", "updateUserByUserResponse: " + userDTO.token)
             userDTO.token = interactor.getToken()
-            Log.d("TAG4444", "updateUserByUserResponse: " + userDTO.token)
-            interactor.updateUser(userDTO.id,userDTO)
+            interactor.updateUser(userDTO.id, userDTO)
         }
-    }
-
-    private fun checkSMS(code: String) {
-        liveDataViewmodel.value = AppState.Loading(INFINITY_LOADING_PROGRESS)
-        viewModelCoroutineScope.launch {
-            liveDataViewmodel.value = authProvider.verifyPhoneNumber(code)
-        }
-    }
-
-    override fun errorReturned(t: Throwable) {}
 
     fun resendSMS(activity: Activity) {
         haveError.set(false)
@@ -108,11 +86,13 @@ class EnterCodeViewModel(
         startTimer()
         viewModelCoroutineScope.launch {
             liveDataViewmodel.value =
-            authProvider.resentVerificationCode(activity)
+                authProvider.resentVerificationCode(activity)
         }
     }
 
     fun codeError() {
         haveError.set(true)
     }
+
+    override fun errorReturned(t: Throwable) {}
 }

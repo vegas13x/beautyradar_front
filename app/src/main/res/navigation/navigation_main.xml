@@ -162,7 +162,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingsOneFragment2"
-        android:name="com.nick_sib.beauty_radar.view.fragments.SettingsOneFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.SettingsFragment"
         android:label="SettingsOneFragment" >
         <action
             android:id="@+id/action_settingsOneFragment2_to_masterClientsFragment"

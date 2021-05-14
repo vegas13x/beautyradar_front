@@ -4,9 +4,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.lifecycle.Lifecycle
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
 import com.nick_sib.beauty_radar.R
-import com.nick_sib.beauty_radar.SingletonUID
 import com.nick_sib.beauty_radar.databinding.FragmentMasterClientSecondBinding
 import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.model.data.state.AppState
@@ -37,68 +38,17 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client_second) {
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_btm_nav_btn_profile -> {
-                    val uid: String? = SingletonUID.getUID()
-                    uid?.let {
-                        findNavController().navigate(
-                            MasterClientFragmentDirections.actionMasterClientsFragmentToProfileInfoFragment()
-                        )
-                    }
+                    findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToProfileInfoFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 else -> false
             }
         }
 
-//        binding?.fragmentMcBtnSetting?.setOnClickListener {
-//            findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToSettingsOneFragment2())
-//        }
-
-//        viewModel.takePictureFromStorage()
-
-        val pagerAdapter = ScreenSlidePagerAdapter(childFragmentManager)
+        val pagerAdapter = ScreenSlidePagerAdapter(childFragmentManager, lifecycle)
         binding.viewPager.adapter = pagerAdapter
+        binding.viewPager.orientation = ViewPager2.ORIENTATION_VERTICAL
 
-    }
-
-    private fun renderData(appState: AppState?) {
-        when (appState) {
-            is AppState.Success<*> -> {
-                when (appState.data) {
-//                    TRANSITION_TO_CALENDAR -> {
-//                        Toast.makeText(
-//                            requireContext(),
-//                            "Переход на экран календаря",
-//                            Toast.LENGTH_SHORT
-//                        ).show()
-//                    }
-//                    is List<*> -> {
-//                        if (adapter == null) {
-//                            adapter = ClientAdapter(appState.data as List<CalendarProfile>)
-//                            binding.clientRecycler.adapter = adapter
-//                        }
-//                    }
-//                    is Bitmap -> {
-//                        binding?.imgAvatar?.let {
-//                            Glide.with(requireContext())
-//                                .load(appState.data)
-//                                .circleCrop()
-//                                .into(it)
-//                        }
-//                    }
-//
-//                    USE_DEFAULT_IMG -> {
-//                        binding?.imgAvatar?.let {
-//                            Glide.with(requireContext())
-//                                .load(R.drawable.img_dog)
-//                                .circleCrop()
-//                                .into(it)
-//                        }
-//                    }
-                }
-            }
-            else -> {
-            }
-        }
     }
 
     override fun onPause() {
@@ -106,21 +56,22 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client_second) {
         adapter = null
     }
 
-
-    private inner class ScreenSlidePagerAdapter(fm: FragmentManager) :
-        FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-        override fun getCount(): Int = 3
-        override fun getItem(position: Int): Fragment = BooksFragment().newInstance()
-        override fun getPageTitle(position: Int): CharSequence? {
-            var title  = ""
-////            when(position) {
-////                0 -> title ="Tech"
-////                1 -> title = "Novels"
-////                2 -> title = "Motivational"
-////            }
-            return title
+    private fun renderData(appState: AppState?) {
+        when (appState) {
+            is AppState.Success<*> -> {
+                when (appState.data) {
+                    else -> {}
+                }
+            }
+            else -> {}
         }
     }
 
+    private inner class ScreenSlidePagerAdapter(fm: FragmentManager, lifecycle: Lifecycle) :
+        FragmentStateAdapter(fm, lifecycle) {
+        override fun getItemCount(): Int = 1
+        override fun createFragment(position: Int): Fragment =
+            MasterAndClientInnerFragment().newInstance()
+    }
 
 }

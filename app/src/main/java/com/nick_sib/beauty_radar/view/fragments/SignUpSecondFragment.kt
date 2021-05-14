@@ -1,7 +1,6 @@
 package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
@@ -11,8 +10,7 @@ import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.view_model.SignUpSecondViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SignUpSecondFragment :
-    Fragment(R.layout.fragment_sign_up_second) {
+class SignUpSecondFragment : Fragment(R.layout.fragment_sign_up_second) {
 
     private val args: SignUpSecondFragmentArgs by navArgs()
     private var job: String? = null
@@ -43,14 +41,13 @@ class SignUpSecondFragment :
 
     private fun checkUser() {
         binding.btnMasterFull.setOnClickListener {
-            it.isSelected
+            it.isSelected = true
             binding.btnClientFull.isSelected = false
             job = "master"
-
         }
 
         binding.btnClientFull.setOnClickListener {
-            it.isSelected
+            it.isSelected = true
             binding.btnMasterFull.isSelected = false
             job = "client"
         }

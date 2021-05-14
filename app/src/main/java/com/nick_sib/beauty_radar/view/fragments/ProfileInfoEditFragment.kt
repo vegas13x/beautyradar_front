@@ -26,7 +26,7 @@ class ProfileInfoEditFragment : Fragment(R.layout.fragment_profile_info_edit) {
 
         binding.finish.setOnClickListener { viewModel.finishButton() }
 
-        binding?.fragmentMcBtnNavBar?.setOnNavigationItemSelectedListener {
+        binding.fragmentMcBtnNavBar.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_btm_nav_btn_clients -> {
                     findNavController().navigate(ProfileInfoEditFragmentDirections.actionProfileInfoEditFragmentToClientsFragment())

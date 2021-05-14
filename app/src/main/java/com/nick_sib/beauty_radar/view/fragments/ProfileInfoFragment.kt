@@ -73,7 +73,4 @@ class ProfileInfoFragment : Fragment(R.layout.fragment_profile_info) {
         }
     }
 
-
-
-
 }

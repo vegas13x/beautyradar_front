@@ -36,7 +36,6 @@ class ClientsFragment : Fragment(R.layout.fragment_clients) {
                 }
                 R.id.menu_btm_nav_btn_main -> {
                     findNavController().navigate(ClientsFragmentDirections.actionClientsFragmentToMasterClientsFragment())
-//                    findNavController().navigate(SettingsOneFragmentDirections.actionSettingsOneFragment2ToMasterClientsFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 else -> false
@@ -53,8 +52,5 @@ class ClientsFragment : Fragment(R.layout.fragment_clients) {
                 }
         }
     }
-
-
-
 
 }

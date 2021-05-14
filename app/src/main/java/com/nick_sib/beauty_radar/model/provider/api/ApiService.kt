@@ -23,10 +23,4 @@ interface ApiService {
     @POST("master/")
     suspend fun createMasterAsync(@Body masterDTO: MasterDTO): UserResponse
 
-//    @GET()
-//    suspend fun getUserListAsync(): List<UserResponse>
-//
-//    @DELETE
-//    suspend fun deleteUserAsync(@Query("user") upn: String): UserResponse
-
 }

@@ -2,9 +2,9 @@ package com.nick_sib.beauty_radar.view.utils
 
 import com.nick_sib.beauty_radar.model.provider.calendar.CalendarProfile
 
-class Util2 {
+class ListOfClients {
 
-    fun getBooks(): List<CalendarProfile> {
+    fun getClients(): List<CalendarProfile> {
         var listClients = mutableListOf<CalendarProfile>()
         var calendarProfile = CalendarProfile()
         calendarProfile.name="Катя"

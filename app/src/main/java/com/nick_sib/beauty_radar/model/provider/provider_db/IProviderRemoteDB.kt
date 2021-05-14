@@ -10,7 +10,4 @@ interface IProviderRemoteDB {
     suspend fun updateUser(id: Long?, userDTO: UserDTO): UserResponse
     suspend fun getUserByUPN(upn: String): UserResponse
     suspend fun existUserByUPN(upn: String): UserDBCheck
-
-//    suspend fun getUserList():List<UserResponse>
-//    suspend fun deleteUser(upn: String): UserResponse
 }

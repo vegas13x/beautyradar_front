@@ -11,9 +11,7 @@ import com.nick_sib.beauty_radar.view.utils.INFINITY_LOADING_PROGRESS
 import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
 import kotlinx.coroutines.launch
 
-class SignViewModel(
-    private val authProvider: IAuthProvider
-) : BaseViewModel<AppState>() {
+class SignViewModel(private val authProvider: IAuthProvider) : BaseViewModel<AppState>() {
 
 
     val phoneError = ObservableBoolean(false)
