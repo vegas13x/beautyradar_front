@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.databinding.FragmentMasterAndClientInnerBinding
+import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.view.adapter.ClientAdapter
 import com.nick_sib.beauty_radar.view.utils.ListOfClients
@@ -38,6 +39,10 @@ class MasterAndClientInnerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMasterAndClientInnerBinding.bind(view)
         viewModel.takePictureFromStorage()
+
+        binding.fragmentMcBtnSingUp.setOnClickListener {
+            findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToClientRecordFragment())
+        }
 
         viewModel.subscribe().observe(viewLifecycleOwner, {
             renderData(it)
