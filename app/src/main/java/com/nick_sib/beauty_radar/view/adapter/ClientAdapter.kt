@@ -10,7 +10,6 @@ import com.nick_sib.beauty_radar.view.adapter.view_holders.BaseViewHolder
 class ClientAdapter(var list: List<CalendarProfile>) :
     RecyclerView.Adapter<BaseViewHolder<CalendarProfile>>() {
 
-
     override fun onBindViewHolder(holder: BaseViewHolder<CalendarProfile>, position: Int) {
         holder.bind(list.get(position))
     }

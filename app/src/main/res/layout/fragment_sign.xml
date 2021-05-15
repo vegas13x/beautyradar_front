@@ -35,7 +35,7 @@
             android:id="@+id/fragment_sign_title_textview"
             style="@style/TextFragmentTitle"
             android:layout_marginBottom="15dp"
-            android:text="@{viewModel.fragmentType == FragmentType.SIGNUP ? @string/s_sign_up : @string/s_sign_in}"
+            android:text="@{viewModel.fragmentType == FragmentType.SIGNUP ? @string/fragment_sing_sign_up : @string/fragment_sing_sign_in}"
             app:layout_constraintBottom_toTopOf="@id/background_decorator_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +46,7 @@
             style="@style/TextFragmentLabel"
             android:layout_marginStart="24dp"
             android:layout_marginTop="30dp"
-            android:text="@string/s_signup_phone"
+            android:text="@string/fragment_sign_input_phone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/background_decorator_view" />
 
@@ -97,31 +97,31 @@
             android:id="@+id/fragment_sign_switch_type_textview"
             style="@style/TextFragmentGotoSingIn"
             android:layout_marginTop="20dp"
-            android:text="@{viewModel.fragmentType == FragmentType.SIGNIN ? @string/s_fragment_sign_in_one : @string/s_fragment_sign_up_one}"
+            android:text="@{viewModel.fragmentType == FragmentType.SIGNIN ? @string/fragment_sign_in_one : @string/fragment_sign_up_one}"
             android:visibility="@{viewModel.phoneError ? View.GONE : View.VISIBLE}"
             app:layout_constraintEnd_toStartOf="@id/bolddd"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fragment_sign_button_sing"
-            tools:text="@string/s_fragment_sign_in_one" />
+            tools:text="@string/fragment_sign_in_one" />
 
         <TextView
             android:id="@+id/bolddd"
             style="@style/TextFragmentGotoSingIn"
             android:fontFamily="@font/roboto_bold"
-            android:text="@{viewModel.fragmentType == FragmentType.SIGNIN ? @string/s_fragment_sign_in_two : @string/s_fragment_sign_up_two}"
+            android:text="@{viewModel.fragmentType == FragmentType.SIGNIN ? @string/s_registry : @string/fragment_sign_up_two}"
             android:visibility="@{viewModel.phoneError ? View.GONE : View.VISIBLE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/fragment_sign_switch_type_textview"
             app:layout_constraintTop_toTopOf="@id/fragment_sign_switch_type_textview"
             android:onClick="@{() -> viewModel.switchType()}"
-            tools:text="@string/s_fragment_sign_in_two"/>
+            tools:text="@string/s_registry"/>
 
         <TextView
             android:id="@+id/fragment_sign_error"
             style="@style/TextFragmentGotoSingIn"
             android:layout_marginTop="20dp"
-            android:text="@string/e_incorrect_phone"
+            android:text="@string/fragment_sign_incorrect_phone"
             android:textColor="@color/error"
             android:visibility="@{viewModel.phoneError ? View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toEndOf="parent"
