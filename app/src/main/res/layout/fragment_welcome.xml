@@ -17,7 +17,7 @@
             android:id="@+id/fragment_welcome_tv_welcome"
             style="@style/TextWelcome"
             android:layout_marginTop="60dp"
-            android:text="@string/s_welcome"
+            android:text="@string/fragment_welcome_welcome"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -53,7 +53,7 @@
             android:layout_height="@dimen/def_button_height"
             android:background="@drawable/rounded_corner_for_button_border"
             android:foreground="?attr/selectableItemBackground"
-            android:text="@string/registry"
+            android:text="@string/s_registry"
             android:layout_marginBottom="@dimen/offset50"
             app:layout_constraintBottom_toTopOf="@id/fragment_welcome_tv_agreement"
             app:layout_constraintEnd_toEndOf="parent"
