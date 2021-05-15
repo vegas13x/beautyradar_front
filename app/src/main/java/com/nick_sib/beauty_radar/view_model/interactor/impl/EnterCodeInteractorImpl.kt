@@ -12,7 +12,7 @@ class EnterCodeInteractorImpl(private val remoteRepo: RemoteRepository<AppState>
     EnterCodeInteractor<AppState> {
 
     override suspend fun getUserByUPNFromDB(uid: String): AppState =
-        remoteRepo.existUserByUPNFromDB(uid)
+        remoteRepo.getUserByUPNFromDB(uid)
 
     override suspend fun updateUser(id: Long?, userDTO: UserDTO): AppState {
         return remoteRepo.updateUser(id, userDTO)
