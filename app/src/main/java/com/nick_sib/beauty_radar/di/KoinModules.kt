@@ -14,11 +14,9 @@ import com.nick_sib.beauty_radar.model.repository.impl.RemoteRepositoryImpl
 import com.nick_sib.beauty_radar.view_model.*
 import com.nick_sib.beauty_radar.view_model.interactor.core.EnterCodeInteractor
 import com.nick_sib.beauty_radar.view_model.interactor.core.MasterClientInteractor
-import com.nick_sib.beauty_radar.view_model.interactor.core.ProfileInteractor
 import com.nick_sib.beauty_radar.view_model.interactor.core.SignUpInteractor
 import com.nick_sib.beauty_radar.view_model.interactor.impl.EnterCodeInteractorImpl
 import com.nick_sib.beauty_radar.view_model.interactor.impl.MasterClientInteractorImpl
-import com.nick_sib.beauty_radar.view_model.interactor.impl.ProfileInteractorImpl
 import com.nick_sib.beauty_radar.view_model.interactor.impl.SignUpInteractorImpl
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -68,17 +66,8 @@ val masterClientInnerFragmentModule = module {
     viewModel { MasterAndClientInnerViewModel() }
 }
 
-val profileModule = module {
-    factory<ProfileInteractor<AppState>> { ProfileInteractorImpl(get()) }
-    viewModel { ProfileViewModel(get()) }
-}
-
 val settingModule = module {
     viewModel { SettingViewModel() }
-}
-
-val logoutModule = module {
-    viewModel { LogoutViewModel(get()) }
 }
 
 val calendarModule = module {
