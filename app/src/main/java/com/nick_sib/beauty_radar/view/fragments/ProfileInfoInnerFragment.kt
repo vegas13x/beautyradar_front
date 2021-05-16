@@ -3,10 +3,9 @@ package com.nick_sib.beauty_radar.view.fragments
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.databinding.FragmentProfileInfoBinding
+import com.nick_sib.beauty_radar.databinding.FragmentProfileInfoInnerBinding
 import com.nick_sib.beauty_radar.databinding.FragmentProfileInfoSecondBinding
 import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.model.data.state.AppState
@@ -14,16 +13,20 @@ import com.nick_sib.beauty_radar.view.utils.FINISH_BUTTON_MASTER_REG
 import com.nick_sib.beauty_radar.view_model.ProfileInfoViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ProfileInfoFragment : Fragment(R.layout.fragment_profile_info_second) {
+class ProfileInfoInnerFragment : Fragment(R.layout.fragment_profile_info_inner) {
+
+
+    fun newInstance(): ProfileInfoInnerFragment {
+        return ProfileInfoInnerFragment()
+    }
 
 
     private val viewModel: ProfileInfoViewModel by viewModel()
-    private lateinit var binding: FragmentProfileInfoSecondBinding
-
+    private lateinit var binding: FragmentProfileInfoInnerBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentProfileInfoSecondBinding.bind(view)
+        binding = FragmentProfileInfoInnerBinding.bind(view)
 
 
         viewModel.subscribe().observe(viewLifecycleOwner, {
@@ -44,9 +47,6 @@ class ProfileInfoFragment : Fragment(R.layout.fragment_profile_info_second) {
 //        }
 
         viewModel.finishButton()
-
-        val pagerAdapter = ScreenSlidePagerAdapter(childFragmentManager)
-        binding.viewPager.adapter = pagerAdapter
 
 
 
@@ -78,13 +78,6 @@ class ProfileInfoFragment : Fragment(R.layout.fragment_profile_info_second) {
                     }
                 }
         }
-    }
-
-
-    private inner class ScreenSlidePagerAdapter(fm: FragmentManager) :
-        FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-        override fun getCount(): Int = 1
-        override fun getItem(position: Int): Fragment = ProfileInfoInnerFragment().newInstance()
     }
 
 }

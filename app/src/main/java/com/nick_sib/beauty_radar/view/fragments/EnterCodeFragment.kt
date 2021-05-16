@@ -77,7 +77,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                     }
                     is Boolean -> {
                         if (appState.data == true) {
-                            Log.d("TAG55555", "renderData: " + uid)
+                            Log.d("TAG55555", "renderData: $uid")
                             viewModel.getUserByUID(uid)
                         } else {
                             findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment())
