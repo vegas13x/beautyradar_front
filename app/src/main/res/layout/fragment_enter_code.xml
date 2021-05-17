@@ -35,7 +35,7 @@
             android:id="@+id/fragment_enter_code_title_textview"
             style="@style/TextFragmentTitle"
             android:layout_marginBottom="15dp"
-            android:text="@string/s_sms_title"
+            android:text="@string/fragment_enter_code_title"
             app:layout_constraintBottom_toTopOf="@id/background_decorator_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
@@ -45,7 +45,7 @@
             style="@style/TextFragmentLabel"
             android:layout_marginStart="24dp"
             android:layout_marginTop="30dp"
-            android:text="@string/s_sms_label"
+            android:text="@string/fragment_enter_code_sms_label"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/background_decorator_view" />
 
@@ -145,7 +145,7 @@
 
             <TextView
                 style="@style/TextFragmentGotoSingIn"
-                android:text="@string/await_to_resend_sms"
+                android:text="@string/fragment_enter_code_resend_sms"
                 android:visibility="@{viewModel.secondsLeft != null ? View.VISIBLE : View.GONE}"/>
 
             <TextView
@@ -159,7 +159,7 @@
                 android:id="@+id/fragment_sign_resend_sms_textview"
                 style="@style/TextFragmentGotoSingIn"
                 android:fontFamily="@font/roboto_bold"
-                android:text="@string/resend_sms"
+                android:text="@string/fragment_enter_resend_sms"
                 android:visibility="@{viewModel.secondsLeft != null ? View.GONE : View.VISIBLE}"
                 tools:visibility="gone"/>
         </LinearLayout>
