@@ -296,19 +296,5 @@
     </androidx.core.widget.NestedScrollView>
 
 
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/fragment_mc_btn_nav_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:itemIconTint="@color/violet"
-        app:itemTextColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_battom_nav_menu" />
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 

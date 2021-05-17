@@ -49,25 +49,6 @@ class ProfileInfoInnerFragment : Fragment(R.layout.fragment_profile_info_inner) 
         viewModel.finishButton()
 
 
-
-        binding.fragmentMcBtnNavBar.setOnNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.menu_btm_nav_btn_clients -> {
-                findNavController().navigate(ProfileInfoFragmentDirections.actionProfileInfoFragmentToClientsFragment())
-                    return@setOnNavigationItemSelectedListener true
-                }
-                R.id.menu_btm_nav_btn_profile -> {
-
-                    return@setOnNavigationItemSelectedListener true
-                }
-                R.id.menu_btm_nav_btn_main -> {
-                    findNavController().navigate(ProfileInfoFragmentDirections.actionProfileInfoFragmentToMasterClientsFragment())
-                    return@setOnNavigationItemSelectedListener true
-                }
-                else -> false
-            }
-        }
-
     }
 
     private fun renderData(appState: AppState?) {
