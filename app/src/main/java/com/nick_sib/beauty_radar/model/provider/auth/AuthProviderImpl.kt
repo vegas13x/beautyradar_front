@@ -1,8 +1,6 @@
 package com.nick_sib.beauty_radar.model.provider.auth
 
 import android.app.Activity
-import android.content.SharedPreferences
-import androidx.preference.PreferenceManager
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
@@ -13,7 +11,6 @@ import com.nick_sib.beauty_radar.model.data.entites.UserMaster
 import com.nick_sib.beauty_radar.model.data.error.ToastError
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.view.utils.CODE_RECEIVED_VISIBLE_ENTER_CODE_FRAGMENT
-import com.nick_sib.beauty_radar.view.utils.UID
 import com.nick_sib.beauty_radar.view.utils.USER_SIGNOUT
 import java.util.concurrent.TimeUnit
 import kotlin.coroutines.Continuation
@@ -38,8 +35,6 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider{
     private lateinit var localVerificationId: String
     private var resendingToken: PhoneAuthProvider.ForceResendingToken? = null
     private var resendingPhone: String? = null
-
-//    private val preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context???)
 
     /**
      *Старт регистрации по телефону: создаем настройки для кода - отправляем на сервер ,
@@ -140,7 +135,6 @@ class AuthProviderImpl(private val authUser: FirebaseAuth) : IAuthProvider{
                 }
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
-//                        SharedPreferencesDelegate(preferences, UID, authUser.uid)
                         SingletonUID.setUID(authUser.uid)
                         res.resume(
                             AppState.Success(
