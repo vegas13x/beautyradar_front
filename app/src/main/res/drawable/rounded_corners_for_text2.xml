@@ -30,11 +30,11 @@
             </corners>
 
             <solid
-                android:color="@color/white" />
+                android:color="#F8EDF1" />
 
             <stroke
                 android:width="3dp"
-                android:color="@color/white" />
+                android:color="#F8EDF1" />
 
         </shape>
     </item>

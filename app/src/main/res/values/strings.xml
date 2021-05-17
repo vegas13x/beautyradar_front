@@ -39,5 +39,6 @@
     <string name="fragment_enter_code_resend_sms">Отправить код повторно через\u0020</string>
     <string name="fragment_enter_code_sms_label">Введите код из СМС</string>
     <string name="fragment_enter_resend_sms">Отправить код повторно</string>
+    <string name="next">Далее</string>
 
 </resources>
