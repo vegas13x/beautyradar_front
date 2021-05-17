@@ -1,10 +1,12 @@
 package com.nick_sib.beauty_radar.view.fragments
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
+import androidx.preference.PreferenceManager
 import com.google.firebase.messaging.FirebaseMessaging
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.SingletonUID
@@ -14,7 +16,9 @@ import com.nick_sib.beauty_radar.extension.showKeyboard
 import com.nick_sib.beauty_radar.model.data.entites.UserMaster
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
+import com.nick_sib.beauty_radar.view.utils.UID
 import com.nick_sib.beauty_radar.view_model.EnterCodeViewModel
+import com.nick_sib.beauty_radar.view_model.delegate.SharedPreferencesDelegate
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
@@ -22,7 +26,10 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
     private val viewModel: EnterCodeViewModel by viewModel()
     private var binding: FragmentEnterCodeBinding? = null
 
-    private lateinit var uid: String
+    private var uid = SingletonUID.getUID()
+//    private var preferences = activity?.getSharedPreferences(SECURE_PREFS_FILE_KEY, Context.MODE_PRIVATE)
+//    private val preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+//    private var uid: String by SharedPreferencesDelegate(preferences, UID, "")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,9 +41,10 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
             renderData(it)
         })
         binding?.viewModel = viewModel
-        uid = SingletonUID.getUID().toString()
 
         start()
+
+        Log.d(UID, "onViewCreated:$uid ")
 
         binding?.run {
             fragmentSignResendSmsTextview.setOnClickListener {

@@ -1,5 +1,8 @@
 package com.nick_sib.beauty_radar.di
 
+import android.app.Application
+import android.content.Context
+import android.content.SharedPreferences
 import com.google.firebase.auth.FirebaseAuth
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.auth.AuthProviderImpl
@@ -11,6 +14,7 @@ import com.nick_sib.beauty_radar.model.provider.provider_db.ProviderRemoteDBImpl
 import com.nick_sib.beauty_radar.model.provider.retrofit.RetrofitImplementation
 import com.nick_sib.beauty_radar.model.repository.core.RemoteRepository
 import com.nick_sib.beauty_radar.model.repository.impl.RemoteRepositoryImpl
+import com.nick_sib.beauty_radar.view.utils.SECURE_PREFS_FILE_KEY
 import com.nick_sib.beauty_radar.view_model.*
 import com.nick_sib.beauty_radar.view_model.interactor.core.EnterCodeInteractor
 import com.nick_sib.beauty_radar.view_model.interactor.core.MasterClientInteractor
@@ -18,7 +22,9 @@ import com.nick_sib.beauty_radar.view_model.interactor.core.SignUpInteractor
 import com.nick_sib.beauty_radar.view_model.interactor.impl.EnterCodeInteractorImpl
 import com.nick_sib.beauty_radar.view_model.interactor.impl.MasterClientInteractorImpl
 import com.nick_sib.beauty_radar.view_model.interactor.impl.SignUpInteractorImpl
+import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 /**
@@ -26,6 +32,7 @@ import org.koin.dsl.module
  *
  * Created 08.04.2021
  */
+
 val appModule = module {
 
     single { FirebaseAuth.getInstance() }
@@ -55,7 +62,7 @@ val signUpModule = module {
 }
 
 val signUpSecondModule = module {
-    viewModel { SignUpSecondViewModel( get()) }
+    viewModel { SignUpSecondViewModel(get()) }
 }
 
 val masterClientFragmentModule = module {
@@ -85,3 +92,10 @@ val profileInfoEditModule = module {
 val profileInfoModule = module {
     viewModel { ProfileInfoViewModel() }
 }
+
+//val preferencesModule = module {
+//    single(named("securePrefs")) { provideSecurePreferences(androidApplication()) }
+//}
+//
+//private fun provideSecurePreferences(app: Application): SharedPreferences =
+//    app.getSharedPreferences(SECURE_PREFS_FILE_KEY, Context.MODE_PRIVATE)

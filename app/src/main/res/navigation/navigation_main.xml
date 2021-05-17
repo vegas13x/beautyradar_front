@@ -77,11 +77,12 @@
             android:defaultValue="err"
             app:argType="string" />
         <action
-            android:id="@+id/action_signUpFragmentSecond_to_signUpFragment"
-            app:destination="@id/signFragment" />
-        <action
             android:id="@+id/action_signUpFragmentSecond_to_profileInfoEditFragment"
             app:destination="@id/profileInfoEditFragment" />
+        <action
+            android:id="@+id/action_signUpFragmentSecond_to_signUpFragment"
+            app:destination="@id/signUpFragment"
+            app:popUpTo="@id/signUpFragment" />
     </fragment>
 
     <fragment
