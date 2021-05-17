@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/signFragment"
         android:name="com.nick_sib.beauty_radar.view.fragments.SignFragment"
-        android:label="AuthFragment"
+        android:label="signFragment"
         tools:layout="@layout/fragment_sign">
         <argument
             android:name="fragType"
@@ -43,17 +43,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.nick_sib.beauty_radar.view.fragments.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile">
-        <argument
-            android:name="uid"
-            android:defaultValue="err"
-            app:argType="string" />
-    </fragment>
-
-    <fragment
         android:id="@+id/signUpFragment"
         android:name="com.nick_sib.beauty_radar.view.fragments.SignUpFragment"
         android:label="sign_up_fragment"
@@ -69,6 +58,7 @@
             android:id="@+id/action_signUpFragment_to_authFragment"
             app:destination="@id/signFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/signUpFragmentSecond"
         android:name="com.nick_sib.beauty_radar.view.fragments.SignUpSecondFragment"
@@ -87,37 +77,24 @@
             android:defaultValue="err"
             app:argType="string" />
         <action
-            android:id="@+id/action_signUpFragmentSecond_to_signUpFragment"
-            app:destination="@id/signFragment" />
-        <action
             android:id="@+id/action_signUpFragmentSecond_to_profileInfoEditFragment"
             app:destination="@id/profileInfoEditFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/logoutFragment"
-        android:name="com.nick_sib.beauty_radar.view.fragments.LogoutFragment"
-        android:label="fragment_logout"
-        tools:layout="@layout/fragment_logout">
         <action
-            android:id="@+id/action_logoutFragment_to_authFragment"
-            app:destination="@id/welcomeFragment"/>
+            android:id="@+id/action_signUpFragmentSecond_to_signUpFragment"
+            app:destination="@id/signUpFragment"
+            app:popUpTo="@id/signUpFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/masterClientsFragment"
         android:name="com.nick_sib.beauty_radar.view.fragments.MasterClientFragment"
         android:label="fragment_master_client"
         tools:layout="@layout/fragment_master_client">
         <action
-            android:id="@+id/action_masterClientsFragment_to_logoutFragment"
-            app:destination="@id/logoutFragment" />
-        <action
-            android:id="@+id/action_masterClientsFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-        <action
             android:id="@+id/action_masterClientsFragment_to_calendarFragment"
             app:destination="@id/calendarFragment" />
         <action
-            android:id="@+id/action_masterClientsFragment_to_settingsOneFragment2"
+            android:id="@+id/action_masterClientsFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
         <action
             android:id="@+id/action_masterClientsFragment_to_profileInfoFragment"
@@ -126,10 +103,12 @@
             android:id="@+id/action_masterClientsFragment_to_clientsFragment"
             app:destination="@id/clientsFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/profileInfoFragment"
         android:name="com.nick_sib.beauty_radar.view.fragments.ProfileInfoFragment"
-        android:label="ProfileInfoFragment" >
+        android:label="ProfileInfoFragment"
+        tools:layout="@layout/fragment_profile_info">
         <action
             android:id="@+id/action_profileInfoFragment_to_profileInfoEditFragment"
             app:destination="@id/profileInfoEditFragment" />
@@ -140,10 +119,12 @@
             android:id="@+id/action_profileInfoFragment_to_clientsFragment"
             app:destination="@id/clientsFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/profileInfoEditFragment"
         android:name="com.nick_sib.beauty_radar.view.fragments.ProfileInfoEditFragment"
-        android:label="ProfileInfoEditFragment" >
+        android:label="ProfileInfoEditFragment"
+        tools:layout="@layout/fragment_profile_info_edit">
         <action
             android:id="@+id/action_profileInfoEditFragment_to_profileInfoFragment"
             app:destination="@id/profileInfoFragment" />
@@ -163,18 +144,22 @@
             android:id="@+id/action_profileInfoEditFragment_to_settingsOneFragment2"
             app:destination="@id/settingsFragment" />
     </fragment>
-<!--    <fragment-->
-<!--        android:id="@+id/settingsFragment"-->
-<!--        android:name="com.nick_sib.beauty_radar.view.fragments.SettingsFragment"-->
-<!--        android:label="@layout/fragment_settings" >-->
-<!--        <action-->
-<!--            android:id="@+id/action_settingsFragment_to_masterClientsFragment"-->
-<!--            app:destination="@id/masterClientsFragment" />-->
-<!--    </fragment>-->
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_settingsFragment_to_masterClientsFragment"
+            app:destination="@id/masterClientsFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/clientsFragment"
         android:name="com.nick_sib.beauty_radar.view.fragments.ClientsFragment"
-        android:label="ClientsFragment" >
+        android:label="ClientsFragment"
+        tools:layout="@layout/fragment_clients">
         <action
             android:id="@+id/action_clientsFragment_to_masterClientsFragment"
             app:destination="@id/masterClientsFragment" />
@@ -188,4 +173,5 @@
         android:name="com.nick_sib.beauty_radar.view.fragments.CalendarFragment"
         android:label="CalendarFragment"
         tools:layout="@layout/fragment_calendar"/>
+
 </navigation>

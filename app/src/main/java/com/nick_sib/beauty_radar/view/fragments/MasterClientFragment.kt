@@ -45,7 +45,7 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
         }
 
         binding.root.findViewById<ImageView>(R.id.setting_btn).setOnClickListener {
-            findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToSettingsOneFragment2())
+            findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToSettingsFragment())
         }
 
         binding.root.findViewById<ImageView>(R.id.back_btn).setOnClickListener {

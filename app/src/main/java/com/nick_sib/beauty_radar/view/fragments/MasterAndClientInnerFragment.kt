@@ -8,12 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.databinding.FragmentMasterAndClientInnerBinding
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.view.adapter.ClientAdapter
 import com.nick_sib.beauty_radar.view.utils.ListOfClients
 import com.nick_sib.beauty_radar.view_model.MasterAndClientInnerViewModel
+import org.koin.android.ext.android.bind
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MasterAndClientInnerFragment : Fragment() {
@@ -37,6 +39,8 @@ class MasterAndClientInnerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMasterAndClientInnerBinding.bind(view)
+
+
         viewModel.takePictureFromStorage()
 
         viewModel.subscribe().observe(viewLifecycleOwner, {
@@ -48,7 +52,12 @@ class MasterAndClientInnerFragment : Fragment() {
         when (appState) {
             is AppState.Success<*> -> {
                 when (appState.data) {
-                    is Bitmap -> binding.imgAvatar.setImageBitmap(appState.data)
+                    is Bitmap ->
+                        Glide.with(requireContext())
+                            .load(appState.data)
+                            .circleCrop()
+                            .into(binding.imgAvatar)
+
                     else -> {}
                 }
             }

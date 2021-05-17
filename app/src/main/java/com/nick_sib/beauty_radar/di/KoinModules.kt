@@ -14,11 +14,9 @@ import com.nick_sib.beauty_radar.model.repository.impl.RemoteRepositoryImpl
 import com.nick_sib.beauty_radar.view_model.*
 import com.nick_sib.beauty_radar.view_model.interactor.core.EnterCodeInteractor
 import com.nick_sib.beauty_radar.view_model.interactor.core.MasterClientInteractor
-import com.nick_sib.beauty_radar.view_model.interactor.core.ProfileInteractor
 import com.nick_sib.beauty_radar.view_model.interactor.core.SignUpInteractor
 import com.nick_sib.beauty_radar.view_model.interactor.impl.EnterCodeInteractorImpl
 import com.nick_sib.beauty_radar.view_model.interactor.impl.MasterClientInteractorImpl
-import com.nick_sib.beauty_radar.view_model.interactor.impl.ProfileInteractorImpl
 import com.nick_sib.beauty_radar.view_model.interactor.impl.SignUpInteractorImpl
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -28,6 +26,7 @@ import org.koin.dsl.module
  *
  * Created 08.04.2021
  */
+
 val appModule = module {
 
     single { FirebaseAuth.getInstance() }
@@ -57,7 +56,7 @@ val signUpModule = module {
 }
 
 val signUpSecondModule = module {
-    viewModel { SignUpSecondViewModel( get()) }
+    viewModel { SignUpSecondViewModel(get()) }
 }
 
 val masterClientFragmentModule = module {
@@ -68,17 +67,8 @@ val masterClientInnerFragmentModule = module {
     viewModel { MasterAndClientInnerViewModel() }
 }
 
-val profileModule = module {
-    factory<ProfileInteractor<AppState>> { ProfileInteractorImpl(get()) }
-    viewModel { ProfileViewModel(get()) }
-}
-
 val settingModule = module {
     viewModel { SettingViewModel() }
-}
-
-val logoutModule = module {
-    viewModel { LogoutViewModel(get()) }
 }
 
 val calendarModule = module {

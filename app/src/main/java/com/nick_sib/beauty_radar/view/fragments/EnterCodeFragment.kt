@@ -12,6 +12,7 @@ import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.extension.showKeyboard
 import com.nick_sib.beauty_radar.model.data.entites.UserMaster
 import com.nick_sib.beauty_radar.model.data.state.AppState
+import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
 import com.nick_sib.beauty_radar.view_model.EnterCodeViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -19,8 +20,7 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
 
     private val viewModel: EnterCodeViewModel by viewModel()
     private var binding: FragmentEnterCodeBinding? = null
-
-    private lateinit var uid: String
+    private var uid = SingletonUID.getUID()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,7 +32,6 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
             renderData(it)
         })
         binding?.viewModel = viewModel
-        uid = SingletonUID.getUID().toString()
 
         start()
 
@@ -71,13 +70,20 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                 when (appState.data) {
                     is UserMaster -> {
                         viewModel.checkUserInDB(appState.data.uid)
+                        uid = appState.data.uid
                     }
                     is Boolean -> {
                         if (appState.data == true) {
-                            findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())
+                            viewModel.getUserByUID(uid)
                         } else {
                             findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment())
                         }
+                    }
+                    is UserDTO -> {
+                        viewModel.setImgInSingleton(appState.data.img)
+                        FirebaseMessaging.getInstance().deleteToken()
+                        viewModel.updateUserByUserResponse(appState.data)
+                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())
                     }
                 }
             }
@@ -92,5 +98,4 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
             }
         }
     }
-
 }

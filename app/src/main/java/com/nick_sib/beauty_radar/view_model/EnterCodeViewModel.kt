@@ -2,10 +2,13 @@ package com.nick_sib.beauty_radar.view_model
 
 import android.app.Activity
 import android.os.CountDownTimer
+import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
+import com.nick_sib.beauty_radar.SingletonImgUrl
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.auth.IAuthProvider
+import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
 import com.nick_sib.beauty_radar.view.utils.INFINITY_LOADING_PROGRESS
 import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
 import com.nick_sib.beauty_radar.view_model.interactor.core.EnterCodeInteractor
@@ -62,6 +65,34 @@ class EnterCodeViewModel(
     }
 
     override fun errorReturned(t: Throwable) {}
+
+    fun getToken(userDTO: UserDTO){
+        viewModelCoroutineScope.launch {
+            userDTO.token = interactor.getToken()
+            Log.d("TAG4444", "getToken: $userDTO.token")
+        }
+    }
+    
+    fun getUserByUID(upn: String?) {
+        upn?.run {
+            viewModelCoroutineScope.launch {
+                val userDTO = interactor.getUserByUPNFromDB(upn)
+                liveDataViewmodel.value = userDTO
+            }
+        }
+    }
+
+    fun setImgInSingleton(imgUrl: String?) {
+        SingletonImgUrl.setImgUrl(imgUrl)
+    }
+    fun updateUserByUserResponse(userDTO: UserDTO) {
+        viewModelCoroutineScope.launch {
+            Log.d("TAG4444", "updateUserByUserResponse: " + userDTO.token)
+            userDTO.token = interactor.getToken()
+            Log.d("TAG4444", "updateUserByUserResponse: " + userDTO.token)
+            interactor.updateUser(userDTO.id,userDTO)
+        }
+    }
 
     fun resendSMS(activity: Activity) {
         haveError.set(false)
