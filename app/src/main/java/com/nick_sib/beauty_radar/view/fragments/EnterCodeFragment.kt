@@ -1,6 +1,7 @@
 package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.extension.showKeyboard
 import com.nick_sib.beauty_radar.model.data.entites.UserMaster
 import com.nick_sib.beauty_radar.model.data.state.AppState
+import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
 import com.nick_sib.beauty_radar.view_model.EnterCodeViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -71,13 +73,21 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                 when (appState.data) {
                     is UserMaster -> {
                         viewModel.checkUserInDB(appState.data.uid)
+                        uid = appState.data.uid!!
                     }
                     is Boolean -> {
                         if (appState.data == true) {
-                            findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())
+                            Log.d("TAG55555", "renderData: " + uid)
+                            viewModel.getUserByUID(uid)
                         } else {
                             findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment())
                         }
+                    }
+                    is UserDTO -> {
+                        viewModel.setImgInSingleton(appState.data.img)
+                        FirebaseMessaging.getInstance().deleteToken()
+                        viewModel.updateUserByUserResponse(appState.data)
+                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())
                     }
                 }
             }
@@ -92,5 +102,4 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
             }
         }
     }
-
 }

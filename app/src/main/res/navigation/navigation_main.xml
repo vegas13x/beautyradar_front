@@ -125,9 +125,6 @@
         <action
             android:id="@+id/action_masterClientsFragment_to_clientsFragment"
             app:destination="@id/clientsFragment" />
-        <action
-            android:id="@+id/action_masterClientsFragment_to_clientRecordFragment"
-            app:destination="@id/clientRecordFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileInfoFragment"
@@ -191,8 +188,4 @@
         android:name="com.nick_sib.beauty_radar.view.fragments.CalendarFragment"
         android:label="CalendarFragment"
         tools:layout="@layout/fragment_calendar"/>
-    <fragment
-        android:id="@+id/clientRecordFragment"
-        android:name="com.nick_sib.beauty_radar.view.fragments.ClientRecordFragment"
-        android:label="ClientRecordFragment" />
 </navigation>

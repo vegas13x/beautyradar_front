@@ -20,8 +20,6 @@ class BeautyRadarApplication : Application() {
                 listOf(
                     appModule,
                     authFragmentModule,
-                    logoutModule,
-                    profileModule,
                     calendarModule,
                     welcomeFragmenModule,
                     enterCodeFragmentModule,
