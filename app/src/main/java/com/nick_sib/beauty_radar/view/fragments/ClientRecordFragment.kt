@@ -80,7 +80,7 @@ class ClientRecordFragment : Fragment(R.layout.client_record_fragment) {
     private inner class ScreenSlidePagerAdapter(fm: FragmentManager) :
         FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
         override fun getCount(): Int = 1
-        override fun getItem(position: Int): Fragment = MasterAndClientInnerFragment().newInstance()
+        override fun getItem(position: Int): Fragment = ClientRecordInnerFragment().newInstance()
     }
 
 

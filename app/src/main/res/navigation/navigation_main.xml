@@ -42,16 +42,6 @@
             app:destination="@id/signUpFragment"/>
     </fragment>
 
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.nick_sib.beauty_radar.view.fragments.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile">
-        <argument
-            android:name="uid"
-            android:defaultValue="err"
-            app:argType="string" />
-    </fragment>
 
     <fragment
         android:id="@+id/signUpFragment"
@@ -93,26 +83,15 @@
             android:id="@+id/action_signUpFragmentSecond_to_profileInfoEditFragment"
             app:destination="@id/profileInfoEditFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/logoutFragment"
-        android:name="com.nick_sib.beauty_radar.view.fragments.LogoutFragment"
-        android:label="fragment_logout"
-        tools:layout="@layout/fragment_logout">
-        <action
-            android:id="@+id/action_logoutFragment_to_authFragment"
-            app:destination="@id/welcomeFragment"/>
-    </fragment>
+
     <fragment
         android:id="@+id/masterClientsFragment"
         android:name="com.nick_sib.beauty_radar.view.fragments.MasterClientFragment"
         android:label="fragment_master_client"
         tools:layout="@layout/fragment_master_client">
         <action
-            android:id="@+id/action_masterClientsFragment_to_logoutFragment"
-            app:destination="@id/logoutFragment" />
-        <action
-            android:id="@+id/action_masterClientsFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            android:id="@+id/action_masterClientsFragment_to_logoutFragment" />
+
         <action
             android:id="@+id/action_masterClientsFragment_to_calendarFragment"
             app:destination="@id/calendarFragment" />
@@ -125,6 +104,12 @@
         <action
             android:id="@+id/action_masterClientsFragment_to_clientsFragment"
             app:destination="@id/clientsFragment" />
+        <action
+            android:id="@+id/action_masterClientsFragment_to_clientRecordFragment"
+            app:destination="@id/clientRecordFragment" />
+        <action
+            android:id="@+id/action_masterClientsFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileInfoFragment"
@@ -188,4 +173,16 @@
         android:name="com.nick_sib.beauty_radar.view.fragments.CalendarFragment"
         android:label="CalendarFragment"
         tools:layout="@layout/fragment_calendar"/>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.SettingsFragment"
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment_to_masterClientsFragment"
+            app:destination="@id/masterClientsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/clientRecordFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.ClientRecordFragment"
+        android:label="ClientRecordFragment" />
 </navigation>
