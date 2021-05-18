@@ -19,15 +19,27 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentWelcomeBinding.bind(view)
 
+        btnInit()
+
+    }
+
+    private fun btnInit() {
         binding?.run {
             fragmentWelcomeButtonSingUp.setOnClickListener {
-                findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToSignFragment(FragmentType.SIGNUP))
+                findNavController().navigate(
+                    WelcomeFragmentDirections.actionWelcomeFragmentToSignFragment(
+                        FragmentType.SIGNUP
+                    )
+                )
             }
             fragmentWelcomeButtonSingIn.setOnClickListener {
-                 findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToSignFragment(FragmentType.SIGNIN))
+                findNavController().navigate(
+                    WelcomeFragmentDirections.actionWelcomeFragmentToSignFragment(
+                        FragmentType.SIGNIN
+                    )
+                )
             }
-         }
-
+        }
     }
 
     override fun onDestroyView() {

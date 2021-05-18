@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.nick_sib.beauty_radar.R
-import com.nick_sib.beauty_radar.databinding.FragmentProfileInfoBinding
 import com.nick_sib.beauty_radar.databinding.FragmentProfileInfoSecondBinding
 import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.model.data.state.AppState
@@ -21,42 +20,43 @@ class ProfileInfoFragment : Fragment(R.layout.fragment_profile_info_second) {
     private val viewModel: ProfileInfoViewModel by viewModel()
     private lateinit var binding: FragmentProfileInfoSecondBinding
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentProfileInfoSecondBinding.bind(view)
-
 
         viewModel.subscribe().observe(viewLifecycleOwner, {
             renderData(it)
         })
 
+        //btnInit()
+        navBarInit()
+        pagerInit()
 
+    }
 
-        binding.root.findViewById<ImageView>(R.id.edit_pen)?.setOnClickListener {
-            findNavController()
-                    .navigate(ProfileInfoFragmentDirections
-                    .actionProfileInfoFragmentToProfileInfoEditFragment()
-                )
-        }
-//
-//        binding.imgBack.setOnClickListener {
+//    private fun btnInit() {
+//        binding.root.findViewById<ImageView>(R.id.edit_pen)?.setOnClickListener {
 //            findNavController()
-//                    .navigate(ProfileInfoFragmentDirections
-//                    .actionProfileInfoFragmentToProfileInfoEditFragment())
+//                .navigate(
+//                    ProfileInfoFragmentDirections
+//                        .actionProfileInfoFragmentToProfileInfoEditFragment()
+//                )
 //        }
+//
+//        binding.root.findViewById<ImageView>(R.id.img_back).setOnClickListener {
+//            findNavController()
+//                .navigate(
+//                    ProfileInfoFragmentDirections
+//                        .actionProfileInfoFragmentToProfileInfoEditFragment()
+//                )
+//        }
+//    }
 
-        viewModel.finishButton()
-
-        val pagerAdapter = ScreenSlidePagerAdapter(childFragmentManager)
-        binding.viewPager.adapter = pagerAdapter
-
-
-
+    private fun navBarInit() {
         binding.fragmentMcBtnNavBar.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_btm_nav_btn_clients -> {
-                findNavController().navigate(ProfileInfoFragmentDirections.actionProfileInfoFragmentToClientsFragment())
+                    findNavController().navigate(ProfileInfoFragmentDirections.actionProfileInfoFragmentToClientsFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_btm_nav_btn_profile -> {
@@ -70,7 +70,18 @@ class ProfileInfoFragment : Fragment(R.layout.fragment_profile_info_second) {
                 else -> false
             }
         }
+    }
 
+    private fun pagerInit() {
+        val pagerAdapter = ScreenSlidePagerAdapter(childFragmentManager)
+        binding.viewPager.adapter = pagerAdapter
+    }
+
+
+    private inner class ScreenSlidePagerAdapter(fm: FragmentManager) :
+        FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+        override fun getCount(): Int = 1
+        override fun getItem(position: Int): Fragment = ProfileInfoInnerFragment().newInstance()
     }
 
     private fun renderData(appState: AppState?) {
@@ -81,13 +92,6 @@ class ProfileInfoFragment : Fragment(R.layout.fragment_profile_info_second) {
                     }
                 }
         }
-    }
-
-
-    private inner class ScreenSlidePagerAdapter(fm: FragmentManager) :
-        FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-        override fun getCount(): Int = 1
-        override fun getItem(position: Int): Fragment = ProfileInfoInnerFragment().newInstance()
     }
 
 }

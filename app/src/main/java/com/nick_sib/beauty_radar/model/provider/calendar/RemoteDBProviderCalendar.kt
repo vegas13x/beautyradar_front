@@ -3,8 +3,6 @@ package com.nick_sib.beauty_radar.model.provider.calendar
 class RemoteDBProviderCalendar: IRemoteDBProviderCalendar {
 
     override fun getListCalendarProfile(): List<CalendarProfile> {
-        //Test function!!!!
-        //Mock imitation loading users for MasterClientScreen
         return listOf(
             CalendarProfile("fkglknglksnglknf", "Саша", "1", "массаж"),
             CalendarProfile("fkglknglksngsadsadlknf", "Vasya", "4", "шугаринг"),

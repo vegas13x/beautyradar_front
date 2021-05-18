@@ -4,12 +4,12 @@ import com.google.firebase.messaging.FirebaseMessaging
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
 import com.nick_sib.beauty_radar.model.repository.core.RemoteRepository
-import com.nick_sib.beauty_radar.view_model.interactor.core.SignUpInteractor
+import com.nick_sib.beauty_radar.view_model.interactor.core.SignInInteractor
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-class SignUpInteractorImpl(private val remoteRepo: RemoteRepository<AppState>) :
-    SignUpInteractor<AppState> {
+class SignInInteractorImpl(private val remoteRepo: RemoteRepository<AppState>) :
+    SignInInteractor<AppState> {
 
     override suspend fun createUser(UserDTO: UserDTO): AppState =
         remoteRepo.createUser(UserDTO)

@@ -24,8 +24,13 @@ class ProfileInfoEditFragment : Fragment(R.layout.fragment_profile_info_edit) {
             renderData(it)
         })
 
-        binding.finish.setOnClickListener { viewModel.finishButton() }
+        saveBtn()
+        btnBarInit()
+    }
 
+    private fun saveBtn() = binding.finish.setOnClickListener { viewModel.finishButton() }
+
+    private fun btnBarInit() {
         binding.fragmentMcBtnNavBar.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_btm_nav_btn_clients -> {
@@ -43,8 +48,6 @@ class ProfileInfoEditFragment : Fragment(R.layout.fragment_profile_info_edit) {
                 else -> false
             }
         }
-
-
     }
 
     private fun renderData(appState: AppState?) {

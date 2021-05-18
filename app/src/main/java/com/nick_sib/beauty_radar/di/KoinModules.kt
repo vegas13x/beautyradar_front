@@ -14,10 +14,10 @@ import com.nick_sib.beauty_radar.model.repository.impl.RemoteRepositoryImpl
 import com.nick_sib.beauty_radar.view_model.*
 import com.nick_sib.beauty_radar.view_model.interactor.core.EnterCodeInteractor
 import com.nick_sib.beauty_radar.view_model.interactor.core.MasterClientInteractor
-import com.nick_sib.beauty_radar.view_model.interactor.core.SignUpInteractor
+import com.nick_sib.beauty_radar.view_model.interactor.core.SignInInteractor
 import com.nick_sib.beauty_radar.view_model.interactor.impl.EnterCodeInteractorImpl
 import com.nick_sib.beauty_radar.view_model.interactor.impl.MasterClientInteractorImpl
-import com.nick_sib.beauty_radar.view_model.interactor.impl.SignUpInteractorImpl
+import com.nick_sib.beauty_radar.view_model.interactor.impl.SignInInteractorImpl
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -40,6 +40,10 @@ val appModule = module {
 
 }
 
+val welcomeFragmenModule = module {
+    viewModel { WelcomeViewModel() }
+}
+
 val authFragmentModule = module {
     viewModel { SignViewModel(get()) }
 }
@@ -49,13 +53,9 @@ val enterCodeFragmentModule = module {
     viewModel { EnterCodeViewModel(get(), get()) }
 }
 
-val signUpModule = module {
-    factory<SignUpInteractor<AppState>> { SignUpInteractorImpl(get()) }
-    viewModel { SignUpViewModel() }
-}
-
-val signUpSecondModule = module {
-    viewModel { SignUpSecondViewModel( get()) }
+val signInModule = module {
+    factory<SignInInteractor<AppState>> {SignInInteractorImpl(get())}
+    viewModel { SignInViewModel( get()) }
 }
 
 val masterClientFragmentModule = module {
@@ -74,14 +74,14 @@ val calendarModule = module {
     viewModel { CalendarViewModel() }
 }
 
-val welcomeFragmenModule = module {
-    viewModel { WelcomeViewModel() }
+val profileInfoModule = module {
+    viewModel { ProfileInfoViewModel() }
 }
 
 val profileInfoEditModule = module {
     viewModel { ProfileInfoEditViewModel() }
 }
 
-val profileInfoModule = module {
-    viewModel { ProfileInfoViewModel() }
+val profileInfoInnerModel = module {
+    viewModel { ProfileInfoInnerViewModel() }
 }

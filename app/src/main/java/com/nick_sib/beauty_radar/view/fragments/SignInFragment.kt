@@ -3,35 +3,32 @@ package com.nick_sib.beauty_radar.view.fragments
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.navArgs
 import com.nick_sib.beauty_radar.R
-import com.nick_sib.beauty_radar.databinding.FragmentSignUpSecondBinding
+import com.nick_sib.beauty_radar.databinding.FragmentSignInBinding
 import com.nick_sib.beauty_radar.extension.findNavController
-import com.nick_sib.beauty_radar.view_model.SignUpSecondViewModel
+import com.nick_sib.beauty_radar.view_model.SignInViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SignUpSecondFragment : Fragment(R.layout.fragment_sign_up_second) {
+class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
-    private val args: SignUpSecondFragmentArgs by navArgs()
     private var job: String? = null
-    private val secondViewModel: SignUpSecondViewModel by viewModel()
-    private lateinit var binding: FragmentSignUpSecondBinding
+    private val signInViewModel: SignInViewModel by viewModel()
+    private lateinit var binding: FragmentSignInBinding
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentSignUpSecondBinding.bind(view)
-        secondViewModel.subscribe().observe(viewLifecycleOwner) {}
+        binding = FragmentSignInBinding.bind(view)
+        signInViewModel.subscribe().observe(viewLifecycleOwner) {}
 
         checkUser()
+        btnInit()
+    }
 
+    private fun btnInit() {
         binding.fragmentSusBtnNext.setOnClickListener {
-            secondViewModel.createNewUser(args.uid, args.name, job)
-            findNavController().navigate(
-                SignUpSecondFragmentDirections.actionSignUpFragmentSecondToProfileInfoEditFragment()
-            )
+            findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToProfileInfoEditFragment())
         }
-
     }
 
     private fun checkUser() {

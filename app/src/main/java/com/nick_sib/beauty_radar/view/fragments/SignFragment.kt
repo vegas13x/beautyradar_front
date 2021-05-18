@@ -35,6 +35,10 @@ class SignFragment : Fragment(R.layout.fragment_sign) {
             renderData(it)
         })
 
+        init()
+    }
+
+    private fun init() {
         binding?.fragmentSignTilPhone?.addOnEditTextAttachedListener { textInput ->
             textInput.editText?.doOnTextChanged { charSequence, _, _, _ ->
                 val text = charSequence.toString()
@@ -46,7 +50,7 @@ class SignFragment : Fragment(R.layout.fragment_sign) {
             }
         }
 
-        binding?.run{
+        binding?.run {
             this@SignFragment.requestFocus(authPhone)
             authPhone.showKeyboard()
         }

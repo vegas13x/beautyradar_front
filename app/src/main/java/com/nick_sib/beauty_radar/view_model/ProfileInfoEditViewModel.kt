@@ -12,8 +12,5 @@ class ProfileInfoEditViewModel: BaseViewModel<AppState>() {
     fun finishButton() {
         liveDataViewmodel.value = AppState.Success(FINISH_BUTTON_MASTER_REG)
     }
-
-    override fun errorReturned(t: Throwable) {
-        TODO("Not yet implemented")
-    }
+    override fun errorReturned(t: Throwable) {}
 }

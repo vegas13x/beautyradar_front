@@ -2,10 +2,6 @@ package com.nick_sib.beauty_radar
 
 object SingletonUID {
 
-    private var instance: SingletonUID? = null
-
-    private val syncObj = Any()
-
     private var uid: String? = null
 
     fun setUID(uid: String?) {
@@ -14,16 +10,5 @@ object SingletonUID {
 
     fun getUID(): String? {
         return uid
-    }
-
-    fun getInstance(): SingletonUID {
-        if (instance == null) {
-            synchronized(syncObj) {
-                if (instance == null) {
-                    instance = SingletonUID
-                }
-            }
-        }
-        return instance!!
     }
 }

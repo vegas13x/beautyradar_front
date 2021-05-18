@@ -7,13 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.databinding.FragmentClientRecordInnerBinding
-import com.nick_sib.beauty_radar.databinding.FragmentProfileInfoInnerBinding
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.view_model.MasterAndClientInnerViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ClientRecordInnerFragment : Fragment(R.layout.fragment_client_record_inner) {
-
 
     private val viewModel: MasterAndClientInnerViewModel by viewModel()
     private lateinit var binding: FragmentClientRecordInnerBinding
@@ -34,9 +32,6 @@ class ClientRecordInnerFragment : Fragment(R.layout.fragment_client_record_inner
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentClientRecordInnerBinding.bind(view)
         viewModel.takePictureFromStorage()
-
-
-
 
         viewModel.subscribe().observe(viewLifecycleOwner, {
             renderData(it)

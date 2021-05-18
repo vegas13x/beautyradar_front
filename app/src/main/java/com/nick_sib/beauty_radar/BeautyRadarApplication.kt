@@ -27,10 +27,10 @@ class BeautyRadarApplication : Application() {
                     masterClientInnerFragmentModule,
                     settingModule,
                     enterCodeFragmentModule,
-                    signUpModule,
-                    signUpSecondModule,
+                    signInModule,
                     profileInfoEditModule,
-                    profileInfoModule
+                    profileInfoModule,
+                    profileInfoInnerModel
                 )
             )
         }

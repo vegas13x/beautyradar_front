@@ -1,7 +1,6 @@
 package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
@@ -21,23 +20,25 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
 
     private val viewModel: EnterCodeViewModel by viewModel()
     private var binding: FragmentEnterCodeBinding? = null
-
-    private lateinit var uid: String
+    private var uid = SingletonUID.getUID().toString()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEnterCodeBinding.bind(view)
-
-        FirebaseMessaging.getInstance().deleteToken()
+        binding?.viewModel = viewModel
 
         viewModel.subscribe().observe(viewLifecycleOwner, {
             renderData(it)
         })
-        binding?.viewModel = viewModel
-        uid = SingletonUID.getUID().toString()
 
+        deleteToken()
         start()
+        btnResendSms()
+    }
 
+    private fun deleteToken() = FirebaseMessaging.getInstance().deleteToken()
+
+    private fun btnResendSms() {
         binding?.run {
             fragmentSignResendSmsTextview.setOnClickListener {
                 activity?.run {
@@ -77,17 +78,16 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                     }
                     is Boolean -> {
                         if (appState.data == true) {
-                            Log.d("TAG55555", "renderData: $uid")
                             viewModel.getUserByUID(uid)
                         } else {
-                            findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment())
+                            findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignInFragment())
                         }
                     }
                     is UserDTO -> {
                         viewModel.setImgInSingleton(appState.data.img)
-                        FirebaseMessaging.getInstance().deleteToken()
+                        deleteToken()
                         viewModel.updateUserByUserResponse(appState.data)
-                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())
+                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignInFragment())
                     }
                 }
             }
@@ -102,4 +102,5 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
             }
         }
     }
+
 }

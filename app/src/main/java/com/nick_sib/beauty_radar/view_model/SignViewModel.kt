@@ -13,7 +13,6 @@ import kotlinx.coroutines.launch
 
 class SignViewModel(private val authProvider: IAuthProvider) : BaseViewModel<AppState>() {
 
-
     val phoneError = ObservableBoolean(false)
     val fragmentType = ObservableField(FragmentType.SIGNUP)
 

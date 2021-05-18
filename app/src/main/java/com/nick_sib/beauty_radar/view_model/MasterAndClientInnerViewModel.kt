@@ -18,10 +18,6 @@ class MasterAndClientInnerViewModel: BaseViewModel<AppState>() {
 
     fun subscribe(): LiveData<AppState> = liveDataViewmodel
 
-    fun transitionToCalendar() {
-        liveDataViewmodel.value = AppState.Success(TRANSITION_TO_CALENDAR)
-    }
-
     fun takePictureFromStorage() {
         if (SingletonImgUrl.getImgUrl() != null) {
             val storage = FirebaseStorage.getInstance()

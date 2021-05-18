@@ -26,14 +26,10 @@ class MasterAndClientInnerFragment : Fragment() {
     private val viewModel: MasterAndClientInnerViewModel by viewModel()
     private lateinit var binding: FragmentMasterAndClientInnerBinding
 
-    fun newInstance(): MasterAndClientInnerFragment {
-        return MasterAndClientInnerFragment()
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view : View? = inflater.inflate(R.layout.fragment_master_and_client_inner, container, false)
         val rvBooks : RecyclerView = view!!.findViewById(R.id.clientRecycler)
-        rvBooks.layoutManager = LinearLayoutManager(activity);
+        rvBooks.layoutManager = LinearLayoutManager(activity)
         val recyclerAdapter = ClientAdapter(ListOfClients().getClients())
         rvBooks.adapter = recyclerAdapter
         return view
@@ -43,9 +39,17 @@ class MasterAndClientInnerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMasterAndClientInnerBinding.bind(view)
 
+        viewModel.subscribe().observe(viewLifecycleOwner, {
+            renderData(it)
+        })
 
         viewModel.takePictureFromStorage()
 
+        btnInit()
+
+    }
+
+    private fun btnInit() {
         binding.fragmentMcBtnSingUp.setOnClickListener {
             findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToClientRecordFragment())
         }
@@ -53,13 +57,6 @@ class MasterAndClientInnerFragment : Fragment() {
         binding.fragmentMcBtnCalendar.setOnClickListener {
             findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToCalendarFragment())
         }
-
-        viewModel.subscribe().observe(viewLifecycleOwner, {
-            renderData(it)
-        })
-
-
-
     }
 
     private fun renderData(appState: AppState?) {
