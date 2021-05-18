@@ -12,11 +12,11 @@
 
 
             <solid
-                android:color="@color/hot_pink" />
+                android:color="@color/white_pink" />
 
             <stroke
                 android:width="3dp"
-                android:color="@color/hot_pink" />
+                android:color="@color/white_pink" />
 
         </shape>
     </item>
@@ -30,11 +30,11 @@
             </corners>
 
             <solid
-                android:color="#F8EDF1" />
+                android:color="@color/main_dusty_rose_light" />
 
             <stroke
                 android:width="3dp"
-                android:color="#F8EDF1" />
+                android:color="@color/main_dusty_rose_light" />
 
         </shape>
     </item>
