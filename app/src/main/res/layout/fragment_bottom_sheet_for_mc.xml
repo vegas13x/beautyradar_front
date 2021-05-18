@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#000"
+    android:background="@color/white"
     android:layout_height="380dp">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:background="@color/pink_inga"
+        android:background="@drawable/rounded_corners3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="325dp"
         android:layout_marginTop="55dp"
-        android:background="#DCDCDC"
+        android:background="#F3EFEF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,18 +27,37 @@
         android:id="@+id/recycle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView">
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <TextView
-        android:id="@+id/textView25"
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recycle" />
+        android:textColor="#35384D"
+        android:textSize="18sp"
+        android:text="Специализация"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="________________"
+        android:layout_marginBottom="8dp"
+        android:textColor="#35384D"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView1"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

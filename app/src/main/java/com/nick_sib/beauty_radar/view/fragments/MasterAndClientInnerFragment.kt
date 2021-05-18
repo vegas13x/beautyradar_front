@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.databinding.FragmentMasterAndClientInnerBinding
 import com.nick_sib.beauty_radar.model.data.state.AppState
@@ -46,6 +47,9 @@ class MasterAndClientInnerFragment : Fragment() {
         viewModel.subscribe().observe(viewLifecycleOwner, {
             renderData(it)
         })
+
+
+
     }
 
     private fun renderData(appState: AppState?) {

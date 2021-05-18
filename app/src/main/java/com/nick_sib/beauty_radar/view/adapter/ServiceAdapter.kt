@@ -7,30 +7,34 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.nick_sib.beauty_radar.R
+import com.nick_sib.beauty_radar.databinding.ItemServiceBinding
+import com.nick_sib.beauty_radar.view.adapter.view_holders.BaseViewHolder
+import com.nick_sib.beauty_radar.view.utils.ServiceItem
 
-class ServiceAdapter(private val list: List<*>) :
-    RecyclerView.Adapter<ServiceAdapter.ViewHolder>() {
-    override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
-        val v: View = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.item_service, viewGroup, false)
-        return ViewHolder(v)
+class ServiceAdapter(var list: List<ServiceItem>) :
+    RecyclerView.Adapter<BaseViewHolder<ServiceItem>>() {
+
+
+    override fun onBindViewHolder(holder: BaseViewHolder<ServiceItem>, position: Int) {
+        holder.bind(list[position])
     }
 
-    override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
-        // Получить элемент из источника данных (БД, интернет...)
-        // Вынести на экран используя ViewHolder
-        viewHolder.textView.text = list[i].toString()
-//        viewHolder.imageView.setImageResource(R.drawable.aaa)
+    override fun getItemCount() = list.size
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): BaseViewHolder<ServiceItem> {
+        val inflater = LayoutInflater.from(parent.context)
+        val itemServiceBinding = ItemServiceBinding.inflate(inflater, parent, false)
+        return RecordedClientVH(itemServiceBinding)
     }
 
-    // Вернуть размер данных, вызывается менеджером
-    override fun getItemCount(): Int {
-        return list.size
-    }
+    private inner class RecordedClientVH(val binding: ItemServiceBinding) :
+        BaseViewHolder<ServiceItem>(binding.root) {
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textView: TextView = itemView.findViewById<View>(R.id.textView) as TextView
-//        private val imageView: ImageView = itemView.findViewById<View>(R.id.imageView) as ImageView
-
+        override fun bind(data: ServiceItem) {
+            binding.itemText.text = data.itemServiceName
+        }
     }
 }

@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
@@ -22,17 +23,17 @@ import com.nick_sib.beauty_radar.view.utils.ServiceItem
 import com.nick_sib.beauty_radar.view_model.MasterClientViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MasterClientFragment : Fragment(R.layout.fragment_master_client_second) {
+class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
 
     private val viewModel: MasterClientViewModel by viewModel()
-    private lateinit var binding: FragmentMasterClientSecondBinding
+    private lateinit var binding: FragmentMasterClientBinding
     private var adapter: ClientAdapter? = null
     var b: Boolean = true
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-        binding = FragmentMasterClientSecondBinding.bind(view)
+        binding = FragmentMasterClientBinding.bind(view)
 
         viewModel.getListClients()
         viewModel.subscribe().observe(viewLifecycleOwner, {
@@ -41,27 +42,27 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client_second) {
 
 
 
-//        binding.fragmentMcBtnNavBar.setOnNavigationItemSelectedListener {
-//            when (it.itemId) {
-//                R.id.menu_btm_nav_btn_clients -> {
-//                    findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToClientsFragment())
-//                    return@setOnNavigationItemSelectedListener true
-//                }
-//                R.id.menu_btm_nav_btn_profile -> {
-//                    findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToProfileInfoFragment())
-//                    return@setOnNavigationItemSelectedListener true
-//                }
-//                else -> false
-//            }
-//        }
+        binding.fragmentMcBtnNavBar.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.menu_btm_nav_btn_clients -> {
+                    findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToClientsFragment())
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.menu_btm_nav_btn_profile -> {
+                    findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToProfileInfoFragment())
+                    return@setOnNavigationItemSelectedListener true
+                }
+                else -> false
+            }
+        }
 
-//        binding.root.findViewById<ImageView>(R.id.setting_btn).setOnClickListener {
-//            findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToSettingsFragment())
-//        }
-//
-//        binding.root.findViewById<ImageView>(R.id.back_btn).setOnClickListener {
-//            findNavController().popBackStack()
-//        }
+        binding.root.findViewById<ImageView>(R.id.setting_btn).setOnClickListener {
+            findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToSettingsFragment())
+        }
+
+        binding.root.findViewById<ImageView>(R.id.back_btn).setOnClickListener {
+            findNavController().popBackStack()
+        }
 
 //        val pagerAdapter = ScreenSlidePagerAdapter(childFragmentManager)
 //        binding.viewPager.adapter = pagerAdapter
@@ -76,14 +77,10 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client_second) {
 
         var bottomSheetBehaviour = BottomSheetBehavior.from(binding.containerBottomSheet);
 
-        binding.button.setOnClickListener {
-            if (b) {
-                bottomSheetBehaviour.state = BottomSheetBehavior.STATE_EXPANDED
-                b = false
-            } else {
-                bottomSheetBehaviour.state = BottomSheetBehavior.STATE_HIDDEN
-                b = true
-            }
+        var button =
+
+        binding.root.findViewById<AppCompatTextView>(R.id.fragment_mc_tv_sessions).setOnClickListener {
+            bottomSheetBehaviour.state = BottomSheetBehavior.STATE_EXPANDED
         }
 
 
