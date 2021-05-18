@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_dusty_rose_light"
+    android:background="@color/pink_inga"
     android:id="@+id/sign_up_fragment">
 
 
@@ -93,31 +93,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/fragment_sign_up_iv_back_arrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
-        android:background="@drawable/back3"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_sign_up_iv_background"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="fragment_sign_up_tv_registration"/>
-
     <TextView
         android:id="@+id/fragment_sign_up_tv_registration"
-        style="@style/TextFragmentSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
         android:includeFontPadding="false"
         android:text="@string/fragment_sing_sign_up"
         android:textColor="@color/main_dark"
         android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="@+id/fragment_sign_up_iv_back_arrow"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_sign_up_iv_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/fragment_sign_up_iv_back_arrow"
-        app:layout_constraintTop_toTopOf="@+id/fragment_sign_up_iv_back_arrow" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/fragment_sus_tv_select_profile"
@@ -140,6 +127,7 @@
         android:layout_width="0dp"
         android:layout_height="@dimen/def_button_height"
         android:layout_marginTop="40dp"
+        android:textAllCaps="false"
         android:text="@string/next"
         app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"

@@ -184,5 +184,15 @@
     <fragment
         android:id="@+id/clientRecordFragment"
         android:name="com.nick_sib.beauty_radar.view.fragments.ClientRecordFragment"
-        android:label="ClientRecordFragment" />
+        android:label="ClientRecordFragment" >
+        <action
+            android:id="@+id/action_clientRecordFragment_to_masterClientsFragment"
+            app:destination="@id/masterClientsFragment" />
+        <action
+            android:id="@+id/action_clientRecordFragment_to_profileInfoFragment"
+            app:destination="@id/profileInfoFragment" />
+        <action
+            android:id="@+id/action_clientRecordFragment_to_clientsFragment"
+            app:destination="@id/clientsFragment" />
+    </fragment>
 </navigation>

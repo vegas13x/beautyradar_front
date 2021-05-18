@@ -30,9 +30,6 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                 (uid,binding.fragmentSignUpTinName.text.toString()))
         }
 
-        binding.fragmentSignUpIvBackArrow.setOnClickListener {
-            findNavController().navigate(SignUpFragmentDirections.actionSignUpFragmentToAuthFragment())
-        }
 
     }
 

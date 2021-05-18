@@ -12,11 +12,11 @@
 
 
             <solid
-                android:color="@color/white_pink" />
+                android:color="@color/pink_inga" />
 
             <stroke
                 android:width="3dp"
-                android:color="@color/white_pink" />
+                android:color="@color/pink_inga" />
 
         </shape>
     </item>

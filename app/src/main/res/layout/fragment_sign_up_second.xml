@@ -68,7 +68,6 @@
 
     <TextView
         android:id="@+id/fragment_sus_tv_select_profile"
-        style="@style/TextFragmentSignUpSecond"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"

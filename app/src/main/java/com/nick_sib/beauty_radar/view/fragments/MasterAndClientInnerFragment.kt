@@ -16,6 +16,7 @@ import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.view.adapter.ClientAdapter
 import com.nick_sib.beauty_radar.view.utils.ListOfClients
+import com.nick_sib.beauty_radar.view.utils.TRANSITION_TO_CALENDAR
 import com.nick_sib.beauty_radar.view_model.MasterAndClientInnerViewModel
 import org.koin.android.ext.android.bind
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -47,6 +48,10 @@ class MasterAndClientInnerFragment : Fragment() {
 
         binding.fragmentMcBtnSingUp.setOnClickListener {
             findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToClientRecordFragment())
+        }
+
+        binding.fragmentMcBtnCalendar.setOnClickListener {
+            findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToCalendarFragment())
         }
 
         viewModel.subscribe().observe(viewLifecycleOwner, {

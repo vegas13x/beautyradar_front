@@ -45,15 +45,15 @@ class ClientRecordFragment : Fragment(R.layout.client_record_fragment) {
         binding.fragmentMcBtnNavBar.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_btm_nav_btn_clients -> {
-                    findNavController().navigate(ProfileInfoFragmentDirections.actionProfileInfoFragmentToClientsFragment())
+                    findNavController().navigate(ClientRecordFragmentDirections.actionClientRecordFragmentToClientsFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_btm_nav_btn_profile -> {
-
+                    findNavController().navigate(ClientRecordFragmentDirections.actionClientRecordFragmentToProfileInfoFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_btm_nav_btn_main -> {
-                    findNavController().navigate(ProfileInfoFragmentDirections.actionProfileInfoFragmentToMasterClientsFragment())
+                    findNavController().navigate(ClientRecordFragmentDirections.actionClientRecordFragmentToMasterClientsFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 else -> false
