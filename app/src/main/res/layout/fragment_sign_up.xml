@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/violet"
+    android:background="@color/main_dusty_rose_light"
     android:id="@+id/sign_up_fragment">
 
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/btn_master_full"
+        android:id="@+id/fragment_sign_up_cl_name"
         android:layout_width="366dp"
         android:layout_height="61dp"
         android:layout_gravity="center"
@@ -21,10 +21,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5">
+        app:layout_constraintTop_toBottomOf="@+id/fragment_sus_tv_select_profile">
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/fragment_sign_up_tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
@@ -37,18 +37,18 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/name_text"
+            android:id="@+id/fragment_sign_up_tin_name"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/textView9"
-            app:layout_constraintTop_toBottomOf="@+id/textView9"
+            app:layout_constraintStart_toStartOf="@+id/fragment_sign_up_tv_name"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_sign_up_tv_name"
             android:background="@null"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/btn_client_full"
+        android:id="@+id/fragment_sign_up_cl_surname"
         android:layout_width="366dp"
         android:layout_height="61dp"
         android:layout_gravity="center"
@@ -59,10 +59,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_master_full">
+        app:layout_constraintTop_toBottomOf="@+id/fragment_sign_up_cl_name">
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/fragment_sign_up_tv_surname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
@@ -75,50 +75,52 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/second_name"
+            android:id="@+id/fragment_sign_up_tin_surname"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/textView10"
-            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            app:layout_constraintStart_toStartOf="@+id/fragment_sign_up_tv_surname"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_sign_up_tv_surname"
             android:background="@null"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/fragment_sign_up_iv_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="114dp"
-        android:background="@drawable/rounded_corners"
+        android:background="@drawable/rounded_corners2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/back_arrow"
+        android:id="@+id/fragment_sign_up_iv_back_arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="29dp"
-        android:background="@drawable/back2"
-        app:layout_constraintBottom_toTopOf="@+id/imageView6"
+        android:background="@drawable/back3"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_sign_up_iv_background"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="fragment_sign_up_tv_registration"/>
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/fragment_sign_up_tv_registration"
+        style="@style/TextFragmentSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="36dp"
-        android:fontFamily="@font/montserrat_light"
+        android:layout_marginEnd="32dp"
         android:includeFontPadding="false"
-        android:text="Регистрация"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/back_arrow"
-        app:layout_constraintStart_toEndOf="@+id/back_arrow"
-        app:layout_constraintTop_toTopOf="@+id/back_arrow" />
+        android:text="@string/fragment_sing_sign_up"
+        android:textColor="@color/main_dark"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_sign_up_iv_back_arrow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fragment_sign_up_iv_back_arrow"
+        app:layout_constraintTop_toTopOf="@+id/fragment_sign_up_iv_back_arrow" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/fragment_sus_tv_select_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -126,30 +128,24 @@
         android:gravity="center"
         android:text="Введите Ваше имя и \nфамилию"
         android:textColor="@color/Black"
-        android:textSize="24dp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView6" />
+        app:layout_constraintTop_toTopOf="@+id/fragment_sign_up_iv_background" />
 
 
-    <TextView
-        android:id="@+id/btn_continue"
-        android:layout_width="366dp"
-        android:layout_height="61dp"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/fragment_sign_up_btn_next"
+        style="@style/ButtonBlack"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/def_button_height"
         android:layout_marginTop="40dp"
-        android:background="@drawable/rounded_corners_for_button_cont"
-        android:backgroundTint="@color/hot_pink"
-        android:clickable="true"
-        android:gravity="center"
-        android:paddingVertical="19dp"
-        android:text="@string/procced"
-        android:textColor="@color/white"
-        android:textSize="18sp"
+        android:text="@string/next"
+        app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_client_full" />
-
+        app:layout_constraintTop_toBottomOf="@id/fragment_sign_up_cl_surname"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

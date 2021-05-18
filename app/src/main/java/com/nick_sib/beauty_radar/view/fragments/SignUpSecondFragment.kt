@@ -25,30 +25,25 @@ class SignUpSecondFragment : Fragment(R.layout.fragment_sign_up_second) {
 
         checkUser()
 
-        binding.btnContinue.setOnClickListener {
+        binding.fragmentSusBtnNext.setOnClickListener {
             secondViewModel.createNewUser(args.uid, args.name, job)
             findNavController().navigate(
                 SignUpSecondFragmentDirections.actionSignUpFragmentSecondToProfileInfoEditFragment()
             )
         }
 
-        binding.backArrow.setOnClickListener {
-            findNavController().navigate(
-                SignUpSecondFragmentDirections.actionSignUpFragmentSecondToSignUpFragment()
-            )
-        }
     }
 
     private fun checkUser() {
-        binding.btnMasterFull.setOnClickListener {
+        binding.fragmentSusBtnMasterFull.setOnClickListener {
             it.isSelected = true
-            binding.btnClientFull.isSelected = false
+            binding.fragmentSusBtnClientFull.isSelected = false
             job = "master"
         }
 
-        binding.btnClientFull.setOnClickListener {
+        binding.fragmentSusBtnClientFull.setOnClickListener {
             it.isSelected = true
-            binding.btnMasterFull.isSelected = false
+            binding.fragmentSusBtnMasterFull.isSelected = false
             job = "client"
         }
     }

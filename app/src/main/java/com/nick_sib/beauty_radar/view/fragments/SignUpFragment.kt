@@ -25,12 +25,12 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
 
         viewModel.subscribe().observe(viewLifecycleOwner){}
 
-        binding.btnContinue.setOnClickListener {
+        binding.fragmentSignUpBtnNext.setOnClickListener {
             findNavController().navigate(SignUpFragmentDirections.actionSignUpFragmentToSignUpFragmentSecond
-                (uid,binding.nameText.text.toString()))
+                (uid,binding.fragmentSignUpTinName.text.toString()))
         }
 
-        binding.backArrow.setOnClickListener {
+        binding.fragmentSignUpIvBackArrow.setOnClickListener {
             findNavController().navigate(SignUpFragmentDirections.actionSignUpFragmentToAuthFragment())
         }
 
