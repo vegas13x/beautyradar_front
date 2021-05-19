@@ -8,6 +8,7 @@ import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.databinding.FragmentProfileInfoEditBinding
 import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.model.data.state.AppState
+import com.nick_sib.beauty_radar.model.provider.repository.master.UserMasterProfile
 import com.nick_sib.beauty_radar.view_model.ProfileInfoEditViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -26,6 +27,7 @@ class ProfileInfoEditFragment : Fragment(R.layout.fragment_profile_info_edit) {
 
         saveBtn()
         btnBarInit()
+        viewModel.getInfoAboutUser()
 
     }
 
@@ -72,9 +74,19 @@ class ProfileInfoEditFragment : Fragment(R.layout.fragment_profile_info_edit) {
         when (appState) {
             is AppState.Success<*> ->
                 when (appState.data) {
-//                    FINISH_BUTTON_MASTER_REG -> {
-//                        findNavController().navigate(ProfileInfoEditFragmentDirections.actionProfileInfoEditFragmentToProfileInfoFragment())
-//                    }
+                    is UserMasterProfile -> {
+                        if (appState.data.name != null) {
+                            var userMasterProfile = appState.data
+                            binding.addressInput.setText(userMasterProfile.address.toString())
+                            binding.phoneInput.setText(userMasterProfile.phone.toString())
+                            binding.dateBirthInput.setText(userMasterProfile.dateBirthday.toString())
+                            binding.aboutUrSelfInput.setText(userMasterProfile.aboutUrself.toString())
+                            binding.nameInput.setText(userMasterProfile.name.toString())
+                            binding.surnameInput.setText(userMasterProfile.surname.toString())
+                        }else{
+                            Toast.makeText(requireContext(), "Заполните все поля!", Toast.LENGTH_LONG).show()
+                        }
+                    }
                 }
         }
     }

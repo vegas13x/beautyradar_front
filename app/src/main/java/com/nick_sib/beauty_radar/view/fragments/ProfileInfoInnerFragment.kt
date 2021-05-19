@@ -46,6 +46,7 @@ class ProfileInfoInnerFragment : Fragment(R.layout.fragment_profile_info_inner) 
                         binding.phone.text = userMasterProfile.phone.toString()
                         binding.dateBirthday.text = userMasterProfile.dateBirthday.toString()
                         binding.aboutUrself.text = userMasterProfile.aboutUrself.toString()
+                        binding.nameInfoInner.text = userMasterProfile.name.toString() + " " + userMasterProfile.surname.toString()
                     }
                 }
         }
