@@ -26,6 +26,7 @@ class BeautyRadarApplication : Application() {
                     masterClientFragmentModule,
                     masterClientInnerFragmentModule,
                     bottomSheetFragmentModule,
+                    phoneClientsModule,
                     settingModule,
                     enterCodeFragmentModule,
                     signInModule,

@@ -77,6 +77,10 @@ val masterClientInnerFragmentModule = module {
     viewModel { MasterAndClientInnerViewModel(get()) }
 }
 
+val phoneClientsModule = module {
+    viewModel { ClientsViewModel() }
+}
+
 val settingModule = module {
     viewModel { SettingViewModel() }
 }
