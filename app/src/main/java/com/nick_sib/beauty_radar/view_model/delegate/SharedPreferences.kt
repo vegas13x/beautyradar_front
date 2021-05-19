@@ -1,4 +1,4 @@
-package com.nick_sib.beauty_radar.view_model.shared_preferences
+package com.nick_sib.beauty_radar.view_model.delegate
 
 import android.content.Context
 import android.content.SharedPreferences
