@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_recorded_client_card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="17dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="17dp"
+    android:layout_marginBottom="5dp"
+    android:elevation="@dimen/elevation_5"
+    app:cardCornerRadius="@dimen/radius_10">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_recorded_const_layout_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_dusty_rose_light">
+
+        <ImageView
+            android:id="@+id/client_phone_avatar"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginBottom="11dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ellipse" />
+
+        <TextView
+            android:id="@+id/client_phone_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="173dp"
+            android:text="Александра"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_18"
+            app:layout_constraintBottom_toTopOf="@id/client_phone_phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toEndOf="@+id/client_phone_avatar"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/client_phone_phone"
+            android:layout_width="124dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="11dp"
+            android:text="+972-52-336-83"
+            android:textColor="@color/main_dark"
+            android:textSize="@dimen/text_size_14"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/client_phone_name"
+            app:layout_constraintTop_toBottomOf="@+id/client_phone_name" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

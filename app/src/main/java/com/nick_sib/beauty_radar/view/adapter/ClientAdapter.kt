@@ -30,7 +30,8 @@ class ClientAdapter(var list: List<CalendarProfile>) :
 
         override fun bind(data: CalendarProfile) {
             binding.itemRecordedTvClientName.text = data.name
-            binding.itemRecordedTvServicePriceTime.text = "${data.dateEnd}, ${data.dateStart}"
+            binding.itemRecordedTvProcedureTime.text = data.dateStart
+            binding.itemRecordedTvServicePriceTime.text = data.service
         }
     }
 }

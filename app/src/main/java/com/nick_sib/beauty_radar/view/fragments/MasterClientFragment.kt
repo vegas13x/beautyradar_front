@@ -24,8 +24,6 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
         binding = FragmentMasterClientBinding.bind(view)
-
-        viewModel.getListClients()
         viewModel.subscribe().observe(viewLifecycleOwner, {
             renderData(it)
         })

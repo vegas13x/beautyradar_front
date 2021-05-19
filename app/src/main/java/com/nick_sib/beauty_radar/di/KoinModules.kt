@@ -9,12 +9,16 @@ import com.nick_sib.beauty_radar.model.provider.calendar.RemoteDBProviderCalenda
 import com.nick_sib.beauty_radar.model.provider.provider_db.IProviderRemoteDB
 import com.nick_sib.beauty_radar.model.provider.provider_db.ProviderRemoteDBImpl
 import com.nick_sib.beauty_radar.model.provider.retrofit.RetrofitImplementation
+import com.nick_sib.beauty_radar.model.provider.service.IRemoteDBProviderService
+import com.nick_sib.beauty_radar.model.provider.service.RemoteDBProviderService
 import com.nick_sib.beauty_radar.model.repository.core.RemoteRepository
 import com.nick_sib.beauty_radar.model.repository.impl.RemoteRepositoryImpl
 import com.nick_sib.beauty_radar.view_model.*
+import com.nick_sib.beauty_radar.view_model.interactor.core.BottomSheetInteractor
 import com.nick_sib.beauty_radar.view_model.interactor.core.EnterCodeInteractor
 import com.nick_sib.beauty_radar.view_model.interactor.core.MasterClientInteractor
 import com.nick_sib.beauty_radar.view_model.interactor.core.SignInInteractor
+import com.nick_sib.beauty_radar.view_model.interactor.impl.BottomSheetInteractorImpl
 import com.nick_sib.beauty_radar.view_model.interactor.impl.EnterCodeInteractorImpl
 import com.nick_sib.beauty_radar.view_model.interactor.impl.MasterClientInteractorImpl
 import com.nick_sib.beauty_radar.view_model.interactor.impl.SignInInteractorImpl
@@ -32,11 +36,12 @@ val appModule = module {
     single<IAuthProvider> { AuthProviderImpl(get()) }
     single { RetrofitImplementation().createRetrofit() }
 
-    //Старый
+    //Эмуляция данных с сервера
     single<IRemoteDBProviderCalendar> { RemoteDBProviderCalendar() }
+    single<IRemoteDBProviderService> { RemoteDBProviderService() }
 
     single<IProviderRemoteDB> { ProviderRemoteDBImpl(get()) }
-    factory<RemoteRepository<AppState>> { RemoteRepositoryImpl(get(), get()) }
+    factory<RemoteRepository<AppState>> { RemoteRepositoryImpl(get(), get(),get()) }
 
 }
 
@@ -58,12 +63,18 @@ val signInModule = module {
     viewModel { SignInViewModel( get()) }
 }
 
+val bottomSheetFragmentModule = module {
+    factory<BottomSheetInteractor<AppState>> { BottomSheetInteractorImpl(get()) }
+    viewModel { BottomSheetViewModel(get()) }
+}
+
 val masterClientFragmentModule = module {
     factory<MasterClientInteractor<AppState>> { MasterClientInteractorImpl(get()) }
     viewModel { MasterClientViewModel(get()) }
 }
+
 val masterClientInnerFragmentModule = module {
-    viewModel { MasterAndClientInnerViewModel() }
+    viewModel { MasterAndClientInnerViewModel(get()) }
 }
 
 val settingModule = module {

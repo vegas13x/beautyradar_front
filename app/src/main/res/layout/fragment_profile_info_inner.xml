@@ -108,7 +108,7 @@
                 android:layout_width="370dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
-                android:text="О себеО себеО себеО себеО себеО себеО себеО себеО себеО себеО себеО себеО себеО себеО себеО себеО себеО себеО себеО себеО себеО себеО себеО себеО себеО себеО себеО себеО себеО себеО себе"
+                android:text="Здесь информация обо мне которую надо заполнить."
                 android:textColor="#35384D"
                 app:layout_constraintStart_toStartOf="@+id/textView24"
                 app:layout_constraintTop_toBottomOf="@+id/textView24" />
@@ -236,8 +236,8 @@
                 android:layout_width="@dimen/width_175"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:letterSpacing="-0.02"
                 android:background="@drawable/bg_ronded_bottom_left_top_right_corner_rose_light"
+                android:letterSpacing="-0.02"
                 android:paddingVertical="@dimen/offset_24"
                 android:text="График работы"
                 android:textSize="16sp"
@@ -252,8 +252,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_ronded_bottom_left_top_right_corner_rose_light"
-                android:paddingVertical="@dimen/offset_24"
                 android:letterSpacing="-0.02"
+                android:paddingVertical="@dimen/offset_24"
                 android:text="Скидки и акции"
                 app:layout_constraintStart_toStartOf="@+id/yes_or_no"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_mc_btn_sing_up" />
@@ -264,8 +264,8 @@
                 android:layout_width="@dimen/width_175"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_ronded_bottom_left_top_right_corner_rose_light"
-                android:paddingVertical="@dimen/offset_24"
                 android:letterSpacing="-0.02"
+                android:paddingVertical="@dimen/offset_24"
                 android:text="Услуги и прайс"
                 app:layout_constraintEnd_toEndOf="@+id/time_notification"
                 app:layout_constraintTop_toTopOf="@+id/fragment_mc_btn_sing_up" />
@@ -277,8 +277,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_ronded_bottom_left_top_right_corner_rose_light"
-                android:paddingVertical="@dimen/offset_24"
                 android:letterSpacing="-0.02"
+                android:paddingVertical="@dimen/offset_24"
                 android:text="Финансы"
                 app:layout_constraintEnd_toEndOf="@+id/time_notification"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_mc_btn" />
