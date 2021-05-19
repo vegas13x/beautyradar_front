@@ -5,6 +5,8 @@ import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.databinding.FragmentMasterClientBinding
@@ -31,8 +33,20 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
         navBarInit()
         btnInit()
         bottomSheetInit()
+        pagerInit()
+
+    }
 
 
+    private fun pagerInit() {
+        val pagerAdapter = ScreenSlidePagerAdapter(childFragmentManager)
+        binding.viewPager.adapter = pagerAdapter
+    }
+
+    private inner class ScreenSlidePagerAdapter(fm: FragmentManager) :
+        FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+        override fun getCount(): Int = 1
+        override fun getItem(position: Int): Fragment = ClientRecordInnerFragment().newInstance()
     }
 
     private fun bottomSheetInit() {
@@ -50,11 +64,11 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
     }
 
     private fun btnInit() {
-        binding.root.findViewById<ImageView>(R.id.setting_btn).setOnClickListener {
+        binding.root.findViewById<ImageView>(R.id.settings).setOnClickListener {
             findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToSettingsFragment())
         }
 
-        binding.root.findViewById<ImageView>(R.id.back_btn).setOnClickListener {
+        binding.root.findViewById<ImageView>(R.id.back_image01).setOnClickListener {
             findNavController().popBackStack()
         }
     }
