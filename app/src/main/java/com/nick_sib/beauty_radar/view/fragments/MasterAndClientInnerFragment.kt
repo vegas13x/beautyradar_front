@@ -21,6 +21,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MasterAndClientInnerFragment : Fragment() {
 
+    fun newInstance(): MasterAndClientInnerFragment {
+        return MasterAndClientInnerFragment()
+    }
+
     private val viewModel: MasterAndClientInnerViewModel by viewModel()
     private lateinit var binding: FragmentMasterAndClientInnerBinding
 

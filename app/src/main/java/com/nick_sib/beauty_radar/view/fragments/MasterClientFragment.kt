@@ -18,6 +18,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
 
+    fun newInstance(): MasterClientFragment {
+        return MasterClientFragment()
+    }
+
     private val viewModel: MasterClientViewModel by viewModel()
     private lateinit var binding: FragmentMasterClientBinding
     private var adapter: ClientAdapter? = null
@@ -46,7 +50,7 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
     private inner class ScreenSlidePagerAdapter(fm: FragmentManager) :
         FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
         override fun getCount(): Int = 1
-        override fun getItem(position: Int): Fragment = ClientRecordInnerFragment().newInstance()
+        override fun getItem(position: Int): Fragment = MasterAndClientInnerFragment().newInstance()
     }
 
     private fun bottomSheetInit() {
@@ -57,10 +61,10 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
             .replace(R.id.containerBottomSheet, bottomFragment)
             .commit()
 
-        binding.root.findViewById<AppCompatTextView>(R.id.fragment_mc_tv_sessions)
-            .setOnClickListener {
-                bottomSheetBehaviour.state = BottomSheetBehavior.STATE_EXPANDED
-            }
+//        binding.root.findViewById<AppCompatTextView>(R.id.fragment_mc_tv_sessions)
+//            .setOnClickListener {
+//                bottomSheetBehaviour.state = BottomSheetBehavior.STATE_EXPANDED
+//            }
     }
 
     private fun btnInit() {
