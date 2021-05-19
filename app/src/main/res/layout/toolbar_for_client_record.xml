@@ -35,7 +35,7 @@
         android:src="#E5D0D8">
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/back_btn_records"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
@@ -53,7 +53,7 @@
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.418"
-            app:layout_constraintStart_toStartOf="@+id/imageView7"
+            app:layout_constraintStart_toStartOf="@+id/back_btn_records"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,8 @@ package com.nick_sib.beauty_radar.di
 
 import com.google.firebase.auth.FirebaseAuth
 import com.nick_sib.beauty_radar.model.data.state.AppState
+import com.nick_sib.beauty_radar.model.entity.ISingletonPut
+import com.nick_sib.beauty_radar.model.entity.SingletonPutImpl
 import com.nick_sib.beauty_radar.model.provider.auth.AuthProviderImpl
 import com.nick_sib.beauty_radar.model.provider.auth.IAuthProvider
 import com.nick_sib.beauty_radar.model.provider.calendar.IRemoteDBProviderCalendar
@@ -14,14 +16,8 @@ import com.nick_sib.beauty_radar.model.provider.service.RemoteDBProviderService
 import com.nick_sib.beauty_radar.model.repository.core.RemoteRepository
 import com.nick_sib.beauty_radar.model.repository.impl.RemoteRepositoryImpl
 import com.nick_sib.beauty_radar.view_model.*
-import com.nick_sib.beauty_radar.view_model.interactor.core.BottomSheetInteractor
-import com.nick_sib.beauty_radar.view_model.interactor.core.EnterCodeInteractor
-import com.nick_sib.beauty_radar.view_model.interactor.core.MasterClientInteractor
-import com.nick_sib.beauty_radar.view_model.interactor.core.SignInInteractor
-import com.nick_sib.beauty_radar.view_model.interactor.impl.BottomSheetInteractorImpl
-import com.nick_sib.beauty_radar.view_model.interactor.impl.EnterCodeInteractorImpl
-import com.nick_sib.beauty_radar.view_model.interactor.impl.MasterClientInteractorImpl
-import com.nick_sib.beauty_radar.view_model.interactor.impl.SignInInteractorImpl
+import com.nick_sib.beauty_radar.view_model.interactor.core.*
+import com.nick_sib.beauty_radar.view_model.interactor.impl.*
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -36,12 +32,14 @@ val appModule = module {
     single<IAuthProvider> { AuthProviderImpl(get()) }
     single { RetrofitImplementation().createRetrofit() }
 
+    single<ISingletonPut> { SingletonPutImpl() }
+
     //Эмуляция данных с сервера
     single<IRemoteDBProviderCalendar> { RemoteDBProviderCalendar() }
     single<IRemoteDBProviderService> { RemoteDBProviderService() }
 
     single<IProviderRemoteDB> { ProviderRemoteDBImpl(get()) }
-    factory<RemoteRepository<AppState>> { RemoteRepositoryImpl(get(), get(),get()) }
+    factory<RemoteRepository<AppState>> { RemoteRepositoryImpl(get(), get(),get(),get()) }
 
 }
 
@@ -102,9 +100,11 @@ val profileInfoModule = module {
 }
 
 val profileInfoEditModule = module {
-    viewModel { ProfileInfoEditViewModel() }
+    factory<ProfileInfoEditInteractor<AppState>> { ProfileInfoEditInteractorImpl(get()) }
+    viewModel { ProfileInfoEditViewModel(get()) }
 }
 
 val profileInfoInnerModel = module {
-    viewModel { ProfileInfoInnerViewModel() }
+    factory<ProfileInfoInnerInteractor<AppState>> { ProfileInfoInnerInteractorImpl(get()) }
+    viewModel { ProfileInfoInnerViewModel(get()) }
 }

@@ -2,6 +2,7 @@ package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.databinding.FragmentSignInBinding
@@ -22,7 +23,6 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
         signInViewModel.subscribe().observe(viewLifecycleOwner) {}
 
         checkUser()
-        btnInit()
     }
 
     private fun btnInit() {
@@ -36,12 +36,14 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
             it.isSelected = true
             binding.fragmentSusBtnClientFull.isSelected = false
             job = "master"
+            btnInit()
         }
 
         binding.fragmentSusBtnClientFull.setOnClickListener {
             it.isSelected = true
             binding.fragmentSusBtnMasterFull.isSelected = false
             job = "client"
+            btnInit()
         }
     }
 

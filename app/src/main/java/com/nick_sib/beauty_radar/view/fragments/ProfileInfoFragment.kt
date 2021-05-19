@@ -2,6 +2,7 @@ package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
@@ -27,29 +28,31 @@ class ProfileInfoFragment : Fragment(R.layout.fragment_profile_info_second) {
             renderData(it)
         })
 
-        //btnInit()
+        btnInit()
         navBarInit()
         pagerInit()
 
+
     }
 
-//    private fun btnInit() {
-//        binding.root.findViewById<ImageView>(R.id.edit_pen)?.setOnClickListener {
-//            findNavController()
-//                .navigate(
-//                    ProfileInfoFragmentDirections
-//                        .actionProfileInfoFragmentToProfileInfoEditFragment()
-//                )
-//        }
-//
-//        binding.root.findViewById<ImageView>(R.id.img_back).setOnClickListener {
-//            findNavController()
-//                .navigate(
-//                    ProfileInfoFragmentDirections
-//                        .actionProfileInfoFragmentToProfileInfoEditFragment()
-//                )
-//        }
-//    }
+    private fun btnInit() {
+        binding.root.findViewById<ImageView>(R.id.edit_pen)?.setOnClickListener {
+            findNavController()
+                .navigate(
+                    ProfileInfoFragmentDirections
+                        .actionProfileInfoFragmentToProfileInfoEditFragment()
+                )
+        }
+
+
+        binding.root.findViewById<ImageView>(R.id.back_image01).setOnClickListener {
+            findNavController()
+                .navigate(
+                    ProfileInfoFragmentDirections
+                        .actionProfileInfoFragmentToProfileInfoEditFragment()
+                )
+        }
+    }
 
     private fun navBarInit() {
         binding.fragmentMcBtnNavBar.setOnNavigationItemSelectedListener {

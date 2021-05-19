@@ -9,6 +9,7 @@ import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.databinding.FragmentProfileInfoInnerBinding
 import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.model.data.state.AppState
+import com.nick_sib.beauty_radar.model.provider.repository.master.UserMasterProfile
 import com.nick_sib.beauty_radar.view.utils.FINISH_BUTTON_MASTER_REG
 import com.nick_sib.beauty_radar.view_model.ProfileInfoInnerViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,58 +27,25 @@ class ProfileInfoInnerFragment : Fragment(R.layout.fragment_profile_info_inner) 
             renderData(it)
         })
 
-        //btnInit()
-        //navBarInit()
+        viewModel.getInfo()
+
     }
 
     fun newInstance(): ProfileInfoInnerFragment {
         return ProfileInfoInnerFragment()
     }
 
-//    private fun btnInit() {
-//        binding.root.findViewById<ImageView>(R.id.edit_pen).setOnClickListener {
-//            findNavController()
-//                .navigate(
-//                    ProfileInfoFragmentDirections
-//                        .actionProfileInfoFragmentToProfileInfoEditFragment()
-//                )
-//        }
-//
-//        binding.root.findViewById<ImageView>(R.id.img_back).setOnClickListener {
-//            findNavController()
-//                .navigate(
-//                    ProfileInfoFragmentDirections
-//                        .actionProfileInfoFragmentToProfileInfoEditFragment()
-//                )
-//        }
-//    }
-
-//    private fun navBarInit() {
-//        binding.root.findViewById<BottomNavigationView>(R.id.fragment_mc_btn_nav_bar)
-//            .setOnNavigationItemSelectedListener {
-//                when (it.itemId) {
-//                    R.id.menu_btm_nav_btn_clients -> {
-//                        findNavController().navigate(ProfileInfoFragmentDirections.actionProfileInfoFragmentToClientsFragment())
-//                        return@setOnNavigationItemSelectedListener true
-//                    }
-//                    R.id.menu_btm_nav_btn_profile -> {
-//
-//                        return@setOnNavigationItemSelectedListener true
-//                    }
-//                    R.id.menu_btm_nav_btn_main -> {
-//                        findNavController().navigate(ProfileInfoFragmentDirections.actionProfileInfoFragmentToMasterClientsFragment())
-//                        return@setOnNavigationItemSelectedListener true
-//                    }
-//                    else -> false
-//                }
-//            }
-//    }
 
     private fun renderData(appState: AppState?) {
         when (appState) {
             is AppState.Success<*> ->
                 when (appState.data) {
-                    FINISH_BUTTON_MASTER_REG -> {
+                    is UserMasterProfile -> {
+                        var userMasterProfile = appState.data
+                        binding.address.text = userMasterProfile.address.toString()
+                        binding.phone.text = userMasterProfile.phone.toString()
+                        binding.dateBirthday.text = userMasterProfile.dateBirthday.toString()
+                        binding.aboutUrself.text = userMasterProfile.aboutUrself.toString()
                     }
                 }
         }

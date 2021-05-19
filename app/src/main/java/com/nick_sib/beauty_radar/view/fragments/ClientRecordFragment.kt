@@ -2,6 +2,7 @@ package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
@@ -27,6 +28,13 @@ class ClientRecordFragment : Fragment(R.layout.client_record_fragment) {
 
         pagerInit()
         navBarInit()
+        backBtnInit()
+    }
+
+    private fun backBtnInit() {
+        binding.root.findViewById<ImageView>(R.id.back_btn_records).setOnClickListener {
+            findNavController().navigate(ClientRecordFragmentDirections.actionClientRecordFragmentToMasterClientsFragment())
+        }
     }
 
     private fun navBarInit() {

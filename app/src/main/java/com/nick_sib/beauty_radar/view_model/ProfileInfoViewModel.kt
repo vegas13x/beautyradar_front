@@ -9,4 +9,6 @@ class ProfileInfoViewModel: BaseViewModel<AppState>() {
     fun subscribe(): LiveData<AppState> = liveDataViewmodel
 
     override fun errorReturned(t: Throwable) {}
+
+
 }
