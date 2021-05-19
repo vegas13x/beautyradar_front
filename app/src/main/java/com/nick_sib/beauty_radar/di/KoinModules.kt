@@ -81,6 +81,14 @@ val phoneClientsModule = module {
     viewModel { ClientsViewModel() }
 }
 
+val clientRecordModule = module {
+    viewModel { ClientRecordViewModel() }
+}
+
+val clientRecordInnerModule = module {
+    viewModel { ClientRecordInnerViewModel() }
+}
+
 val settingModule = module {
     viewModel { SettingViewModel() }
 }

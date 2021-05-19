@@ -8,7 +8,6 @@ import androidx.lifecycle.LiveData
 import com.google.firebase.storage.FirebaseStorage
 import com.nick_sib.beauty_radar.SingletonImgUrl
 import com.nick_sib.beauty_radar.model.data.state.AppState
-import com.nick_sib.beauty_radar.view.utils.TRANSITION_TO_CALENDAR
 import com.nick_sib.beauty_radar.view.utils.USE_DEFAULT_IMG
 import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
 import com.nick_sib.beauty_radar.view_model.interactor.core.MasterClientInteractor

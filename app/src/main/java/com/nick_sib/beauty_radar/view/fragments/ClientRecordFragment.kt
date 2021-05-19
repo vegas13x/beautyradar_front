@@ -9,12 +9,12 @@ import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.databinding.ClientRecordFragmentBinding
 import com.nick_sib.beauty_radar.extension.findNavController
 import com.nick_sib.beauty_radar.model.data.state.AppState
-import com.nick_sib.beauty_radar.view_model.ProfileInfoViewModel
+import com.nick_sib.beauty_radar.view_model.ClientRecordViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ClientRecordFragment : Fragment(R.layout.client_record_fragment) {
 
-    private val viewModel: ProfileInfoViewModel by viewModel()
+    private val viewModel: ClientRecordViewModel by viewModel()
     private lateinit var binding: ClientRecordFragmentBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
