@@ -26,7 +26,6 @@ import org.koin.dsl.module
  *
  * Created 08.04.2021
  */
-
 val appModule = module {
 
     single { FirebaseAuth.getInstance() }
@@ -65,6 +64,7 @@ val signInModule = module {
 val bottomSheetFragmentModule = module {
     factory<BottomSheetInteractor<AppState>> { BottomSheetInteractorImpl(get()) }
     viewModel { BottomSheetViewModel(get()) }
+}
 
 val masterClientFragmentModule = module {
     factory<MasterClientInteractor<AppState>> { MasterClientInteractorImpl(get()) }
