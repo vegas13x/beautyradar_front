@@ -13,12 +13,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="80dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_bottom"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/main_dusty_rose_mid"
@@ -187,7 +189,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/offset_15"
                     android:background="@drawable/bg_ronded_bottom_left_top_right_corner_rose_light"
-                    android:onClick="@{()->viewModel.transitionToCalendar()}"
                     android:paddingVertical="@dimen/offset_24"
                     android:text="@string/schedule"
                     app:layout_constraintBottom_toBottomOf="@+id/fragment_mc_btn_sing_up"
@@ -265,18 +266,11 @@
                     tools:listitem="@layout/item_client" />
 
 
-
-
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 
         </androidx.core.widget.NestedScrollView>
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 </layout>

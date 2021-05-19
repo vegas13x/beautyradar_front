@@ -8,6 +8,6 @@ class MasterClientInteractorImpl(private val remoteRepo: RemoteRepository<AppSta
     MasterClientInteractor<AppState> {
 
     override fun getData(): AppState =
-        remoteRepo.getData()
+        remoteRepo.getCalendar()
 
 }

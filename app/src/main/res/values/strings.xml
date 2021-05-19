@@ -6,7 +6,7 @@
     <string name="fragment_welcome_welcome">Добро пожаловать!</string>
     <string name="fragment_enter_code_title">Подтверждение</string>
     <string name="procced">Продолжить</string>
-     <string name="text_test_recorded_client">Комбинированный маникюр</string>
+    <string name="text_test_recorded_client">Комбинированный маникюр</string>
     <string name="menu_profile">Профиль</string>
     <string name="menu_main">Главная</string>
     <string name="setting">Настройки</string>
@@ -39,5 +39,6 @@
     <string name="fragment_enter_code_resend_sms">Отправить код повторно через\u0020</string>
     <string name="fragment_enter_code_sms_label">Введите код из СМС</string>
     <string name="fragment_enter_resend_sms">Отправить код повторно</string>
+    <string name="next">Далее</string>
 
 </resources>

@@ -20,21 +20,25 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
 
     private val viewModel: EnterCodeViewModel by viewModel()
     private var binding: FragmentEnterCodeBinding? = null
-    private var uid = SingletonUID.getUID()
+    private var uid = SingletonUID.getUID().toString()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEnterCodeBinding.bind(view)
-
-        FirebaseMessaging.getInstance().deleteToken()
+        binding?.viewModel = viewModel
 
         viewModel.subscribe().observe(viewLifecycleOwner, {
             renderData(it)
         })
-        binding?.viewModel = viewModel
 
+        deleteToken()
         start()
+        btnResendSms()
+    }
 
+    private fun deleteToken() = FirebaseMessaging.getInstance().deleteToken()
+
+    private fun btnResendSms() {
         binding?.run {
             fragmentSignResendSmsTextview.setOnClickListener {
                 activity?.run {
@@ -76,14 +80,14 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                         if (appState.data == true) {
                             viewModel.getUserByUID(uid)
                         } else {
-                            findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment())
+                            findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignInFragment())
                         }
                     }
                     is UserDTO -> {
                         viewModel.setImgInSingleton(appState.data.img)
-                        FirebaseMessaging.getInstance().deleteToken()
+                        deleteToken()
                         viewModel.updateUserByUserResponse(appState.data)
-                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())
+                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignInFragment())
                     }
                 }
             }

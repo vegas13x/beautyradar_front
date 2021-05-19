@@ -23,12 +23,19 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             renderData(it)
         })
 
+        navBarInit()
+
+    }
+
+    private fun navBarInit() {
         binding.fragmentMcBtnNavBar.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_btm_nav_btn_clients -> {
+                    findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToMasterClientsFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_btm_nav_btn_profile -> {
+                    findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToProfileInfoFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_btm_nav_btn_main -> {
@@ -38,7 +45,6 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
                 else -> false
             }
         }
-
     }
 
     private fun renderData(appState: AppState?) {

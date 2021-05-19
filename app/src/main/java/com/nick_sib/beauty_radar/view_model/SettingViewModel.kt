@@ -8,7 +8,5 @@ class SettingViewModel: BaseViewModel<AppState>() {
 
     fun subscribe(): LiveData<AppState> = liveDataViewmodel
 
-    override fun errorReturned(t: Throwable) {
-        TODO("Not yet implemented")
-    }
+    override fun errorReturned(t: Throwable) {}
 }

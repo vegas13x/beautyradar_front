@@ -25,12 +25,16 @@ class BeautyRadarApplication : Application() {
                     enterCodeFragmentModule,
                     masterClientFragmentModule,
                     masterClientInnerFragmentModule,
+                    bottomSheetFragmentModule,
+                    phoneClientsModule,
+                    clientRecordModule,
+                    clientRecordInnerModule,
                     settingModule,
                     enterCodeFragmentModule,
-                    signUpModule,
-                    signUpSecondModule,
+                    signInModule,
                     profileInfoEditModule,
-                    profileInfoModule
+                    profileInfoModule,
+                    profileInfoInnerModel
                 )
             )
         }

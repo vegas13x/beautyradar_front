@@ -10,11 +10,6 @@ class MasterClientViewModel(private val interactor: MasterClientInteractor<AppSt
 
     fun subscribe(): LiveData<AppState> = liveDataViewmodel
 
-    fun getListClients() {
-        liveDataViewmodel.value =
-            interactor.getData()
-    }
-
     override fun errorReturned(t: Throwable) {}
 }
 

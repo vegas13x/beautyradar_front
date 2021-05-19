@@ -11,5 +11,4 @@ object SingletonUID {
     fun getUID(): String? {
         return uid
     }
-
 }

@@ -4,11 +4,10 @@ import androidx.lifecycle.LiveData
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
 import com.nick_sib.beauty_radar.view_model.base.BaseViewModel
-import com.nick_sib.beauty_radar.view_model.interactor.core.SignUpInteractor
+import com.nick_sib.beauty_radar.view_model.interactor.core.SignInInteractor
 import kotlinx.coroutines.launch
 
-class SignUpSecondViewModel(private val interactor: SignUpInteractor<AppState>) :
-    BaseViewModel<AppState>() {
+class SignInViewModel(private val interactor: SignInInteractor<AppState>) : BaseViewModel<AppState>() {
 
     fun subscribe(): LiveData<AppState> = liveDataViewmodel
 
@@ -21,7 +20,6 @@ class SignUpSecondViewModel(private val interactor: SignUpInteractor<AppState>) 
             }
         }
     }
-
 
     override fun errorReturned(t: Throwable) {}
 
