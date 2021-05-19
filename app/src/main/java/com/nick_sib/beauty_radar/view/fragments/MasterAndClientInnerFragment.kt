@@ -49,11 +49,11 @@ class MasterAndClientInnerFragment : Fragment() {
 
     private fun btnInit() {
         binding.fragmentMcBtnSingUp.setOnClickListener {
-            findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToClientRecordFragment())
+            //findNavController().navigate(MasterClientFragmentDirections.actionMasterClientFragmentToClientRecordFragment())
         }
 
         binding.fragmentMcBtnCalendar.setOnClickListener {
-            findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToCalendarFragment())
+            //findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToCalendarFragment())
         }
     }
 

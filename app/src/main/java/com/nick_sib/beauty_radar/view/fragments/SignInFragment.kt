@@ -27,7 +27,7 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
     private fun btnInit() {
         binding.fragmentSusBtnNext.setOnClickListener {
-            findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToProfileInfoEditFragment())
+            findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToNavigationProfileInfo())
         }
     }
 

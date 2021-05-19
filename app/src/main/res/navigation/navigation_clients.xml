@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_clients"
+    app:startDestination="@id/clientsFragment">
+
+    <fragment
+        android:id="@+id/clientsFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.ClientsFragment"
+        android:label="ClientsFragment"
+        tools:layout="@layout/fragment_clients">
+        <action
+            android:id="@+id/action_clientsFragment_to_masterClientsFragment"
+            app:destination="@id/masterClientFragment" />
+        <action
+            android:id="@+id/action_clientsFragment_to_profileInfoFragment"
+            app:destination="@id/profileInfoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileInfoFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.ProfileInfoFragment"
+        android:label="ProfileInfoFragment"
+        tools:layout="@layout/fragment_profile_info" />
+
+    <fragment
+        android:id="@+id/masterClientFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.MasterClientFragment"
+        android:label="MasterClientFragment"
+        tools:layout="@layout/fragment_master_client"/>
+
+    <fragment
+        android:id="@+id/clientRecordFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.ClientRecordFragment"
+        android:label="ClientRecordFragment"
+        tools:layout="@layout/client_record_fragment">
+        <action
+            android:id="@+id/action_clientRecordFragment_to_profileInfoFragment"
+            app:destination="@id/profileInfoFragment" />
+        <action
+            android:id="@+id/action_clientRecordFragment_to_clientsFragment"
+            app:destination="@id/clientsFragment" />
+        <action
+            android:id="@+id/action_clientRecordFragment_to_masterClientFragment"
+            app:destination="@id/masterClientFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.CalendarFragment"
+        android:label="CalendarFragment"
+        tools:layout="@layout/fragment_calendar" />
+</navigation>

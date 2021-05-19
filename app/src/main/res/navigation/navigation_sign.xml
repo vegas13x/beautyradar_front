@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.WelcomeFragment"
+        android:label="WelcomeFragment"
+        tools:layout="@layout/fragment_welcome">
+        <action
+            android:id="@+id/action_welcomeFragment_to_signFragment"
+            app:destination="@id/signFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.SignInFragment"
+        android:label="sign_in_fragment"
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/action_signInFragment_to_navigation_profile_info"
+            app:destination="@id/navigation_profile_info" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.SignFragment"
+        android:label="signFragment"
+        tools:layout="@layout/fragment_sign">
+        <argument
+            android:name="fragType"
+            android:defaultValue="SIGNUP"
+            app:argType="com.nick_sib.beauty_radar.model.data.entites.FragmentType" />
+        <action
+            android:id="@+id/action_signFragment_to_enterCodeFragment"
+            app:destination="@id/enterCodeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/enterCodeFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.EnterCodeFragment"
+        android:label="fragment_enter_code"
+        tools:layout="@layout/fragment_enter_code">
+        <action
+            android:id="@+id/action_enterCodeFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
+
+    <include app:graph="@navigation/navigation_profile_info" />
+
+
+</navigation>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_master_client"
+    app:startDestination="@id/masterClientsFragment">
+
+    <fragment
+        android:id="@+id/masterClientsFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.MasterClientFragment"
+        android:label="fragment_master_client"
+        tools:layout="@layout/fragment_master_client">
+        <action
+            android:id="@+id/action_masterClientsFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
+        <action
+            android:id="@+id/action_masterClientsFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_masterClientsFragment_to_profileInfoFragment"
+            app:destination="@id/profileInfoFragment" />
+        <action
+            android:id="@+id/action_masterClientsFragment_to_clientsFragment"
+            app:destination="@id/clientsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileInfoFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.ProfileInfoFragment"
+        android:label="ProfileInfoFragment"
+        tools:layout="@layout/fragment_profile_info" />
+
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.CalendarFragment"
+        android:label="CalendarFragment"
+        tools:layout="@layout/fragment_calendar" />
+
+    <fragment
+        android:id="@+id/clientsFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.ClientsFragment"
+        android:label="ClientsFragment"
+        tools:layout="@layout/fragment_clients" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+
+</navigation>

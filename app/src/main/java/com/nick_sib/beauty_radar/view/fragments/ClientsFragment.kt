@@ -42,7 +42,6 @@ class ClientsFragment : Fragment(R.layout.fragment_clients) {
         binding.fragmentMcBtnNavBar.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_btm_nav_btn_clients -> {
-                    findNavController().navigate(ClientsFragmentDirections.actionClientsFragmentSelf())
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_btm_nav_btn_profile -> {

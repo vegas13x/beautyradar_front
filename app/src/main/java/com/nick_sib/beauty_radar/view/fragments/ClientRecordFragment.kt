@@ -33,7 +33,7 @@ class ClientRecordFragment : Fragment(R.layout.client_record_fragment) {
 
     private fun backBtnInit() {
         binding.root.findViewById<ImageView>(R.id.back_btn_records).setOnClickListener {
-            findNavController().navigate(ClientRecordFragmentDirections.actionClientRecordFragmentToMasterClientsFragment())
+            findNavController().navigate(ClientRecordFragmentDirections.actionClientRecordFragmentToMasterClientFragment())
         }
     }
 
@@ -49,7 +49,7 @@ class ClientRecordFragment : Fragment(R.layout.client_record_fragment) {
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_btm_nav_btn_main -> {
-                    findNavController().navigate(ClientRecordFragmentDirections.actionClientRecordFragmentToMasterClientsFragment())
+                    findNavController().navigate(ClientRecordFragmentDirections.actionClientRecordFragmentToMasterClientFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 else -> false

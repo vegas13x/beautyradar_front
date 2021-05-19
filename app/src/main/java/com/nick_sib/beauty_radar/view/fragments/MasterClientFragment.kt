@@ -51,7 +51,7 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
 
     private fun btnInit() {
         binding.root.findViewById<ImageView>(R.id.setting_btn).setOnClickListener {
-            findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToSettingsFragment())
+            //findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToSettingsFragment())
         }
 
         binding.root.findViewById<ImageView>(R.id.back_btn).setOnClickListener {
@@ -63,11 +63,11 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
         binding.fragmentMcBtnNavBar.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_btm_nav_btn_clients -> {
-                    findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToClientsFragment())
+                    //findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToClientsFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_btm_nav_btn_profile -> {
-                    findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToProfileInfoFragment())
+                    //findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToProfileInfoFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_btm_nav_btn_main -> {

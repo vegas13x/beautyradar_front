@@ -31,7 +31,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         binding.fragmentMcBtnNavBar.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_btm_nav_btn_clients -> {
-                    findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToMasterClientsFragment())
+                    findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToClientsFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_btm_nav_btn_profile -> {
@@ -39,7 +39,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_btm_nav_btn_main -> {
-                    findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToMasterClientsFragment())
+                    findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToMasterClientFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 else -> false

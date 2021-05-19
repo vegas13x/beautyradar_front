@@ -66,7 +66,7 @@ class ProfileInfoFragment : Fragment(R.layout.fragment_profile_info_second) {
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_btm_nav_btn_main -> {
-                    findNavController().navigate(ProfileInfoFragmentDirections.actionProfileInfoFragmentToMasterClientsFragment())
+                    findNavController().navigate(ProfileInfoFragmentDirections.actionProfileInfoFragmentToMasterClientFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 else -> false
