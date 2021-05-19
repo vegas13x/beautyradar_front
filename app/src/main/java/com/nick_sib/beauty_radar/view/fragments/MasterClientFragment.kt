@@ -76,6 +76,7 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
                 else -> false
             }
         }
+
     }
 
     override fun onPause() {
