@@ -14,7 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/light_pink"
+        android:background="@color/main_dusty_rose_mid"
         tools:context=".view.fragments.EnterCodeFragment">
 
         <include
@@ -22,231 +22,146 @@
             layout="@layout/dialog_loading"
             android:visibility="gone"/>
 
-        <include
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            layout="@layout/dialog_dots_error"
-            app:layout_constraintStart_toStartOf="@id/enter_code_fragment_ll_dots"
-            app:layout_constraintTop_toTopOf="@id/enter_code_fragment_ll_dots"
-            app:show="@{viewModel.errorDots ? View.VISIBLE : View.GONE}"/>
-
-        <ImageButton
-            android:id="@+id/enter_code_fragment_iv_back_to"
-            android:padding="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/big_offset"
-            android:src="@drawable/ic_arrow_left"
-            android:background="@drawable/bg_transparent_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:visibility="@{View.VISIBLE}"/>
-
-        <TextView
-            android:id="@+id/enter_code_fragment_tv_confirmation"
-            style="@style/TextConfirmation"
-            android:layout_marginTop="@dimen/offset80"
-            android:text="@string/the_confirmation"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/enter_code_fragment_tv_info"
-            style="@style/TextCodeHelp"
-            android:layout_marginHorizontal="@dimen/offset52"
-            android:layout_marginTop="@dimen/big_offset"
-            android:text="@string/text_help_info_phone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/enter_code_fragment_tv_confirmation" />
-
-        <include
-            android:id="@+id/enter_code_fragment_ll_dots"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            layout="@layout/dialog_dots_code"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/enter_code_fragment_tv_info"
-            app:editedCode="@{viewModel.editedCode == null ? -1 : viewModel.editedCode}"/>
-
-        <Button
-            android:id="@+id/enter_code_fragment_b_resend_sms"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="@dimen/offset52"
-            android:paddingVertical="@dimen/def_offset"
-            android:background="@drawable/rounded_corners_for_button_cont"
-            android:fontFamily="@font/cardo"
-            android:text="@string/resend_sms"
-            android:textAllCaps="false"
-            android:textSize="18sp"
-            android:theme="@style/Theme.Beautyradar.Second"
-            app:layout_constraintBottom_toTopOf="@id/enter_code_fragment_b_digit2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/enter_code_fragment_ll_dots"
-            bind:resendSMS="@{viewModel.resendSMS}"/>
-
-        <Button
-            android:id="@+id/enter_code_fragment_b_digit1"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="@dimen/button_digit_width"
-            android:layout_height="@dimen/button_digit_height"
-            android:fontFamily="@font/montserrat_light"
-            android:text="@string/digit1"
-            android:textColor="@color/black"
-            android:textSize="@dimen/button_digit_text_size"
-            android:layout_marginHorizontal="@dimen/button_digit_margin"
-            app:shapeAppearanceOverlay="@style/Button.Circle"
-            app:layout_constraintBottom_toTopOf="@id/enter_code_fragment_b_digit5"
-            app:layout_constraintEnd_toStartOf="@id/enter_code_fragment_b_digit5"
-            android:onClick="@{() -> viewModel.addDigit(1)}"/>
-
-        <Button
-            android:id="@+id/enter_code_fragment_b_digit2"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="@dimen/button_digit_width"
-            android:layout_height="@dimen/button_digit_height"
-            android:fontFamily="@font/montserrat_light"
-            android:text="@string/digit2"
-            android:textColor="@color/black"
-            android:textSize="@dimen/button_digit_text_size"
-            app:shapeAppearanceOverlay="@style/Button.Circle"
-            app:layout_constraintBottom_toTopOf="@id/enter_code_fragment_b_digit5"
-            app:layout_constraintEnd_toEndOf="@id/enter_code_fragment_b_digit5"
-            app:layout_constraintStart_toStartOf="@id/enter_code_fragment_b_digit5"
-            android:onClick="@{() -> viewModel.addDigit(2)}"/>
-        <Button
-            android:id="@+id/enter_code_fragment_b_digit3"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="@dimen/button_digit_width"
-            android:layout_height="@dimen/button_digit_height"
-            android:fontFamily="@font/montserrat_light"
-            android:text="@string/digit3"
-            android:textColor="@color/black"
-            android:textSize="@dimen/button_digit_text_size"
-            android:layout_marginHorizontal="@dimen/button_digit_margin"
-            app:shapeAppearanceOverlay="@style/Button.Circle"
-            app:layout_constraintBottom_toTopOf="@id/enter_code_fragment_b_digit5"
-            app:layout_constraintStart_toEndOf="@id/enter_code_fragment_b_digit5"
-            android:onClick="@{() -> viewModel.addDigit(3)}"/>
-        <Button
-            android:id="@+id/enter_code_fragment_b_digit4"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="@dimen/button_digit_width"
-            android:layout_height="@dimen/button_digit_height"
-            android:fontFamily="@font/montserrat_light"
-            android:text="@string/digit4"
-            android:textColor="@color/black"
-            android:textSize="@dimen/button_digit_text_size"
-            android:layout_marginHorizontal="@dimen/button_digit_margin"
-            app:shapeAppearanceOverlay="@style/Button.Circle"
-            app:layout_constraintBottom_toBottomOf="@id/enter_code_fragment_b_digit5"
-            app:layout_constraintEnd_toStartOf="@id/enter_code_fragment_b_digit5"
-            app:layout_constraintTop_toTopOf="@id/enter_code_fragment_b_digit5"
-            android:onClick="@{() -> viewModel.addDigit(4)}"/>
-        <Button
-            android:id="@+id/enter_code_fragment_b_digit5"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="@dimen/button_digit_width"
-            android:layout_height="@dimen/button_digit_height"
-            android:fontFamily="@font/montserrat_light"
-            android:text="@string/digit5"
-            android:textColor="@color/black"
-            android:textSize="@dimen/button_digit_text_size"
-            android:layout_marginBottom="80dp"
-            app:shapeAppearanceOverlay="@style/Button.Circle"
-            app:layout_constraintStart_toStartOf="parent"
+        <View
+            android:id="@+id/background_decorator_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/def_offset_decorator"
+            android:background="@drawable/bg_big_container"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/enter_code_fragment_ll_dots"
-            android:onClick="@{() -> viewModel.addDigit(5)}"/>
-        <Button
-            android:id="@+id/enter_code_fragment_b_digit6"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="@dimen/button_digit_width"
-            android:layout_height="@dimen/button_digit_height"
-            android:fontFamily="@font/montserrat_light"
-            android:text="@string/digit6"
-            android:textColor="@color/black"
-            android:textSize="@dimen/button_digit_text_size"
-            android:layout_marginHorizontal="@dimen/button_digit_margin"
-            app:shapeAppearanceOverlay="@style/Button.Circle"
-            app:layout_constraintStart_toEndOf="@id/enter_code_fragment_b_digit5"
-            app:layout_constraintBottom_toBottomOf="@id/enter_code_fragment_b_digit5"
-            app:layout_constraintTop_toTopOf="@id/enter_code_fragment_b_digit5"
-            android:onClick="@{() -> viewModel.addDigit(6)}"/>
-        <Button
-            android:id="@+id/enter_code_fragment_b_digit7"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="@dimen/button_digit_width"
-            android:layout_height="@dimen/button_digit_height"
-            android:fontFamily="@font/montserrat_light"
-            android:text="@string/digit7"
-            android:textColor="@color/black"
-            android:textSize="@dimen/button_digit_text_size"
-            android:layout_marginHorizontal="@dimen/button_digit_margin"
-            app:shapeAppearanceOverlay="@style/Button.Circle"
-            app:layout_constraintEnd_toStartOf="@id/enter_code_fragment_b_digit5"
-            app:layout_constraintTop_toBottomOf="@id/enter_code_fragment_b_digit5"
-            android:onClick="@{() -> viewModel.addDigit(7)}"/>
-        <Button
-            android:id="@+id/enter_code_fragment_b_digit8"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="@dimen/button_digit_width"
-            android:layout_height="@dimen/button_digit_height"
-            android:fontFamily="@font/montserrat_light"
-            android:text="@string/digit8"
-            android:textColor="@color/black"
-            android:textSize="@dimen/button_digit_text_size"
-            app:shapeAppearanceOverlay="@style/Button.Circle"
-            app:layout_constraintEnd_toEndOf="@id/enter_code_fragment_b_digit5"
-            app:layout_constraintStart_toStartOf="@id/enter_code_fragment_b_digit5"
-            app:layout_constraintTop_toBottomOf="@id/enter_code_fragment_b_digit5"
-            android:onClick="@{() -> viewModel.addDigit(8)}"/>
-        <Button
-            android:id="@+id/enter_code_fragment_b_digit9"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="@dimen/button_digit_width"
-            android:layout_height="@dimen/button_digit_height"
-            android:fontFamily="@font/montserrat_light"
-            android:text="@string/digit9"
-            android:textColor="@color/black"
-            android:textSize="@dimen/button_digit_text_size"
-            android:layout_marginHorizontal="@dimen/button_digit_margin"
-            app:shapeAppearanceOverlay="@style/Button.Circle"
-            app:layout_constraintStart_toEndOf="@id/enter_code_fragment_b_digit5"
-            app:layout_constraintTop_toBottomOf="@id/enter_code_fragment_b_digit5"
-            android:onClick="@{() -> viewModel.addDigit(9)}"/>
-        <Button
-            android:id="@+id/enter_code_fragment_b_digit0"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="@dimen/button_digit_width"
-            android:layout_height="@dimen/button_digit_height"
-            android:fontFamily="@font/montserrat_light"
-            android:text="@string/digit0"
-            android:textColor="@color/black"
-            android:textSize="@dimen/button_digit_text_size"
-            app:shapeAppearanceOverlay="@style/Button.Circle"
-            app:layout_constraintStart_toStartOf="@id/enter_code_fragment_b_digit5"
-            app:layout_constraintEnd_toEndOf="@id/enter_code_fragment_b_digit5"
-            app:layout_constraintTop_toBottomOf="@id/enter_code_fragment_b_digit8"
-            android:onClick="@{() -> viewModel.addDigit(0)}"/>
+            app:layout_constraintTop_toTopOf="parent"/>
 
-        <ImageButton
-            android:id="@+id/enter_code_fragment_b_backspace"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginHorizontal="@dimen/button_digit_margin"
-            android:src="@drawable/ic_back"
-            android:background="@drawable/bg_transparent_button"
-            app:layout_constraintBottom_toBottomOf="@+id/enter_code_fragment_b_digit0"
-            app:layout_constraintEnd_toEndOf="@+id/enter_code_fragment_b_digit9"
-            app:layout_constraintStart_toStartOf="@+id/enter_code_fragment_b_digit9"
-            app:layout_constraintTop_toBottomOf="@+id/enter_code_fragment_b_digit8"
-            android:onClick="@{() -> viewModel.deleteDigit()}"/>
+        <TextView
+            android:id="@+id/fragment_enter_code_title_textview"
+            style="@style/TextFragmentTitle"
+            android:layout_marginBottom="15dp"
+            android:text="@string/fragment_enter_code_title"
+            app:layout_constraintBottom_toTopOf="@id/background_decorator_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/fragment_enter_code_label_textview"
+            style="@style/TextFragmentLabel"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/fragment_enter_code_sms_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/background_decorator_view" />
+
+        <LinearLayout
+            android:id="@+id/fragment_enter_code_pin_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="@dimen/def_horizontal_offset"
+            android:layout_marginTop="13dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_enter_code_label_textview">
+
+            <EditText
+                android:id="@+id/fragment_enter_code_digit_edittext1"
+                style="@style/TextDigitPin"
+                android:background="@{viewModel.haveError ? @drawable/bg_item_pin_error : @drawable/bg_item_pin}"
+                android:nextFocusForward="@id/fragment_enter_code_digit_edittext2"
+                android:autofillHints="0"
+                bind:onFillGoToForwardEdit="@{1}"/>
+            <EditText
+                android:id="@+id/fragment_enter_code_digit_edittext2"
+                style="@style/TextDigitPin"
+                android:background="@{viewModel.haveError ? @drawable/bg_item_pin_error : @drawable/bg_item_pin}"
+                android:nextFocusForward="@id/fragment_enter_code_digit_edittext3"
+                android:nextFocusLeft="@id/fragment_enter_code_digit_edittext1"
+                android:autofillHints="0"
+                bind:onFillGoToForwardEdit="@{1}"/>
+            <EditText
+                android:id="@+id/fragment_enter_code_digit_edittext3"
+                style="@style/TextDigitPin"
+                android:background="@{viewModel.haveError ? @drawable/bg_item_pin_error : @drawable/bg_item_pin}"
+                android:nextFocusForward="@id/fragment_enter_code_digit_edittext4"
+                android:nextFocusLeft="@id/fragment_enter_code_digit_edittext2"
+                bind:onFillGoToForwardEdit="@{1}"/>
+            <View
+                android:layout_width="16dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/item_tire"
+                android:layout_margin="@dimen/half_pin_offset"/>
+            <EditText
+                android:id="@+id/fragment_enter_code_digit_edittext4"
+                style="@style/TextDigitPin"
+                android:background="@{viewModel.haveError ? @drawable/bg_item_pin_error : @drawable/bg_item_pin}"
+                android:nextFocusForward="@id/fragment_enter_code_digit_edittext5"
+                android:nextFocusLeft="@id/fragment_enter_code_digit_edittext3"
+                bind:onFillGoToForwardEdit="@{1}"/>
+            <EditText
+                android:id="@+id/fragment_enter_code_digit_edittext5"
+                style="@style/TextDigitPin"
+                android:background="@{viewModel.haveError ? @drawable/bg_item_pin_error : @drawable/bg_item_pin}"
+                android:nextFocusForward="@id/fragment_enter_code_digit_edittext6"
+                android:nextFocusLeft="@id/fragment_enter_code_digit_edittext4"
+                bind:onFillGoToForwardEdit="@{1}"/>
+            <EditText
+                android:id="@+id/fragment_enter_code_digit_edittext6"
+                style="@style/TextDigitPin"
+                android:background="@{viewModel.haveError ? @drawable/bg_item_pin_error : @drawable/bg_item_pin}"
+                android:nextFocusLeft="@id/fragment_enter_code_digit_edittext5"
+                android:imeOptions="actionDone"
+                bind:onFillGoToForwardEdit="@{1}"
+                bind:onEnterPin="@{viewModel.enterPin}"/>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/fragment_sign_button_sing"
+            style="@style/ButtonBlack"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/def_button_height"
+            android:layout_marginTop="40dp"
+            android:text="@string/s_sing_in"
+            app:backgroundTint="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_enter_code_pin_layout"
+            bind:onEnterPin="@{viewModel.enterPin}" />
+
+        <TextView
+            android:id="@+id/fragment_sign_error_textview"
+            style="@style/TextFragmentGotoSingIn"
+            android:layout_marginTop="22dp"
+            android:textColor="@color/error"
+            android:text="Неверно введен код, повторите ввод"
+            android:visibility="@{viewModel.haveError ? View.VISIBLE : View.GONE}"
+            app:layout_constraintTop_toBottomOf="@id/fragment_sign_button_sing"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="22dp"
+            app:layout_constraintTop_toBottomOf="@id/fragment_sign_error_textview">
+
+            <TextView
+                style="@style/TextFragmentGotoSingIn"
+                android:text="@string/fragment_enter_code_resend_sms"
+                android:visibility="@{viewModel.secondsLeft != null ? View.VISIBLE : View.GONE}"/>
+
+            <TextView
+                style="@style/TextFragmentGotoSingIn"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@{viewModel.secondsLeft}"
+                android:visibility="@{viewModel.secondsLeft != null ? View.VISIBLE : View.GONE}"
+                tools:text="60"/>
+
+            <TextView
+                android:id="@+id/fragment_sign_resend_sms_textview"
+                style="@style/TextFragmentGotoSingIn"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/fragment_enter_resend_sms"
+                android:visibility="@{viewModel.secondsLeft != null ? View.GONE : View.VISIBLE}"
+                tools:visibility="gone"/>
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

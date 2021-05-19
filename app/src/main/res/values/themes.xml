@@ -3,7 +3,7 @@
     <style name="Theme.Beautyradar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/violet</item>
+        <item name="colorPrimaryVariant">@color/pink_inga</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -26,18 +26,62 @@
         <item name="colorPrimary">@color/white</item>
     </style>
 
-    <style name="BaseFont">>
+    <style name="BaseFont">
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textColor">@color/main_dark</item>
         <item name="android:textStyle">normal</item>
     </style>
 
     <style name="TextWelcome" parent="BaseFont">
+        <item name="fontFamily">@font/roboto_medium</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">@dimen/biggest_text</item>
         <item name ="android:lineSpacingExtra">6sp</item>
+    </style>
+
+    <style name="TextFragmentTitle" parent="BaseFont">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/title_text</item>
+        <item name ="android:lineSpacingExtra">14sp</item>
+    </style>
+
+    <style name="TextFragmentLabel" parent="BaseFont">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/label_text</item>
+        <item name ="android:lineSpacingExtra">12sp</item>
+    </style>
+
+    <style name="TextFragmentGotoSingIn" parent="BaseFont">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name ="android:lineSpacingExtra">4sp</item>
+    </style>
+
+    <style name="TextDigitPin">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_item_pin</item>
+        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:hint">0</item>
+        <item name="android:textColorHint">@drawable/selector_hint</item>
+        <item name="android:inputType">numberSigned</item>
+        <item name="android:maxLength">1</item>
+        <item name="android:layout_margin">@dimen/half_pin_offset</item>
+        <item name="android:textSize">@dimen/biggest_text_more</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:paddingStart">11dp</item>
+        <item name="android:paddingEnd">11dp</item>
+        <item name="android:paddingTop">3dp</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:lineSpacingExtra">11dp</item>
     </style>
 
     <style name="TextAgreement" parent="BaseFont">
@@ -54,14 +98,7 @@
         <item name ="android:letterSpacing">-0.03</item>
     </style>
 
-    <style name="TextCodeHelp">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:fontFamily">@font/cardo</item>
-        <item name="android:textAlignment">center</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">@dimen/small_text</item>
-    </style>
+
     <style name="TextWarning">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -89,10 +126,6 @@
     <style name="ButtonBlack" parent="ButtonBase">
         <item name="android:background">@drawable/button_black_rounded_corners</item>
         <item name="android:textColor">@drawable/button_black_text</item>
-<!--        <item name="android:fontFamily">@font/cardo104s</item>-->
-<!--        <item name="android:textAllCaps">false</item>-->
-<!--        <item name="android:textSize">@dimen/button_text</item>-->
-<!--        <item name="android:letterSpacing">-0.03</item>-->
     </style>
 
     <style name="TextInputLayoutBG" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
@@ -143,4 +176,20 @@
         <item name="android:textSize">@dimen/text_size_20</item>
     </style>
 
+    <style name="ChipCalendarFragment" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/bg_btn_gap_day</item>
+        <item name="rippleColor">@color/bg_btn_gap_day</item>
+        <item name="android:textColor">@color/main_dark</item>
+        <item name="chipCornerRadius">8dp</item>
+        <item name="chipMinTouchTargetSize">0dp</item>
+        <item name="chipSurfaceColor">@color/transparent</item>
+    </style>
+
+    <style name="EditPhone">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/main_dark</item>
+        <item name="android:textSize">@dimen/text_size_18</item>
+    </style>
 </resources>

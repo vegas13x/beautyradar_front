@@ -10,7 +10,7 @@ class ProfileInteractorImpl(private val remoteRepo: RemoteRepository<AppState>) 
     override suspend fun existUserByUPNFromDB(uid: String): AppState =
         remoteRepo.existUserByUPNFromDB(uid)
 
-    override suspend fun updateUser(id: String): AppState =
-        remoteRepo.updateUser(id)
+    override suspend fun updateUser(id: Long?, userDTO: UserDTO): AppState =
+        remoteRepo.updateUser(id, userDTO)
 
 }

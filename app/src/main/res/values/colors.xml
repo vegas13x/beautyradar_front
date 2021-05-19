@@ -10,6 +10,7 @@
     <color name="light_pink">#F3F1FE</color>
     <color name="violet">#8377D6</color>
     <color name="Black">#000</color>
+    <color name="pink_inga">#E5D0D8</color>
 
     <color name="main_dusty_rose_mid">#FFE5D0D8</color>
     <color name="black_button_clicked">#FF4C5270</color>
@@ -24,10 +25,13 @@
     //New color from designer Inga
     // Main screen(fragment_master_client)
     <color name="main_dusty_rose_light">#F8EDF1</color>
+    <color name="main_dusty_rose_light_tr">#0FF8EDF1</color>
 
-<!--    new style named-->
+    <!--    new style named-->
     <color name="main_dark">#FF35384D</color>
-
+    <color name="main_dark_20">#3335384D</color>
+    <color name="error">#FFD10227</color>
     <color name="hint_color">#000000</color>
     <color name="onFocusBtn">#BEF8BCBD</color>
+
 </resources>

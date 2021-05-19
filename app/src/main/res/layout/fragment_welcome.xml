@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.nick_sib.beauty_radar.view_model.WelcomeViewModel" />
@@ -18,7 +17,7 @@
             android:id="@+id/fragment_welcome_tv_welcome"
             style="@style/TextWelcome"
             android:layout_marginTop="60dp"
-            android:text="@string/s_welcome"
+            android:text="@string/fragment_welcome_welcome"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -40,10 +39,9 @@
             app:backgroundTint="@null"
             android:layout_width="0dp"
             android:layout_height="@dimen/def_button_height"
-            android:textColor="@drawable/button_black_text"
             android:text="@string/s_sing_in"
             android:layout_marginBottom="15dp"
-            app:layout_constraintBottom_toTopOf="@+id/fragment_welcome_button_sing_up"
+            app:layout_constraintBottom_toTopOf="@id/fragment_welcome_button_sing_up"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -55,9 +53,9 @@
             android:layout_height="@dimen/def_button_height"
             android:background="@drawable/rounded_corner_for_button_border"
             android:foreground="?attr/selectableItemBackground"
-            android:text="@string/registry"
+            android:text="@string/s_registry"
             android:layout_marginBottom="@dimen/offset50"
-            app:layout_constraintBottom_toTopOf="@+id/fragment_welcome_tv_agreement"
+            app:layout_constraintBottom_toTopOf="@id/fragment_welcome_tv_agreement"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
@@ -66,18 +64,10 @@
             android:layout_height="0dp"
             android:src="@drawable/ic_big_logo"
             android:layout_margin="54dp"
-            app:layout_constraintBottom_toTopOf="@+id/fragment_welcome_button_sing_in"
+            app:layout_constraintBottom_toTopOf="@id/fragment_welcome_button_sing_in"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_welcome_tv_welcome"
+            app:layout_constraintTop_toBottomOf="@id/fragment_welcome_tv_welcome"
             android:contentDescription="@string/big_logotype_description"/>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>
-
-
-
-
-<!--</androidx.constraintlayout.widget.ConstraintLayout>-->

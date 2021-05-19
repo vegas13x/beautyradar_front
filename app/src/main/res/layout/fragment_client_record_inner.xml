@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.nick_sib.beauty_radar.view_model.MasterClientViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/main_dusty_rose_mid"
+                tools:context=".view.fragments.MasterClientFragment">
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/fragment_mc_bg_bottom_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="850dp"
+                    android:background="@drawable/rounded_corners2"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="20dp"
+                    android:textSize="18sp"
+                    android:textColor="#35384D"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="Введите ФИО клиента"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textField1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintTop_toBottomOf="@id/textView1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:hint="Имя и фамилия">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="20dp"
+                    android:textSize="18sp"
+                    android:textColor="#35384D"
+                    app:layout_constraintTop_toBottomOf="@id/textField1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="Введите номер телефона клиента"/>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textField2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintTop_toBottomOf="@id/textView2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:hint="+7(___)___ __ __">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="20dp"
+                    android:textSize="18sp"
+                    android:textColor="#35384D"
+                    app:layout_constraintTop_toBottomOf="@id/textField2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="Выберите услугу"/>
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textField3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintTop_toBottomOf="@id/textView3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:hint="Маникюр + покрытие">
+
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="20dp"
+                    android:textSize="18sp"
+                    android:textColor="#35384D"
+                    app:layout_constraintTop_toBottomOf="@id/textField3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="Выберите дату"/>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textField4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintTop_toBottomOf="@id/textView4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:hint="01.01.2021г">
+
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="20dp"
+                    android:textSize="18sp"
+                    android:textColor="#35384D"
+                    app:layout_constraintTop_toBottomOf="@id/textField4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="Выберите время"/>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textField5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintTop_toBottomOf="@id/textView5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:hint="17:30">
+
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="20dp"
+                    android:textSize="18sp"
+                    android:textColor="#35384D"
+                    app:layout_constraintTop_toBottomOf="@id/textField5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="Комментарий"/>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textField6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textAlignment="textStart"
+                    app:layout_constraintTop_toBottomOf="@id/textView6"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:hint="Введите текст">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:gravity="top"
+                        android:layout_width="366dp"
+                        android:layout_height="130dp"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="300dp"
+                    app:cornerRadius="10dp"
+                    style="@style/ButtonBlack"
+                    app:backgroundTint="@null"
+                    android:layout_height="48dp"
+                    android:textAllCaps="false"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/textField6"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginBottom="40dp"
+                    android:text="Записать"/>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</layout>

@@ -2,15 +2,14 @@ package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.navArgs
 import com.google.firebase.messaging.FirebaseMessaging
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.SingletonUID
 import com.nick_sib.beauty_radar.databinding.FragmentEnterCodeBinding
 import com.nick_sib.beauty_radar.extension.findNavController
+import com.nick_sib.beauty_radar.extension.showKeyboard
 import com.nick_sib.beauty_radar.model.data.entites.UserMaster
 import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.model.provider.repository.user.UserDTO
@@ -21,29 +20,45 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
 
     private val viewModel: EnterCodeViewModel by viewModel()
     private var binding: FragmentEnterCodeBinding? = null
-    private val args: EnterCodeFragmentArgs by navArgs()
-
-    private lateinit var uid: String
+    private var uid = SingletonUID.getUID().toString()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEnterCodeBinding.bind(view)
-
-        FirebaseMessaging.getInstance().deleteToken()
+        binding?.viewModel = viewModel
 
         viewModel.subscribe().observe(viewLifecycleOwner, {
             renderData(it)
         })
-        binding?.viewModel = viewModel
-        binding?.enterCodeFragmentTvInfo?.text =
-            getString(R.string.text_help_info_phone, "+7 ${args.phone}")
-        initListener()
-        uid = SingletonUID.getInstance()?.getUID().toString()
+
+        deleteToken()
+        start()
+        btnResendSms()
     }
 
-    private fun initListener() {
-        binding?.enterCodeFragmentIvBackTo?.setOnClickListener {
-            findNavController().popBackStack()
+    private fun deleteToken() = FirebaseMessaging.getInstance().deleteToken()
+
+    private fun btnResendSms() {
+        binding?.run {
+            fragmentSignResendSmsTextview.setOnClickListener {
+                activity?.run {
+                    this@EnterCodeFragment.viewModel.resendSMS(this)
+                    start()
+                }
+            }
+        }
+    }
+
+    private fun start() {
+        binding?.apply {
+            fragmentEnterCodeDigitEdittext1.text.clear()
+            fragmentEnterCodeDigitEdittext2.text.clear()
+            fragmentEnterCodeDigitEdittext3.text.clear()
+            fragmentEnterCodeDigitEdittext4.text.clear()
+            fragmentEnterCodeDigitEdittext5.text.clear()
+            fragmentEnterCodeDigitEdittext6.text.clear()
+            fragmentEnterCodeDigitEdittext1.requestFocus()
+            fragmentEnterCodeDigitEdittext1.showKeyboard()
         }
     }
 
@@ -59,11 +74,20 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                 when (appState.data) {
                     is UserMaster -> {
                         viewModel.checkUserInDB(appState.data.uid)
+                        uid = appState.data.uid!!
                     }
                     is Boolean -> {
                         if (appState.data == true) {
-                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToMasterClientFragment())}
-                        else {findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignUpFragment2(uid))}
+                            viewModel.getUserByUID(uid)
+                        } else {
+                            findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignInFragment())
+                        }
+                    }
+                    is UserDTO -> {
+                        viewModel.setImgInSingleton(appState.data.img)
+                        deleteToken()
+                        viewModel.updateUserByUserResponse(appState.data)
+                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignInFragment())
                     }
                 }
             }
@@ -73,16 +97,9 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
             is AppState.Error -> {
                 binding?.fragmentAuthLoadingDialog?.root?.isGone = true
                 viewModel.codeError()
-                when (appState.error) {
-                    else -> toast(appState.error.message ?: "")
-                }
             }
-            else -> {}
+            else -> {
+            }
         }
     }
-
-    private fun toast(text: String) {
-        Toast.makeText(activity, text, Toast.LENGTH_SHORT).show()
-    }
-
 }

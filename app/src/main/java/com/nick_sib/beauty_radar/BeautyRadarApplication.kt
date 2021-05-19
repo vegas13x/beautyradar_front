@@ -1,12 +1,9 @@
 package com.nick_sib.beauty_radar
 
 import android.app.Application
-import androidx.room.Room
 import com.nick_sib.beauty_radar.di.*
-import com.nick_sib.beauty_radar.model.room.HistoryDataBase
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
-import kotlin.coroutines.coroutineContext
 
 /**
  * @author Alex Volkov(Volkos)
@@ -23,14 +20,21 @@ class BeautyRadarApplication : Application() {
                 listOf(
                     appModule,
                     authFragmentModule,
-                    logoutModule,
-                    profileModule,
+                    calendarModule,
+                    welcomeFragmenModule,
                     enterCodeFragmentModule,
                     masterClientFragmentModule,
+                    masterClientInnerFragmentModule,
+                    bottomSheetFragmentModule,
+                    phoneClientsModule,
+                    clientRecordModule,
+                    clientRecordInnerModule,
+                    settingModule,
                     enterCodeFragmentModule,
-                    signUpModule,
-                    signUpSecondModule
-                    ,databaseModule
+                    signInModule,
+                    profileInfoEditModule,
+                    profileInfoModule,
+                    profileInfoInnerModel
                 )
             )
         }

@@ -1,95 +1,98 @@
 package com.nick_sib.beauty_radar.view.fragments
 
-import android.graphics.Bitmap
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.View
-import android.widget.Toast
+import android.widget.ImageView
+import androidx.appcompat.widget.AppCompatTextView
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.nick_sib.beauty_radar.R
-import com.nick_sib.beauty_radar.SingletonUID
-import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.databinding.FragmentMasterClientBinding
 import com.nick_sib.beauty_radar.extension.findNavController
-import com.nick_sib.beauty_radar.model.provider.calendar.CalendarProfile
+import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.view.adapter.ClientAdapter
-import com.nick_sib.beauty_radar.view.utils.TRANSITION_TO_CALENDAR
 import com.nick_sib.beauty_radar.view_model.MasterClientViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
 
     private val viewModel: MasterClientViewModel by viewModel()
-    private var binding: FragmentMasterClientBinding? = null
+    private lateinit var binding: FragmentMasterClientBinding
     private var adapter: ClientAdapter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
         binding = FragmentMasterClientBinding.bind(view)
-        binding?.viewModel = viewModel
-
-        viewModel.getListClients()
         viewModel.subscribe().observe(viewLifecycleOwner, {
             renderData(it)
         })
 
-        binding?.fragmentMcBtnNavBar?.setOnNavigationItemSelectedListener {
+        navBarInit()
+        btnInit()
+        bottomSheetInit()
+
+
+    }
+
+    private fun bottomSheetInit() {
+        val bottomFragment = BottomSheetFragment()
+        val bottomSheetBehaviour = BottomSheetBehavior.from(binding.containerBottomSheet)
+
+        childFragmentManager.beginTransaction()
+            .replace(R.id.containerBottomSheet, bottomFragment)
+            .commit()
+
+        binding.root.findViewById<AppCompatTextView>(R.id.fragment_mc_tv_sessions)
+            .setOnClickListener {
+                bottomSheetBehaviour.state = BottomSheetBehavior.STATE_EXPANDED
+            }
+    }
+
+    private fun btnInit() {
+        binding.root.findViewById<ImageView>(R.id.setting_btn).setOnClickListener {
+            findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToSettingsFragment())
+        }
+
+        binding.root.findViewById<ImageView>(R.id.back_btn).setOnClickListener {
+            findNavController().popBackStack()
+        }
+    }
+
+    private fun navBarInit() {
+        binding.fragmentMcBtnNavBar.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.menu_btm_nav_btn_setting -> {
-                    findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToLogoutFragment())
+                R.id.menu_btm_nav_btn_clients -> {
+                    findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToClientsFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.menu_btm_nav_btn_profile -> {
-                    val uid: String? = SingletonUID.getUID()
-                    uid?.let {
-                        findNavController().navigate(
-                            MasterClientFragmentDirections.actionMasterClientsFragmentToProfileFragment(
-                                uid
-                            )
-                        )
-                    }
+                    findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToProfileInfoFragment())
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.menu_btm_nav_btn_main -> {
                     return@setOnNavigationItemSelectedListener true
                 }
                 else -> false
             }
         }
 
+    }
 
-
-        viewModel.takePictureFromStorage()
-
+    override fun onPause() {
+        super.onPause()
+        adapter = null
     }
 
     private fun renderData(appState: AppState?) {
         when (appState) {
             is AppState.Success<*> -> {
                 when (appState.data) {
-                    TRANSITION_TO_CALENDAR->{
-                        Toast.makeText(
-                            requireContext(),
-                            "Переход на экран календаря",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                    is List<*> -> {
-                        if (adapter == null) {
-                            adapter = ClientAdapter(appState.data as List<CalendarProfile>)
-                            binding?.clientRecycler?.adapter = adapter
-                        }
-                    }
-                    is Bitmap -> {
-                        binding?.fragmentMcIvAvatarMaster?.setImageBitmap(appState.data)
-                    }
+                    else -> {}
                 }
             }
             else -> {}
         }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        adapter = null
     }
 
 }

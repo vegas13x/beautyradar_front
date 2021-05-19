@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_main"
@@ -11,15 +12,19 @@
         android:label="WelcomeFragment"
         tools:layout="@layout/fragment_welcome">
         <action
-            android:id="@+id/action_welcomeFragment_to_authFragment"
-            app:destination="@id/authFragment" />
+            android:id="@+id/action_welcomeFragment_to_signFragment"
+            app:destination="@id/signFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/authFragment"
-        android:name="com.nick_sib.beauty_radar.view.fragments.AuthFragment"
+        android:id="@+id/signFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.SignFragment"
         android:label="AuthFragment"
-        tools:layout="@layout/fragment_authentication">
+        tools:layout="@layout/fragment_sign">
+        <argument
+            android:name="fragType"
+            android:defaultValue="SIGNUP"
+            app:argType="com.nick_sib.beauty_radar.model.data.entites.FragmentType" />
         <action
             android:id="@+id/action_authFragment_to_enterCodeFragment"
             app:destination="@id/enterCodeFragment" />
@@ -30,90 +35,138 @@
         android:name="com.nick_sib.beauty_radar.view.fragments.EnterCodeFragment"
         android:label="fragment_enter_code"
         tools:layout="@layout/fragment_enter_code">
-        <argument
-            android:name="phone"
-            android:defaultValue="err"
-            app:argType="string" />
         <action
-            android:id="@+id/action_enterCodeFragment_to_masterClientFragment"
-            app:destination="@id/masterClientsFragment"
-             />
-        <action
-            android:id="@+id/action_enterCodeFragment_to_signUpFragment2"
-            app:destination="@id/signUpFragment" />
+            android:id="@+id/action_enterCodeFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.nick_sib.beauty_radar.view.fragments.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile">
-        <argument
-            android:name="uid"
-            android:defaultValue="err"
-            app:argType="string" />
+        android:id="@+id/signInFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.SignInFragment"
+        android:label="sign_in_fragment"
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/action_signInFragment_to_profileInfoEditFragment"
+            app:destination="@id/profileInfoEditFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/signUpFragment"
-        android:name="com.nick_sib.beauty_radar.view.fragments.SignUpFragment"
-        android:label="sign_up_fragment"
-        tools:layout="@layout/fragment_sign_up">
-        <argument
-            android:name="uid"
-            android:defaultValue="err"
-            app:argType="string" />
+        android:id="@+id/profileInfoFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.ProfileInfoFragment"
+        android:label="ProfileInfoFragment"
+        tools:layout="@layout/fragment_profile_info">
         <action
-            android:id="@+id/action_signUpFragment_to_signUpFragmentSecond"
-            app:destination="@id/signUpFragmentSecond" />
+            android:id="@+id/action_profileInfoFragment_to_profileInfoEditFragment"
+            app:destination="@id/profileInfoEditFragment" />
         <action
-            android:id="@+id/action_signUpFragment_to_authFragment"
-            app:destination="@id/authFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/signUpFragmentSecond"
-        android:name="com.nick_sib.beauty_radar.view.fragments.SignUpSecondFragment"
-        android:label="sign_up_fragment_second"
-        tools:layout="@layout/fragment_sign_up_second">
-        <argument
-            android:name="uid"
-            android:defaultValue="err"
-            app:argType="string" />
-        <argument
-            android:name="name"
-            android:defaultValue="err"
-            app:argType="string" />
-        <argument
-            android:name="second_name"
-            android:defaultValue="err"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_signUpFragmentSecond_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
-        <action
-            android:id="@+id/action_signUpFragmentSecond_to_masterClientsFragment"
+            android:id="@+id/action_profileInfoFragment_to_masterClientsFragment"
             app:destination="@id/masterClientsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/logoutFragment"
-        android:name="com.nick_sib.beauty_radar.view.fragments.LogoutFragment"
-        android:label="fragment_logout"
-        tools:layout="@layout/fragment_logout">
         <action
-            android:id="@+id/action_logoutFragment_to_authFragment"
-            app:destination="@id/authFragment"/>
+            android:id="@+id/action_profileInfoFragment_to_clientsFragment"
+            app:destination="@id/clientsFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/profileInfoEditFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.ProfileInfoEditFragment"
+        android:label="ProfileInfoEditFragment"
+        tools:layout="@layout/fragment_profile_info_edit">
+        <action
+            android:id="@+id/action_profileInfoEditFragment_to_profileInfoFragment"
+            app:destination="@id/profileInfoFragment" />
+        <action
+            android:id="@+id/action_profileInfoEditFragment_to_clientsFragment"
+            app:destination="@id/clientsFragment" />
+        <action
+            android:id="@+id/action_profileInfoEditFragment_to_masterClientsFragment"
+            app:destination="@id/masterClientsFragment" />
+
+    </fragment>
+
     <fragment
         android:id="@+id/masterClientsFragment"
         android:name="com.nick_sib.beauty_radar.view.fragments.MasterClientFragment"
         android:label="fragment_master_client"
         tools:layout="@layout/fragment_master_client">
         <action
-            android:id="@+id/action_masterClientsFragment_to_logoutFragment"
-            app:destination="@id/logoutFragment" />
+            android:id="@+id/action_masterClientsFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
         <action
-            android:id="@+id/action_masterClientsFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            android:id="@+id/action_masterClientsFragment_to_profileInfoFragment"
+            app:destination="@id/profileInfoFragment" />
+        <action
+            android:id="@+id/action_masterClientsFragment_to_clientsFragment"
+            app:destination="@id/clientsFragment" />
+        <action
+            android:id="@+id/action_masterClientsFragment_to_clientRecordFragment"
+            app:destination="@id/clientRecordFragment" />
+        <action
+            android:id="@+id/action_masterClientsFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.SettingsFragment"
+        android:label="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_masterClientsFragment"
+            app:destination="@id/masterClientsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_clientsFragment"
+            app:destination="@id/clientsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_profileInfoFragment"
+            app:destination="@id/profileInfoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/clientsFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.ClientsFragment"
+        android:label="ClientsFragment"
+        tools:layout="@layout/fragment_clients">
+        <action
+            android:id="@+id/action_clientsFragment_to_masterClientsFragment"
+            app:destination="@id/masterClientsFragment" />
+        <action
+            android:id="@+id/action_clientsFragment_to_profileInfoFragment"
+            app:destination="@id/profileInfoFragment" />
+        <action
+            android:id="@+id/action_clientsFragment_self"
+            app:destination="@id/clientsFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.CalendarFragment"
+        android:label="CalendarFragment"
+        tools:layout="@layout/fragment_calendar">
+        <action
+            android:id="@+id/action_calendarFragment_to_masterClientsFragment"
+            app:destination="@id/masterClientsFragment" />
+        <action
+            android:id="@+id/action_calendarFragment_to_clientsFragment"
+            app:destination="@id/clientsFragment" />
+        <action
+            android:id="@+id/action_calendarFragment_to_profileInfoFragment2"
+            app:destination="@id/profileInfoFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/clientRecordFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.ClientRecordFragment"
+        android:label="ClientRecordFragment" >
+        <action
+            android:id="@+id/action_clientRecordFragment_to_masterClientsFragment"
+            app:destination="@id/masterClientsFragment" />
+        <action
+            android:id="@+id/action_clientRecordFragment_to_profileInfoFragment"
+            app:destination="@id/profileInfoFragment" />
+        <action
+            android:id="@+id/action_clientRecordFragment_to_clientsFragment"
+            app:destination="@id/clientsFragment" />
     </fragment>
 
 </navigation>
