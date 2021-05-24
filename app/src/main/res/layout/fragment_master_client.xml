@@ -15,7 +15,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.viewpager.widget.ViewPager
+    <fragment
         android:name="com.nick_sib.beauty_radar.view.fragments.MasterAndClientInnerFragment"
         tools:layout="@layout/fragment_master_and_client_inner"
         android:id="@+id/viewPager"

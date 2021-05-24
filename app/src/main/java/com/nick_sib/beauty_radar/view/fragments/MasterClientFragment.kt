@@ -37,21 +37,21 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
         navBarInit()
         btnInit()
         bottomSheetInit()
-        pagerInit()
+//        pagerInit()
 
     }
 
 
-    private fun pagerInit() {
-        val pagerAdapter = ScreenSlidePagerAdapter(childFragmentManager)
-        binding.viewPager.adapter = pagerAdapter
-    }
+//    private fun pagerInit() {
+//        val pagerAdapter = ScreenSlidePagerAdapter(childFragmentManager)
+//        binding.viewPager.adapter = pagerAdapter
+//    }
 
-    private inner class ScreenSlidePagerAdapter(fm: FragmentManager) :
-        FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-        override fun getCount(): Int = 1
-        override fun getItem(position: Int): Fragment = MasterAndClientInnerFragment().newInstance()
-    }
+//    private inner class ScreenSlidePagerAdapter(fm: FragmentManager) :
+//        FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+//        override fun getCount(): Int = 1
+//        override fun getItem(position: Int): Fragment = MasterAndClientInnerFragment().newInstance()
+//    }
 
     private fun bottomSheetInit() {
         val bottomFragment = BottomSheetFragment()
@@ -61,10 +61,9 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
             .replace(R.id.containerBottomSheet, bottomFragment)
             .commit()
 
-//        binding.root.findViewById<AppCompatTextView>(R.id.fragment_mc_tv_sessions)
-//            .setOnClickListener {
-//                bottomSheetBehaviour.state = BottomSheetBehavior.STATE_EXPANDED
-//            }
+        binding.root.findViewById<AppCompatTextView>(R.id.fragment_mc_tv_sessions).setOnClickListener {
+                bottomSheetBehaviour.state = BottomSheetBehavior.STATE_EXPANDED
+            }
     }
 
     private fun btnInit() {

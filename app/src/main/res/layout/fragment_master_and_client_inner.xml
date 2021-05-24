@@ -263,7 +263,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fragment_mc_tv_counter_sessions"
                     tools:itemCount="5"
-                    tools:listitem="@layout/item_client" />
+                    tools:listitem="@layout/item_client"
+                    android:paddingBottom="65dp"/>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
