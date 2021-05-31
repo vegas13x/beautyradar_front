@@ -82,7 +82,7 @@
                     android:layout_height="80dp"
                     android:layout_marginStart="24dp"
                     app:cardCornerRadius="40dp"
-                    app:layout_constraintBottom_toTopOf="@+id/fragment_mc_btn_sing_up"
+                    app:layout_constraintBottom_toTopOf="@+id/fragment_mc_graphic_raboty"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fragment_mc_tv_date">
 
@@ -168,7 +168,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/fragment_mc_tv_counter_expectation" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/fragment_mc_btn_sing_up"
+                    android:id="@+id/fragment_mc_graphic_raboty"
                     style="@style/ButtonMainScreen"
                     android:layout_width="@dimen/width_175"
                     android:layout_height="wrap_content"
@@ -191,10 +191,10 @@
                     android:background="@drawable/bg_ronded_bottom_left_top_right_corner_rose_light"
                     android:paddingVertical="@dimen/offset_24"
                     android:text="@string/schedule"
-                    app:layout_constraintBottom_toBottomOf="@+id/fragment_mc_btn_sing_up"
+                    app:layout_constraintBottom_toBottomOf="@+id/fragment_mc_graphic_raboty"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/fragment_mc_btn_sing_up"
-                    app:layout_constraintTop_toTopOf="@+id/fragment_mc_btn_sing_up" />
+                    app:layout_constraintStart_toEndOf="@+id/fragment_mc_graphic_raboty"
+                    app:layout_constraintTop_toTopOf="@+id/fragment_mc_graphic_raboty" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/fragment_mc_tv_sessions"
@@ -209,7 +209,7 @@
                     app:layout_constraintBottom_toTopOf="@id/fragment_mc_tv_counter_sessions"
                     app:layout_constraintEnd_toStartOf="@id/fragment_mc_tv_text_income"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fragment_mc_btn_sing_up" />
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_mc_graphic_raboty" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/fragment_mc_tv_counter_sessions"

@@ -34,11 +34,11 @@ class ClientAdapter(var list: List<CalendarProfile>) :
 
         override fun bind(data: CalendarProfile) {
             var dataItem = false
-            binding.itemRecordedTvClientName.text = data.name
-            binding.itemRecordedTvClientName.setOnClickListener {
-                dataItem = !dataItem
-
-            }
+//            binding.itemRecordedTvClientName.text = data.name
+//            binding.itemRecordedTvClientName.setOnClickListener {
+//                dataItem = !dataItem
+//
+//            }
             binding.itemRecordedTvProcedureTime.text = data.dateStart
             binding.itemRecordedTvServicePriceTime.text = data.service
             binding.itemRecordedTvServicePriceTime2.visibility =

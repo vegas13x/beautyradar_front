@@ -17,8 +17,7 @@ import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.view.adapter.for_adapter.RecyclerActivityAdapter
 import com.nick_sib.beauty_radar.view_model.MasterAndClientInnerViewModel
 import geekbarains.material.ui.recycler.Data
-import geekbarains.material.ui.recycler.NewAdapter
-import org.koin.android.ext.android.bind
+
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MasterAndClientInnerFragment : Fragment() {
@@ -36,7 +35,8 @@ class MasterAndClientInnerFragment : Fragment() {
         rvBooks.layoutManager = LinearLayoutManager(activity)
 
         val data = arrayListOf(
-            Pair(Data(0, "Mars", ""), false)
+            Pair(Data(0, "Mars"), false),
+            Pair(Data(1, "Mars"), false)
         )
 
 
@@ -62,6 +62,13 @@ class MasterAndClientInnerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMasterAndClientInnerBinding.bind(view)
+
+        Glide.with(requireContext())
+            .load(R.drawable.loading)
+            .circleCrop()
+            .into(binding.imgAvatar)
+
+
         viewModel.getListClients()
         viewModel.subscribe().observe(viewLifecycleOwner, {
             renderData(it)
@@ -74,7 +81,7 @@ class MasterAndClientInnerFragment : Fragment() {
     }
 
     private fun btnInit() {
-        binding.fragmentMcBtnSingUp.setOnClickListener {
+        binding.fragmentMcGraphicRaboty.setOnClickListener {
             findNavController().navigate(MasterClientFragmentDirections.actionMasterClientsFragmentToClientRecordFragment())
         }
 

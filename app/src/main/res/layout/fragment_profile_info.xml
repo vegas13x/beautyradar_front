@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -278,7 +280,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/viezd_na_dom" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/fragment_mc_btn_sing_up"
+                android:id="@+id/fragment_mc_graphic_raboty"
                 style="@style/ButtonMainScreen"
                 android:layout_width="@dimen/width_175"
                 android:layout_height="wrap_content"
@@ -303,7 +305,7 @@
                 android:letterSpacing="-0.02"
                 android:text="Скидки и акции"
                 app:layout_constraintStart_toStartOf="@+id/yes_or_no"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_mc_btn_sing_up" />
+                app:layout_constraintTop_toBottomOf="@+id/fragment_mc_graphic_raboty" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/fragment_mc_btn"
@@ -315,7 +317,7 @@
                 android:letterSpacing="-0.02"
                 android:text="Услуги и прайс"
                 app:layout_constraintEnd_toEndOf="@+id/time_notification"
-                app:layout_constraintTop_toTopOf="@+id/fragment_mc_btn_sing_up" />
+                app:layout_constraintTop_toTopOf="@+id/fragment_mc_graphic_raboty" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/fragment_mc_btn2"

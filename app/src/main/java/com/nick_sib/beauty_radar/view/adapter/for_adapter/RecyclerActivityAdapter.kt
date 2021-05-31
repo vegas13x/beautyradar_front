@@ -1,11 +1,8 @@
 package com.nick_sib.beauty_radar.view.adapter.for_adapter
 
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.MotionEventCompat
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.nick_sib.beauty_radar.R
 import geekbarains.material.ui.recycler.BaseViewHolder
@@ -25,15 +22,12 @@ class RecyclerActivityAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return when (viewType) {
-            TYPE_EARTH -> EarthViewHolder(
-                inflater.inflate(R.layout.activity_recycler_item_earth, parent, false) as View
-            )
             TYPE_MARS ->
                 MarsViewHolder(
                     inflater.inflate(R.layout.activity_recycler_item_mars, parent, false) as View
                 )
             else -> HeaderViewHolder(
-                inflater.inflate(R.layout.activity_recycler_item_header, parent, false) as View
+                inflater.inflate(R.layout.activity_recycler_item_mars, parent, false) as View
             )
         }
     }
@@ -67,79 +61,48 @@ class RecyclerActivityAdapter(
 
     override fun getItemViewType(position: Int): Int {
         return when {
-            data[position].first.someDescription.isNullOrBlank() -> TYPE_MARS
-            else -> TYPE_EARTH
+            else -> TYPE_MARS
         }
     }
 
 
-    fun setItems(newItems: List<Pair<Data, Boolean>>) {
-        val result = DiffUtil.calculateDiff(DiffUtilCallback(data, newItems))
-        result.dispatchUpdatesTo(this)
-        data.clear()
-        data.addAll(newItems)
-    }
 
-    fun appendItem() {
-        data.add(generateItem())
-        notifyItemInserted(itemCount - 1)
-    }
+//    private fun generateItem() = Pair(Data(1, "Mars", ""), false)
 
-    private fun generateItem() = Pair(Data(1, "Mars", ""), false)
+//    inner class DiffUtilCallback(
+//        private var oldItems: List<Pair<Data, Boolean>>,
+//        private var newItems: List<Pair<Data, Boolean>>
+//    ) : DiffUtil.Callback() {
+//
+//        override fun getOldListSize(): Int = oldItems.size
+//
+//        override fun getNewListSize(): Int = newItems.size
+//
+//        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
+//            oldItems[oldItemPosition].first.id == newItems[newItemPosition].first.id
+//
+//        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
+//            oldItems[oldItemPosition].first.someText == newItems[newItemPosition].first.someText
+//
+//        override fun getChangePayload(oldItemPosition: Int, newItemPosition: Int): Any? {
+//            val oldItem = oldItems[oldItemPosition]
+//            val newItem = newItems[newItemPosition]
+//
+//            return Change(
+//                oldItem,
+//                newItem
+//            )
+//        }
+//    }
 
-    inner class DiffUtilCallback(
-        private var oldItems: List<Pair<Data, Boolean>>,
-        private var newItems: List<Pair<Data, Boolean>>
-    ) : DiffUtil.Callback() {
-
-        override fun getOldListSize(): Int = oldItems.size
-
-        override fun getNewListSize(): Int = newItems.size
-
-        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
-            oldItems[oldItemPosition].first.id == newItems[newItemPosition].first.id
-
-        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
-            oldItems[oldItemPosition].first.someText == newItems[newItemPosition].first.someText
-
-        override fun getChangePayload(oldItemPosition: Int, newItemPosition: Int): Any? {
-            val oldItem = oldItems[oldItemPosition]
-            val newItem = newItems[newItemPosition]
-
-            return Change(
-                oldItem,
-                newItem
-            )
-        }
-    }
-
-    inner class EarthViewHolder(view: View) : BaseViewHolder(view) {
-
-        override fun bind(dataItem: Pair<Data, Boolean>) {
-            if (layoutPosition != RecyclerView.NO_POSITION) {
-                itemView.descriptionTextView.text = dataItem.first.someDescription
-                itemView.wikiImageView.setOnClickListener {
-                    onListItemClickListener.onItemClick(
-                        dataItem.first
-                    )
-                }
-            }
-        }
-    }
 
     inner class MarsViewHolder(view: View) : BaseViewHolder(view){
 
         override fun bind(dataItem: Pair<Data, Boolean>) {
-            itemView.marsImageView.setOnClickListener { onListItemClickListener.onItemClick(dataItem.first) }
             itemView.marsDescriptionTextView.visibility =
                 if (dataItem.second) View.VISIBLE else View.GONE
-            itemView.marsTextView.setOnClickListener { toggleText() }
-            itemView.dragHandleImageView.setOnTouchListener { _, event ->
-                if (MotionEventCompat.getActionMasked(event) == MotionEvent.ACTION_DOWN) {
-                    dragListener.onStartDrag(this)
-                }
-                false
-            }
+            itemView.marsTextView.text = dataItem.first.someText
+            itemView.setOnClickListener { toggleText() }
         }
 
 
@@ -172,8 +135,6 @@ class RecyclerActivityAdapter(
     }
 
     companion object {
-        private const val TYPE_EARTH = 0
         private const val TYPE_MARS = 1
-        private const val TYPE_HEADER = 2
     }
 }

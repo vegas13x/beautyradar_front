@@ -64,6 +64,9 @@
         <action
             android:id="@+id/action_profileInfoFragment_to_clientsFragment"
             app:destination="@id/clientsFragment" />
+        <action
+            android:id="@+id/action_profileInfoFragment_to_workingDaysFragment"
+            app:destination="@id/workingDaysFragment" />
     </fragment>
 
     <fragment
@@ -151,6 +154,9 @@
         <action
             android:id="@+id/action_calendarFragment_to_profileInfoFragment2"
             app:destination="@id/profileInfoFragment" />
+        <action
+            android:id="@+id/action_calendarFragment_to_masterClientsFragment2"
+            app:destination="@id/masterClientsFragment" />
 
     </fragment>
 
@@ -167,6 +173,15 @@
         <action
             android:id="@+id/action_clientRecordFragment_to_clientsFragment"
             app:destination="@id/clientsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/workingDaysFragment"
+        android:name="com.nick_sib.beauty_radar.view.fragments.WorkingDaysFragment"
+        android:label="WorkingDaysFragment"
+        tools:layout="@layout/fragment_working_days">
+        <action
+            android:id="@+id/action_workingDaysFragment_to_profileInfoFragment"
+            app:destination="@id/profileInfoFragment" />
     </fragment>
 
 </navigation>

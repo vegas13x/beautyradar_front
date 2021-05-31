@@ -17,8 +17,8 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <fragment
-        android:name="com.nick_sib.beauty_radar.view.fragments.MasterAndClientInnerFragment"
-        tools:layout="@layout/fragment_master_and_client_inner"
+        android:name="com.nick_sib.beauty_radar.view.fragments.WorkingDaysInnerFragment"
+        tools:layout="@layout/fragment_working_days_inner"
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,15 +36,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_battom_nav_menu" />
-
-    <FrameLayout
-        android:id="@+id/containerBottomSheet"
-        android:layout_width="match_parent"
-        android:layout_height="380dp"
-        app:behavior_hideable="true"
-        app:behavior_peekHeight="0dp"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior" />
-
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

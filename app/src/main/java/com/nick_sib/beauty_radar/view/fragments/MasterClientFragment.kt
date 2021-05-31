@@ -2,11 +2,12 @@ package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
+import android.view.Window
+import android.view.WindowManager
 import android.widget.ImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.databinding.FragmentMasterClientBinding
@@ -15,6 +16,7 @@ import com.nick_sib.beauty_radar.model.data.state.AppState
 import com.nick_sib.beauty_radar.view.adapter.ClientAdapter
 import com.nick_sib.beauty_radar.view_model.MasterClientViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
 
@@ -42,6 +44,7 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
     }
 
 
+
 //    private fun pagerInit() {
 //        val pagerAdapter = ScreenSlidePagerAdapter(childFragmentManager)
 //        binding.viewPager.adapter = pagerAdapter
@@ -61,7 +64,8 @@ class MasterClientFragment : Fragment(R.layout.fragment_master_client) {
             .replace(R.id.containerBottomSheet, bottomFragment)
             .commit()
 
-        binding.root.findViewById<AppCompatTextView>(R.id.fragment_mc_tv_sessions).setOnClickListener {
+        binding.root.findViewById<AppCompatTextView>(R.id.fragment_mc_tv_sessions)
+            .setOnClickListener {
                 bottomSheetBehaviour.state = BottomSheetBehavior.STATE_EXPANDED
             }
     }
