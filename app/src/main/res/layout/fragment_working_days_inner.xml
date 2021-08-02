@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E5D0D8">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/working_time_wd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:text="Выберите рабочие дни"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/monday_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/working_time_wd"
+                app:layout_constraintTop_toBottomOf="@+id/working_time_wd" />
+
+            <TextView
+                android:id="@+id/monday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Понедельник"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/monday_checkbox"
+                app:layout_constraintBottom_toBottomOf="@id/monday_checkbox"
+                app:layout_constraintTop_toTopOf="@id/monday_checkbox" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/tuesday_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/monday_checkbox"
+                app:layout_constraintTop_toBottomOf="@+id/monday_checkbox" />
+
+            <TextView
+                android:id="@+id/tuesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вторник"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/tuesday_checkbox"
+                app:layout_constraintBottom_toBottomOf="@id/tuesday_checkbox"
+                app:layout_constraintTop_toTopOf="@id/tuesday_checkbox" />
+
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/wednesday_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/tuesday_checkbox"
+                app:layout_constraintTop_toBottomOf="@+id/tuesday_checkbox" />
+
+            <TextView
+                android:id="@+id/wednesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Среда"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/wednesday_checkbox"
+                app:layout_constraintBottom_toBottomOf="@id/wednesday_checkbox"
+                app:layout_constraintTop_toTopOf="@id/wednesday_checkbox" />
+
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/thursday_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/wednesday_checkbox"
+                app:layout_constraintTop_toBottomOf="@+id/wednesday_checkbox" />
+
+            <TextView
+                android:id="@+id/thursday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Четверг"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/thursday_checkbox"
+                app:layout_constraintBottom_toBottomOf="@id/thursday_checkbox"
+                app:layout_constraintTop_toTopOf="@id/thursday_checkbox" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/friday_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/thursday_checkbox"
+                app:layout_constraintTop_toBottomOf="@+id/thursday_checkbox" />
+
+            <TextView
+                android:id="@+id/friday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Пятница"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/friday_checkbox"
+                app:layout_constraintBottom_toBottomOf="@id/friday_checkbox"
+                app:layout_constraintTop_toTopOf="@id/friday_checkbox" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/saturday_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/friday_checkbox"
+                app:layout_constraintTop_toBottomOf="@+id/friday_checkbox" />
+
+            <TextView
+                android:id="@+id/saturday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Суббота"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/saturday_checkbox"
+                app:layout_constraintBottom_toBottomOf="@id/saturday_checkbox"
+                app:layout_constraintTop_toTopOf="@id/saturday_checkbox" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/sunday_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/saturday_checkbox"
+                app:layout_constraintTop_toBottomOf="@+id/saturday_checkbox" />
+
+            <TextView
+                android:id="@+id/sunday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Воскресенье"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/sunday_checkbox"
+                app:layout_constraintBottom_toBottomOf="@id/sunday_checkbox"
+                app:layout_constraintTop_toTopOf="@id/sunday_checkbox" />
+
+            <TextView
+                android:id="@+id/working_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Выберите рабочее время"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@id/sunday_checkbox"
+                app:layout_constraintStart_toStartOf="@id/working_time_wd" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textField4"
+                android:layout_width="125dp"
+                android:layout_height="44dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_marginRight="24dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/working_time"
+                app:layout_constraintStart_toStartOf="@id/working_time"
+                android:hint="08:00">
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/tire1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/ic_tire"
+                app:layout_constraintStart_toEndOf="@id/textField4"
+                app:layout_constraintTop_toTopOf="@id/textField4"
+                app:layout_constraintBottom_toBottomOf="@id/textField4"/>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textField5"
+                android:layout_width="125dp"
+                android:layout_height="44dp"
+                android:layout_marginLeft="15dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:layout_constraintTop_toTopOf="@id/textField4"
+                app:layout_constraintStart_toEndOf="@id/tire1"
+                android:hint="08:00">
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/dinner_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Выберите время обеда"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@id/textField4"
+                app:layout_constraintStart_toStartOf="@id/working_time_wd" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textField6"
+                android:layout_width="125dp"
+                android:layout_height="44dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_marginRight="24dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/dinner_time"
+                app:layout_constraintStart_toStartOf="@id/dinner_time"
+                android:hint="08:00">
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/tire2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/ic_tire"
+                app:layout_constraintStart_toEndOf="@id/textField6"
+                app:layout_constraintTop_toTopOf="@id/textField6"
+                app:layout_constraintBottom_toBottomOf="@id/textField6"/>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textField7"
+                android:layout_width="125dp"
+                android:layout_height="44dp"
+                android:layout_marginLeft="15dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:layout_constraintTop_toTopOf="@id/textField6"
+                app:layout_constraintStart_toEndOf="@id/tire2"
+                android:hint="08:00">
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/time_after_procedure"
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Выберите время перерыва после процедуры"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+
+                app:layout_constraintStart_toStartOf="@id/working_time_wd"
+                app:layout_constraintTop_toBottomOf="@id/textField7" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textField8"
+                android:layout_width="125dp"
+                android:layout_height="44dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_marginRight="24dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/time_after_procedure"
+                app:layout_constraintStart_toStartOf="@id/dinner_time"
+                android:hint="08:00">
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/ButtonBlack"
+                android:layout_width="300dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="100dp"
+                android:text="Сохранить"
+                android:textAllCaps="false"
+                app:backgroundTint="@null"
+                app:cornerRadius="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textField8" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -2,10 +2,13 @@ package com.nick_sib.beauty_radar.view.fragments
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.nick_sib.beauty_radar.R
 import com.nick_sib.beauty_radar.databinding.FragmentProfileInfoSecondBinding
 import com.nick_sib.beauty_radar.extension.findNavController
@@ -30,10 +33,38 @@ class ProfileInfoFragment : Fragment(R.layout.fragment_profile_info_second) {
 
         btnInit()
         navBarInit()
-        pagerInit()
+//        pagerInit()
+        bottomSheetInit()
 
 
     }
+
+    private fun bottomSheetInit() {
+        val bottomFragment = BottomSheetFragment()
+        val bottomSheetBehaviour = BottomSheetBehavior.from(binding.containerBottomSheet)
+
+        childFragmentManager.beginTransaction()
+            .replace(R.id.containerBottomSheet, bottomFragment)
+            .commit()
+
+        binding.root.findViewById<AppCompatTextView>(R.id.fragment_specialization).setOnClickListener {
+            bottomSheetBehaviour.state = BottomSheetBehavior.STATE_EXPANDED
+        }
+
+        binding.root.findViewById<AppCompatTextView>(R.id.fragment_mc_tv_sessions).setOnClickListener {
+            bottomSheetBehaviour.state = BottomSheetBehavior.STATE_EXPANDED
+        }
+
+        binding.root.findViewById<AppCompatTextView>(R.id.viezd_na_dom).setOnClickListener {
+            bottomSheetBehaviour.state = BottomSheetBehavior.STATE_EXPANDED
+        }
+
+        binding.root.findViewById<AppCompatTextView>(R.id.notifications).setOnClickListener {
+            bottomSheetBehaviour.state = BottomSheetBehavior.STATE_EXPANDED
+        }
+
+    }
+
 
     private fun btnInit() {
         binding.root.findViewById<ImageView>(R.id.edit_pen)?.setOnClickListener {
@@ -50,6 +81,13 @@ class ProfileInfoFragment : Fragment(R.layout.fragment_profile_info_second) {
                 .navigate(
                     ProfileInfoFragmentDirections
                         .actionProfileInfoFragmentToProfileInfoEditFragment()
+                )
+        }
+
+        binding.root.findViewById<Button>(R.id.fragment_mc_graphic_raboty).setOnClickListener {
+            findNavController()
+                .navigate(
+                    ProfileInfoFragmentDirections.actionProfileInfoFragmentToWorkingDaysFragment()
                 )
         }
     }
@@ -74,10 +112,10 @@ class ProfileInfoFragment : Fragment(R.layout.fragment_profile_info_second) {
         }
     }
 
-    private fun pagerInit() {
-        val pagerAdapter = ScreenSlidePagerAdapter(childFragmentManager)
-        binding.viewPager.adapter = pagerAdapter
-    }
+//    private fun pagerInit() {
+//        val pagerAdapter = ScreenSlidePagerAdapter(childFragmentManager)
+//        binding.viewPager.adapter = pagerAdapter
+//    }
 
 
     private inner class ScreenSlidePagerAdapter(fm: FragmentManager) :

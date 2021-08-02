@@ -34,7 +34,7 @@ class EnterCodeViewModel(
         uid?.run {
             viewModelCoroutineScope.launch {
                 val userFlag = interactor.existUserByUPNFromDB(uid)
-                liveDataViewmodel.value = userFlag
+                liveDataViewmodel.value = AppState.Success(true)
             }
         }
     }

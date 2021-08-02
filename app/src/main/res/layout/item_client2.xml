@@ -28,7 +28,6 @@
             android:textSize="@dimen/text_size_18"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/item_recorded_tv_service_price_time"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -40,10 +39,37 @@
             android:text="@string/text_test_recorded_client"
             android:textColor="@color/main_dark"
             android:textSize="@dimen/text_size_14"
-            app:layout_constraintBottom_toBottomOf="parent"
+
             app:layout_constraintEnd_toStartOf="@+id/item_recorded_tv_procedure_time"
             app:layout_constraintStart_toStartOf="@+id/marsTextView"
             app:layout_constraintTop_toBottomOf="@+id/marsTextView" />
+
+        <TextView
+            android:id="@+id/item_recorded_tv_service_price_time2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="18dp"
+            android:text="@string/text_test_recorded_client"
+            android:textColor="@color/main_dark"
+            android:textSize="@dimen/text_size_14"
+
+            app:layout_constraintEnd_toStartOf="@+id/item_recorded_tv_procedure_time"
+            app:layout_constraintStart_toStartOf="@+id/marsTextView"
+            app:layout_constraintTop_toBottomOf="@+id/item_recorded_tv_service_price_time" />
+
+        <TextView
+            android:id="@+id/item_recorded_tv_service_price_time3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="18dp"
+            android:layout_marginBottom="@dimen/offset_15"
+            android:text="edffedddddddddddddddddddddddffffffeeeeeeeeeeeeeeeeeeeeefffffffffffffeeeeeeeeefffffffffe"
+            android:textColor="@color/main_dark"
+            android:textSize="@dimen/text_size_14"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/item_recorded_tv_procedure_time"
+            app:layout_constraintStart_toStartOf="@+id/marsTextView"
+            app:layout_constraintTop_toBottomOf="@+id/item_recorded_tv_service_price_time2" />
 
         <TextView
             android:id="@+id/item_recorded_barrier"
@@ -65,9 +91,10 @@
             android:text="15:00"
             android:textColor="@color/Black"
             android:textSize="17sp"
-            app:layout_constraintStart_toEndOf="@id/item_recorded_barrier"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/item_recorded_barrier"
+
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/item_recorded_barrier"
             app:layout_constraintTop_toTopOf="parent" />
 
 

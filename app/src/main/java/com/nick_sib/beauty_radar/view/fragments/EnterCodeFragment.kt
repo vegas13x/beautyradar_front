@@ -73,13 +73,14 @@ class EnterCodeFragment : Fragment(R.layout.fragment_enter_code) {
                 binding?.fragmentAuthLoadingDialog?.root?.isGone = true
                 when (appState.data) {
                     is UserMaster -> {
+                        findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignInFragment())
                         viewModel.checkUserInDB(appState.data.uid)
                         uid = appState.data.uid!!
                     }
                     is Boolean -> {
                         if (appState.data == true) {
-                            viewModel.getUserByUID(uid)
-                        } else {
+//                            viewModel.getUserByUID(uid)
+//                        } else {
                             findNavController().navigate(EnterCodeFragmentDirections.actionEnterCodeFragmentToSignInFragment())
                         }
                     }

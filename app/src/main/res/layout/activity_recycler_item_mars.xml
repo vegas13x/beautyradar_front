@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="24dp"
+    android:layout_marginRight="24dp"
+    android:layout_marginBottom="20dp"
+    android:background="@drawable/rounded_corners4"
+    android:elevation="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_recorded_const_layout_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/marsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/offset_15"
+            android:layout_marginTop="@dimen/offset_15"
+            android:text="Александра"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_18"
+            app:layout_constraintBottom_toTopOf="@id/item_recorded_tv_service_price_time"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_recorded_tv_service_price_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="18dp"
+            android:layout_marginBottom="@dimen/offset_15"
+            android:text="@string/text_test_recorded_client"
+            android:textColor="@color/main_dark"
+            android:textSize="@dimen/text_size_14"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/item_recorded_tv_procedure_time"
+            app:layout_constraintStart_toStartOf="@+id/marsTextView"
+            app:layout_constraintTop_toBottomOf="@+id/marsTextView" />
+
+        <TextView
+            android:id="@+id/item_recorded_barrier"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:background="@color/main_dark"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/item_recorded_tv_service_price_time"
+            app:layout_constraintEnd_toStartOf="@id/item_recorded_tv_procedure_time"
+            app:layout_constraintStart_toEndOf="@id/item_recorded_tv_service_price_time"
+            app:layout_constraintTop_toTopOf="@id/marsTextView" />
+
+        <TextView
+            android:id="@+id/item_recorded_tv_procedure_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/marsTextView"
+            android:layout_marginEnd="@dimen/offset_20"
+            android:text="15:00"
+            android:textColor="@color/Black"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/item_recorded_barrier"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/marsDescriptionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corners4"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_recorded_const_layout_container"
+        tools:visibility="visible">
+
+        <TextView
+            android:id="@+id/nameOfCLient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="Маша Пупкина"
+            android:textColor="#35384D"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_clock"
+            app:layout_constraintStart_toStartOf="@id/nameOfCLient"
+            app:layout_constraintTop_toBottomOf="@+id/nameOfCLient" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="11dp"
+            android:text="60 мин."
+            android:textColor="#35384D"
+            app:layout_constraintBottom_toBottomOf="@+id/clock"
+            app:layout_constraintStart_toEndOf="@+id/clock"
+            app:layout_constraintTop_toTopOf="@+id/clock" />
+
+
+        <ImageView
+            android:id="@+id/cash"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_cash"
+            app:layout_constraintStart_toStartOf="@id/clock"
+            app:layout_constraintTop_toBottomOf="@+id/clock" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="11dp"
+            android:text="1000 Р"
+            android:textColor="#35384D"
+            app:layout_constraintBottom_toBottomOf="@+id/cash"
+            app:layout_constraintStart_toEndOf="@+id/cash"
+            app:layout_constraintTop_toTopOf="@+id/cash" />
+
+
+        <ImageView
+            android:id="@+id/attent"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_attent"
+            app:layout_constraintStart_toStartOf="@id/cash"
+            app:layout_constraintTop_toBottomOf="@+id/cash" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="11dp"
+            android:text="Отдала предоплату 1000"
+            android:textColor="#35384D"
+            app:layout_constraintBottom_toBottomOf="@+id/attent"
+            app:layout_constraintStart_toEndOf="@+id/attent"
+            app:layout_constraintTop_toTopOf="@+id/attent" />
+
+
+        <ImageView
+            android:id="@+id/send"
+            android:layout_marginTop="12dp"
+            android:layout_width="119dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_send"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/attent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Написать"
+            android:textColor="#35384D"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/send"
+            app:layout_constraintStart_toStartOf="@id/send"
+            app:layout_constraintTop_toBottomOf="@id/send" />
+
+
+        <ImageView
+            android:id="@+id/write"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_pen"
+            app:layout_constraintStart_toEndOf="@+id/send"
+            app:layout_constraintTop_toTopOf="@+id/send" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Изменить"
+            android:textColor="#35384D"
+            app:layout_constraintTop_toBottomOf="@id/write"
+            app:layout_constraintStart_toStartOf="@id/write"
+            app:layout_constraintEnd_toEndOf="@id/write"/>
+
+        <ImageView
+            android:id="@+id/urn"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_urn"
+            app:layout_constraintBottom_toBottomOf="@+id/write"
+            app:layout_constraintStart_toEndOf="@+id/write" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Отменить"
+            android:textColor="#35384D"
+            app:layout_constraintTop_toBottomOf="@id/urn"
+            app:layout_constraintStart_toStartOf="@id/urn"
+            app:layout_constraintEnd_toEndOf="@id/urn"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
